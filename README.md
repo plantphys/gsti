@@ -1,15 +1,10 @@
 # Global_Vcmax
 
 
-
-##List of datasets
-| Reference | Species | Location | Year |
-| --- | --- | ---|---|
-| Barnes et al. 2017 | Hybrid poplar |Arizona, USA| 2013|
-| Sexton et al. 2021 | Tobacco | Canada |2021?|
-| Wang et al. 2020 | Zea Mays | Illinois, USA |2014 - 2015 - 2019|
+## Map of datasets
 
 
+![Problem fetching the map](https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Map_datasets.jpeg "Map of datasets")
 
 ## References
 Barnes ML, Breshears DD, Law DJ, Leeuwen WJD van, Monson RK, Fojtik AC, Barron-Gafford GA, Moore DJP. 2017. Beyond greenness: Detecting temporal changes in photosynthetic capacity with hyperspectral reflectance data. PLOS ONE 12: e0189539.
