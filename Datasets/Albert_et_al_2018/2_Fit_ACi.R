@@ -7,13 +7,7 @@ pdf(file = '2_ACi_fitting_without_Tp.pdf')
 result=by(data = curated_data,INDICES = list(curated_data$SampleID_num),FUN = function(x){f.fitting(measures = x,Start = list(JmaxRef=45,RdRef=1,VcmaxRef=30),param=f.make.param(TBM='FATES',TpRef=50),id.name = 'SampleID_num')})
 dev.off()
 
-## I have issues with some curves. It looks like Aj limitation does not occur.
-# Maybe Qin = 1000 is too low? 
-# I fit also the curves using Ac limitation only.
 
-pdf(file = '2_ACi_fitting_without_Aj.pdf')
-result_Ac=by(data = curated_data,INDICES = list(curated_data$SampleID_num),FUN = function(x){f.fitting(measures = x,Start = list(RdRef=1,VcmaxRef=30),param=f.make.param(TBM='FATES',TpRef=50,JmaxRef=1000),id.name = 'SampleID_num')})
-dev.off()
 
 pdf(file = '2_ACi_fitting_with_Tp.pdf')
 result_Tp=by(data = curated_data,INDICES = list(curated_data$SampleID_num),
@@ -31,6 +25,10 @@ result_Tp=by(data = curated_data,INDICES = list(curated_data$SampleID_num),
 dev.off()
 
 
+## After seeing the pdf, I removed a lot of curves: 
+## 8,12,15,17,18,20,21,32,47,48,56,58,68,86.
+## Some were very noisy, or probably measured at a too low light irradiance
+
 
 res_nlf=unlist(lapply(result,FUN = function(x) x[[1]]$convergence))
 table(res_nlf)
@@ -41,22 +39,16 @@ res_nlf$SampleID_num=row.names(res_nlf)
 res_nlf_Tp=as.data.frame(t(sapply(result_Tp,FUN = function(x) c(x[[2]]@coef,BIC=BIC(x[[2]]),Tleaf=x[[3]]['Tleaf']))))
 res_nlf_Tp$SampleID_num=row.names(res_nlf_Tp)
 
-res_nlf_Ac=as.data.frame(t(sapply(result_Ac,FUN = function(x) c(x[[2]]@coef,BIC=BIC(x[[2]]),Tleaf=x[[3]]['Tleaf']))))
-res_nlf_Ac$SampleID_num=row.names(res_nlf_Ac)
 
-res_nlf_Ac$JmaxRef=NA
-res_nlf_Ac$TpRef=NA
+
 res_nlf$TpRef=NA
 res_nlf$model='Without_Tp'
 res_nlf_Tp$model='With_Tp'
-res_nlf_Ac$model='Without_Tp'
 
 res_nlf=res_nlf[,colnames(res_nlf_Tp)]
-res_nlf_Ac=res_nlf_Ac[,colnames(res_nlf_Tp)]
 
 
 Bilan=res_nlf
-Bilan[which(res_nlf_Ac$BIC<res_nlf$BIC),]=res_nlf_Ac[which(res_nlf_Ac$BIC<res_nlf$BIC),]
 Bilan[which(res_nlf_Tp$BIC<Bilan$BIC),]=res_nlf_Tp[which(res_nlf_Tp$BIC<Bilan$BIC),]
 colnames(Bilan)=c("sigma","JmaxRef","VcmaxRef","TpRef","RdRef","BIC","Tleaf","SampleID_num","model") 
 
@@ -76,10 +68,4 @@ Bilan=merge(x=Bilan,y=Table_SampleID,by.x='SampleID_num',by.y='SampleID_num')
 save(Bilan,file='2_Result_ACi_fitting.Rdata')
 
 
-## Comparison with the Authors fitting
-
-Author_fitting=read.csv(file='RawDataSetPoint1.csv')
-Author_fitting=merge(x=Author_fitting[,c(1,20,21)],y=Bilan,by.x='Plant',by.y='SampleID')
-plot(Author_fitting$VivoVcmax,Author_fitting$VcmaxRef)
-abline(c(0,1))
 
