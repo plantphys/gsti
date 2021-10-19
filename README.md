@@ -3,8 +3,11 @@
 
 ## Map of datasets
 
-
 ![Problem fetching the map](https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Map_datasets.jpeg "Map of datasets")
+
+## Number of leaf and species
+
+![Problem fetching the map](https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Leaf_per_species.png "Table of leaf species")
 
 ## References
 Barnes ML, Breshears DD, Law DJ, Leeuwen WJD van, Monson RK, Fojtik AC, Barron-Gafford GA, Moore DJP. 2017. Beyond greenness: Detecting temporal changes in photosynthetic capacity with hyperspectral reflectance data. PLOS ONE 12: e0189539.
