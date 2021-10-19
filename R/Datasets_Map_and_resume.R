@@ -2,6 +2,7 @@
 #                   "ggspatial", "libwgeom", "sf", "rnaturalearth", "rnaturalearthdata","rgeos"))
 
 library(ggplot2)
+library(gridExtra)
 library(here)
 theme_set(theme_bw())
 library(sf)
@@ -26,3 +27,20 @@ Map_datasets
 dev.off()
 
 print(Map_datasets)
+
+##### Importing curated datasets
+
+ls_files=dir(recursive = TRUE)
+ls_files_Curated=ls_files[which(grepl(x=ls_files,pattern="3_Spectra_traits.Rdata",ignore.case = TRUE))]
+data_curated=data.frame()
+for(files in ls_files_Curated){
+  load(files)
+  data_curated=rbind.data.frame(data_curated,spectra)
+}
+
+Resume=data.frame(table(data_curated$Species))
+colnames(Resume)=c('Species','N_leaf')
+png("Leaf_per_species.png", height=1000, width=300)
+p<-tableGrob(Resume)
+grid.arrange(p)
+dev.off()
