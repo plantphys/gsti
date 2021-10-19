@@ -9,6 +9,8 @@ library(rnaturalearth)
 library(rnaturalearthdata)
 library(rgeos)
 here()
+
+
 ##### Importing the dataset descriptions
 
 ls_files=dir(recursive = TRUE)
@@ -22,3 +24,5 @@ Map_datasets=ggplot(data = world) + geom_sf() + xlab("Longitude") + ylab("Latitu
 jpeg(filename = 'Map_datasets.jpeg',width = 170,height = 170,units = 'mm',res=600)
 Map_datasets
 dev.off()
+
+print(Map_datasets)
