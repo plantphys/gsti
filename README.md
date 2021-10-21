@@ -4,6 +4,7 @@
 ## Map of datasets
 
 ![Problem fetching the map](https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Map_datasets.jpeg "Map of datasets")
+<img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Map_datasets.jpeg" alt="Problem fetching the map" width="100" height="50">
 
 ## Number of leaf and species
 
