@@ -1,7 +1,7 @@
 library(LeafGasExchange)
 library(here)
 path=here()
-setwd(paste(path,'/Datasets/Wu_et_al_2019',sep=''))
+setwd(paste(path,'/Datasets/Lamour_et_al_2021',sep=''))
 
 load('1_QC_data.Rdata',verbose=TRUE)
 curated_data$Tleaf=curated_data$Tleaf+273.16 ## Conversion to kelvin
@@ -62,12 +62,3 @@ Table_SampleID=curated_data[!duplicated(curated_data$SampleID),c('SampleID','Sam
 Bilan=merge(x=Bilan,y=Table_SampleID,by.x='SampleID_num',by.y='SampleID_num')
 
 save(Bilan,file='2_Result_ACi_fitting.Rdata')
-
-
-## Comparison with the Authors fitting
-
-Author_fitting=read.csv(file='Traits.csv')
-Author_fitting=merge(x=Author_fitting,y=Bilan,by.x='BNL_UID',by.y='SampleID')
-plot(Author_fitting$Vcmax25,Author_fitting$VcmaxRef)
-abline(c(0,1))
-
