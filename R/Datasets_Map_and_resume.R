@@ -40,11 +40,11 @@ for(files in ls_files_Curated){
 
 Resume=data.frame(table(data_curated$Species))
 colnames(Resume)=c('Species','N_leaf')
-png("Leaf_per_species.png", height=10*nrow(Resume), width=100,units = 'mm',res=600)
+jpeg("Leaf_per_species.jpeg", height=10*nrow(Resume), width=100,units = 'mm',res=300)
 p<-tableGrob(Resume)
 grid.arrange(p)
 dev.off()
 
-png("Hist_Vcmax25.png", height=100, width=100,units = 'mm',res=600)
+jpeg("Hist_Vcmax25.jpeg", height=100, width=100,units = 'mm',res=300)
 hist(data_curated$Vcmax25,breaks = 20,xlab=expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1),ylab='Number of leaves',main='')
 dev.off()
