@@ -9,8 +9,8 @@ library(sf)
 library(rnaturalearth)
 library(rnaturalearthdata)
 library(rgeos)
-here()
-
+path=here()
+setwd(path)
 
 ##### Importing the dataset descriptions
 
@@ -40,7 +40,11 @@ for(files in ls_files_Curated){
 
 Resume=data.frame(table(data_curated$Species))
 colnames(Resume)=c('Species','N_leaf')
-png("Leaf_per_species.png", height=1000, width=300)
+png("Leaf_per_species.png", height=10*nrow(Resume), width=100,units = 'mm',res=600)
 p<-tableGrob(Resume)
 grid.arrange(p)
+dev.off()
+
+png("Hist_Vcmax25.png", height=100, width=100,units = 'mm',res=600)
+hist(data_curated$Vcmax25,breaks = 20,xlab=expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1),ylab='Number of leaves',main='')
 dev.off()

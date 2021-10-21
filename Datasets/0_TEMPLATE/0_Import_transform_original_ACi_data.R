@@ -9,7 +9,7 @@ ls_files_Aci=ls_files[which(grepl(x=ls_files,pattern="RawDataSetPoint",ignore.ca
 original_data=do.call("rbind", apply(X = as.matrix(ls_files_Aci),FUN = read.csv,MARGIN = 1))
 
 curated_data=original_data
-curated_data=curated_data[,c('Plant','Obs','A','Ci','CO2s',"gsw","gsw","Qin","Qin","Tleaf")]
+curated_data=curated_data[,c('Plant','Obs','A','Ci','CO2s','CO2r',"gsw","gsw","Qin","Qin","Tleaf")]
 colnames(curated_data)=ESS_column
 curated_data$Patm=NA
 curated_data$RHs=NA

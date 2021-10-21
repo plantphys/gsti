@@ -18,7 +18,7 @@ for(file in ls_files_Aci){
 }
 
 curated_data=original_data
-curated_data=curated_data[,c('file','Obs','Photo','Ci','CO2S',"Cond","Press","PARi","RH_S","Tleaf")]
+curated_data=curated_data[,c('file','Obs','Photo','Ci','CO2S','CO2R',"Cond","Press","PARi","RH_S","Tleaf")]
 colnames(curated_data)=ESS_column
 curated_data$SampleID_num=as.numeric(as.factor(curated_data$SampleID))
 
