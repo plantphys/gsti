@@ -3,14 +3,14 @@
 
 ## Map of datasets
 
-![Problem fetching the map](https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Map_datasets.jpeg "Map of datasets")
-<img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Map_datasets.jpeg" alt="Problem fetching the map" width="100" height="50">
+<img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Map_datasets.jpeg" alt="Problem fetching the map" width="170" height="170">
 
 ## Number of leaf and species
 
-![Problem fetching the table](https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Leaf_per_species.jpeg "Table of leaf species")
+![test image size](/Map_datasets.jpeg){:height="50%" width="50%"}
 
 ![Problem fetching the histogram](https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Hist_Vcmax25.jpeg "Histogramm of Vcmax25")
+<img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Map_datasets.jpeg" alt="Problem fetching the map" width="170" height="170">
 
 ## References
 Barnes ML, Breshears DD, Law DJ, Leeuwen WJD van, Monson RK, Fojtik AC, Barron-Gafford GA, Moore DJP. 2017. Beyond greenness: Detecting temporal changes in photosynthetic capacity with hyperspectral reflectance data. PLOS ONE 12: e0189539.
