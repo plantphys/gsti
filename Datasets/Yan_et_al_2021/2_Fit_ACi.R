@@ -7,7 +7,8 @@ load('1_QC_data.Rdata',verbose=TRUE)
 curated_data$Tleaf=curated_data$Tleaf+273.16 ## Conversion to kelvin
 curated_data=curated_data[order(curated_data$SampleID_num,curated_data$Ci),]
 
-## A lot of curves are not Aj limited
+## Fitting of the ACi curves using Ac, Ac+Aj or Ac+Aj+Ap limitations
+
 pdf(file = '2_ACi_fitting_without_Tp.pdf')
 result=by(data = curated_data,INDICES = list(curated_data$SampleID_num),
           FUN = function(x){f.fitting(measures = x,Start = list(JmaxRef=120,RdRef=2,VcmaxRef=60),
