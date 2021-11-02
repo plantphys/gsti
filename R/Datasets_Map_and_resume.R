@@ -34,12 +34,15 @@ ls_files=dir(recursive = TRUE)
 ls_files_Curated=ls_files[which(grepl(x=ls_files,pattern="3_Spectra_traits.Rdata",ignore.case = TRUE))]
 data_curated=data.frame()
 for(files in ls_files_Curated){
-  load(files)
+  load(files,verbose=TRUE)
   data_curated=rbind.data.frame(data_curated,spectra)
 }
 
+
 Resume=data.frame(table(data_curated$Species))
 colnames(Resume)=c('Species','N_leaf')
+Resume$Species=as.character(Resume$Species)
+Resume=rbind.data.frame(Resume,c('Total leaves',sum(as.numeric(Resume$N_leaf))))
 jpeg("Leaf_per_species.jpeg", height=10*nrow(Resume), width=100,units = 'mm',res=300)
 p<-tableGrob(Resume)
 grid.arrange(p)
