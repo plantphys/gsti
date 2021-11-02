@@ -18,8 +18,8 @@ spectra=data.frame(SampleID=spectra$SampleID,
                         Vcmax25=spectra$VcmaxRef,
                         Jmax25=spectra$JmaxRef,
                         Tp25=spectra$TpRef,
-                        Spectra=I(as.matrix(spectra[,10:2110])))
-f.plot.spec(Z = spectra$Spectra,wv = 400:2500)
+                        Spectra=I(as.matrix(cbind(matrix(data = NA,nrow = nrow(spectra),ncol = 50),spectra[,10:2110]))))
+f.plot.spec(Z = spectra$Spectra,wv = 350:2500)
 
 
 save(spectra,file='3_Spectra_traits.Rdata')
