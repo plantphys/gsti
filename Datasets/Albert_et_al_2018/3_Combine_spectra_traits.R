@@ -13,7 +13,7 @@ WV=as.numeric(substr(WV,2,10))
 
 
 spectra=data.frame(SampleID=spectra$BR_UID,
-                        dataset='Albert_et_al_2028',
+                        dataset='Albert_et_al_2018',
                         Species=spectra$Species,
                         N_pc=NA,
                         Na=NA,
