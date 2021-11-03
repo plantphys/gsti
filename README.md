@@ -22,8 +22,15 @@ Koven, C. D., Knox, R. G., Fisher, R. A., Fisher, R. A., Chambers, J. Q., Chambe
 <img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Map_datasets.jpeg" width="800">
 
 # Overview of the combine dataset and performance of the model
-<img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Hist_Vcmax25.jpeg" width="400"> <img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Reflectance.jpeg" width="400"><img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/PLSR/Validation_random.jpeg" width="400"><img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/PLSR/Validation_datasets.jpeg" width="400">
+<img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Hist_Vcmax25.jpeg" width="400"> <img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Reflectance.jpeg" width="400">
 
+Validation of the PLSR model on the validation dataset which comprises 20 % of the observation of each individual datasets
+<img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/PLSR/Validation_random.jpeg" width="600">
+
+Validation of the PLSR model using successively each dataset as a validation dataset
+<img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/PLSR/Validation_datasets.jpeg" width="600">
+
+List of species and number of observations
 <img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Leaf_per_species.jpeg" width="400"> 
 
 
