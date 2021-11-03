@@ -1,6 +1,9 @@
 library(here)
-source('R/Correspondance_tables_ESS.R')
-## This dataset is available on ecosis:https://ecosis.org/package/seasonal-measurements-of-photosynthesis-and-leaf-traits-in-scarlet-oak
+path=here()
+## I downloaded this dataset from: https://ecosis.org/package/seasonal-measurements-of-photosynthesis-and-leaf-traits-in-scarlet-oak
+source(paste(path,'/R/Correspondance_tables_ESS.R',sep=''))
+setwd(paste(path,'/Datasets/Burnett_et_al_2021',sep=''))
+
 
 original_data=read.csv(file = 'raw_gas_exchange_li6400.csv')
 curated_data=original_data
