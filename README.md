@@ -31,6 +31,7 @@ Validation of the PLSR model using successively each dataset as a validation dat
 <img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/PLSR/Validation_datasets.jpeg" width="600">
 
 List of species and number of observations
+
 <img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Leaf_per_species.jpeg" width="400"> 
 
 
