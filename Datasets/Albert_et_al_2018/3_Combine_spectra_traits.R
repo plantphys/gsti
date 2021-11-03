@@ -1,4 +1,5 @@
 library(LeafGasExchange)
+library(spectratrait)
 library(here)
 path=here()
 setwd(paste(path,'/Datasets/Albert_et_al_2018',sep=''))
@@ -23,6 +24,6 @@ spectra=data.frame(SampleID=spectra$BR_UID,
                         Tp25=spectra$TpRef,
                         Spectra=I(as.matrix(spectra[,11:2161]*100))) ## Reflectance in % (0 - 100)
 f.plot.spec(Z = spectra$Spectra,wv = 350:2500)
-library(spectratrait)
+
 
 save(spectra,file='3_Spectra_traits.Rdata')
