@@ -19,14 +19,14 @@ f.fit_Aci<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdRef = 2, TpRef= 5
   dev.off()
   
 ## Fitting of the Aci curve using only the Ac limitation
-  pdf(file = '2_ACi_fitting_without_Aj.pdf')
+  pdf(file = '2_ACi_fitting_Ac.pdf')
   result_Ac=by(data = measures,INDICES = list(measures$SampleID_num),
                FUN = function(x){f.fitting(measures = x,Start = list(RdRef=RdRef,VcmaxRef=VcmaxRef),
                                            param=f.make.param(TBM='FATES',TpRef=9999,JmaxRef=9999),id.name = 'SampleID_num')})
   dev.off()
   
 ##Fitting of the curve using the Ac, Aj and Ap limitations
-  pdf(file = '2_ACi_fitting_with_Tp.pdf')
+  pdf(file = '2_ACi_fitting_Ac_Aj_Ap.pdf')
   result_Ac_Aj_Ap=by(data = measures,INDICES = list(measures$SampleID_num),
                FUN = function(x){
                  Start = list(JmaxRef=JmaxRef,RdRef=RdRef,VcmaxRef=VcmaxRef)
