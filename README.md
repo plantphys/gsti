@@ -7,7 +7,7 @@ To do so, we curate and combine ACi datasets that are linked to full range refle
 An overview of the process to curate the datasets is given in the pdf: [Curation workflow](https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Overal_data_curation.pdf). The curation is divided in 4 steps (0 to 3) to import, analyse and produce and dataset with a determined format. Since all datasets are different, the code can be adapted for any of the steps but the format have to be similar so all the datasets can be, in the end, combined.
 
 The A-Ci fitting is based on the FvCB model of photosynthesis (Farquhar et al. 1980), as implemented and parametrized in FATES terrestrial biosphere model (Fisher et al. 2015, Koven et al. 2020).
-The PLSR modeling approach is based on the best-practice guide by Burnet et al. (2021).
+The PLSR modeling approach is based on the best-practice guide by Burnett et al. (2021).
 
 Burnett AC, Anderson J, Davidson KJ, Ely KS, Lamour J, Li Q, Morrison BD, Yang D, Rogers A, Serbin SP. A best-practice guide to predicting plant traits from leaf-level hyperspectral data using partial least squares regression. J Exp Bot. 2021 Sep 30;72(18):6175-6189. doi: 10.1093/jxb/erab295. PMID: 34131723.
 
@@ -21,8 +21,9 @@ Koven, C. D., Knox, R. G., Fisher, R. A., Fisher, R. A., Chambers, J. Q., Chambe
 
 <img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Map_datasets.jpeg" width="800">
 
-# Number of leaf and species already processed
-<img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Leaf_per_species.jpeg" width="400"> <img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Hist_Vcmax25.jpeg" width="400">
+# Overview of the combined dataset 
+<img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Hist_Vcmax25.jpeg" width="400"> <img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Reflectance.jpeg" width="400">
 
+<img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Leaf_per_species.jpeg" width="400"> 
 
 
