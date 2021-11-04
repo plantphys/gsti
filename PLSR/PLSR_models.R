@@ -66,15 +66,23 @@ dev.off()
 #### I fixe the number of components to the number of components used in the random split (just above)
 #### to homogenize the comparisons between models
 result=data.frame()
-for(dataset in unique(data_curated$dataset)){
-  cal.plsr.data <- data_curated[!data_curated$dataset==dataset,]
-  val.plsr.data <- data_curated[data_curated$dataset==dataset,]
-  res=f.auto_plsr(inVar = inVar,cal.plsr.data = cal.plsr.data,val.plsr.data = val.plsr.data,file_name = paste('Validation',dataset,sep='_'),method=plsr_model$nComps,wv=400:2400)
-  result=rbind.data.frame(result,data.frame(Obs=res$Obs,Pred=res$Pred,dataset=dataset))
+ls_dataset=unique(data_curated$dataset)
+for(dataset_validation in ls_dataset){
+  cal.plsr.data <- data_curated[!data_curated$dataset==dataset_validation,]
+  val.plsr.data <- data_curated[data_curated$dataset==dataset_validation,]
+  res=f.auto_plsr(inVar = inVar,cal.plsr.data = cal.plsr.data,val.plsr.data = val.plsr.data,file_name = paste('Validation',dataset_validation,sep='_'),method=19,wv=400:2400)
+  result=rbind.data.frame(result,data.frame(Obs=res$Obs,Pred=res$Pred,dataset_validation=dataset_validation))
 }
 
 result$Vcmax25_Obs=result$Obs^2
 result$Vcmax25_Pred=result$Pred^2
+
+Table_R2_all=data.frame()
+for(dataset_validation in ls_dataset){
+  reg=summary(lm(Vcmax25_Pred~Vcmax25_Obs,data=result[result$dataset_validation==dataset_validation,]))
+  Table_R2_all=rbind.data.frame(Table_R2_all,data.frame(dataset_validation=dataset_validation,dataset_removed=NA,R2=reg$r.squared))
+}
+
 
 stat_dataset=summary(lm(Vcmax25_Pred~Vcmax25_Obs,data=result))
 
@@ -91,4 +99,66 @@ ggplot(data=result,aes(x=Vcmax25_Obs,y=Vcmax25_Pred,color=dataset))+theme_bw()+
 dev.off()
   
 
-
+#### Here, I want to evaluate the information present in each dataset, or another words,
+#### I want to evaluate how important is each one of the dataset in the overall performance of
+#### the model
+#
+#result2=data.frame()
+#
+#for(dataset_validation in ls_dataset){
+#  for(dataset_removed in ls_dataset[-which(ls_dataset==dataset_validation)]){
+#    cal.plsr.data <- data_curated[!data_curated$dataset%in%c(dataset_validation,dataset_removed),]
+#    val.plsr.data <- data_curated[data_curated$dataset==dataset_validation,]
+#    res=f.auto_plsr(inVar = inVar,cal.plsr.data = cal.plsr.data,val.plsr.data = val.plsr.data,file_name = NULL,method=19,wv=400:2400)
+#    result2=rbind.data.frame(result2,data.frame(Obs=res$Obs,Pred=res$Pred,dataset_validation=dataset_validation,dataset_removed=dataset_removed))
+#  }
+#}
+#
+#result2$Vcmax25_Obs=result2$Obs^2
+#result2$Vcmax25_Pred=result2$Pred^2
+#
+#Table_R2=data.frame()
+#for(dataset_validation in ls_dataset){
+#  for(dataset_removed in ls_dataset[-which(ls_dataset==dataset_validation)]){
+#    reg=summary(lm(Vcmax25_Pred~Vcmax25_Obs,data=result2[result2$dataset_validation==dataset_validation&result2$dataset_removed==dataset_removed,]))
+#    Table_R2=rbind.data.frame(Table_R2,data.frame(dataset_validation=dataset_validation,dataset_removed=dataset_removed,R2=reg$r.squared))
+#  }
+#}
+#
+#for(dataset_validation in ls_dataset){
+#  Table_R2[Table_R2$dataset_validation==dataset_validation,'R2_all']=Table_R2_all[Table_R2_all$dataset_validation==dataset_validation,'R2']
+#}
+#
+#Table_R2$Effect_removed=Table_R2$R2_all-Table_R2$R2
+#
+#
+##### Here, I want to evaluate the information present in each dataset alone to predict the others
+#result3=data.frame()
+#
+#for(dataset_calibration in ls_dataset){
+#    print(paste('Dataset for calibration =',dataset_calibration))
+#    cal.plsr.data <- data_curated[data_curated$dataset%in%c(dataset_calibration),]
+#    val.plsr.data <- data_curated[!data_curated$dataset==dataset_calibration,]
+#    try({res=f.auto_plsr(inVar = inVar,cal.plsr.data = cal.plsr.data,val.plsr.data = val.plsr.data,file_name = 'test.pdf',wv=400:2400,seg=10,method = 9)
+#    result3=rbind.data.frame(result3,data.frame(Obs=res$Obs,Pred=res$Pred,dataset_calibration=dataset_calibration,dataset_validation=val.plsr.data$dataset))})
+#}
+#result3$Vcmax25_Obs=result3$Obs^2
+#result3$Vcmax25_Pred=result3$Pred^2
+#
+#Table_R2_indiv=data.frame()
+#for(dataset_validation in ls_dataset){
+#  for(dataset_calibration in ls_dataset[-which(ls_dataset==dataset_validation)]){
+#    try({
+#      reg=summary(lm(Vcmax25_Pred~Vcmax25_Obs,data=result3[result3$dataset_calibration==dataset_calibration&result3$dataset_validation==dataset_validation,]))
+#    Table_R2_indiv=rbind.data.frame(Table_R2_indiv,data.frame(dataset_calibration=dataset_calibration,dataset_validation=dataset_validation,R2=reg$r.squared))
+#    })
+#  }
+#}
+#
+#Table_R2_indiv_all=data.frame()
+#  for(dataset_calibration in ls_dataset){
+#    try({
+#      reg=summary(lm(Vcmax25_Pred~Vcmax25_Obs,data=result3[result3$dataset_calibration==dataset_calibration,]))
+#      Table_R2_indiv_all=rbind.data.frame(Table_R2_indiv_all,data.frame(dataset_calibration=dataset_calibration,R2=reg$r.squared))
+#    })
+#}#

@@ -18,9 +18,8 @@
 #' @export
 #'
 #' @examples
-f.auto_plsr<-function(inVar,wv=500:2400,cal.plsr.data,val.plsr.data,file_name,method='pls'){
+f.auto_plsr<-function(inVar,wv=500:2400,cal.plsr.data,val.plsr.data,file_name,method='pls',seg=100){
   pls::pls.options(plsralg = "oscorespls")
-  `%notin%` <- Negate(`%in%`)
   print(paste("Cal observations: ",dim(cal.plsr.data)[1],sep=""))
   print(paste("Val observations: ",dim(val.plsr.data)[1],sep=""))
   
@@ -53,10 +52,9 @@ f.auto_plsr<-function(inVar,wv=500:2400,cal.plsr.data,val.plsr.data,file_name,me
   
   
   random_seed <- 2356812
-  seg <- 100
-  maxComps <- 30
-  iterations <- 50
-  prop <- 0.70
+  maxComps <- 30 ## Maximum number of components
+  iterations <- 50 ## Number of time the training dataset is resamble to build statistics on the optimal number of components
+  prop <- 0.70 ## Proportion of data used for the inner cross validation
   if (method=="pls") {
     # pls package approach - faster but estimates more components....
     nComps <- spectratrait::find_optimal_components(dataset=cal.plsr.data,method=method, 
@@ -77,12 +75,12 @@ f.auto_plsr<-function(inVar,wv=500:2400,cal.plsr.data,val.plsr.data,file_name,me
           }
   
   ## Fit the final model
-  segs <- 100
   plsr.out <- plsr(as.formula(paste(inVar,"~","Spectra")),scale=FALSE,ncomp=nComps,validation="CV",
-                   segments=segs, segment.type="interleaved",trace=FALSE,data=cal.plsr.data)
+                   segments=seg, segment.type="interleaved",trace=FALSE,data=cal.plsr.data)
   fit <- plsr.out$fitted.values[,1,nComps]
   pls.options(parallel = NULL)
   
+  ## I removed this part below since it often gives non realistic R2 (<< 0) JL 11 04 2020
   # External validation fit stats
  # par(mfrow=c(1,2)) # B, L, T, R
  # pls::RMSEP(plsr.out, newdata = val.plsr.data)
@@ -96,19 +94,19 @@ f.auto_plsr<-function(inVar,wv=500:2400,cal.plsr.data,val.plsr.data,file_name,me
  # box(lwd=2.2)
   
   #calibration
-  cal.plsr.output <- data.frame(cal.plsr.data[, which(names(cal.plsr.data) %notin% "Spectra")],
+  cal.plsr.output <- data.frame(cal.plsr.data[, which(!names(cal.plsr.data) %in% "Spectra")],
                                 PLSR_Predicted=fit,
                                 PLSR_CV_Predicted=as.vector(plsr.out$validation$pred[,,nComps]))
   cal.plsr.output <- cal.plsr.output %>%
     mutate(PLSR_CV_Residuals = PLSR_CV_Predicted-get(inVar))
   head(cal.plsr.output)
   
+  reg_cal=summary(lm(cal.plsr.output$PLSR_Predicted~cal.plsr.output[,paste0(inVar)]))
+  cal.R2 <- round(reg_cal$r.squared,2)
+  cal.RMSEP <- round(reg_cal$sigma,2)
   
-  cal.R2 <- round(pls::R2(plsr.out)[[1]][nComps],2)
-  cal.RMSEP <- round(sqrt(mean(cal.plsr.output$PLSR_CV_Residuals^2)),2)
   
-  
-  val.plsr.output <- data.frame(val.plsr.data[, which(names(val.plsr.data) %notin% "Spectra")],
+  val.plsr.output <- data.frame(val.plsr.data[, which(!names(val.plsr.data) %in% "Spectra")],
                                 PLSR_Predicted=as.vector(predict(plsr.out, 
                                                                  newdata = val.plsr.data, 
                                                                  ncomp=nComps, type="response")[,,1]))
@@ -117,8 +115,9 @@ f.auto_plsr<-function(inVar,wv=500:2400,cal.plsr.data,val.plsr.data,file_name,me
   head(val.plsr.output)
   
   
-  val.R2 <- round(pls::R2(plsr.out,newdata=val.plsr.data)[[1]][nComps],2)
-  val.RMSEP <- round(sqrt(mean(val.plsr.output$PLSR_Residuals^2)),2)
+  reg_val=summary(lm(val.plsr.output$PLSR_Predicted~val.plsr.output[,paste0(inVar)]))
+  val.R2 <- round(reg_val$r.squared,2)
+  val.RMSEP <- round(reg_val$sigma,2)
   
   cal_scatter_plot <- ggplot(cal.plsr.output, aes(x=PLSR_CV_Predicted, y=get(inVar),color=dataset)) + 
     theme_bw() + geom_point() + geom_abline(intercept = 0, slope = 1, color="dark grey", 
