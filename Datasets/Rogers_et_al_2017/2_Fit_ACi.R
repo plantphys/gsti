@@ -9,7 +9,7 @@ curated_data$Tleaf=curated_data$Tleaf+273.16 ## Conversion to kelvin
 curated_data=curated_data[order(curated_data$SampleID_num,curated_data$Ci),]
 
 ## Fitting of the ACi curves using Ac, Ac+Aj or Ac+Aj+Ap limitations
-Bilan=f.fit_Aci(measures=curated_data,param = f.make.param())
+Bilan=f.fit_Aci(measures=curated_data,param = f.make.param(VcmaxHa = 54260,JmaxHa = 36210,JmaxHd = 0,JmaxS = 0,VcmaxHd=0,VcmaxS = 0))
 
 ## Fitting quality check
 # Are there particularly low or high VcmaxRef?

@@ -51,7 +51,7 @@ result_random$Vcmax25_Obs=result_random$Obs^2
 result_random$Vcmax25_Pred=result_random$Pred^2
 
 stat_random=summary(lm(Vcmax25_Pred~Vcmax25_Obs,data=result_random))
-jpeg("Validation_random.jpeg", height=170, width=200,units = 'mm',res=300)
+jpeg("Validation_random.jpeg", height=130, width=170,units = 'mm',res=300)
 ggplot(data=result_random,aes(x=Vcmax25_Obs,y=Vcmax25_Pred,color=dataset))+theme_bw()+
   geom_point(size=0.5)+xlim(0,max(c(result_random$Vcmax25_Obs,result_random$Vcmax25_Pred)))+
   ylim(0,max(c(result_random$Vcmax25_Obs,result_random$Vcmax25_Pred)))+
@@ -86,8 +86,8 @@ for(dataset_validation in ls_dataset){
 
 stat_dataset=summary(lm(Vcmax25_Pred~Vcmax25_Obs,data=result))
 
-jpeg("Validation_datasets.jpeg", height=170, width=200,units = 'mm',res=300)
-ggplot(data=result,aes(x=Vcmax25_Obs,y=Vcmax25_Pred,color=dataset))+theme_bw()+
+jpeg("Validation_datasets.jpeg", height=130, width=170,units = 'mm',res=300)
+ggplot(data=result,aes(x=Vcmax25_Obs,y=Vcmax25_Pred,color=dataset_validation))+theme_bw()+
   geom_point(size=0.5)+xlim(0,max(c(result$Vcmax25_Obs,result$Vcmax25_Pred)))+
   ylim(0,max(c(result$Vcmax25_Obs,result$Vcmax25_Pred)))+
   geom_abline(slope=1)+geom_smooth(method='lm')+
