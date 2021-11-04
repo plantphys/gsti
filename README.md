@@ -2,12 +2,15 @@
 
 The aim of this project is to generate a global PLSR model for Vcmax25 prediction from full range reflectance data.
 
-To do so, we curate and combine ACi datasets that are linked to full range reflectancce data (350 or 400 to 2400 or 2500 nm). The A-Ci data are fitted using the same procedure and the same model to avoid including biases between datasets that were fitted using multiple methods.
+To do so, we curate and combine ACi datasets that are linked to full range reflectancce data (350 or 400 to 2400 or 2500 nm). The A-Ci data are fitted using the same procedure and the same model to avoid including biases between datasets if they were fitted using multiple methods.
 
 An overview of the process to curate the datasets is given in the pdf: [Curation workflow](https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Overal_data_curation.pdf). The curation is divided in 4 steps (0 to 3) to import, analyse and produce and dataset with a determined format. Since all datasets are different, the code can be adapted for any of the steps but the format have to be similar so all the datasets can be, in the end, combined.
 
 The A-Ci fitting is based on the FvCB model of photosynthesis (Farquhar et al. 1980), as implemented and parametrized in FATES terrestrial biosphere model (Fisher et al. 2015, Koven et al. 2020).
-The PLSR modeling approach is based on the best-practice guide by Burnett et al. (2021).
+
+The PLSR modeling approach is based on the best-practice guide by Burnett et al. (2021). An example of fitting is given here: [PLSR](https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/PLSR/Validation_Alldatasets%202021-11-04.pdf)
+
+## References
 
 Burnett AC, Anderson J, Davidson KJ, Ely KS, Lamour J, Li Q, Morrison BD, Yang D, Rogers A, Serbin SP. A best-practice guide to predicting plant traits from leaf-level hyperspectral data using partial least squares regression. J Exp Bot. 2021 Sep 30;72(18):6175-6189. doi: 10.1093/jxb/erab295. PMID: 34131723.
 
