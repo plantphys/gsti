@@ -30,6 +30,11 @@ hist(data_curated$sqrt_Vcmax25_JB)
 ## Removing Na values to avoid any issue
 data_curated=data_curated[!is.na(data_curated$sqrt_Vcmax25),]
 
+## Using a LOO PLSR model to identify wrong data
+test_LOO=plsr(sqrt_Vcmax25~ Spectra,ncomp = 19, data = data_curated, validation = "LOO")
+res_LOO=test_LOO$validation$pred[,1,19]-data_curated$sqrt_Vcmax25
+outliers=which(abs(res_LOO)>3*sd(res_LOO))
+data_curated=data_curated[-outliers,]
 ############################
 #### PLSR models VCMAX25 ###
 ############################
