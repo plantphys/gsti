@@ -2,6 +2,7 @@ library(LeafGasExchange)
 library(here)
 path=here()
 setwd(paste(path,'/Datasets/Yan_et_al_2021',sep=''))
+source(paste(path,'/R/fit_Aci_JB.R',sep=''))
 source(paste(path,'/R/fit_Aci.R',sep=''))
 
 load('1_QC_data.Rdata',verbose=TRUE)
@@ -9,7 +10,10 @@ curated_data$Tleaf=curated_data$Tleaf+273.16 ## Conversion to kelvin
 curated_data=curated_data[order(curated_data$SampleID_num,curated_data$Ci),]
 
 ## Fitting of the ACi curves using Ac, Ac+Aj or Ac+Aj+Ap limitations
-Bilan=f.fit_Aci(measures=curated_data,param = f.make.param())
+Bilan=f.fit_Aci(measures=curated_data,param = f.make.param(RdHd = 0,RdS = 0))## After manual inspection, those fittings seem fine, at least for Vcmax.
+Bilan_JB=f.fit_Aci_JB(measures=curated_data,param = f.make.param_JB(RdHd = 0,RdS = 0))## After manual inspection, those fittings seem fine, at least for Vcmax.
+
+Bilan=cbind.data.frame(Bilan,Bilan_JB)
 
 ## Fitting quality check
 # Are there particularly low or high VcmaxRef?

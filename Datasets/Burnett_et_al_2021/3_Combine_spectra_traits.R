@@ -20,6 +20,9 @@ spectra=data.frame(SampleID=spectra$Sample_ID,
                         Vcmax25=spectra$VcmaxRef,
                         Jmax25=spectra$JmaxRef,
                         Tp25=spectra$TpRef,
+                        Vcmax25_JB=spectra$JB_VcmaxRef,
+                        Vqmax25_JB=spectra$JB_VqmaxRef,
+                        Tp25_JB=spectra$JB_TpRef,
                         Spectra=I(as.matrix(spectra[,2:2152]*100))) ## Reflectance in % (0-100)
 library(spectratrait)
 f.plot.spec(Z = spectra$Spectra,wv = 350:2500)

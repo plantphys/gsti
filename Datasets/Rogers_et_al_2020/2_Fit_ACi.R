@@ -1,0 +1,35 @@
+library(LeafGasExchange)
+library(here)
+path=here()
+source(paste(path,'/R/fit_Aci.R',sep=''))
+source(paste(path,'/R/fit_Aci_JB.R',sep=''))
+setwd(paste(path,'/Datasets/Rogers_et_al_2017',sep=''))
+
+load('1_QC_data.Rdata',verbose=TRUE)
+curated_data$Tleaf=curated_data$Tleaf+273.16 ## Conversion to kelvin
+curated_data=curated_data[order(curated_data$SampleID_num,curated_data$Ci),]
+
+## Fitting of the ACi curves using Ac, Ac+Aj or Ac+Aj+Ap limitations
+Bilan=f.fit_Aci(measures=curated_data,param = f.make.param(RdHd = 0,RdS = 0,JmaxHd = 0,JmaxS = 0,VcmaxHd = 0,VcmaxS = 0,VcmaxHa = 54260,JmaxHa =  36210))## After manual inspection, those fittings seem fine, at least for Vcmax.
+Bilan_JB=f.fit_Aci_JB(measures=curated_data,param = f.make.param_JB(RdHd = 0,RdS = 0,JmaxHd = 0,JmaxS = 0,VcmaxHd = 0,VcmaxS = 0,VcmaxHa = 54260,JmaxHa =  36210))## After manual inspection, those fittings seem fine, at least for Vcmax.
+
+Bilan=cbind.data.frame(Bilan,Bilan_JB)
+
+## Fitting quality check
+# Are there particularly low or high VcmaxRef?
+hist(Bilan$VcmaxRef)
+
+Bilan[Bilan$sigma>quantile(x = Bilan$sigma,probs = 0.95),'SampleID_num']
+## After manual inspection, those fittings seem fine, at least for Vcmax.
+
+
+plot(x=Bilan$VcmaxRef,y=Bilan$JmaxRef,xlab='Vcmax25',ylab='Jmax25',xlim=c(min(c(Bilan$VcmaxRef,Bilan$JmaxRef),na.rm=TRUE),max(c(Bilan$VcmaxRef,Bilan$JmaxRef),na.rm=TRUE)),ylim=c(min(c(Bilan$VcmaxRef,Bilan$JmaxRef),na.rm=TRUE),max(c(Bilan$VcmaxRef,Bilan$JmaxRef),na.rm=TRUE)))
+abline(a=c(0,1))
+abline(lm(JmaxRef~0+VcmaxRef,data=Bilan),col='red')
+
+
+## Adding the SampleID column
+Table_SampleID=curated_data[!duplicated(curated_data$SampleID),c('SampleID','SampleID_num')]
+Bilan=merge(x=Bilan,y=Table_SampleID,by.x='SampleID_num',by.y='SampleID_num')
+
+save(Bilan,file='2_Result_ACi_fitting.Rdata')

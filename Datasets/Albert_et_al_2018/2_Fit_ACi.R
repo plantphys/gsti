@@ -2,6 +2,7 @@ library(LeafGasExchange)
 library(here)
 path=here()
 source(paste(path,'/R/fit_Aci.R',sep=''))
+source(paste(path,'/R/fit_Aci_JB.R',sep=''))
 setwd(paste(path,'/Datasets/Albert_et_al_2018',sep=''))
 
 
@@ -10,7 +11,11 @@ curated_data$Tleaf=curated_data$Tleaf+273.16 ## Conversion to kelvin
 curated_data=curated_data[order(curated_data$SampleID_num,curated_data$Ci),]
 
 ## Fitting of the ACi curves using Ac, Ac+Aj or Ac+Aj+Ap limitations
-Bilan=f.fit_Aci(measures=curated_data,param = f.make.param())## After manual inspection, those fittings seem fine, at least for Vcmax.
+Bilan=f.fit_Aci(measures=curated_data,param = f.make.param(RdHd = 0,RdS = 0))## After manual inspection, those fittings seem fine, at least for Vcmax.
+Bilan_JB=f.fit_Aci_JB(measures=curated_data,param = f.make.param_JB(RdHd = 0,RdS = 0))## After manual inspection, those fittings seem fine, at least for Vcmax.
+
+Bilan=cbind.data.frame(Bilan,Bilan_JB)
+
 #
 # After seeing the pdf, I removed a lot of curves: 
 ## 8,12,15,17,18,20,21,32,47,48,56,58,68,86.
