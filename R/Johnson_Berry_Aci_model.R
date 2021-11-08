@@ -117,8 +117,10 @@ f.Aci_JB<-function(PFD,Tleaf,Ci,param){
   JP680=pmin(JP680c,JP680j)
   
   Ag=pmin(Ac,Aj)*as.numeric(Ci>Gstar)+ pmax(Ac,Aj)*as.numeric(Ci<=Gstar)
+  Ap=3*Tp
+  Ag=pmin(Ag,Ap)
   An=Ag-Rd
-  result=data.frame(A=An,Ag=Ag,Aj=Aj-Rd,Ac=Ac-Rd)
+  result=data.frame(A=An,Ag=Ag,Aj=Aj-Rd,Ac=Ac-Rd,Ap=Ap-Rd)
   return(result)
 }
 
@@ -257,6 +259,7 @@ f.plot_JB<-function(measures=NULL,list_legend,param,name='',type='Aci'){
   lines(x=x,y=result$A,col="dark grey",lwd=1)
   lines(x=x,y=result$Ac,lwd=2,col="dark blue",lty=2)
   lines(x=x,y=result$Aj,lwd=2,col="dark red",lty=2)
+  lines(x=x,y=result$Ap,lwd=2,col="dark green",lty=2)
   box(lwd=1)
 }
 
@@ -269,6 +272,6 @@ data=data.frame(Tleaf=rep(300,20),
                 Tair=300,RHs=70,
                 VPDleaf=2,Patm=101,
                 A=f.Aci_JB(PFD=2000,Tleaf=300,Ci=seq(40,1500,75),
-                           param=f.make.param_JB())$A+rnorm(n = 20,mean = 0,sd = 0.5))
+                           param=f.make.param_JB(VcmaxRef=150,TpRef=13,VqmaxRef = 250))$A+rnorm(n = 20,mean = 0,sd = 0.5))
 
-f.fitting_JB(measures=data,id.name=NULL,Start=list(VqmaxRef=90,VcmaxRef=70,RdRef=1),param=f.make.param_JB())
+f.fitting_JB(measures=data,id.name=NULL,Start=list(TpRef=12,VqmaxRef=90,VcmaxRef=70,RdRef=1),param=f.make.param_JB())
