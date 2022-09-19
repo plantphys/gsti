@@ -10,26 +10,29 @@ library(rnaturalearth)
 library(rnaturalearthdata)
 library(rgeos)
 library(spectratrait)
-path=here()
+path <- here()
 setwd(path)
 
 ### Importing the dataset descriptions
 
-ls_files=dir(recursive = TRUE)
-ls_files_Description=ls_files[which(grepl(x=ls_files,pattern="Description.csv",ignore.case = TRUE))]
-All_Description=do.call("rbind", apply(X = as.matrix(ls_files_Description),FUN = read.csv,MARGIN = 1))
+ls_files <- dir(recursive = TRUE)
+ls_files_Description <- ls_files[which(grepl(x=ls_files,pattern="Description.csv",ignore.case = TRUE))]
+All_Description <- do.call("rbind", apply(X = as.matrix(ls_files_Description),FUN = read.csv,MARGIN = 1))
 
 ### Creating a map of all datasets
 world <- ne_countries(scale = "medium", returnclass = "sf")
-Map_datasets=ggplot(data = world) + geom_sf() + xlab("Longitude") + ylab("Latitude") +geom_point(data= All_Description,aes(x=Long, y=Lat),
-                                                                                   color = "red")
-jpeg(filename = 'Map_datasets.jpeg',width = 170,height = 170,units = 'mm',res=600)
+Map_datasets <- ggplot(data = world) + geom_sf() + xlab("Longitude") + 
+  ylab("Latitude") +geom_point(data= All_Description,aes(x=Long, y=Lat),color = "red")
+#jpeg(filename = 'Map_datasets.jpeg',width = 170,height = 170,units = 'mm',res=150)
+
+## !! TO DO - Update this to add X/Y labels etc, make prettier
+png(filename = 'Map_datasets.png',width = 250,height = 150,units = 'mm',res=150)
 Map_datasets
 dev.off()
 
 print(Map_datasets)
 
-### Importing curated datasets
+### Importing curated datasets - TODO: replace = with <-
 
 ls_files=dir(recursive = TRUE)
 ls_files_Curated=ls_files[which(grepl(x=ls_files,pattern="3_Spectra_traits.Rdata",ignore.case = TRUE))]
