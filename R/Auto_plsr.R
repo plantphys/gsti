@@ -12,7 +12,8 @@
 #' @param cal.plsr.data Calibration dataset for the PLSR (also called training dataset)
 #' @param val.plsr.data Validation dataset for the PLSR
 #' @param file_name Name for the pdf and Rdata files that are produced by the function (do not add the file extension, only use 'file1' for example)
-#' @param method Method to determine the number of components (see spectratrait package). Choose betwen 'pls', 'firstPlateau', 'firstMin' or directly give the number of components (numeric)
+#' @param method Method to determine the number of components (see spectratrait package). 
+#' Choose betwen 'pls', 'firstPlateau', 'firstMin' or directly give the number of components (numeric)
 #'
 #' @return
 #' @export
@@ -24,8 +25,8 @@ f.auto_plsr<-function(inVar,wv=500:2400,cal.plsr.data,val.plsr.data,file_name,me
   print(paste("Val observations: ",dim(val.plsr.data)[1],sep=""))
   
   ## Range of the data for the plots
-  minX=min(c(cal.plsr.data[,paste0(inVar)],val.plsr.data[,paste0(inVar)]),na.rm=TRUE) 
-  maxX=max(c(cal.plsr.data[,paste0(inVar)],val.plsr.data[,paste0(inVar)]),na.rm=TRUE)
+  minX <- min(c(cal.plsr.data[,paste0(inVar)],val.plsr.data[,paste0(inVar)]),na.rm=TRUE) 
+  maxX <- max(c(cal.plsr.data[,paste0(inVar)],val.plsr.data[,paste0(inVar)]),na.rm=TRUE)
   
   if(!is.null(file_name)){pdf(file = paste(file_name,'.pdf',sep=''))}
    cal_hist_plot <- qplot(cal.plsr.data[,paste0(inVar)],geom="histogram",
@@ -57,12 +58,14 @@ f.auto_plsr<-function(inVar,wv=500:2400,cal.plsr.data,val.plsr.data,file_name,me
   prop <- 0.70 ## Proportion of data used for the inner cross validation
   if (method=="pls") {
     # pls package approach - faster but estimates more components....
-    nComps <- spectratrait::find_optimal_components(dataset=cal.plsr.data,method=method, 
+    nComps <- spectratrait::find_optimal_components(dataset=cal.plsr.data, targetVariable = inVar, 
+                                                    method=method, 
                                                     maxComps=maxComps, seg=seg, 
-                                                    random_seed=random_seed)
+                                                    prop = prop, random_seed=random_seed)
     print(paste0("*** Optimal number of components: ", nComps))
-  } else if (method%in% c('firstPlateau', 'firstMin')) {
-    nComps <- spectratrait::find_optimal_components(dataset=cal.plsr.data, method=method, 
+  } else if (method %in% c('firstPlateau', 'firstMin')) {
+    nComps <- spectratrait::find_optimal_components(dataset=cal.plsr.data, targetVariable = inVar, 
+                                                    method=method, 
                                                     maxComps=maxComps, 
                                                     iterations=iterations, 
                                                     seg=seg, prop=prop, 
@@ -74,7 +77,7 @@ f.auto_plsr<-function(inVar,wv=500:2400,cal.plsr.data,val.plsr.data,file_name,me
                 }
           }
   
-  ## Fit the final model
+  ## Fit the final model - !!TODO: NEED TO UPDATE THIS TO USE spectratrait logic
   plsr.out <- plsr(as.formula(paste(inVar,"~","Spectra")),scale=FALSE,ncomp=nComps,validation="CV",
                    segments=seg, segment.type="interleaved",trace=FALSE,data=cal.plsr.data)
   fit <- plsr.out$fitted.values[,1,nComps]

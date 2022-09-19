@@ -1,10 +1,10 @@
 library(LeafGasExchange)
 library(spectratrait)
 library(here)
-path=here()
-setwd(paste(path,'/Datasets/Albert_et_al_2018',sep=''))
-spectra=read.csv('Copy of Wu et al. 2019 spectra brazil.csv')
-load('2_Result_ACi_fitting.Rdata',verbose=TRUE)
+path <- here()
+setwd(file.path(here(),'Datasets/Albert_et_al_2018'))
+spectra <- read.csv('Wu_etal_2019_spectra_brazil.csv')
+load(file.path(here(),'Datasets/Albert_et_al_2018/2_Result_ACi_fitting.Rdata'),verbose=TRUE)
 
 
 spectra=merge(x=spectra,y=Bilan,by.x = 'BR_UID',by.y='SampleID')
