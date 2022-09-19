@@ -20,21 +20,31 @@ Fisher, R. A., Muszala, S., Verteinstein, M., Lawrence, P., Xu, C., McDowell, N.
 
 Koven, C. D., Knox, R. G., Fisher, R. A., Fisher, R. A., Chambers, J. Q., Chambers, J. Q., Christoffersen, B. O., Davies, S. J., Detto, M., Detto, M., Dietze, M. C., Faybishenko, B., Holm, J., Huang, M., Kovenock, M., Kueppers, L. M., Kueppers, L. M., Lemieux, G., Massoud, E., McDowell, N. G., Muller-Landau, H. C., Muller-Landau, H. C., Needham, J. F., Norby, R. J., Powell, T., Rogers, A., Serbin, S. P., Shuman, J. K., Swann, A. L. S., Swann, A. L. S., Varadharajan, C., Walker, A. P., Joseph Wright, S., and Xu, C.: Benchmarking and parameter sensitivity of physiological and vegetation dynamics using the Functionally Assembled Terrestrial Ecosystem Simulator (FATES) at Barro Colorado Island, Panama, 17, 3017–3044, https://doi.org/10.5194/bg-17-3017-2020, 2020.
 
-# Map of identified datasets
+## Map of identified datasets
 
 <img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Map_datasets.png" width="800">
 
-# Overview of the combined dataset and performance of the PLSR model
+## Overview of the combined dataset and performance of the PLSR model
 <img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Hist_Vcmax25.jpeg" width="400"> <img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Reflectance.jpeg" width="400">
 
-Validation of the PLSR model on the validation dataset which comprises 20 % of the observation of each individual datasets
+<br>
+
+### Validation of the PLSR model on the validation dataset which comprises 20 % of the observation of each individual datasets
+
+<br>
+
 <img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/PLSR/Validation_random.jpeg" width="600">
 
-Validation of the PLSR model using successively each dataset as a validation dataset
+<br>
+<br>
+
+### Validation of the PLSR model using successively each dataset as a validation dataset
+
+<br>
+
 <img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/PLSR/Validation_datasets.jpeg" width="600">
 
-List of species and number of observations
+<br>
 
+### List of species and number of observations
 <img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Leaf_per_species.jpeg" width="400"> 
-
-
