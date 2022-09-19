@@ -1,3 +1,4 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3444cef53275985c30e34ba0bc271d335ba9ea519314eba55a07cb3767476cb0
-size 428
+﻿USDA_Species_Code,Species,Citation,Common_Name,Link
+ALVIF,Alnus viridis ssp. fruticosa,Chaix DC. Rupr. Nyman,Siberian Alder,https://plants.sc.egov.usda.gov/java/ClassificationServlet?source=profile&symbol=ALVIF&display=31
+SARI4,Salix richardsonii,Hook,Richarson's willow,https://plants.sc.egov.usda.gov/core/profile?symbol=SARI4
+SAPU15,Salix pulchra,Cham.,Tealeaf willow,http://plants.usda.gov/core/profile?symbol=SAPU15

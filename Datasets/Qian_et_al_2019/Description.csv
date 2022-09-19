@@ -1,3 +1,2 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:77ea570cca8f22a3ba4f110eee37494e60a0ef367cb9efe785cae144da7ed23e
-size 639
+Authors,Acknowledgment,Dataset_DOI,Publication_Citation,Email,Lat,Long,Elevation
+"Xiaojin Qiana, Yongjiang Zhangc, Liangyun Liu, Shanshan Dua",This work was supported by the National Key Research and Development Program of China [2017YFA0603001]; the National Natural Science Foundation of China [41671349]; Key Research Program of the Chinese Academy of Sciences [ZDRW-ZS-2019-1].,,"Qian, X., Zhang, Y., Liu, L., & Du, S. (2019). Exploring the potential of leaf reflectance spectra for retrieving the leaf maximum carboxylation rate. International Journal of Remote Sensing, 40(14), 5411-5428.",liuly@radi.ac.cn,39.9060364,116.2786944,

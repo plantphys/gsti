@@ -1,3 +1,2 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:878abb69ffa843db26174570ac4cb7fd79e10a30959cd54094d9bc59cc905c63
-size 745
+Authors,Acknowledgment,Dataset_DOI,Publication_Citation,Email,Lat,Long,Elevation
+"Alistair Rogers, Kim Ely, Shawn Serbin","This work was supported by the Next-Generation Ecosystem Experiments (NGEE Arctic) project which is supported by the Office of Biological and Environmental Research in the Department of Energy, Office of Science, and through the United States Department of Energy contract no. DE-SC0012704 to Brookhaven National Laboratory.",10.5440/1336809,"Rogers, A., Serbin, S.P., Ely, K.S., Sloan, V.L. and Wullschleger, S.D. (2017), Terrestrial biosphere models underestimate photosynthetic capacity and CO2 assimilation in the Arctic. New Phytol, 216: 1090-1103. https://doi.org/10.1111/nph.14740",arogers@bnl.gov,71.25,-156.55,

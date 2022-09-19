@@ -15,13 +15,13 @@ setwd(path)
 
 ### Importing the dataset descriptions
 
-ls_files=dir(recursive = TRUE)
-ls_files_Description=ls_files[which(grepl(x=ls_files,pattern="Description.csv",ignore.case = TRUE))]
-All_Description=do.call("rbind", apply(X = as.matrix(ls_files_Description),FUN = read.csv,MARGIN = 1))
+ls_files <- dir(recursive = TRUE)
+ls_files_Description <- ls_files[which(grepl(x=ls_files,pattern="Description.csv",ignore.case = TRUE))]
+All_Description <- do.call("rbind", apply(X = as.matrix(ls_files_Description),FUN = read.csv,MARGIN = 1))
 
 ### Creating a map of all datasets
 world <- ne_countries(scale = "medium", returnclass = "sf")
-Map_datasets=ggplot(data = world) + geom_sf() + xlab("Longitude") + ylab("Latitude") +geom_point(data= All_Description,aes(x=Long, y=Lat),
+Map_datasets <- ggplot(data = world) + geom_sf() + xlab("Longitude") + ylab("Latitude") +geom_point(data= All_Description,aes(x=Long, y=Lat),
                                                                                    color = "red")
 jpeg(filename = 'Map_datasets.jpeg',width = 170,height = 170,units = 'mm',res=600)
 Map_datasets
