@@ -1,3 +1,2 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:65d767907618ddaa69e3d3ffcc93f401b14bed5b8a5e2ba6e4486d5d99c47336
-size 193
+Authors,Acknowledgment,Dataset_DOI,Publication_Citation,Email,Lat,Long,Elevation
+"Alistair Rogers, Kim Ely, Kenneth Davidson",To add,10.5440/1696801,,arogers@bnl.gov,65.162708,-164.822201,90

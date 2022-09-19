@@ -1,3 +1,2 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6bdf62dd8ce68c525d9355b1be15203a6228539609c38623b4a0368ce71f79fe
-size 457
+Authors,Acknowledgment,Dataset_DOI,Publication_Citation,Email,Lat,Long,Elevation
+"Jia Jin, Bayu Arief Pratama, Quan Wang",This research was funded by the JSPS projects (Grant No. 16H04933 and Grant No. 16KK0170).,,"Jin, J., Arief Pratama, B., & Wang, Q. (2020). Tracing Leaf Photosynthetic Parameters Using Hyperspectral Indices in an Alpine Deciduous Forest. Remote Sensing, 12(7), 1124.","jin.jia@shizuoka.ac.jp, bayu009@lipi.go.id",35.666667,138.1,975
