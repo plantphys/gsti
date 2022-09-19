@@ -8,7 +8,7 @@ An overview of the process to curate the datasets is given in the pdf: [Curation
 
 The A-Ci fitting is based on the FvCB model of photosynthesis (Farquhar et al. 1980), as implemented and parametrized in FATES terrestrial biosphere model (Fisher et al. 2015, Koven et al. 2020).
 
-The PLSR modeling approach is based on the best-practice guide by Burnett et al. (2021). An example of fitting is given here: [PLSR](https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/PLSR/Validation_Alldatasets%202021-11-04.pdf)
+The PLSR modeling approach is based on the best-practice guide by Burnett et al. (2021). An example of fitting is given here: [PLSR](https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/PLSR/Validation_Alldatasets_2022-09-19.pdf)
 
 ## References
 
