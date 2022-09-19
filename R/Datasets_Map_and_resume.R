@@ -23,7 +23,7 @@ All_Description <- do.call("rbind", apply(X = as.matrix(ls_files_Description),FU
 world <- ne_countries(scale = "medium", returnclass = "sf")
 Map_datasets <- ggplot(data = world) + geom_sf() + xlab("Longitude") + ylab("Latitude") +geom_point(data= All_Description,aes(x=Long, y=Lat),
                                                                                    color = "red")
-jpeg(filename = 'Map_datasets.jpeg',width = 170,height = 170,units = 'mm',res=600)
+jpeg(filename = 'Map_datasets.jpeg',width = 170,height = 170,units = 'mm',res=150)
 Map_datasets
 dev.off()
 
