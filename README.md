@@ -22,7 +22,7 @@ Koven, C. D., Knox, R. G., Fisher, R. A., Fisher, R. A., Chambers, J. Q., Chambe
 
 # Map of identified datasets
 
-<img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Map_datasets.png" width="800">
+<img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Map_datasets.jpeg" width="800">
 
 # Overview of the combined dataset and performance of the PLSR model
 <img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Hist_Vcmax25.jpeg" width="400"> <img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Reflectance.jpeg" width="400">
