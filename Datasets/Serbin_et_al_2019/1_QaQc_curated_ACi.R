@@ -43,6 +43,30 @@ head(curated_data)
 # }
 # dev.off()
 
+## Remove known bad curves
+bad_curve_list <- c("KARE_Plot1_PIME4_L2_GE_1_2015-06-08", "KARE_Plot1_PIME4_L26_GE_1_2015-06-08", 
+                    "KARE_Plot1_PIME4_L27_GE_1_2015-06-08", "KARE_Plot1_PUGR2_L10_GE_1_2015-06-07",
+                    "KARE_Plot1_PUGR2_L11_GE_1_2015-06-07", "KARE_Plot1_PUGR2_L12_GE_1_2015-06-07",
+                    "KARE_Plot2_FICA_L11_GE_1_2015-06-06", "KARE_PLot2_FICA_L2_GE_2_2015-06-06",
+                    "KARE_Plot2_FICA_L7_GE_1_2015-06-06", "KARE_Plot2_PIME4_L10_GE_1_2015-06-08",
+                    "KARE_Plot2_PIME4_L20_GE_1_2015-06-08","KARE_Plot2_PIME4_L23_GE_1_2015-06-08",
+                    "KARE_Plot2_PIME4_L24_GE_1_2015-06-08","KARE_Plot2_PUGR2_L2_GE_1_2015-06-07",
+                    "KARE_Plot3_FICA_L13_GE_1_2015-06-06","KARE_Plot3_FICA_L4_GE_1_2015-06-06",
+                    "KARE_Plot3_FICA_L5_GE_1_2015-06-06","KARE_Plot3_PUGR2_L15_GE_1_2015-06-07",
+                    "KARE_Plot3_PUGR2_L5_GE_1_2015-06-07","KARE_Plot4_FICA_L3_GE_1_2015-06-06",
+                    "KARE_Plot4_FICA_L6_GE_1_2015-06-06","KARE_Plot4_PUGR2_L14_GE_1_2015-06-07",
+                    "KARE_Plot4_PUGR2_L3_GE_1_2015-06-07","KARE_Plot4_PUGR2_L8_GE_1_2015-06-07",
+                    "Shafter_SOTU_Plot1_L10T_GE_1_2015-06-10","Shafter_SOTU_Plot1_L11T_GE_1_2015-06-10",
+                    "Shafter_SOTU_Plot2_L12T_GE_1_2015-06-10","Shafter_SOTU_Plot2_L24T_GE_1_2015-06-10",
+                    "Shafter_SOTU_Plot2_L4T_GE_1_2015-06-10","Shafter_SOTU_Plot4_L13T_GE_1_2015-06-10",
+                    "Shafter_SOTU_Plot4_L14T_GE_1_2015-06-10","Shafter_SOTU_Plot4_L16T_GE_1_2015-06-10",
+                    "CVARS_Plot1_PHDA4_L1T_GE_1_2014-06-05","CVARS_Plot1_PHDA4_L3T_GE_3_2014-06-07",
+                    "DREC_Plot1_BEVU2_L12T_GE_1_2015-06-11","REC_Plot3_BEVU2_L10T_GE_1_2015-06-11",
+                    "DREC_Plot3_BEVU2_L7T_GE_1_2015-06-11","KARE_Plot1_FICA_L10_GE_1_2015-06-06",
+                    "KARE_Plot1_FICA_L2large_GE_1_2015-06-05","KARE_Plot1_FICA_L3large_GE_1_2015-06-05",
+                    "DREC_Plot3_BEVU2_L10T_GE_1_2015-06-11")
+curated_data[which(curated_data$Sample_ID_Name %in% bad_curve_list), 'QC'] <- 'bad'
+
 
 # Keep only "good" data
 curated_data <- curated_data[curated_data$QC=='ok',]
