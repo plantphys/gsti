@@ -12,10 +12,13 @@ head(curated_data)
 
 curated_data$Tleaf <- curated_data$Tleaf+273.16 ## Conversion to kelvin
 curated_data <- curated_data[order(curated_data$SampleID_num,curated_data$Ci),]
+head(curated_data)
 
 ## Fitting of the ACi curves using Ac, Ac+Aj or Ac+Aj+Ap limitations
-Bilan <- f.fit_Aci(measures=curated_data,param = f.make.param(RdHd = 0,RdS = 0))## After manual inspection, those fittings seem fine, at least for Vcmax.
-Bilan_JB <- f.fit_Aci_JB(measures=curated_data,param = f.make.param_JB(RdHd = 0,RdS = 0))## After manual inspection, those fittings seem fine, at least for Vcmax.
+Bilan <- f.fit_Aci(measures=curated_data,param = f.make.param(RdHd = 0,RdS = 0))
+## After manual inspection, those fittings seem fine, at least for Vcmax.
+Bilan_JB <- f.fit_Aci_JB(measures=curated_data,param = f.make.param_JB(RdHd = 0,RdS = 0))
+## After manual inspection, those fittings seem fine, at least for Vcmax.
 
 Bilan <- cbind.data.frame(Bilan,Bilan_JB)
 
@@ -40,7 +43,9 @@ Table_SampleID <- curated_data[!duplicated(curated_data$SampleID),c('SampleID','
 Bilan <- merge(x=Bilan,y=Table_SampleID,by.x='SampleID_num',by.y='SampleID_num')
 head(Bilan)
 
-## Comparison with previous fitting approach
+
+
+## Comparison with previous fitting approach NEEDS UPDATING!!
 
 old_fitted_data.1 <- read.csv(file = file.path('LiCor_data/ag_sites/fitted/CVARS_Compiled_ACi_Data_June2013.processed.csv'),
                               header = T)
