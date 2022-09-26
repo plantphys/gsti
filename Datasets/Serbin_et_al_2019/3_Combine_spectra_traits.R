@@ -15,4 +15,5 @@ spectra <- get_ecosis_data(ecosis_id = ecosis_id)
 spectra[spectra==-9999]=NA
 ######################
 
-# save temp spec data
+# save temp spec data as an Rdata file then load that file to merge with gasex data
+#save()
