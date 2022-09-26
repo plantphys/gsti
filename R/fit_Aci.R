@@ -77,11 +77,13 @@ f.fit_Aci<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdRef = 2, TpRef= 5
   pdf(file = '2_ACi_fitting_best_model.pdf')
   by(data = measures,INDICES = list(measures$SampleID_num),
      FUN = function(x){
-       param=Bilan[Bilan$SampleID_num==unique(x$SampleID_num),c('VcmaxRef','JmaxRef','RdRef','TpRef')]
-       param_leg=param
-       param[is.na(param)]=9999
-       param_curve=f.make.param(VcmaxRef = param[['VcmaxRef']],JmaxRef=param[['JmaxRef']],RdRef=param[['RdRef']],TpRef=param[['TpRef']])
-       f.plot(measures=x,list_legend = as.list(param_leg),param = param_curve,name =unique(x$SampleID_num) )
+       param_leg=Bilan[Bilan$SampleID_num==unique(x$SampleID_num),c('VcmaxRef','JmaxRef','RdRef','TpRef')]
+       param_leg[is.na(param_leg)]=9999
+       param['VcmaxRef']=param_leg['VcmaxRef']
+       param['JmaxRef']=param_leg['JmaxRef']
+       param['RdRef']=param_leg['RdRef']
+       param['TpRef']=param_leg['TpRef']
+       f.plot(measures=x,list_legend = as.list(param_leg),param = param,name =unique(x$SampleID_num))
      }
   )
   dev.off()
