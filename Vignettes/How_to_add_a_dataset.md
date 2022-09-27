@@ -15,7 +15,9 @@ species) as well as the status of the plants (stressed, not stressed?)
 In each dataset folder a csv file called Description.csv has to be
 included. An example is given in the Folder 0\_Template. The latitude
 and longitude coordinates will be used to position the dataset on a
-world map.
+world map. If you have different sites on the same dataset with wide
+difference in positions that makes a difference on a world map, you can
+add several rows to your Description.csv file
 
     Description=read.csv(file='Description.csv')
     knitr::kable(Description, "html")
@@ -424,16 +426,6 @@ NA
 
 ## Adding the leaf spectra data and the leaf metadata information
 
-Need your help here Shawn. I saw that you smooth the leaf reflectance
-when you do the processing, does it matter or not? Do you have a
-reference for the processing? What do we do if people give us the raw
-instrument output?
-
-The full range processed reflectance data should be added to the
-datasets. We use the corrected reflectance expressed in the scale 0 100
-with 1 nm resolution, i.e, an interpolated reflectance corrected for the
-jump between sensors.
-
 We merge the fitted parameters, the spectra and the leaf information in
 the code called ‘3\_Combine\_spectra\_traits.R’. This code produces a
 dataframe with as columns:
@@ -460,16 +452,46 @@ Dataset
 Species
 </th>
 <th style="text-align:left;">
+Growth\_environment
+</th>
+<th style="text-align:left;">
+Plant\_type
+</th>
+<th style="text-align:left;">
+Vcmax\_method
+</th>
+<th style="text-align:left;">
 Vcmax25
+</th>
+<th style="text-align:left;">
+Vcmax25\_stderror
 </th>
 <th style="text-align:left;">
 Jmax25
 </th>
 <th style="text-align:left;">
+Jmax25\_stderror
+</th>
+<th style="text-align:left;">
 TPU25
 </th>
 <th style="text-align:left;">
+TPU25\_stderror
+</th>
+<th style="text-align:left;">
 Spectra
+</th>
+<th style="text-align:left;">
+LMA
+</th>
+<th style="text-align:left;">
+Narea
+</th>
+<th style="text-align:left;">
+N
+</th>
+<th style="text-align:left;">
+LWC
 </th>
 </tr>
 </thead>
@@ -491,9 +513,22 @@ Name of the dataset folder
 Full species name for example Cecropia insignis
 </td>
 <td style="text-align:left;">
+Growth environment for the measured plant (natural or glasshouse or
+managed)
+</td>
+<td style="text-align:left;">
+Type of plant (wild species or agricultural species)
+</td>
+<td style="text-align:left;">
+Method used to estimate Vcmax (one point or A-Ci curve)
+</td>
+<td style="text-align:left;">
 Maximum rate of carboxylation at the reference temperature 25 degrees
 celcius calculated assuming infinite mesophyl conductance i.e. apparent
 Vcmax
+</td>
+<td style="text-align:left;">
+NA
 </td>
 <td style="text-align:left;">
 Maximum rate of electron transport per leaf area at the reference
@@ -501,11 +536,29 @@ temperature 25 degrees celcius calculated assuming infinite mesophyll
 conductance and saturating light
 </td>
 <td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
 Triose phosphate utilization rate per leaf area at the reference
 temperature 25 degrees celcius
 </td>
 <td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
 Reflectrance spectra from 350 nm to 2500 nm
+</td>
+<td style="text-align:left;">
+Leaf mass per surface area
+</td>
+<td style="text-align:left;">
+Nitrogen content per surface area
+</td>
+<td style="text-align:left;">
+Nitrogen content in percentage of dry mass
+</td>
+<td style="text-align:left;">
+Leaf water content
 </td>
 </tr>
 <tr>
@@ -522,13 +575,40 @@ Integer
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-micromol m-2 s-1
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:left;">
 micromol m-2 s-1
 </td>
 <td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
 micromol m-2 s-1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+micromol m-2 s-1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+percent 0 - 100
+</td>
+<td style="text-align:left;">
+g m-2
+</td>
+<td style="text-align:left;">
+g m-2
+</td>
+<td style="text-align:left;">
+percent 0 - 100
 </td>
 <td style="text-align:left;">
 percent 0 - 100
@@ -542,10 +622,11 @@ be from 350 nm to 2500 nm with 1 nm interval. If you dont have values
 for 350 nm to 500 nm or from 2400 nm to 2500 nm, that is not a problem,
 you can put NA in those wavelengths.
 
--   Shawn, this data frame is used then for the PLSR. We could decide to
-    add more columns, for example the column sigma or Tleaf from the ACi
-    curves. We should discuss that so we dont have to redo some of the
-    processing for the datasets and then hold tight with what we
-    decided. The more this project will grow, the more work we will have
-    if we change the requirements. So we have to think smart right now
-    ;)
+The columns LMA, Narea and LWC do not neccessary need to be filled if
+you don’t have the data.
+
+For the species name, please write “Genus species”, for exemple
+Cercropia insignis. If you know the genus but not the species, write for
+example “Cecropia species”. If you dont know the genus, write “Family
+genus” for example (Urticaceae genus). If you don’t know anything, well
+you can write “Unknown”.
