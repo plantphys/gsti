@@ -43,6 +43,9 @@ Aci_data=read.csv(file='Aci_data.csv')
 knitr::kable(Aci_data, "html")
 ```
 
+- Shawn, what do you think of the requirements? I am not as strict as for ESS dive as I dont ask the RHs column. I could also remove the Patm column (assumed to be 101 in the fitting). We should try to be flexible so people are not scared if the requirements are to hard.
+
+
 ## Fitting the A_Ci data to estimate the photosynthetic traits
 
 The fitting of each individual curves is done using the package LeafGasExchange by a R code called '2_Fit_ACi.R' included in each dataset folder.
@@ -66,18 +69,29 @@ Note that in all the cases, the transition between Ac, Aj and Ap rates is determ
 This codes produces a dataframe, called Bilan which includes the folowing column: 
 
 ```{r}
-Bilan=read.csv(file='Bilan.csv')
+Bilan=read.csv(file='Bilan.csv',header = TRUE)
 knitr::kable(Bilan, "html")
 ```
 
+## Adding the leaf spectra data and the leaf metadata information
+
+Need your help here Shawn. I saw that you smooth the leaf reflectance when you do the processing, does it matter or not? Do you have a reference for the processing? What do we do if people give us the raw instrument output?
+
+The full range processed reflectance data should be added to the datasets. 
+We use the corrected reflectance expressed in the scale 0 100 with 1 nm resolution, i.e, an interpolated reflectance corrected for the jump between sensors.
+
+We merge the fitted parameters, the spectra and the leaf information in the code called '3_Combine_spectra_traits.R'.
+This code produces a dataframe with as columns:
 
 
-## Adding the leaf species and metadata information
+```{r}
+Spectra=read.csv(file='Spectra.csv',header = TRUE)
+knitr::kable(Spectra, "html")
+```
 
-In the code '2_Fit_ACi.R' we add the sample information to the the dataframe Bilan that contains the photosynthetic parameters. 
+Note that the reflectance wavelength stored in the Spectra data should be from 350 nm to 2500 nm with 1 nm interval.
+If you dont have values for 350 nm to 500 nm or from 2400 nm to 2500 nm, that is not a problem, you can put NA in those wavelengths.
 
-XXX Column
 
-
-## Adding the leaf spectra data
+- Shawn, this data frame is used then for the PLSR. We could decide to add more columns, for example the column sigma or Tleaf from the ACi curves. We should discuss that so we dont have to redo some of the processing for the datasets and then hold tight with what we decided. The more this project will grow, the more work we will have if we change the requirements. So we have to think smart right now ;)
 
