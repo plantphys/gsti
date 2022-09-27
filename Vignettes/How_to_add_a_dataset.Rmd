@@ -14,9 +14,11 @@ Each dataset is put into a folder called "Names_Year" for example "Serbin_et_al_
 
 ## Description of the dataset
 
-In each dataset folder a csv file called Description.csv has to be included. An example is given in the Folder 0_Template.
+In each dataset folder a csv file called Description.csv has to be included. An example is given in the Folder 0_Template. The latitude and longitude coordinates will be used to position the dataset on a world map.
 
 ```{r}
 Description=read.csv(file='Description.csv')
 knitr::kable(Description, "html")
 ```
+
+## Adding the gas exchange A-Ci data to the dataset folder

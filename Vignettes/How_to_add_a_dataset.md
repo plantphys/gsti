@@ -9,7 +9,9 @@ species.
 ## Description of the dataset
 
 In each dataset folder a csv file called Description.csv has to be
-included. An example is given in the Folder 0\_Template.
+included. An example is given in the Folder 0\_Template. The latitude
+and longitude coordinates will be used to position the dataset on a
+world map.
 
     Description=read.csv(file='Description.csv')
     knitr::kable(Description, "html")
@@ -17,8 +19,6 @@ included. An example is given in the Folder 0\_Template.
 <table>
 <thead>
 <tr>
-<th style="text-align:left;">
-</th>
 <th style="text-align:left;">
 Authors
 </th>
@@ -70,11 +70,10 @@ Latitude of the dataset site study in decimal units (Y)
 Longitude of the dataset site study in decimals units (X)
 </td>
 <td style="text-align:left;">
-Elevation of the dataset site study
-</td>
-<td style="text-align:left;">
-if known.
+Elevation of the dataset site study if known.
 </td>
 </tr>
 </tbody>
 </table>
+
+## Adding the gas exchange A-Ci data to the dataset folder
