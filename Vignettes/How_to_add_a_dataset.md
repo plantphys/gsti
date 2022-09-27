@@ -87,13 +87,18 @@ the curves and estimate Vcmax using the same method for all datasets.
 
 We have requirements for the final A-Ci data to be used by the fitting
 procedure (see table below with the needed column names). However, we
-don’t have hard requirements in the way to obtain this final data.
+don’t have hard requirements in the way to obtain this final data. Note
+that the SampleID\_num column will be used by the fitting procedure to
+identify individual A-Ci curves. If you made several A-Ci curves on the
+same leaf we recommend to only keep the best one. We decided to use a
+column SampleId and a column SampleID\_num. SampleID should correspond
+to the original identifier of the leaves in the raw dataset which is
+often a complex string. The column SampleID\_num should be an integer.
+We made the choice to use the SampleID\_num to facilitate the QAQC of
+the curves and the ploting of the figures (title name).
 
 The A-Ci data should be cleaned from spurious measurements and points
-that would impact Vcmax or Jmax estimation should not be included. Note
-that the SampleID will be used by the fitting procedure to identify
-individual A-Ci curves. If you made several curves for the same leaf we
-recommend to only keep the best one.
+that would impact Vcmax or Jmax estimation should not be included.
 
 The curated A-Ci data should be present in the dataset folder in a Rdata
 format called ‘1\_QC\_data.Rdata’ which contains the A-Ci data in a
@@ -113,13 +118,13 @@ of each of the A-Ci curves with the good point in dark and the bad
 points in red. You can find some examples in the different dataset
 folders.
 
-We are usually quite hard on the quality analysis to only keep the
+We are usually quite severe on the quality analysis to only keep the
 curves where the estimation of Vcmax will be good. If we have doubts on
 the quality of the data we tend to remove them from the final curated
 data.
 
-    Description=read.csv(file='Aci_data.csv')
-    knitr::kable(Description, "html")
+    Aci_data=read.csv(file='Aci_data.csv')
+    knitr::kable(Aci_data, "html")
 
 <table>
 <thead>
@@ -129,6 +134,9 @@ Column\_Names
 </th>
 <th style="text-align:left;">
 SampleID
+</th>
+<th style="text-align:left;">
+SampleID\_num
 </th>
 <th style="text-align:left;">
 A
@@ -156,6 +164,9 @@ Definition
 Identifier of the measured leaf
 </td>
 <td style="text-align:left;">
+Integer Identifier of the measured leaf
+</td>
+<td style="text-align:left;">
 Net CO2 exchange per leaf area
 </td>
 <td style="text-align:left;">
@@ -177,6 +188,9 @@ Leaf surface temperature
 Unit
 </td>
 <td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Integer
 </td>
 <td style="text-align:left;">
 micromol m-2 s-1
@@ -203,9 +217,17 @@ The fitting of each individual curves is done using the package
 LeafGasExchange by a R code called ‘2\_Fit\_ACi.R’ included in each
 dataset folder.
 
-This code produces several pdf files: -2\_ACi\_fitting\_Ac.pdf
--2\_ACi\_fitting\_Ac\_Aj.pdf -2\_ACi\_fitting\_Ac\_Aj\_Ap.pdf and
--2\_ACi\_fitting\_best\_model.pdf
+This code produces several pdf files:
+
+-   2\_ACi\_fitting\_Ac.pdf
+
+-   2\_ACi\_fitting\_Ac\_Aj.pdf
+
+-   2\_ACi\_fitting\_Ac\_Aj\_Ap.pdf
+
+and
+
+-   2\_ACi\_fitting\_best\_model.pdf
 
 The first three pdf shows the fitting of each A-Ci curves when including
 the rate of maximum carboxylation (Ac), the rate of electron transport
@@ -218,9 +240,173 @@ is determined automatically by the fitting procedure to avoid manual and
 somehow subjective choices in the transitions (References).
 
 This codes produces a dataframe, called Bilan which includes the
-folowing column names:
+folowing column:
 
-XXX
+    Bilan=read.csv(file='Bilan.csv')
+    knitr::kable(Bilan, "html")
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Column\_Names
+</th>
+<th style="text-align:left;">
+SampleID
+</th>
+<th style="text-align:left;">
+SampleID\_num
+</th>
+<th style="text-align:left;">
+Vcmax25
+</th>
+<th style="text-align:left;">
+Jmax25
+</th>
+<th style="text-align:left;">
+TPU25
+</th>
+<th style="text-align:left;">
+Rday25
+</th>
+<th style="text-align:left;">
+Tleaf
+</th>
+<th style="text-align:left;">
+Vcmax
+</th>
+<th style="text-align:left;">
+Jmax
+</th>
+<th style="text-align:left;">
+TPU
+</th>
+<th style="text-align:left;">
+Rday
+</th>
+<th style="text-align:left;">
+sigma
+</th>
+<th style="text-align:left;">
+AIC
+</th>
+<th style="text-align:left;">
+model
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Definition
+</td>
+<td style="text-align:left;">
+Identifier of the measured leaf
+</td>
+<td style="text-align:left;">
+Integer Identifier of the measured leaf
+</td>
+<td style="text-align:left;">
+Maximum rate of carboxylation at the reference temperature 25 degrees
+celcius calculated assuming infinite mesophyl conductance i.e. apparent
+Vcmax
+</td>
+<td style="text-align:left;">
+Maximum rate of electron transport per leaf area at the reference
+temperature 25 degrees celcius calculated assuming infinite mesophyll
+conductance and saturating light
+</td>
+<td style="text-align:left;">
+Triose phosphate utilization rate per leaf area at the reference
+temperature 25 degrees celcius
+</td>
+<td style="text-align:left;">
+CO2 release from the leaf in the light at the reference temperature of
+25 degrees celcius
+</td>
+<td style="text-align:left;">
+Leaf surface temperature
+</td>
+<td style="text-align:left;">
+Maximum rate of carboxylation at measurement temperature calculated
+assuming infinite mesophyl conductance i.e. apparent Vcmax
+</td>
+<td style="text-align:left;">
+Maximum rate of electron transport per leaf area at measurement
+temperature calculated assuming infinite mesophyll conductance and
+saturating light
+</td>
+<td style="text-align:left;">
+Triose phosphate utilization rate per leaf area at measurement
+temperature
+</td>
+<td style="text-align:left;">
+CO2 release from the leaf in the light at measurement temperature
+</td>
+<td style="text-align:left;">
+standard error of the residuals of the fitted A-Ci curve
+</td>
+<td style="text-align:left;">
+Akaike information criterion
+</td>
+<td style="text-align:left;">
+Model used for the fitting of the A-Ci curves
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Unit
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Integer
+</td>
+<td style="text-align:left;">
+micromol m-2 s-1
+</td>
+<td style="text-align:left;">
+micromol m-2 s-1
+</td>
+<td style="text-align:left;">
+micromol m-2 s-1
+</td>
+<td style="text-align:left;">
+micromol m-2 s-1
+</td>
+<td style="text-align:left;">
+degrees celcius
+</td>
+<td style="text-align:left;">
+micromol m-2 s-1
+</td>
+<td style="text-align:left;">
+micromol m-2 s-1
+</td>
+<td style="text-align:left;">
+micromol m-2 s-1
+</td>
+<td style="text-align:left;">
+micromol m-2 s-1
+</td>
+<td style="text-align:left;">
+micromol m-2 s-1
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
 
 ## Adding the leaf species and metadata information
 

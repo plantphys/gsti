@@ -1,3 +1,3 @@
-Column_Names,SampleID,A,Ci,Patm,Qin,Tleaf
-Definition,Identifier of the measured leaf,Net CO2 exchange per leaf area,Intercellular CO2 concentration in air,Atmospheric pressure,In chamber photosynthetic flux density incident on the leaf in quanta per area,Leaf surface temperature
-Unit,,micromol m-2 s-1,micromol mol-1,kPa,micromol m-2 s-1,degrees celcius
+Column_Names,SampleID,SampleID_num,A,Ci,Patm,Qin,Tleaf
+Definition,Identifier of the measured leaf,Integer Identifier of the measured leaf,Net CO2 exchange per leaf area,Intercellular CO2 concentration in air,Atmospheric pressure,In chamber photosynthetic flux density incident on the leaf in quanta per area,Leaf surface temperature
+Unit,,Integer,micromol m-2 s-1,micromol mol-1,kPa,micromol m-2 s-1,degrees celcius
