@@ -1,0 +1,3 @@
+Column_Names,SampleID,record,A,Ci,CO2s,gsw,Patm,Qin,Tleaf
+"Definition,Identifier of the measured leaf,Observation record number (also called Obs in some gas exchange instruments),Net CO2 exchange per leaf area,Intercellular CO? concentration in air,CO2 concentration in wet air inside the chamber,stomatal conductance to water vapor per leaf area,Atmospheric pressure,""In chamber photosynthetic flux density incident on the leaf, quanta per area"",Leaf surface temperature"
+Unit,,Integer,micromol m-2 s-1,micromol mol-1,micromol mol-1,mmol m-2 s-1,kPa,micromol m-2 s-1,degrees celcius
