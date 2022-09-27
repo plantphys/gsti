@@ -14,9 +14,9 @@ Each dataset is put into a folder called "Names_Year" for example "Serbin_et_al_
 
 ## Description of the dataset
 
-In each dataset folder a csv file called Description.csv has to be included. An example is given in the Folder 0_Template here:
+In each dataset folder a csv file called Description.csv has to be included. An example is given in the Folder 0_Template.
 
-```{r cars}
-
-knitr::kable(mtcars[1:2, 1:2], "html")
+```{r}
+Description=read.csv(file='Description.csv')
+knitr::kable(Description, "html")
 ```
