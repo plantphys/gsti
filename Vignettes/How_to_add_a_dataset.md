@@ -1,10 +1,14 @@
 ## Creation of a Dataset folder
 
 Each dataset is put into a folder called “Names\_Year” for example
-“Serbin\_et\_al\_2019”. We recommand to put into the folder the article
-associated with the dataset or the protocol of measurement, which should
-include the description of the gas exchange, spectrometers, and of the
-species.
+“Serbin\_et\_al\_2019”. Please, also add any article associated with the
+dataset or the protocol of measurement, which should include the
+description of the gas exchange measurements, leaf reflectance
+measurements, as well as the equipments used. It should also include the
+location description, information on the growing conditions (Natural
+environment? Green house? Agricultural or experimental field? Plants in
+pots?) and information on the species (Natural species, agricultural
+species) as well as the status of the plants (stressed, not stressed?)
 
 ## Description of the dataset
 
@@ -91,6 +95,29 @@ that the SampleID will be used by the fitting procedure to identify
 individual A-Ci curves. If you made several curves for the same leaf we
 recommend to only keep the best one.
 
+The curated A-Ci data should be present in the dataset folder in a Rdata
+format called ‘1\_QC\_data.Rdata’ which contains the A-Ci data in a
+data.frame with at least the columns listed in the table below.
+
+Note that we usually include in the dataset folder the raw data, as well
+as the R code used to read, import and transform the raw data. All those
+preliminary steps are made in a R code called
+‘Import\_transform\_original\_ACi\_data.R’.We recommend to do the same,
+but again, we don’t have requirements on the code to do that.
+
+We also include the code used to check the quality of the A-Ci data
+where we flag the bad points and delete the bad curves. This code is
+called ‘1\_QaQc\_curated\_ACi.R’ and produces the file
+‘1\_QC\_data.Rdata’. This code usually produces a PDF file with a plot
+of each of the A-Ci curves with the good point in dark and the bad
+points in red. You can find some examples in the different dataset
+folders.
+
+We are usually quite hard on the quality analysis to only keep the
+curves where the estimation of Vcmax will be good. If we have doubts on
+the quality of the data we tend to remove them from the final curated
+data.
+
     Description=read.csv(file='Aci_data.csv')
     knitr::kable(Description, "html")
 
@@ -169,3 +196,37 @@ degrees celcius
 </tr>
 </tbody>
 </table>
+
+## Fitting the A\_Ci data to estimate the photosynthetic traits
+
+The fitting of each individual curves is done using the package
+LeafGasExchange by a R code called ‘2\_Fit\_ACi.R’ included in each
+dataset folder.
+
+This code produces several pdf files: -2\_ACi\_fitting\_Ac.pdf
+-2\_ACi\_fitting\_Ac\_Aj.pdf -2\_ACi\_fitting\_Ac\_Aj\_Ap.pdf and
+-2\_ACi\_fitting\_best\_model.pdf
+
+The first three pdf shows the fitting of each A-Ci curves when including
+the rate of maximum carboxylation (Ac), the rate of electron transport
+(Aj) and the rate of triose phosphate utilisation (Ap). The best model
+corresponds to the model with the lowest AIC that includes Ac or Ac + Aj
+or Ac + Aj + Ap.
+
+Note that in all the cases, the transition between Ac, Aj and Ap rates
+is determined automatically by the fitting procedure to avoid manual and
+somehow subjective choices in the transitions (References).
+
+This codes produces a dataframe, called Bilan which includes the
+folowing column names:
+
+XXX
+
+## Adding the leaf species and metadata information
+
+In the code ‘2\_Fit\_ACi.R’ we add the sample information to the the
+dataframe Bilan that contains the photosynthetic parameters.
+
+XXX Column
+
+## Adding the leaf spectra data
