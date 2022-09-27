@@ -23,11 +23,12 @@ knitr::kable(Description, "html")
 
 ## Adding the gas exchange A-Ci data to the dataset folder
 
-The idea of this project is to include the raw A-Ci data so we can re-fit the curves and estimate Vcmax using the same fitting procedure for all the datasets.
+The idea of this project is to include the raw A-Ci data so we can fit the curves and estimate Vcmax using the same method for all datasets.
 
-We have requirements for the final A-Ci data to be used by the fitting procedure. However, we don't have hard requirements in the way to obtain this final data. 
+We have requirements for the final A-Ci data to be used by the fitting procedure (see table below with the needed column names). However, we don't have hard requirements in the way to obtain this final data. 
 
-The A-Ci data should be cleaned from spurious measurements and points that would impact Vcmax or Jmax estimation should not be included.
+The A-Ci data should be cleaned from spurious measurements and points that would impact Vcmax or Jmax estimation should not be included. Note that the SampleID will be used by the fitting procedure to identify individual A-Ci curves. If you made several curves for the same leaf we recommend to only keep the best one. 
+
 
 
 ```{r}

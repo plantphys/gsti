@@ -78,9 +78,8 @@ Elevation of the dataset site study if known.
 
 ## Adding the gas exchange A-Ci data to the dataset folder
 
-The idea of this project is to include the raw A-Ci data so we can
-re-fit the curves and estimate Vcmax using the same fitting procedure
-for all the datasets.
+The idea of this project is to include the raw A-Ci data so we can fit
+the curves and estimate Vcmax using the same method for all datasets.
 
 We have requirements for the final A-Ci data to be used by the fitting
 procedure. However, we don’t have hard requirements in the way to obtain
@@ -130,31 +129,35 @@ Tleaf
 <tbody>
 <tr>
 <td style="text-align:left;">
-Definition,Identifier of the measured leaf,Observation record number
-(also called Obs in some gas exchange instruments),Net CO2 exchange per
-leaf area,Intercellular CO? concentration in air,CO2 concentration in
-wet air inside the chamber,stomatal conductance to water vapor per leaf
-area,Atmospheric pressure,"In chamber photosynthetic flux density
-incident on the leaf, quanta per area",Leaf surface temperature
+Definition
 </td>
 <td style="text-align:left;">
-NA
+Identifier of the measured leaf
 </td>
 <td style="text-align:left;">
+Observation record number
 </td>
 <td style="text-align:left;">
+Net CO2 exchange per leaf area
 </td>
 <td style="text-align:left;">
+Intercellular CO2 concentration in air
 </td>
 <td style="text-align:left;">
+CO2 concentration in wet air inside the chamber
 </td>
 <td style="text-align:left;">
+stomatal conductance to water vapor per leaf area
 </td>
 <td style="text-align:left;">
+Atmospheric pressure
 </td>
 <td style="text-align:left;">
+In chamber photosynthetic flux density incident on the leaf in quanta
+per area
 </td>
 <td style="text-align:left;">
+Leaf surface temperature
 </td>
 </tr>
 <tr>
@@ -162,7 +165,6 @@ NA
 Unit
 </td>
 <td style="text-align:left;">
-NA
 </td>
 <td style="text-align:left;">
 Integer
