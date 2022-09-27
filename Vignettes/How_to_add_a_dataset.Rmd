@@ -1,0 +1,22 @@
+---
+title: "How to add your dataset?"
+output: md_document
+date: "2022-09-27"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Creation of a Dataset folder
+
+Each dataset is put into a folder called "Names_Year" for example "Serbin_et_al_2019". We recommand to put into the folder the article associated with the dataset or the protocol of measurement, which should include the description of the gas exchange, spectrometers, and of the species. 
+
+## Description of the dataset
+
+In each dataset folder a csv file called Description.csv has to be included. An example is given in the Folder 0_Template here:
+
+```{r cars}
+
+knitr::kable(mtcars[1:2, 1:2], "html")
+```

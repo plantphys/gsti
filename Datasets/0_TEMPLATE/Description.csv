@@ -1,1 +1,2 @@
 Authors,Acknowledgment,Dataset_DOI,Publication_Citation,Email,Lat,Long,Elevation
+List of authors of the dataset,Acknowledgement of funding and help to generate the dataset,Digital Object Identifier (DOI) associated with the dataset if the dataset was published, Full citation associated with the paper that uses the dataset,Contact email for the dataset, Latitude of the dataset site study in decimal units (Y), Longitude of the dataset site study in decimals units (X), Elevation of the dataset site study, if known. 
