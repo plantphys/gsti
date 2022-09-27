@@ -82,11 +82,14 @@ The idea of this project is to include the raw A-Ci data so we can fit
 the curves and estimate Vcmax using the same method for all datasets.
 
 We have requirements for the final A-Ci data to be used by the fitting
-procedure. However, we don’t have hard requirements in the way to obtain
-this final data.
+procedure (see table below with the needed column names). However, we
+don’t have hard requirements in the way to obtain this final data.
 
 The A-Ci data should be cleaned from spurious measurements and points
-that would impact Vcmax or Jmax estimation should not be included.
+that would impact Vcmax or Jmax estimation should not be included. Note
+that the SampleID will be used by the fitting procedure to identify
+individual A-Ci curves. If you made several curves for the same leaf we
+recommend to only keep the best one.
 
     Description=read.csv(file='Aci_data.csv')
     knitr::kable(Description, "html")
@@ -101,19 +104,10 @@ Column\_Names
 SampleID
 </th>
 <th style="text-align:left;">
-record
-</th>
-<th style="text-align:left;">
 A
 </th>
 <th style="text-align:left;">
 Ci
-</th>
-<th style="text-align:left;">
-CO2s
-</th>
-<th style="text-align:left;">
-gsw
 </th>
 <th style="text-align:left;">
 Patm
@@ -135,19 +129,10 @@ Definition
 Identifier of the measured leaf
 </td>
 <td style="text-align:left;">
-Observation record number
-</td>
-<td style="text-align:left;">
 Net CO2 exchange per leaf area
 </td>
 <td style="text-align:left;">
 Intercellular CO2 concentration in air
-</td>
-<td style="text-align:left;">
-CO2 concentration in wet air inside the chamber
-</td>
-<td style="text-align:left;">
-stomatal conductance to water vapor per leaf area
 </td>
 <td style="text-align:left;">
 Atmospheric pressure
@@ -167,19 +152,10 @@ Unit
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-Integer
-</td>
-<td style="text-align:left;">
 micromol m-2 s-1
 </td>
 <td style="text-align:left;">
 micromol mol-1
-</td>
-<td style="text-align:left;">
-micromol mol-1
-</td>
-<td style="text-align:left;">
-mmol m-2 s-1
 </td>
 <td style="text-align:left;">
 kPa
