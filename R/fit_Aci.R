@@ -15,7 +15,8 @@ f.fit_Aci<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdRef = 2, TpRef= 5
 ## Fitting of the Aci curve using Ac and Aj limitation
    pdf(file = '2_ACi_fitting_Ac_Aj.pdf')
   result_Ac_Aj=by(data = measures,INDICES = list(measures$SampleID_num),
-            FUN = function(x){f.fitting(measures = x,Start = list(JmaxRef=JmaxRef,RdRef=RdRef,VcmaxRef=VcmaxRef),
+            FUN = function(x){print(paste('SampleID_num:',unique(x$SampleID_num)))
+                              f.fitting(measures = x,Start = list(JmaxRef=JmaxRef,RdRef=RdRef,VcmaxRef=VcmaxRef),
                                         param=param,id.name = 'SampleID_num')})
   dev.off()
   
@@ -23,7 +24,8 @@ f.fit_Aci<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdRef = 2, TpRef= 5
 ## Fitting of the Aci curve using only the Ac limitation
   pdf(file = '2_ACi_fitting_Ac.pdf')
   result_Ac=by(data = measures,INDICES = list(measures$SampleID_num),
-               FUN = function(x){f.fitting(measures = x,Start = list(RdRef=RdRef,VcmaxRef=VcmaxRef),
+               FUN = function(x){print(paste('SampleID_num:',unique(x$SampleID_num)))
+                                  f.fitting(measures = x,Start = list(RdRef=RdRef,VcmaxRef=VcmaxRef),
                                            param=param,id.name = 'SampleID_num')})
   dev.off()
   
@@ -31,6 +33,7 @@ f.fit_Aci<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdRef = 2, TpRef= 5
   pdf(file = '2_ACi_fitting_Ac_Aj_Ap.pdf')
   result_Ac_Aj_Ap=by(data = measures,INDICES = list(measures$SampleID_num),
                FUN = function(x){
+                 print(paste('SampleID_num:',unique(x$SampleID_num)))
                  Start = list(JmaxRef=JmaxRef,RdRef=RdRef,VcmaxRef=VcmaxRef)
                  modify.init=TRUE
                  if(!is.null(result_Ac_Aj[[as.character(unique(x$SampleID_num))]][[2]])){
@@ -45,14 +48,31 @@ f.fit_Aci<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdRef = 2, TpRef= 5
   dev.off()
   
 ## Extracting the fitting metrics for each model and each curve
-  
-  res_nlf_Ac_Aj=as.data.frame(t(sapply(result_Ac_Aj,FUN = function(x) c(x[[2]]@coef,AIC=AIC(x[[2]]),Tleaf=x[[3]]['Tleaf']))))
+  res_nlf_Ac_Aj=as.data.frame(t(sapply(result_Ac_Aj,FUN = function(x){
+    if(!is.null(x[[2]])){
+      coefs=x[[2]]@coef
+      AICcurve=AIC(x[[2]])}else {coefs=rep(NA,4)
+                              AICcurve=NA}
+    return(c(coefs,AIC=AICcurve,Tleaf=x[[3]]['Tleaf']))}
+    )))
   res_nlf_Ac_Aj$SampleID_num=row.names(res_nlf_Ac_Aj)
   
-  res_nlf_Ac=as.data.frame(t(sapply(result_Ac,FUN = function(x) c(x[[2]]@coef,AIC=AIC(x[[2]]),Tleaf=x[[3]]['Tleaf']))))
+  res_nlf_Ac=as.data.frame(t(sapply(result_Ac,FUN = function(x){
+    if(!is.null(x[[2]])){
+      coefs=x[[2]]@coef
+      AICcurve=AIC(x[[2]])}else {coefs=rep(NA,3)
+      AICcurve=NA}
+    return(c(coefs,AIC=AICcurve,Tleaf=x[[3]]['Tleaf']))}
+  )))
   res_nlf_Ac$SampleID_num=row.names(res_nlf_Ac)
   
-  res_nlf_Ac_Aj_Ap=as.data.frame(t(sapply(result_Ac_Aj_Ap,FUN = function(x) c(x[[2]]@coef,AIC=AIC(x[[2]]),Tleaf=x[[3]]['Tleaf']))))
+  res_nlf_Ac_Aj_Ap=as.data.frame(t(sapply(result_Ac_Aj_Ap,FUN = function(x){
+    if(!is.null(x[[2]])){
+      coefs=x[[2]]@coef
+      AICcurve=AIC(x[[2]])}else {coefs=rep(NA,5)
+      AICcurve=NA}
+    return(c(coefs,AIC=AICcurve,Tleaf=x[[3]]['Tleaf']))}
+  )))
   res_nlf_Ac_Aj_Ap$SampleID_num=row.names(res_nlf_Ac_Aj_Ap)
   
   res_nlf_Ac$JmaxRef=NA
@@ -71,6 +91,7 @@ f.fit_Aci<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdRef = 2, TpRef= 5
   Bilan[which(res_nlf_Ac$AIC<res_nlf_Ac_Aj$AIC),]=res_nlf_Ac[which(res_nlf_Ac$AIC<res_nlf_Ac_Aj$AIC),]
   Bilan[which(res_nlf_Ac_Aj_Ap$AIC<Bilan$AIC),]=res_nlf_Ac_Aj_Ap[which(res_nlf_Ac_Aj_Ap$AIC<Bilan$AIC),]
   colnames(Bilan)=c("sigma","JmaxRef","VcmaxRef","TpRef","RdRef","AIC","Tleaf","SampleID_num","model") 
+  Bilan$Vcmax_method="A-Ci curve"
   
 ### Creating a pdf with the best model for each curve
   
