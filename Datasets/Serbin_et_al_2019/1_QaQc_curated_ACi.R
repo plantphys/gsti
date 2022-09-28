@@ -13,10 +13,26 @@ min(curated_data$gsw)
 
 # remove Ci and gsw < 0
 curated_data[curated_data$Ci<0, 'QC'] <- 'bad'
+min(curated_data$Ci[which(curated_data$QC!='bad')])
 curated_data[curated_data$gsw<0, 'QC'] <- 'bad'
+min(curated_data$gsw[which(curated_data$QC!='bad')])
 head(curated_data)
 
-# !! I HAVE NO IDEA WHAT ANY OF THIS IS !! Need to ask Julien what all of this about and why there are so many manual steps
+## What species and sites are included in the curated data?
+# Create a sites table
+# annoyingly the Shafter data names are not in the same order so need special handling
+sites <- NULL
+sites <- substr(curated_data$Sample_ID_Name, 1, regexpr("_", curated_data$Sample_ID_Name)-1)
+unique(sites)
+shaft_index <- which(sites == "Shafter")
+
+# species
+species <- NULL
+species <- gsub("^(?:[^_]+_){2}([^_]+).*", "\\1", curated_data$Sample_ID_Name)
+species[shaft_index]
+species[shaft_index] = gsub("^(?:[^_]+_){1}([^_]+).*", "\\1", curated_data$Sample_ID_Name[shaft_index])
+unique(species)
+
 ##Shawn, this is Julien, do you copy?
 # The QC table is just a table that lists bad points from curves. 
 # I do the QC manually based on the pdf file produced below
@@ -25,46 +41,9 @@ head(curated_data)
 # The list ls_bad_curve is exactly the same as yours below except that I use the SampleId_num which allowes me to write a number
 # instead of a complicated file name or SampleId name..
 
+# !!! I copy Julien!  Thanks for the details !!!
 
-QC_table <- cbind.data.frame(SampleID_num=c(),Obs=c()) ## I didnt do the QAQC yet, I can do it if you want. But in that case, given that there are a lot of weird points, we should use a csv file to list the bad points.
-
-ls_bad_curve=c(32,46,61,67,68,72,76,78,127,130,131,158,159,160,161,165,166,185,188,191,192,199,201,204,205,206,209,211,212,
-               213,215,217,268,269,275,279,282,288,289,291) ## I filled this list using your previous code below
-
-## I remove your curves with less than 4 points. It is not possible to estimate Rdark, Vcmax, Jmax and Tp if they have
-## less than that. The fit Aci code is made for usual Aci curves, we can chat what to do with other kinds of curves.
-n_points_curves=tapply(X=curated_data$Obs,INDEX = curated_data$SampleID_num,FUN = function(x){length(x)})
-short_curves=n_points_curves[n_points_curves<5]
-ls_bad_curve=c(ls_bad_curve,names(short_curves))
-curated_data[paste(curated_data$SampleID_num,curated_data$Obs) %in% paste(QC_table$SampleID_num,QC_table$Obs),'QC']='bad'
-curated_data[curated_data$SampleID_num%in%ls_bad_curve,'QC']='bad'
-
-## I DONT KNOW WHAT ALL OF THIS IS DOING - SEEMS OVERLY COMPLICATED
-# That is Just a PDF file whith each Aci curve. The title of the Aci curve on the pdf file is the SampleID_num.
-# Each point of the Aci curve as the Obs number written on it. If the point is in red it means that this point
-# is bad and that it is present in the QC_table table or in the ls_bad_curve vector. 
-
-pdf(file='1_QA_QC_Aci.pdf',)
- for(SampleID_num in unique(curated_data$SampleID_num)) {
-   plot(x=curated_data[curated_data$SampleID_num==SampleID_num,'Ci'],
-        y=curated_data[curated_data$SampleID_num==SampleID_num,'A'],
-        main=unique(curated_data[curated_data$SampleID_num==SampleID_num,
-                                 'SampleID_num']),cex=2,xlab='Ci',ylab='A')
- if(SampleID_num%in%c(QC_table$SampleID_num,ls_bad_curve)) {
-   points(x=curated_data[curated_data$SampleID_num==SampleID_num&curated_data$QC=='bad','Ci'],
-          y=curated_data[curated_data$SampleID_num==SampleID_num&curated_data$QC=='bad','A'],
-          cex=2,col='red')
- }
- text(x=curated_data[curated_data$SampleID_num==SampleID_num,'Ci'],
-      y=curated_data[curated_data$SampleID_num==SampleID_num,'A'], 
-      labels=curated_data[curated_data$SampleID_num==SampleID_num,'Obs'],cex=0.7)
-   
- }
- dev.off()
- 
-# Julien: I translated what you did below using SampleID_num
-# sort(unique(curated_data[curated_data$SampleID%in%bad_curve_list,'SampleID_num']))
-### Remove known bad curves
+### List of author curated "bad" curves and data points (based on original QCauthor column)
 bad_curve_list <- c("KARE_Plot1_PIME4_L2_GE_1_2015-06-08", "KARE_Plot1_PIME4_L26_GE_1_2015-06-08", 
                     "KARE_Plot1_PIME4_L27_GE_1_2015-06-08", "KARE_Plot1_PUGR2_L10_GE_1_2015-06-07",
                     "KARE_Plot1_PUGR2_L11_GE_1_2015-06-07", "KARE_Plot1_PUGR2_L12_GE_1_2015-06-07",
@@ -86,10 +65,49 @@ bad_curve_list <- c("KARE_Plot1_PIME4_L2_GE_1_2015-06-08", "KARE_Plot1_PIME4_L26
                     "DREC_Plot3_BEVU2_L7T_GE_1_2015-06-11","KARE_Plot1_FICA_L10_GE_1_2015-06-06",
                     "KARE_Plot1_FICA_L2large_GE_1_2015-06-05","KARE_Plot1_FICA_L3large_GE_1_2015-06-05",
                     "DREC_Plot3_BEVU2_L10T_GE_1_2015-06-11")
-#curated_data[which(curated_data$Sample_ID_Name %in% bad_curve_list), 'QC'] <- 'bad'
+# Display the SampleID_num of each bad curve
+sort(unique(curated_data[curated_data$SampleID%in%bad_curve_list,'SampleID_num']))
+ls_bad_curve <- sort(unique(curated_data[curated_data$SampleID%in%bad_curve_list,'SampleID_num']))
+ls_bad_curve
 
+## Build QC table
+QC_table <- cbind.data.frame(SampleID_num=c(),Obs=c())
 
-# Keep only "good" data
+## Remove additional curves with less than 3 pts
+n_points_curves <- tapply(X=curated_data$Obs,INDEX = curated_data$SampleID_num,FUN = function(x){length(x)})
+#short_curves=n_points_curves[n_points_curves<5]
+short_curves <- n_points_curves[n_points_curves < 3]
+ls_bad_curve=c(ls_bad_curve,names(short_curves))
+curated_data[paste(curated_data$SampleID_num,curated_data$Obs) %in% paste(QC_table$SampleID_num,QC_table$Obs),'QC']='bad'
+curated_data[curated_data$SampleID_num %in% ls_bad_curve,'QC']='bad'
+
+## I DONT KNOW WHAT ALL OF THIS IS DOING - SEEMS OVERLY COMPLICATED
+# That is Just a PDF file whith each Aci curve. The title of the Aci curve on the pdf file is the SampleID_num.
+# Each point of the Aci curve as the Obs number written on it. If the point is in red it means that this point
+# is bad and that it is present in the QC_table table or in the ls_bad_curve vector. 
+
+pdf(file='1_QA_QC_Aci.pdf',)
+ for(SampleID_num in seq_along(unique(curated_data$SampleID_num))) {
+   plot(x=curated_data[curated_data$SampleID_num==SampleID_num,'Ci'],
+        y=curated_data[curated_data$SampleID_num==SampleID_num,'A'],
+        main=unique(paste0("Name: ",curated_data[curated_data$SampleID_num==SampleID_num,
+                                       'Sample_ID_Name']," Num: ",
+                          curated_data[curated_data$SampleID_num==SampleID_num,
+                                 'SampleID_num'])),cex=2,xlab='Ci',ylab='A')
+ if(SampleID_num%in%c(QC_table$SampleID_num,ls_bad_curve)) {
+   points(x=curated_data[curated_data$SampleID_num==SampleID_num&curated_data$QC=='bad','Ci'],
+          y=curated_data[curated_data$SampleID_num==SampleID_num&curated_data$QC=='bad','A'],
+          cex=2,col='red')
+ }
+ text(x=curated_data[curated_data$SampleID_num==SampleID_num,'Ci'],
+      y=curated_data[curated_data$SampleID_num==SampleID_num,'A'], 
+      labels=curated_data[curated_data$SampleID_num==SampleID_num,'Obs'],cex=0.7)
+   
+ }
+dev.off()
+ 
+
+# Keep only "good" data for the rest of the workflow
 curated_data <- curated_data[curated_data$QC=='ok',]
 
 save(curated_data,file='1_QC_data.Rdata')
