@@ -74,13 +74,20 @@ ls_bad_curve
 QC_table <- cbind.data.frame(SampleID_num=c(),Obs=c())
 
 curated_data[paste(curated_data$SampleID_num,curated_data$Obs) %in% paste(QC_table$SampleID_num,QC_table$Obs),'QC']='bad'
+<<<<<<< HEAD
 
+=======
+curated_data[curated_data$SampleID_num %in% ls_bad_curve,'QC']='bad'
+>>>>>>> 6e7df4f0e9242645fc060654fc9526d966852c82
 ## Remove additional curves with less than 3 pts
 n_points_curves <- tapply(X=curated_data[curated_data$QC=="ok",'Obs'],INDEX = curated_data[curated_data$QC=="ok",'SampleID_num'],FUN = function(x){length(x)})
 #short_curves=n_points_curves[n_points_curves<5]
 short_curves <- n_points_curves[n_points_curves < 3]
 ls_bad_curve=c(ls_bad_curve,names(short_curves))
+<<<<<<< HEAD
 curated_data[curated_data$SampleID_num %in% ls_bad_curve,'QC']='bad'
+=======
+>>>>>>> 6e7df4f0e9242645fc060654fc9526d966852c82
 
 ## I DONT KNOW WHAT ALL OF THIS IS DOING - SEEMS OVERLY COMPLICATED
 # That is Just a PDF file whith each Aci curve. The title of the Aci curve on the pdf file is the SampleID_num.
