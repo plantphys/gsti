@@ -4,7 +4,7 @@ path <- here()
 setwd(file.path(path,'/Datasets/Serbin_et_al_2019'))
 getwd()
 
-source(file.path(path,'/R/fit_Aci.R'))
+source(file.path(path,'/R/fit_Vcmax.R'))
 #source(file.path(path,'/R/fit_Aci_JB.R'))
 
 load('1_QC_data.Rdata',verbose=TRUE)

@@ -2,7 +2,7 @@ library(LeafGasExchange)
 library(here)
 path=here()
 setwd(paste(path,'/Datasets/Lamour_et_al_2021',sep=''))
-source(paste(path,'/R/fit_Aci.R',sep=''))
+source(paste(path,'/R/fit_Vcmax.R',sep=''))
 
 load('1_QC_data.Rdata',verbose=TRUE)
 curated_data$Tleaf=curated_data$Tleaf+273.16 ## Conversion to kelvin

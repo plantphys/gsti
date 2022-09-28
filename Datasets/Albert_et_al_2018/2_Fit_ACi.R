@@ -1,7 +1,7 @@
 library(LeafGasExchange)
 library(here)
 path=here()
-source(paste(path,'/R/fit_Aci.R',sep=''))
+source(paste(path,'/R/fit_Vcmax.R',sep=''))
 setwd(paste(path,'/Datasets/Albert_et_al_2018',sep=''))
 
 
