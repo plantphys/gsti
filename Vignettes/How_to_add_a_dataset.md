@@ -222,18 +222,12 @@ degrees celcius
 </tbody>
 </table>
 
--   Shawn, what do you think of the requirements? I am not as strict as
-    for ESS dive as I dont ask the RHs column. I could also remove the
-    Patm column (assumed to be 101 in the fitting). We should try to be
-    flexible so people are not scared if the requirements are to hard.
-
 ## Fitting the A\_Ci data to estimate the photosynthetic traits
 
-The fitting of each individual curves is done using the package
-LeafGasExchange by a R code called ‘2\_Fit\_ACi.R’ included in each
-dataset folder.
-
-This code produces several pdf files:
+Estimation of Vcmax is done in the ‘2\_Fit\_ACi.R’ code included in each
+dataset folder. This code calls the function f.fit\_Aci() to estimatethe
+photosynthetic parameters Vcmax25, Jmax25, TPU25 and Rday25 from A-Ci
+curve. It produces several pdf files:
 
 -   2\_ACi\_fitting\_Ac.pdf
 
@@ -249,11 +243,13 @@ The first three pdf shows the fitting of each A-Ci curves when including
 the rate of maximum carboxylation (Ac), the rate of electron transport
 (Aj) and the rate of triose phosphate utilisation (Ap). The best model
 corresponds to the model with the lowest AIC that includes Ac or Ac + Aj
-or Ac + Aj + Ap.
-
-Note that in all the cases, the transition between Ac, Aj and Ap rates
-is determined automatically by the fitting procedure to avoid manual and
-somehow subjective choices in the transitions (References).
+or Ac + Aj + Ap. Note that if the models with the best AIC is the one
+only including Ac, then Vcmax25 and Rday25 are the only parameters
+estimated. If the model with the best AIC is Ac + Aj, then Jmax25 is
+also estimated. TPU25 is estimated if Ac, Aj and Ap are limiting.In all
+cases, transition between the Ac, Aj and Ap rates is determined
+automatically by the fitting procedure to avoid manual and somehow
+subjective choices in the transitions.
 
 This codes produces a dataframe, called Bilan which includes the
 folowing column:
@@ -264,8 +260,6 @@ folowing column:
 <table>
 <thead>
 <tr>
-<th style="text-align:left;">
-</th>
 <th style="text-align:left;">
 Column\_Names
 </th>
@@ -291,18 +285,6 @@ Rday25
 Tleaf
 </th>
 <th style="text-align:left;">
-Vcmax
-</th>
-<th style="text-align:left;">
-Jmax
-</th>
-<th style="text-align:left;">
-TPU
-</th>
-<th style="text-align:left;">
-Rday
-</th>
-<th style="text-align:left;">
 sigma
 </th>
 <th style="text-align:left;">
@@ -310,6 +292,9 @@ AIC
 </th>
 <th style="text-align:left;">
 model
+</th>
+<th style="text-align:left;">
+Vcmax\_method
 </th>
 </tr>
 </thead>
@@ -346,22 +331,6 @@ CO2 release from the leaf in the light at the reference temperature of
 Leaf surface temperature
 </td>
 <td style="text-align:left;">
-Maximum rate of carboxylation at measurement temperature calculated
-assuming infinite mesophyl conductance i.e. apparent Vcmax
-</td>
-<td style="text-align:left;">
-Maximum rate of electron transport per leaf area at measurement
-temperature calculated assuming infinite mesophyll conductance and
-saturating light
-</td>
-<td style="text-align:left;">
-Triose phosphate utilization rate per leaf area at measurement
-temperature
-</td>
-<td style="text-align:left;">
-CO2 release from the leaf in the light at measurement temperature
-</td>
-<td style="text-align:left;">
 standard error of the residuals of the fitted A-Ci curve
 </td>
 <td style="text-align:left;">
@@ -371,7 +340,7 @@ Akaike information criterion
 Model used for the fitting of the A-Ci curves
 </td>
 <td style="text-align:left;">
-NA
+Method used to estimate Vcmax. Can be ‘A-Ci curve’ or ‘One point’
 </td>
 </tr>
 <tr>
@@ -402,27 +371,20 @@ degrees celcius
 micromol m-2 s-1
 </td>
 <td style="text-align:left;">
-micromol m-2 s-1
-</td>
-<td style="text-align:left;">
-micromol m-2 s-1
-</td>
-<td style="text-align:left;">
-micromol m-2 s-1
-</td>
-<td style="text-align:left;">
-micromol m-2 s-1
 </td>
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 </tbody>
 </table>
+
+It is also possible to estimate Vcmax25 by the one point method (De
+Kauwe et al. 2016; Burnett et al. 2019). In that case, the measurements
+should be done at saturating irradiance in ambient CO2 conditions. You
+can use the function f.fit\_One\_Point() to estimate Vcmax25. It will
+produce the exact same data frame as when using the function f.fit\_Aci.
 
 ## Adding the leaf spectra data and the leaf metadata information
 
@@ -464,19 +426,10 @@ Vcmax\_method
 Vcmax25
 </th>
 <th style="text-align:left;">
-Vcmax25\_stderror
-</th>
-<th style="text-align:left;">
 Jmax25
 </th>
 <th style="text-align:left;">
-Jmax25\_stderror
-</th>
-<th style="text-align:left;">
 TPU25
-</th>
-<th style="text-align:left;">
-TPU25\_stderror
 </th>
 <th style="text-align:left;">
 Spectra
@@ -513,14 +466,13 @@ Name of the dataset folder
 Full species name for example Cecropia insignis
 </td>
 <td style="text-align:left;">
-Growth environment for the measured plant (natural or glasshouse or
-managed)
+Growth environment for the measured plant (Natural, Glasshouse, Managed)
 </td>
 <td style="text-align:left;">
-Type of plant (wild species or agricultural species)
+Type of plant (Wild or Agricultural)
 </td>
 <td style="text-align:left;">
-Method used to estimate Vcmax (one point or A-Ci curve)
+Method used to estimate Vcmax (A-Ci curve or One point)
 </td>
 <td style="text-align:left;">
 Maximum rate of carboxylation at the reference temperature 25 degrees
@@ -528,22 +480,13 @@ celcius calculated assuming infinite mesophyl conductance i.e. apparent
 Vcmax
 </td>
 <td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
 Maximum rate of electron transport per leaf area at the reference
 temperature 25 degrees celcius calculated assuming infinite mesophyll
 conductance and saturating light
 </td>
 <td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
 Triose phosphate utilization rate per leaf area at the reference
 temperature 25 degrees celcius
-</td>
-<td style="text-align:left;">
-NA
 </td>
 <td style="text-align:left;">
 Reflectrance spectra from 350 nm to 2500 nm
@@ -584,19 +527,10 @@ Integer
 micromol m-2 s-1
 </td>
 <td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
 micromol m-2 s-1
 </td>
 <td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
 micromol m-2 s-1
-</td>
-<td style="text-align:left;">
-NA
 </td>
 <td style="text-align:left;">
 percent 0 - 100
