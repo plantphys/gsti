@@ -93,7 +93,7 @@ don’t have hard requirements in the way to obtain this final data. Note
 that the SampleID\_num column will be used by the fitting procedure to
 identify individual A-Ci curves. If you made several A-Ci curves on the
 same leaf we recommend to only keep the best one. We decided to use a
-column SampleId and a column SampleID\_num. SampleID should correspond
+column SampleID and a column SampleID\_num. SampleID should correspond
 to the original identifier of the leaves in the raw dataset which is
 often a complex string. The column SampleID\_num should be an integer.
 We made the choice to use the SampleID\_num to facilitate the QAQC of
@@ -109,8 +109,8 @@ data.frame with at least the columns listed in the table below.
 Note that we usually include in the dataset folder the raw data, as well
 as the R code used to read, import and transform the raw data. All those
 preliminary steps are made in a R code called
-‘Import\_transform\_original\_ACi\_data.R’.We recommend to do the same,
-but again, we don’t have requirements on the code to do that.
+‘0\_Import\_transform\_original\_ACi\_data.R’.We recommend to do the
+same, but again, we don’t have requirements on the code to do that.
 
 We also include the code used to check the quality of the A-Ci data
 where we flag the bad points and delete the bad curves. This code is
@@ -225,9 +225,9 @@ degrees celcius
 ## Fitting the A\_Ci data to estimate the photosynthetic traits
 
 Estimation of Vcmax is done in the ‘2\_Fit\_ACi.R’ code included in each
-dataset folder. This code calls the function f.fit\_Aci() to estimatethe
-photosynthetic parameters Vcmax25, Jmax25, TPU25 and Rday25 from A-Ci
-curve. It produces several pdf files:
+dataset folder. This code calls the function f.fit\_Aci() to estimate
+the photosynthetic parameters Vcmax25, Jmax25, TPU25 and Rday25 from
+A-Ci curve. It produces several pdf files:
 
 -   2\_ACi\_fitting\_Ac.pdf
 
@@ -246,7 +246,7 @@ corresponds to the model with the lowest AIC that includes Ac or Ac + Aj
 or Ac + Aj + Ap. Note that if the models with the best AIC is the one
 only including Ac, then Vcmax25 and Rday25 are the only parameters
 estimated. If the model with the best AIC is Ac + Aj, then Jmax25 is
-also estimated. TPU25 is estimated if Ac, Aj and Ap are limiting.In all
+also estimated. TPU25 is estimated if Ac, Aj and Ap are limiting. In all
 cases, transition between the Ac, Aj and Ap rates is determined
 automatically by the fitting procedure to avoid manual and somehow
 subjective choices in the transitions.
@@ -432,6 +432,9 @@ Jmax25
 TPU25
 </th>
 <th style="text-align:left;">
+Tleaf
+</th>
+<th style="text-align:left;">
 Spectra
 </th>
 <th style="text-align:left;">
@@ -489,6 +492,9 @@ Triose phosphate utilization rate per leaf area at the reference
 temperature 25 degrees celcius
 </td>
 <td style="text-align:left;">
+Leaf surface temperature during the gas exchange measurements
+</td>
+<td style="text-align:left;">
 Reflectrance spectra from 350 nm to 2500 nm
 </td>
 <td style="text-align:left;">
@@ -531,6 +537,9 @@ micromol m-2 s-1
 </td>
 <td style="text-align:left;">
 micromol m-2 s-1
+</td>
+<td style="text-align:left;">
+Degrees celcius
 </td>
 <td style="text-align:left;">
 percent 0 - 100
