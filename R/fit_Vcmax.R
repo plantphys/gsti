@@ -61,33 +61,45 @@ f.fit_Aci<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdRef = 2, TpRef= 5
   res_nlf_Ac_Aj=as.data.frame(t(sapply(result_Ac_Aj,FUN = function(x){
     if(!is.null(x[[2]])){
       coefs=x[[2]]@coef
+      std_error=sqrt(diag(x[[2]]@vcov))
+      names(std_error)=paste('StdError',names(std_error),sep='_')
       AICcurve=AIC(x[[2]])}else {coefs=rep(NA,4)
+                              std_error=rep(NA,4)
                               AICcurve=NA}
-    return(c(coefs,AIC=AICcurve,Tleaf=x[[3]]['Tleaf']))}
+    return(c(coefs,std_error,AIC=AICcurve,Tleaf=x[[3]]['Tleaf']))}
     )))
   res_nlf_Ac_Aj$SampleID_num=row.names(res_nlf_Ac_Aj)
   
   res_nlf_Ac=as.data.frame(t(sapply(result_Ac,FUN = function(x){
     if(!is.null(x[[2]])){
       coefs=x[[2]]@coef
+      std_error=sqrt(diag(x[[2]]@vcov))
+      names(std_error)=paste('StdError',names(std_error),sep='_')
       AICcurve=AIC(x[[2]])}else {coefs=rep(NA,3)
-      AICcurve=NA}
-    return(c(coefs,AIC=AICcurve,Tleaf=x[[3]]['Tleaf']))}
+                                std_error=rep(NA,3)
+                                AICcurve=NA}
+    return(c(coefs,std_error,AIC=AICcurve,Tleaf=x[[3]]['Tleaf']))}
   )))
   res_nlf_Ac$SampleID_num=row.names(res_nlf_Ac)
   
   res_nlf_Ac_Aj_Ap=as.data.frame(t(sapply(result_Ac_Aj_Ap,FUN = function(x){
     if(!is.null(x[[2]])){
       coefs=x[[2]]@coef
+      std_error=sqrt(diag(x[[2]]@vcov))
+      names(std_error)=paste('StdError',names(std_error),sep='_')
       AICcurve=AIC(x[[2]])}else {coefs=rep(NA,5)
-      AICcurve=NA}
-    return(c(coefs,AIC=AICcurve,Tleaf=x[[3]]['Tleaf']))}
+                                std_error=rep(NA,5)
+                                AICcurve=NA}
+    return(c(coefs,std_error,AIC=AICcurve,Tleaf=x[[3]]['Tleaf']))}
   )))
   res_nlf_Ac_Aj_Ap$SampleID_num=row.names(res_nlf_Ac_Aj_Ap)
   
   res_nlf_Ac$JmaxRef=NA
   res_nlf_Ac$TpRef=NA
+  res_nlf_Ac$StdError_JmaxRef=NA
+  res_nlf_Ac$StdError_TpRef=NA
   res_nlf_Ac_Aj$TpRef=NA
+  res_nlf_Ac_Aj$StdError_TpRef=NA
   res_nlf_Ac_Aj$model='Ac_Aj'
   res_nlf_Ac$model='Ac'
   res_nlf_Ac_Aj_Ap$model='Ac_Aj_Ap'
@@ -100,7 +112,7 @@ f.fit_Aci<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdRef = 2, TpRef= 5
   Bilan=res_nlf_Ac_Aj
   Bilan[which(res_nlf_Ac$AIC<res_nlf_Ac_Aj$AIC),]=res_nlf_Ac[which(res_nlf_Ac$AIC<res_nlf_Ac_Aj$AIC),]
   Bilan[which(res_nlf_Ac_Aj_Ap$AIC<Bilan$AIC),]=res_nlf_Ac_Aj_Ap[which(res_nlf_Ac_Aj_Ap$AIC<Bilan$AIC),]
-  colnames(Bilan)=c("sigma","JmaxRef","VcmaxRef","TpRef","RdRef","AIC","Tleaf","SampleID_num","model") 
+  colnames(Bilan)=c("sigma","JmaxRef","VcmaxRef","TpRef","RdRef","StdError_sigma","StdError_JmaxRef","StdError_VcmaxRef","StdError_TpRef","StdError_RdRef","AIC","Tleaf","SampleID_num","model") 
   Bilan$Vcmax_method="A-Ci curve"
   
 ### Creating a pdf with the best model for each curve
@@ -143,5 +155,5 @@ f.fit_One_Point<-function(measures,param){
   Km=Kc*(1+param[['O2']]/Ko)
   Vcmax=measures$A/((measures$Ci-Gstar)/(measures$Ci+Km)-0.015)
   VcmaxRef=f.modified.arrhenius.inv(P = Vcmax,Ha = param[['VcmaxHa']],Hd = param[['VcmaxHd']],s = param[['VcmaxS']],Tleaf = measures$Tleaf,TRef = 273.16+25)
-  return(data.frame(sigma=NA,JmaxRef=NA,VcmaxRef=VcmaxRef,TpRef=NA,RdRef=NA,AIC=NA,Tleaf=measures$Tleaf,SampleID_num=measures$SampleID_num,model=NA,Vcmax_method='One point'))
+  return(data.frame(sigma=NA,JmaxRef=NA,VcmaxRef=VcmaxRef,TpRef=NA,RdRef=NA,StdError_sigma=NA,StdError_JmaxRef=NA,StdError_VcmaxRef=VcmaxRef,StdError_TpRef=NA,StdError_RdRef=NA,AIC=NA,Tleaf=measures$Tleaf,SampleID_num=measures$SampleID_num,model=NA,Vcmax_method='One point'))
 }
