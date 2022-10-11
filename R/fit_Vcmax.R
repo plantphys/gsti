@@ -150,8 +150,8 @@ f.fit_One_Point<-function(measures,param){
   if(any(measures$Ci>400)){stop("Some of your Ci are above 400 ppm meaning that Vcmax cant be estimated")}
   
   Gstar=f.arrhenius(param[['GstarRef']],param[['GstarHa']],measures$Tleaf)
-  Kc=f.arrhenius(param[['KcRef']],param[['KcHa']],Tleaf)
-  Ko=f.arrhenius(param[['KoRef']],param[['KoHa']],Tleaf)
+  Kc=f.arrhenius(param[['KcRef']],param[['KcHa']],measures$Tleaf)
+  Ko=f.arrhenius(param[['KoRef']],param[['KoHa']],measures$Tleaf)
   Km=Kc*(1+param[['O2']]/Ko)
   Vcmax=measures$A/((measures$Ci-Gstar)/(measures$Ci+Km)-0.015)
   VcmaxRef=f.modified.arrhenius.inv(P = Vcmax,Ha = param[['VcmaxHa']],Hd = param[['VcmaxHd']],s = param[['VcmaxS']],Tleaf = measures$Tleaf,TRef = 273.16+25)
