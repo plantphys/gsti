@@ -4,7 +4,7 @@ The aim of this project is to generate a PLSR model able to predict the maximum 
 
 To do so, we curate and combine ACi datasets that are linked to full range reflectancce data (500 to 2400 nm). The A-Ci data are fitted using the same procedure and the same model to avoid including biases between datasets if they were fitted using multiple methods.
 
-An overview of the process to curate the datasets is given in the pdf: [Curation workflow](https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Overal_data_curation.pdf). The curation is divided in 4 steps (0 to 3) to import, analyse and produce and dataset with a determined format. Since all datasets are different, the code can be adapted for any of the steps but the format have to be similar so all the datasets can be, in the end, combined.
+An overview of the process to curate the datasets is given in the pdf: [Curation workflow](https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Overal_data_curation.pdf). The curation is divided in 4 steps (0 to 3) to import, analyse and produce a dataset with a determined format. Since all datasets are different, the code can be adapted for any of the steps but the format have to be similar so all the datasets can be, in the end, combined.
 
 The A-Ci fitting is based on the FvCB model of photosynthesis (Farquhar et al. 1980), as implemented and parametrized in CLM4.5.
 
