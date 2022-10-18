@@ -1,9 +1,10 @@
-library(LeafGasExchange)
 library(here)
-path=here()
-source(paste(path,'/R/fit_Vcmax.R',sep=''))
+path = here()
+setwd(file.path(path,'/Datasets/Rogers_et_al_2017'))
+getwd()
 
-setwd(paste(path,'/Datasets/Rogers_et_al_2017',sep=''))
+source(file.path(path,'/R/fit_Vcmax.R'))
+source(file.path(path,'/R/Photosynthesis_tools.R'))
 
 load('1_QC_data.Rdata',verbose=TRUE)
 curated_data$Tleaf=curated_data$Tleaf+273.16 ## Conversion to kelvin

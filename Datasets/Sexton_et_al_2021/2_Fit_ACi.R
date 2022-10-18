@@ -1,4 +1,12 @@
-library(LeafGasExchange)
+library(here)
+path = here()
+setwd(file.path(path,'/Datasets/Sexton_et_al_2021'))
+getwd()
+
+source(file.path(path,'/R/fit_Vcmax.R'))
+source(file.path(path,'/R/Photosynthesis_tools.R'))
+
+
 load('1_QC_data.Rdata',verbose=TRUE)
 curated_data$Tleaf=curated_data$Tleaf+273.16 ## Conversion to kelvin
 curated_data=curated_data[order(curated_data$SampleID_num,curated_data$Ci),]
