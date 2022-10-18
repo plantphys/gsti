@@ -1,7 +1,7 @@
 library(here)
 library(spectratrait)
 path <- here()
-setwd(paste(path,'/Datasets/Serbin_et_al_2019',sep=''))
+setwd(file.path(path,'/Datasets/Serbin_et_al_2019'))
 ## !! TODO CREATE FITTED ACI DATA
 #load('2_Result_ACi_fitting.Rdata',verbose=TRUE) 
 

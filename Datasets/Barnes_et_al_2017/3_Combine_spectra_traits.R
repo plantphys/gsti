@@ -1,8 +1,7 @@
-library(LeafGasExchange)
 library(spectratrait)
 library(here)
 path=here()
-setwd(paste(path,'/Datasets/Barnes_et_al_2017',sep=''))
+setwd(file.path(path,'/Datasets/Barnes_et_al_2017'))
 
 
 spectra=read.csv('9_processed_hyperspectral_wide.csv')

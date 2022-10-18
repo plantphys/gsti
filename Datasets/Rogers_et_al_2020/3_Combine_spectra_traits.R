@@ -1,7 +1,7 @@
 library(here)
 library(spectratrait)
 path=here()
-setwd(paste(path,'/Datasets/Rogers_et_al_2020',sep=''))
+setwd(file.path(path,'/Datasets/Rogers_et_al_2020'))
 load('2_Result_ACi_fitting.Rdata',verbose=TRUE)
 
 

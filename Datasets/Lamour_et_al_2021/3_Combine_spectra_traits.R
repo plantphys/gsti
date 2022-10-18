@@ -1,7 +1,7 @@
 library(here)
 library(spectratrait)
 path=here()
-setwd(paste(path,'/Datasets/Lamour_et_al_2021',sep=''))
+setwd(file.path(path,'/Datasets/Lamour_et_al_2021'))
 spectra=read.csv('PA-SLZ_2020_Reflectance.csv')
 leaf_description=read.csv('PA-SLZ_2020_SampleDetails.csv')
 load('2_Result_ACi_fitting.Rdata',verbose=TRUE)

@@ -1,6 +1,6 @@
 library(here)
 path = here()
-setwd(file.path(path,'/Datasets/Rogers_et_al_2017'))
+setwd(file.path(path,'/Datasets/Rogers_et_al_2020'))
 getwd()
 
 source(file.path(path,'/R/fit_Vcmax.R'))

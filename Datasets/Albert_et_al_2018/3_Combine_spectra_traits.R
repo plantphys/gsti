@@ -1,7 +1,5 @@
-library(LeafGasExchange)
 library(spectratrait)
 library(here)
-path <- here()
 setwd(file.path(here(),'Datasets/Albert_et_al_2018'))
 spectra <- read.csv('Wu_etal_2019_spectra_brazil.csv')
 load(file.path(here(),'Datasets/Albert_et_al_2018/2_Result_ACi_fitting.Rdata'),verbose=TRUE)

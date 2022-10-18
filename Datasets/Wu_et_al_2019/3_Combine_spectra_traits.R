@@ -1,7 +1,7 @@
 library(here)
 library(spectratrait)
 path=here()
-setwd(paste(path,'/Datasets/Wu_et_al_2019',sep=''))
+setwd(file.path(path,'/Datasets/Wu_et_al_2019'))
 spectra=read.csv('Wu et al. 2019 spectra panama.csv')
 load('2_Result_ACi_fitting.Rdata',verbose=TRUE)
 

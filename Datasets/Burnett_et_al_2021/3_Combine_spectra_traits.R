@@ -1,8 +1,7 @@
-library(LeafGasExchange)
 library(spectratrait)
 library(here)
 path=here()
-setwd(paste(path,'/Datasets/Burnett_et_al_2021',sep=''))
+setwd(file.path(path,'/Datasets/Burnett_et_al_2021'))
 
 
 spectra=read.csv('leaf_spectra.csv')

@@ -2,7 +2,7 @@ library(here)
 library(spectratrait)
 library(readxl)
 path=here()
-setwd(paste(path,'/Datasets/Yan_et_al_2021',sep=''))
+setwd(file.path(path,'/Datasets/Yan_et_al_2021'))
 spectra=read_xlsx(path = 'Yan et al., 2021. NPH. Spectra-Vcmax25 data.xlsx',sheet=2)
 load('2_Result_ACi_fitting.Rdata',verbose=TRUE)
 
