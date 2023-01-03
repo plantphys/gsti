@@ -17,6 +17,8 @@ setwd(path)
 
 ls_files <- dir(recursive = TRUE)
 ls_files_Description <- ls_files[which(grepl(x=ls_files,pattern="Description.csv",ignore.case = TRUE))]
+ls_files_Description <- ls_files_Description[which(grepl(x=ls_files_Description,pattern="Datasets",ignore.case = TRUE))]
+ls_files_Description <- ls_files_Description[-which(grepl(x=ls_files_Description,pattern="TEMPLATE",ignore.case = TRUE))]
 All_Description <- do.call("rbind", apply(X = as.matrix(ls_files_Description),FUN = read.csv,MARGIN = 1))
 
 ### Creating a map of all datasets
@@ -38,6 +40,7 @@ ls_files=dir(recursive = TRUE)
 ls_files_Curated=ls_files[which(grepl(x=ls_files,pattern="3_Spectra_traits.Rdata",ignore.case = TRUE))]
 data_curated=data.frame()
 for(files in ls_files_Curated){
+  print(files)
   load(files,verbose=TRUE)
   data_curated=rbind.data.frame(data_curated,spectra)
 }
@@ -61,3 +64,4 @@ dev.off()
 jpeg("Reflectance.jpeg", height=100, width=100,units = 'mm',res=300)
 f.plot.spec(Z = data_curated$Spectra,wv = 350:2500)
 dev.off()
+
