@@ -2,14 +2,15 @@ library(magrittr)
 library(readxl)
 library(spectratrait)
 
-fpath <- '~/Global_Vcmax/Datasets/Kumagai_et_al_2022/'
-setwd(fpath)
+path=here()
+setwd(file.path(path,'Datasets/Kumagai_et_al_2022'))
 load("2_Result_ACi_fitting.Rdata")
+
 # read csv data
 reflec_data <- data.frame()
-datafiles <- list.files(paste0(fpath, "ASD"), pattern = "\\.csv$")
+datafiles <- list.files(file.path(path,'Datasets/Kumagai_et_al_2022/ASD'), pattern = "\\.csv$")
 for (filename in datafiles){
-    csv_data <- read.csv(paste0(fpath, "ASD/", filename))
+    csv_data <- read.csv(paste0(file.path(path,'Datasets/Kumagai_et_al_2022/ASD//'), filename))
     csv_data$ID <- paste0(substr(filename, 1, 10), '-', csv_data$Spectra)
     reflec_data <- rbind.data.frame(reflec_data, csv_data)
 }
@@ -25,7 +26,7 @@ spectra <- merge(x = reflec_data, y = Bilan, by.x = 'ID', by.y='SampleID')
 
 spectra=data.frame(SampleID=spectra$SampleID_num,
                         dataset = 'Kumagai_et_al_2022',
-                        Species = "Soybean with temperature treatment",
+                        Species = "Glycine max",
                         N_pc = NA,
                         Na = NA,
                         LMA = NA,
@@ -38,4 +39,4 @@ spectra=data.frame(SampleID=spectra$SampleID_num,
 f.plot.spec(Z = spectra$Spectra, wv = 350:2500)
 
 
-save(spectra,file = paste0(fpath,'3_Spectra_traits.Rdata'))
+save(spectra,file = '3_Spectra_traits.Rdata')

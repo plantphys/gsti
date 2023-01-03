@@ -2,10 +2,10 @@ library(magrittr)
 library(readxl)
 library(spectratrait)
 
-fpath <- '~/Global_Vcmax/Datasets/Meacham_Hensold_et_al_2019/'
-setwd(fpath)
+path=here()
+setwd(file.path(path,'/Datasets/Meacham_Hensold_et_al_2019'))
 load("2_Result_ACi_fitting.Rdata")
-spectral_file <- paste0(fpath, "Reflectance_data.xlsx")
+spectral_file <- paste0(file.path(path,'/Datasets/Meacham_Hensold_et_al_2019'), "/Reflectance_data.xlsx")
 excel_data <- read_excel(spectral_file)
 excel_cnames <- paste0("Wave_", 350:2500)
 spectra <- excel_data[excel_cnames]
@@ -15,7 +15,7 @@ spectra <- merge(x = spectra, y = Bilan, by.x = 'ID', by.y='SampleID')
 
 spectra=data.frame(SampleID=spectra$SampleID_num,
                         dataset = 'Meacham_Hensold_et_al_2019',
-                        Species = spectra$ID,
+                        Species = 'Nicotiana tabacum',
                         N_pc = NA,
                         Na = NA,
                         LMA = NA,
@@ -28,4 +28,4 @@ spectra=data.frame(SampleID=spectra$SampleID_num,
 f.plot.spec(Z = spectra$Spectra, wv = 350:2500)
 
 
-save(spectra,file = paste0(fpath,'3_Spectra_traits.Rdata'))
+save(spectra,file = '3_Spectra_traits.Rdata')
