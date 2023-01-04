@@ -72,13 +72,11 @@ class="email">jlamour.sci@gmail.com</a></td>
 
 ### Adding a site description csv file
 
-The latitude and longitude coordinates will be used to position the
-dataset on a world map. If you have different sites on the same dataset
-with wide difference in positions that makes a difference on a world
-map, you can add several rows to your Description.csv file.
-
-We chose to use the Olson et al. (2001) list of 14 natural Biomes (see
-below) that we complemented with agricultural and managed biomes.
+A file called Site.csv also has to be included with the column listed
+below.The latitude and longitude coordinates will be used to position
+the dataset on a world map. If you have different sites on the same
+dataset with wide difference in positions that makes a difference on a
+world map, you can add several rows to your Description.csv file.
 
     Site=read.csv(file='Site.csv')
     knitr::kable(Site)
@@ -130,6 +128,109 @@ documentation (1 to 19)</td>
 <td style="text-align: left;">-74.010606</td>
 <td style="text-align: left;">1100</td>
 <td style="text-align: left;">5</td>
+</tr>
+</tbody>
+</table>
+
+For the Biome\_number column, please chose a number among the list
+below. We chose to use the Olson et al. (2001) list of 14 natural Biomes
+that we complemented with agricultural and managed biomes.
+
+    Biomes=read.csv(file='Biomes.csv')
+    knitr::kable(Biomes)
+
+<table>
+<colgroup>
+<col style="width: 82%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Biome</th>
+<th style="text-align: right;">Biome_number</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Tropical and subtropical moist broadleaf
+forests</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tropical and subtropical dry broadleaf
+forests</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tropical and subtropical coniferous
+forests</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tropical and subtropical grasslands,
+savannas and shrublands</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Temperate broadleaf and mixed forests</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Temperate coniferous forests</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Temperate grasslands and savannas</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Flooded grasslands and savannas</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Montane grasslands and shrublands</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tundra</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mediterranean forests, woodlands and
+scrub</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Boreal forests/Taiga</td>
+<td style="text-align: right;">12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Desert and xeric shrublands</td>
+<td style="text-align: right;">13</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mangroves</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Managed Grasslands</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Field Crop Ecosystems</td>
+<td style="text-align: right;">16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tree Crop Ecosystems</td>
+<td style="text-align: right;">17</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Greenhouse Ecosystems</td>
+<td style="text-align: right;">18</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bioindustrial Ecosystems</td>
+<td style="text-align: right;">19</td>
 </tr>
 </tbody>
 </table>
@@ -370,7 +471,7 @@ produce the exact same data frame as when using the function f.fit\_Aci.
 
 We merge the fitted parameters, the spectra and the leaf information in
 the code called ‘3\_Combine\_spectra\_traits.R’. This code produces a
-dataframe with as columns:
+dataframe with the folowing columns:
 
     Spectra=read.csv(file='Spectra.csv',header = TRUE)
     knitr::kable(Spectra)
