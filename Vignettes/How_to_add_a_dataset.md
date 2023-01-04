@@ -10,28 +10,23 @@ environment? Green house? Agricultural or experimental field? Plants in
 pots?) and information on the species (Natural species, agricultural
 species) as well as the status of the plants (stressed, not stressed?)
 
-## Description of the dataset
+### Adding a dataset description csv file
 
 In each dataset folder a csv file called Description.csv has to be
-included. An example is given in the Folder 0\_Template. The latitude
-and longitude coordinates will be used to position the dataset on a
-world map. If you have different sites on the same dataset with wide
-difference in positions that makes a difference on a world map, you can
-add several rows to your Description.csv file
+included. An example is given in the Folder 0\_Template. This file will
+be used to list the authors as well as associated papers and
+acknoledgements.
 
     Description=read.csv(file='Description.csv')
     knitr::kable(Description)
 
 <table>
 <colgroup>
-<col style="width: 7%" />
 <col style="width: 13%" />
-<col style="width: 20%" />
-<col style="width: 14%" />
-<col style="width: 6%" />
-<col style="width: 12%" />
-<col style="width: 13%" />
-<col style="width: 10%" />
+<col style="width: 40%" />
+<col style="width: 11%" />
+<col style="width: 30%" />
+<col style="width: 3%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -40,9 +35,6 @@ add several rows to your Description.csv file
 <th style="text-align: left;">Dataset_DOI</th>
 <th style="text-align: left;">Publication_Citation</th>
 <th style="text-align: left;">Email</th>
-<th style="text-align: left;">Lat</th>
-<th style="text-align: left;">Long</th>
-<th style="text-align: left;">Elevation</th>
 </tr>
 </thead>
 <tbody>
@@ -55,12 +47,89 @@ with the dataset if the dataset was published</td>
 <td style="text-align: left;">Full citation associated with the paper
 that uses the dataset</td>
 <td style="text-align: left;">Contact email for the dataset</td>
-<td style="text-align: left;">Latitude of the dataset site study in
-decimal units (Y)</td>
-<td style="text-align: left;">Longitude of the dataset site study in
-decimals units (X)</td>
-<td style="text-align: left;">Elevation of the dataset site study if
-known.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Julien Lamour, Kenneth J. Davidson, Kim S.
+Ely, Jeremiah A. Anderson, Alistair Rogers, Jin Wu , Shawn P.
+Serbin</td>
+<td style="text-align: left;">This work was supported by the
+Next-Generation Ecosystem Experiments (NGEE Tropics) project that is
+supported by the Office of Biological and Environmental Research in the
+Department of Energy, Office of Science, and through the United States
+Department of Energy contract No. DE-SC0012704 to Brookhaven National
+Laboratory.</td>
+<td style="text-align: left;">10.15486/ngt/1781003,
+10.15486/ngt/1781004</td>
+<td style="text-align: left;">Julien Lamour, Kenneth J. Davidson, Kim S.
+Ely, Jeremiah A. Anderson, Alistair Rogers, Jin Wu , Shawn P. Serbin.
+Rapid estimation of photosynthetic leaf traits of tropical plants in
+diverse environmental conditions using reflectance spectroscopy</td>
+<td style="text-align: left;"><a href="mailto:jlamour.sci@gmail.com"
+class="email">jlamour.sci@gmail.com</a></td>
+</tr>
+</tbody>
+</table>
+
+### Adding a site description csv file
+
+The latitude and longitude coordinates will be used to position the
+dataset on a world map. If you have different sites on the same dataset
+with wide difference in positions that makes a difference on a world
+map, you can add several rows to your Description.csv file.
+
+We chose to use the Olson et al. (2001) list of 14 natural Biomes (see
+below) that we complemented with agricultural and managed biomes.
+
+    Site=read.csv(file='Site.csv')
+    knitr::kable(Site)
+
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 17%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Site_name</th>
+<th style="text-align: left;">Latitude</th>
+<th style="text-align: left;">Longitude</th>
+<th style="text-align: left;">Elevation</th>
+<th style="text-align: left;">Biome_number</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Short text name for the site where the
+measurements were taken</td>
+<td style="text-align: left;">Latitude in decimal units</td>
+<td style="text-align: left;">Longitude in decimal units</td>
+<td style="text-align: left;">Elevation in meters above sea level</td>
+<td style="text-align: left;">Biome number as described in the
+documentation (1 to 19)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BCI</td>
+<td style="text-align: left;">9.1562792</td>
+<td style="text-align: left;">-79.862707</td>
+<td style="text-align: left;">30</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PNM</td>
+<td style="text-align: left;">8.9943457</td>
+<td style="text-align: left;">-79.543073</td>
+<td style="text-align: left;">100</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Black Rock Forest</td>
+<td style="text-align: left;">41.413708</td>
+<td style="text-align: left;">-74.010606</td>
+<td style="text-align: left;">1100</td>
+<td style="text-align: left;">5</td>
 </tr>
 </tbody>
 </table>
@@ -85,7 +154,12 @@ the curves and the ploting of the figures (title name).
 
 The A-Ci data should be cleaned from spurious measurements and points
 that would impact V<sub>cmax</sub> or J<sub>max</sub> estimation should
-not be included.
+not be included. If several measurements were taken at a given Ci,
+please only chose one so each Ci has the same number of measurements.We
+are usually quite severe on the quality analysis to only keep the curves
+where the estimation of V<sub>cmax</sub> will be good. If we have doubts
+on the quality of the data we tend to remove them from the final curated
+data.
 
 The curated A-Ci data should be present in the dataset folder in a Rdata
 format called ‘1\_QC\_data.Rdata’ which contains the A-Ci data in a
@@ -104,11 +178,6 @@ called ‘1\_QaQc\_curated\_ACi.R’ and produces the file
 of each of the A-Ci curves with the good point in dark and the bad
 points in red. You can find some examples in the different dataset
 folders.
-
-We are usually quite severe on the quality analysis to only keep the
-curves where the estimation of Vcmax will be good. If we have doubts on
-the quality of the data we tend to remove them from the final curated
-data.
 
     Aci_data=read.csv(file='Aci_data.csv')
     knitr::kable(Aci_data)
@@ -169,10 +238,10 @@ incident on the leaf in quanta per area</td>
 
 ## Fitting the A\_Ci data to estimate the photosynthetic traits
 
-Estimation of Vcmax is done in the ‘2\_Fit\_ACi.R’ code included in each
-dataset folder. This code calls the function f.fit\_Aci() to estimate
-the photosynthetic parameters Vcmax25, Jmax25, TPU25 and Rday25 from
-A-Ci curve. It produces several pdf files:
+Estimation of V<sub>cmax</sub> is done in the ‘2\_Fit\_ACi.R’ code
+included in each dataset folder. This code calls the function
+f.fit\_Aci() to estimate the photosynthetic parameters Vcmax25, Jmax25,
+TPU25 and Rday25 from A-Ci curve. It produces several pdf files:
 
 -   2\_ACi\_fitting\_Ac.pdf
 

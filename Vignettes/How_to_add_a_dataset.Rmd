@@ -13,15 +13,29 @@ knitr::opts_chunk$set(echo = TRUE)
 Each dataset is put into a folder called "Names_Year" for example "Serbin_et_al_2019". 
 Please, also add any article associated with the dataset or the protocol of measurement, which should include the description of the gas exchange measurements, leaf reflectance measurements, as well as the equipments used. It should also include the location description, information on the growing conditions (Natural environment? Green house? Agricultural or experimental field? Plants in pots?) and information on the species (Natural species, agricultural species) as well as the status of the plants (stressed, not stressed?)
 
-## Description of the dataset
+### Adding a dataset description csv file
 
-In each dataset folder a csv file called Description.csv has to be included. An example is given in the Folder 0_Template. The latitude and longitude coordinates will be used to position the dataset on a world map.
-If you have different sites on the same dataset with wide difference in positions that makes a difference on a world map, you can add several rows to your Description.csv file
+In each dataset folder a csv file called Description.csv has to be included. 
+An example is given in the Folder 0_Template. This file will be used to list the authors as well as associated papers and acknoledgements.
 
 ```{r}
 Description=read.csv(file='Description.csv')
 knitr::kable(Description)
 ```
+
+### Adding a site description csv file
+
+The latitude and longitude coordinates will be used to position the dataset on a world map.
+If you have different sites on the same dataset with wide difference in positions that makes a difference on a world map, you can add several rows to your Description.csv file.
+
+We chose to use the Olson et al. (2001) list of 14 natural Biomes (see below) that we complemented with agricultural and managed biomes. 
+
+```{r}
+Site=read.csv(file='Site.csv')
+knitr::kable(Site)
+```
+
+
 
 ## Adding the gas exchange A-Ci data to the dataset folder
 
@@ -29,7 +43,7 @@ The idea of this project is to include the raw A-Ci data so we can fit the curve
 
 We have requirements for the final A-Ci data to be used by the fitting procedure (see table below with the needed column names). However, we don't have hard requirements in the way to obtain this final data. Note that the SampleID_num column will be used by the fitting procedure to identify individual A-Ci curves. If you made several A-Ci curves on the same leaf we recommend to only keep the best one. We decided to use a column SampleID and a column SampleID_num. SampleID should correspond to the original identifier of the leaves in the raw dataset which is often a complex string. The column SampleID_num should be an integer. We made the choice to use the SampleID_num to facilitate the QAQC of the curves and the ploting of the figures (title name). 
 
-The A-Ci data should be cleaned from spurious measurements and points that would impact V<sub>cmax</sub> or J<sub>max</sub> estimation should not be included. 
+The A-Ci data should be cleaned from spurious measurements and points that would impact V<sub>cmax</sub> or J<sub>max</sub> estimation should not be included. If several measurements were taken at a given Ci, please only chose one so each Ci has the same number of measurements.We are usually quite severe on the quality analysis to only keep the curves where the estimation of V<sub>cmax</sub> will be good. If we have doubts on the quality of the data we tend to remove them from the final curated data.
 
 The curated A-Ci data should be present in the dataset folder in a Rdata format called '1_QC_data.Rdata' which contains the A-Ci data in a data.frame with at least the columns listed in the table below.
 
@@ -37,7 +51,7 @@ Note that we usually include in the dataset folder the raw data, as well as the 
 
 We also include the code used to check the quality of the A-Ci data where we flag the bad points and delete the bad curves. This code is called '1_QaQc_curated_ACi.R' and produces the file '1_QC_data.Rdata'. This code usually produces a PDF file with a plot of each of the A-Ci curves with the good point in dark and the bad points in red. You can find some examples in the different dataset folders.
 
-We are usually quite severe on the quality analysis to only keep the curves where the estimation of Vcmax will be good. If we have doubts on the quality of the data we tend to remove them from the final curated data.
+
 
 ```{r}
 Aci_data=read.csv(file='Aci_data.csv')
@@ -48,7 +62,7 @@ knitr::kable(Aci_data)
 
 ## Fitting the A_Ci data to estimate the photosynthetic traits
 
-Estimation of Vcmax is done in the '2_Fit_ACi.R' code included in each dataset folder.
+Estimation of V<sub>cmax</sub> is done in the '2_Fit_ACi.R' code included in each dataset folder.
 This code calls the function f.fit_Aci() to estimate the photosynthetic parameters Vcmax25, Jmax25, TPU25 and Rday25 from A-Ci curve.  It produces several pdf files:
 
 -   2_ACi_fitting_Ac.pdf
