@@ -36,7 +36,6 @@ knitr::kable(Site)
 ```
 
 
-
 ## Adding the gas exchange A-Ci data to the dataset folder
 
 The idea of this project is to include the raw A-Ci data so we can fit the curves and estimate V<sub>cmax</sub> using the same method for all datasets.
@@ -86,7 +85,7 @@ knitr::kable(Bilan)
 It is also possible to estimate Vcmax25 by the one point method (De Kauwe et al. 2016; Burnett et al. 2019).
 In that case, the measurements should be done at saturating irradiance in ambient CO2 conditions. You can use the function f.fit_One_Point() to estimate Vcmax25. It will produce the exact same data frame as when using the function f.fit_Aci.
 
-## Adding the leaf spectra data and the leaf metadata information
+## Adding the leaf spectra data and the leaf sample information
 
 
 We merge the fitted parameters, the spectra and the leaf information in the code called '3_Combine_spectra_traits.R'.
@@ -99,7 +98,7 @@ knitr::kable(Spectra)
 ```
 
 Note that the reflectance wavelength stored in the Spectra data should be from 350 nm to 2500 nm with 1 nm interval.
-If you dont have values for 350 nm to 500 nm or from 2400 nm to 2500 nm, that is not a problem, you can put NA in those wavelengths. 
+If you dont have values for 350 nm to 500 nm or from 2400 nm to 2500 nm, you can put NA in those wavelengths. Note that within this column, a vector is stored (see examples for details)
 
 The columns LMA, Narea and LWC do not neccessary need to be filled if you don't have the data. 
 

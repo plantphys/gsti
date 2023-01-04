@@ -1,0 +1,4 @@
+SampleID,Species,Sun_Shade,Plant_type,Soil
+Identifier of the measured leaf,"Full species name, for example Cecropia insignis","Was the leaf at the top of the canopy and usually receiving light (sun) or a shaded leaf? Chose between Sun, Shade or leave empty",Chose between Wild or Agricultural,"Please chose between natural ground, pot, or managed ground (Natural, Pot, Managed)"
+BNL20202,Cecropia insignis,Sun,Wild,Natural
+BNL10101,Cucurbit pepo,Sun,Agricultural,Pot

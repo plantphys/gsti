@@ -366,7 +366,7 @@ should be done at saturating irradiance in ambient CO2 conditions. You
 can use the function f.fit\_One\_Point() to estimate Vcmax25. It will
 produce the exact same data frame as when using the function f.fit\_Aci.
 
-## Adding the leaf spectra data and the leaf metadata information
+## Adding the leaf spectra data and the leaf sample information
 
 We merge the fitted parameters, the spectra and the leaf information in
 the code called ‘3\_Combine\_spectra\_traits.R’. This code produces a
@@ -375,35 +375,36 @@ dataframe with as columns:
     Spectra=read.csv(file='Spectra.csv',header = TRUE)
     knitr::kable(Spectra)
 
-<table>
+<table style="width:100%;">
 <colgroup>
+<col style="width: 3%" />
+<col style="width: 3%" />
+<col style="width: 2%" />
 <col style="width: 1%" />
+<col style="width: 4%" />
+<col style="width: 12%" />
 <col style="width: 3%" />
-<col style="width: 4%" />
-<col style="width: 2%" />
-<col style="width: 4%" />
 <col style="width: 7%" />
-<col style="width: 3%" />
 <col style="width: 5%" />
+<col style="width: 13%" />
 <col style="width: 15%" />
-<col style="width: 17%" />
 <col style="width: 9%" />
-<col style="width: 6%" />
+<col style="width: 5%" />
 <col style="width: 4%" />
 <col style="width: 2%" />
 <col style="width: 3%" />
-<col style="width: 4%" />
 <col style="width: 1%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Column_Names</th>
 <th style="text-align: left;">SampleID</th>
 <th style="text-align: left;">SampleID_num</th>
 <th style="text-align: left;">Dataset</th>
+<th style="text-align: left;">Site_name</th>
 <th style="text-align: left;">Species</th>
-<th style="text-align: left;">Growth_environment</th>
+<th style="text-align: left;">Sun_Shade</th>
 <th style="text-align: left;">Plant_type</th>
+<th style="text-align: left;">Soil</th>
 <th style="text-align: left;">Vcmax_method</th>
 <th style="text-align: left;">Vcmax25</th>
 <th style="text-align: left;">Jmax25</th>
@@ -412,22 +413,24 @@ dataframe with as columns:
 <th style="text-align: left;">Spectra</th>
 <th style="text-align: left;">LMA</th>
 <th style="text-align: left;">Narea</th>
-<th style="text-align: left;">N</th>
 <th style="text-align: left;">LWC</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Definition</td>
 <td style="text-align: left;">Identifier of the measured leaf</td>
 <td style="text-align: left;">Integer Identifier of the measured
 leaf</td>
 <td style="text-align: left;">Name of the dataset folder</td>
+<td style="text-align: left;"></td>
 <td style="text-align: left;">Full species name for example Cecropia
 insignis</td>
-<td style="text-align: left;">Growth environment for the measured plant
-(Natural, Glasshouse, Managed)</td>
-<td style="text-align: left;">Type of plant (Wild or Agricultural)</td>
+<td style="text-align: left;">Was the leaf at the top of the canopy and
+usually receiving light (sun) or a shaded leaf? Chose between Sun, Shade
+or leave empty</td>
+<td style="text-align: left;">Chose between Wild or Agricultural</td>
+<td style="text-align: left;">Please chose between natural ground, pot,
+or managed ground (Natural, Pot, Managed)</td>
 <td style="text-align: left;">Method used to estimate Vcmax (A-Ci curve
 or One point)</td>
 <td style="text-align: left;">Maximum rate of carboxylation at the
@@ -444,14 +447,13 @@ exchange measurements</td>
 nm</td>
 <td style="text-align: left;">Leaf mass per surface area</td>
 <td style="text-align: left;">Nitrogen content per surface area</td>
-<td style="text-align: left;">Nitrogen content in percentage of dry
-mass</td>
 <td style="text-align: left;">Leaf water content</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Unit</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">Integer</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
@@ -465,15 +467,53 @@ mass</td>
 <td style="text-align: left;">g m-2</td>
 <td style="text-align: left;">g m-2</td>
 <td style="text-align: left;">percent 0 - 100</td>
-<td style="text-align: left;">percent 0 - 100</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BNL20202</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Doe_et_al_2010</td>
+<td style="text-align: left;">SLZ</td>
+<td style="text-align: left;">Cecropia insignis</td>
+<td style="text-align: left;">Sun</td>
+<td style="text-align: left;">Wild</td>
+<td style="text-align: left;">Natural</td>
+<td style="text-align: left;">A-Ci curve</td>
+<td style="text-align: left;">88.77</td>
+<td style="text-align: left;">144.22</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">32</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">112</td>
+<td style="text-align: left;">1.63</td>
+<td style="text-align: left;">55</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BNL10101</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Doe_et_al_2010</td>
+<td style="text-align: left;">BNL_greenhouse</td>
+<td style="text-align: left;">Cucurbit pepo</td>
+<td style="text-align: left;">Sun</td>
+<td style="text-align: left;">Agricultural</td>
+<td style="text-align: left;">Pot</td>
+<td style="text-align: left;">One point</td>
+<td style="text-align: left;">75.51</td>
+<td style="text-align: left;">112.2</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">28</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">90</td>
+<td style="text-align: left;">1.42</td>
+<td style="text-align: left;">60</td>
 </tr>
 </tbody>
 </table>
 
 Note that the reflectance wavelength stored in the Spectra data should
 be from 350 nm to 2500 nm with 1 nm interval. If you dont have values
-for 350 nm to 500 nm or from 2400 nm to 2500 nm, that is not a problem,
-you can put NA in those wavelengths.
+for 350 nm to 500 nm or from 2400 nm to 2500 nm, you can put NA in those
+wavelengths. Note that within this column, a vector is stored (see
+examples for details)
 
 The columns LMA, Narea and LWC do not neccessary need to be filled if
 you don’t have the data.
