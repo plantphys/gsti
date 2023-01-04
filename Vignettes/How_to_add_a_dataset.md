@@ -235,36 +235,38 @@ scrub</td>
 </tbody>
 </table>
 
-## Adding the gas exchange A-Ci data to the dataset folder
+## Adding the gas exchange A-C<sub>i</sub> data to the dataset folder
 
-The idea of this project is to include the raw A-Ci data so we can fit
-the curves and estimate V<sub>cmax</sub> using the same method for all
-datasets.
+The idea of this project is to include the raw A-C<sub>i</sub> data so
+we can fit the curves and estimate V<sub>cmax</sub> using the same
+method for all datasets.
 
-We have requirements for the final A-Ci data to be used by the fitting
-procedure (see table below with the needed column names). However, we
-don’t have hard requirements in the way to obtain this final data. Note
-that the SampleID\_num column will be used by the fitting procedure to
-identify individual A-Ci curves. If you made several A-Ci curves on the
-same leaf we recommend to only keep the best one. We decided to use a
-column SampleID and a column SampleID\_num. SampleID should correspond
-to the original identifier of the leaves in the raw dataset which is
-often a complex string. The column SampleID\_num should be an integer.
-We made the choice to use the SampleID\_num to facilitate the QAQC of
-the curves and the ploting of the figures (title name).
+We have requirements for the final A-C<sub>i</sub> data to be used by
+the fitting procedure (see table below with the needed column names).
+However, we don’t have hard requirements in the way to obtain this final
+data. Note that the SampleID\_num column will be used by the fitting
+procedure to identify individual A-C<sub>i</sub> curves. If you made
+several A-C<sub>i</sub> curves on the same leaf we recommend to only
+keep the best one. We decided to use a column SampleID and a column
+SampleID\_num. SampleID should correspond to the original identifier of
+the leaves in the raw dataset which is often a complex string. The
+column SampleID\_num should be an integer. We made the choice to use the
+SampleID\_num to facilitate the QAQC of the curves and the ploting of
+the figures (title name).
 
-The A-Ci data should be cleaned from spurious measurements and points
-that would impact V<sub>cmax</sub> or J<sub>max</sub> estimation should
-not be included. If several measurements were taken at a given Ci,
-please only chose one so each Ci has the same number of measurements.We
-are usually quite severe on the quality analysis to only keep the curves
-where the estimation of V<sub>cmax</sub> will be good. If we have doubts
-on the quality of the data we tend to remove them from the final curated
-data.
+The A-C<sub>i</sub> data should be cleaned from spurious measurements
+and points that would impact V<sub>cmax</sub> or J<sub>max</sub>
+estimation should not be included. If several measurements were taken at
+a given Ci, please only chose one so each Ci has the same number of
+measurements.We are usually quite severe on the quality analysis to only
+keep the curves where the estimation of V<sub>cmax</sub> will be good.
+If we have doubts on the quality of the data we tend to remove them from
+the final curated data.
 
-The curated A-Ci data should be present in the dataset folder in a Rdata
-format called ‘1\_QC\_data.Rdata’ which contains the A-Ci data in a
-data.frame with at least the columns listed in the table below.
+The curated A-C<sub>i</sub> data should be present in the dataset folder
+in a Rdata format called ‘1\_QC\_data.Rdata’ which contains the
+A-C<sub>i</sub> data in a data.frame with at least the columns listed in
+the table below.
 
 Note that we usually include in the dataset folder the raw data, as well
 as the R code used to read, import and transform the raw data. All those
@@ -272,32 +274,30 @@ preliminary steps are made in a R code called
 ‘0\_Import\_transform\_original\_ACi\_data.R’.We recommend to do the
 same, but again, we don’t have requirements on the code to do that.
 
-We also include the code used to check the quality of the A-Ci data
-where we flag the bad points and delete the bad curves. This code is
-called ‘1\_QaQc\_curated\_ACi.R’ and produces the file
-‘1\_QC\_data.Rdata’. This code usually produces a PDF file with a plot
-of each of the A-Ci curves with the good point in dark and the bad
-points in red. You can find some examples in the different dataset
-folders.
+We also include the code used to check the quality of the
+A-C<sub>i</sub> data where we flag the bad points and delete the bad
+curves. This code is called ‘1\_QaQc\_curated\_ACi.R’ and produces the
+file ‘1\_QC\_data.Rdata’. This code usually produces a PDF file with a
+plot of each of the A-C<sub>i</sub> curves with the good point in dark
+and the bad points in red. You can find some examples in the different
+dataset folders.
 
     Aci_data=read.csv(file='Aci_data.csv')
     knitr::kable(Aci_data)
 
 <table>
 <colgroup>
-<col style="width: 4%" />
 <col style="width: 10%" />
 <col style="width: 13%" />
 <col style="width: 8%" />
 <col style="width: 10%" />
-<col style="width: 12%" />
-<col style="width: 6%" />
-<col style="width: 25%" />
+<col style="width: 13%" />
+<col style="width: 7%" />
+<col style="width: 26%" />
 <col style="width: 8%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Column_Names</th>
 <th style="text-align: left;">SampleID</th>
 <th style="text-align: left;">SampleID_num</th>
 <th style="text-align: left;">record</th>
@@ -310,7 +310,6 @@ folders.
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Definition</td>
 <td style="text-align: left;">Identifier of the measured leaf</td>
 <td style="text-align: left;">Integer Identifier of the measured
 leaf</td>
@@ -324,7 +323,6 @@ incident on the leaf in quanta per area</td>
 <td style="text-align: left;">Leaf surface temperature</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Unit</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">Integer</td>
 <td style="text-align: left;">Integer</td>
@@ -337,7 +335,7 @@ incident on the leaf in quanta per area</td>
 </tbody>
 </table>
 
-## Fitting the A\_Ci data to estimate the photosynthetic traits
+## Fitting the A-C<sub>i</sub> data to estimate the photosynthetic traits
 
 Estimation of V<sub>cmax</sub> is done in the ‘2\_Fit\_ACi.R’ code
 included in each dataset folder. This code calls the function
