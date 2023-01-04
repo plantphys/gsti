@@ -68,7 +68,7 @@ knitr::kable(Aci_data)
 ## Fitting the A_Ci data to estimate the photosynthetic traits
 
 Estimation of V<sub>cmax</sub> is done in the '2_Fit_ACi.R' code included in each dataset folder.
-This code calls the function f.fit_Aci() to estimate the photosynthetic parameters Vcmax<sub>25</sub>, J<sub>max25</sub>, TPU<sub>25</sub> and R<sub>day25</sub> from A-C<sub>i</sub> curve.  It produces several pdf files:
+This code calls the function f.fit_Aci() to estimate the photosynthetic parameters V<sub>cmax25</sub>, J<sub>max25</sub>, TPU<sub>25</sub> and R<sub>day25</sub> of the A-C<sub>i</sub> curve.  It produces several pdf files:
 
 -   2_ACi_fitting_Ac.pdf
 
@@ -108,8 +108,8 @@ Spectra=read.csv(file='Spectra.csv',header = TRUE)
 knitr::kable(Spectra)
 ```
 
-Note that the reflectance wavelength stored in the Spectra data should be from 350 nm to 2500 nm with 1 nm interval.
-If you dont have values for 350 nm to 500 nm or from 2400 nm to 2500 nm, you can put NA in those wavelengths. Note that within this column, a vector is stored (see examples for details)
+Note that the Spectra column stores a vector ranging from 350 nm to 2500 nm with a 1 nm interval (see code for storing a vector in a column).
+If you dont have values for 350 nm to 500 nm or from 2400 nm to 2500 nm, you can put NA in those wavelengths.
 
 The columns LMA, Narea and LWC do not neccessary need to be filled if you don't have the data. 
 

@@ -342,8 +342,8 @@ incident on the leaf in quanta per area</td>
 Estimation of V<sub>cmax</sub> is done in the ‘2\_Fit\_ACi.R’ code
 included in each dataset folder. This code calls the function
 f.fit\_Aci() to estimate the photosynthetic parameters
-Vcmax<sub>25</sub>, J<sub>max25</sub>, TPU<sub>25</sub> and
-R<sub>day25</sub> from A-C<sub>i</sub> curve. It produces several pdf
+V<sub>cmax25</sub>, J<sub>max25</sub>, TPU<sub>25</sub> and
+R<sub>day25</sub> of the A-C<sub>i</sub> curve. It produces several pdf
 files:
 
 -   2\_ACi\_fitting\_Ac.pdf
@@ -382,7 +382,6 @@ folowing column:
 
 <table style="width:100%;">
 <colgroup>
-<col style="width: 1%" />
 <col style="width: 3%" />
 <col style="width: 4%" />
 <col style="width: 15%" />
@@ -394,14 +393,13 @@ folowing column:
 <col style="width: 3%" />
 <col style="width: 3%" />
 <col style="width: 2%" />
-<col style="width: 5%" />
+<col style="width: 6%" />
 <col style="width: 3%" />
 <col style="width: 4%" />
-<col style="width: 6%" />
+<col style="width: 7%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Column_Names</th>
 <th style="text-align: left;">SampleID</th>
 <th style="text-align: left;">SampleID_num</th>
 <th style="text-align: left;">Vcmax25</th>
@@ -421,7 +419,6 @@ folowing column:
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Definition</td>
 <td style="text-align: left;">Identifier of the measured leaf</td>
 <td style="text-align: left;">Integer Identifier of the measured
 leaf</td>
@@ -449,7 +446,6 @@ curves</td>
 ‘A-Ci curve’ or ‘One point’</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Unit</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;">Integer</td>
 <td style="text-align: left;">micromol m-2 s-1</td>
@@ -625,11 +621,10 @@ nm</td>
 </tbody>
 </table>
 
-Note that the reflectance wavelength stored in the Spectra data should
-be from 350 nm to 2500 nm with 1 nm interval. If you dont have values
-for 350 nm to 500 nm or from 2400 nm to 2500 nm, you can put NA in those
-wavelengths. Note that within this column, a vector is stored (see
-examples for details)
+Note that the Spectra column stores a vector ranging from 350 nm to 2500
+nm with a 1 nm interval (see code for storing a vector in a column). If
+you dont have values for 350 nm to 500 nm or from 2400 nm to 2500 nm,
+you can put NA in those wavelengths.
 
 The columns LMA, Narea and LWC do not neccessary need to be filled if
 you don’t have the data.
