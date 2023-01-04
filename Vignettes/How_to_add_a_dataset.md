@@ -68,7 +68,8 @@ known.</td>
 ## Adding the gas exchange A-Ci data to the dataset folder
 
 The idea of this project is to include the raw A-Ci data so we can fit
-the curves and estimate Vcmax using the same method for all datasets.
+the curves and estimate V<sub>cmax</sub> using the same method for all
+datasets.
 
 We have requirements for the final A-Ci data to be used by the fitting
 procedure (see table below with the needed column names). However, we
@@ -83,7 +84,8 @@ We made the choice to use the SampleID\_num to facilitate the QAQC of
 the curves and the ploting of the figures (title name).
 
 The A-Ci data should be cleaned from spurious measurements and points
-that would impact Vcmax or Jmax estimation should not be included.
+that would impact V<sub>cmax</sub> or J<sub>max</sub> estimation should
+not be included.
 
 The curated A-Ci data should be present in the dataset folder in a Rdata
 format called ‘1\_QC\_data.Rdata’ which contains the A-Ci data in a
@@ -109,98 +111,58 @@ the quality of the data we tend to remove them from the final curated
 data.
 
     Aci_data=read.csv(file='Aci_data.csv')
-    knitr::kable(Aci_data, "html")
+    knitr::kable(Aci_data)
 
 <table>
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 10%" />
+<col style="width: 13%" />
+<col style="width: 8%" />
+<col style="width: 10%" />
+<col style="width: 12%" />
+<col style="width: 6%" />
+<col style="width: 25%" />
+<col style="width: 8%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:left;">
-Column\_Names
-</th>
-<th style="text-align:left;">
-SampleID
-</th>
-<th style="text-align:left;">
-SampleID\_num
-</th>
-<th style="text-align:left;">
-record
-</th>
-<th style="text-align:left;">
-A
-</th>
-<th style="text-align:left;">
-Ci
-</th>
-<th style="text-align:left;">
-Patm
-</th>
-<th style="text-align:left;">
-Qin
-</th>
-<th style="text-align:left;">
-Tleaf
-</th>
+<tr class="header">
+<th style="text-align: left;">Column_Names</th>
+<th style="text-align: left;">SampleID</th>
+<th style="text-align: left;">SampleID_num</th>
+<th style="text-align: left;">record</th>
+<th style="text-align: left;">A</th>
+<th style="text-align: left;">Ci</th>
+<th style="text-align: left;">Patm</th>
+<th style="text-align: left;">Qin</th>
+<th style="text-align: left;">Tleaf</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-Definition
-</td>
-<td style="text-align:left;">
-Identifier of the measured leaf
-</td>
-<td style="text-align:left;">
-Integer Identifier of the measured leaf
-</td>
-<td style="text-align:left;">
-Observation record number
-</td>
-<td style="text-align:left;">
-Net CO2 exchange per leaf area
-</td>
-<td style="text-align:left;">
-Intercellular CO2 concentration in air
-</td>
-<td style="text-align:left;">
-Atmospheric pressure
-</td>
-<td style="text-align:left;">
-In chamber photosynthetic flux density incident on the leaf in quanta
-per area
-</td>
-<td style="text-align:left;">
-Leaf surface temperature
-</td>
+<tr class="odd">
+<td style="text-align: left;">Definition</td>
+<td style="text-align: left;">Identifier of the measured leaf</td>
+<td style="text-align: left;">Integer Identifier of the measured
+leaf</td>
+<td style="text-align: left;">Observation record number</td>
+<td style="text-align: left;">Net CO2 exchange per leaf area</td>
+<td style="text-align: left;">Intercellular CO2 concentration in
+air</td>
+<td style="text-align: left;">Atmospheric pressure</td>
+<td style="text-align: left;">In chamber photosynthetic flux density
+incident on the leaf in quanta per area</td>
+<td style="text-align: left;">Leaf surface temperature</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Unit
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-Integer
-</td>
-<td style="text-align:left;">
-Integer
-</td>
-<td style="text-align:left;">
-micromol m-2 s-1
-</td>
-<td style="text-align:left;">
-micromol mol-1
-</td>
-<td style="text-align:left;">
-kPa
-</td>
-<td style="text-align:left;">
-micromol m-2 s-1
-</td>
-<td style="text-align:left;">
-degrees celcius
-</td>
+<tr class="even">
+<td style="text-align: left;">Unit</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">micromol m-2 s-1</td>
+<td style="text-align: left;">micromol mol-1</td>
+<td style="text-align: left;">kPa</td>
+<td style="text-align: left;">micromol m-2 s-1</td>
+<td style="text-align: left;">degrees celcius</td>
 </tr>
 </tbody>
 </table>
@@ -238,163 +200,93 @@ This codes produces a dataframe, called Bilan which includes the
 folowing column:
 
     Bilan=read.csv(file='Bilan.csv',header = TRUE)
-    knitr::kable(Bilan, "html")
+    knitr::kable(Bilan)
 
-<table>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 1%" />
+<col style="width: 3%" />
+<col style="width: 4%" />
+<col style="width: 15%" />
+<col style="width: 17%" />
+<col style="width: 10%" />
+<col style="width: 9%" />
+<col style="width: 3%" />
+<col style="width: 3%" />
+<col style="width: 3%" />
+<col style="width: 3%" />
+<col style="width: 2%" />
+<col style="width: 5%" />
+<col style="width: 3%" />
+<col style="width: 4%" />
+<col style="width: 6%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:left;">
-Column\_Names
-</th>
-<th style="text-align:left;">
-SampleID
-</th>
-<th style="text-align:left;">
-SampleID\_num
-</th>
-<th style="text-align:left;">
-Vcmax25
-</th>
-<th style="text-align:left;">
-Jmax25
-</th>
-<th style="text-align:left;">
-TPU25
-</th>
-<th style="text-align:left;">
-Rday25
-</th>
-<th style="text-align:left;">
-StdError\_Vcmax25
-</th>
-<th style="text-align:left;">
-StdError\_Jmax25
-</th>
-<th style="text-align:left;">
-StdError\_TPU25
-</th>
-<th style="text-align:left;">
-StdError\_Rday25
-</th>
-<th style="text-align:left;">
-Tleaf
-</th>
-<th style="text-align:left;">
-sigma
-</th>
-<th style="text-align:left;">
-AIC
-</th>
-<th style="text-align:left;">
-model
-</th>
-<th style="text-align:left;">
-Vcmax\_method
-</th>
+<tr class="header">
+<th style="text-align: left;">Column_Names</th>
+<th style="text-align: left;">SampleID</th>
+<th style="text-align: left;">SampleID_num</th>
+<th style="text-align: left;">Vcmax25</th>
+<th style="text-align: left;">Jmax25</th>
+<th style="text-align: left;">TPU25</th>
+<th style="text-align: left;">Rday25</th>
+<th style="text-align: left;">StdError_Vcmax25</th>
+<th style="text-align: left;">StdError_Jmax25</th>
+<th style="text-align: left;">StdError_TPU25</th>
+<th style="text-align: left;">StdError_Rday25</th>
+<th style="text-align: left;">Tleaf</th>
+<th style="text-align: left;">sigma</th>
+<th style="text-align: left;">AIC</th>
+<th style="text-align: left;">model</th>
+<th style="text-align: left;">Vcmax_method</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-Definition
-</td>
-<td style="text-align:left;">
-Identifier of the measured leaf
-</td>
-<td style="text-align:left;">
-Integer Identifier of the measured leaf
-</td>
-<td style="text-align:left;">
-Maximum rate of carboxylation at the reference temperature 25 degrees
-celcius calculated assuming infinite mesophyl conductance i.e. apparent
-Vcmax
-</td>
-<td style="text-align:left;">
-Maximum rate of electron transport per leaf area at the reference
-temperature 25 degrees celcius calculated assuming infinite mesophyll
-conductance and saturating light
-</td>
-<td style="text-align:left;">
-Triose phosphate utilization rate per leaf area at the reference
-temperature 25 degrees celcius
-</td>
-<td style="text-align:left;">
-CO2 release from the leaf in the light at the reference temperature of
-25 degrees celcius
-</td>
-<td style="text-align:left;">
-Standard error of Vcmax25 estimation
-</td>
-<td style="text-align:left;">
-Standard Error of Jmax25 estimation
-</td>
-<td style="text-align:left;">
-Standard Error of TPU25 estimation
-</td>
-<td style="text-align:left;">
-Standard Error of Rday25 estimation
-</td>
-<td style="text-align:left;">
-Leaf surface temperature
-</td>
-<td style="text-align:left;">
-standard error of the residuals of the fitted A-Ci curve
-</td>
-<td style="text-align:left;">
-Akaike information criterion
-</td>
-<td style="text-align:left;">
-Model used for the fitting of the A-Ci curves
-</td>
-<td style="text-align:left;">
-Method used to estimate Vcmax. Can be ‘A-Ci curve’ or ‘One point’
-</td>
+<tr class="odd">
+<td style="text-align: left;">Definition</td>
+<td style="text-align: left;">Identifier of the measured leaf</td>
+<td style="text-align: left;">Integer Identifier of the measured
+leaf</td>
+<td style="text-align: left;">Maximum rate of carboxylation at the
+reference temperature 25 degrees celcius calculated assuming infinite
+mesophyl conductance i.e. apparent Vcmax</td>
+<td style="text-align: left;">Maximum rate of electron transport per
+leaf area at the reference temperature 25 degrees celcius calculated
+assuming infinite mesophyll conductance and saturating light</td>
+<td style="text-align: left;">Triose phosphate utilization rate per leaf
+area at the reference temperature 25 degrees celcius</td>
+<td style="text-align: left;">CO2 release from the leaf in the light at
+the reference temperature of 25 degrees celcius</td>
+<td style="text-align: left;">Standard error of Vcmax25 estimation</td>
+<td style="text-align: left;">Standard Error of Jmax25 estimation</td>
+<td style="text-align: left;">Standard Error of TPU25 estimation</td>
+<td style="text-align: left;">Standard Error of Rday25 estimation</td>
+<td style="text-align: left;">Leaf surface temperature</td>
+<td style="text-align: left;">standard error of the residuals of the
+fitted A-Ci curve</td>
+<td style="text-align: left;">Akaike information criterion</td>
+<td style="text-align: left;">Model used for the fitting of the A-Ci
+curves</td>
+<td style="text-align: left;">Method used to estimate Vcmax. Can be
+‘A-Ci curve’ or ‘One point’</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Unit
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-Integer
-</td>
-<td style="text-align:left;">
-micromol m-2 s-1
-</td>
-<td style="text-align:left;">
-micromol m-2 s-1
-</td>
-<td style="text-align:left;">
-micromol m-2 s-1
-</td>
-<td style="text-align:left;">
-micromol m-2 s-1
-</td>
-<td style="text-align:left;">
-micromol m-2 s-1
-</td>
-<td style="text-align:left;">
-micromol m-2 s-1
-</td>
-<td style="text-align:left;">
-micromol m-2 s-1
-</td>
-<td style="text-align:left;">
-micromol m-2 s-1
-</td>
-<td style="text-align:left;">
-degrees celcius
-</td>
-<td style="text-align:left;">
-micromol m-2 s-1
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
+<tr class="even">
+<td style="text-align: left;">Unit</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">micromol m-2 s-1</td>
+<td style="text-align: left;">micromol m-2 s-1</td>
+<td style="text-align: left;">micromol m-2 s-1</td>
+<td style="text-align: left;">micromol m-2 s-1</td>
+<td style="text-align: left;">micromol m-2 s-1</td>
+<td style="text-align: left;">micromol m-2 s-1</td>
+<td style="text-align: left;">micromol m-2 s-1</td>
+<td style="text-align: left;">micromol m-2 s-1</td>
+<td style="text-align: left;">degrees celcius</td>
+<td style="text-align: left;">micromol m-2 s-1</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -412,169 +304,99 @@ the code called ‘3\_Combine\_spectra\_traits.R’. This code produces a
 dataframe with as columns:
 
     Spectra=read.csv(file='Spectra.csv',header = TRUE)
-    knitr::kable(Spectra, "html")
+    knitr::kable(Spectra)
 
 <table>
+<colgroup>
+<col style="width: 1%" />
+<col style="width: 3%" />
+<col style="width: 4%" />
+<col style="width: 2%" />
+<col style="width: 4%" />
+<col style="width: 7%" />
+<col style="width: 3%" />
+<col style="width: 5%" />
+<col style="width: 15%" />
+<col style="width: 17%" />
+<col style="width: 9%" />
+<col style="width: 6%" />
+<col style="width: 4%" />
+<col style="width: 2%" />
+<col style="width: 3%" />
+<col style="width: 4%" />
+<col style="width: 1%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:left;">
-Column\_Names
-</th>
-<th style="text-align:left;">
-SampleID
-</th>
-<th style="text-align:left;">
-SampleID\_num
-</th>
-<th style="text-align:left;">
-Dataset
-</th>
-<th style="text-align:left;">
-Species
-</th>
-<th style="text-align:left;">
-Growth\_environment
-</th>
-<th style="text-align:left;">
-Plant\_type
-</th>
-<th style="text-align:left;">
-Vcmax\_method
-</th>
-<th style="text-align:left;">
-Vcmax25
-</th>
-<th style="text-align:left;">
-Jmax25
-</th>
-<th style="text-align:left;">
-TPU25
-</th>
-<th style="text-align:left;">
-Tleaf
-</th>
-<th style="text-align:left;">
-Spectra
-</th>
-<th style="text-align:left;">
-LMA
-</th>
-<th style="text-align:left;">
-Narea
-</th>
-<th style="text-align:left;">
-N
-</th>
-<th style="text-align:left;">
-LWC
-</th>
+<tr class="header">
+<th style="text-align: left;">Column_Names</th>
+<th style="text-align: left;">SampleID</th>
+<th style="text-align: left;">SampleID_num</th>
+<th style="text-align: left;">Dataset</th>
+<th style="text-align: left;">Species</th>
+<th style="text-align: left;">Growth_environment</th>
+<th style="text-align: left;">Plant_type</th>
+<th style="text-align: left;">Vcmax_method</th>
+<th style="text-align: left;">Vcmax25</th>
+<th style="text-align: left;">Jmax25</th>
+<th style="text-align: left;">TPU25</th>
+<th style="text-align: left;">Tleaf</th>
+<th style="text-align: left;">Spectra</th>
+<th style="text-align: left;">LMA</th>
+<th style="text-align: left;">Narea</th>
+<th style="text-align: left;">N</th>
+<th style="text-align: left;">LWC</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-Definition
-</td>
-<td style="text-align:left;">
-Identifier of the measured leaf
-</td>
-<td style="text-align:left;">
-Integer Identifier of the measured leaf
-</td>
-<td style="text-align:left;">
-Name of the dataset folder
-</td>
-<td style="text-align:left;">
-Full species name for example Cecropia insignis
-</td>
-<td style="text-align:left;">
-Growth environment for the measured plant (Natural, Glasshouse, Managed)
-</td>
-<td style="text-align:left;">
-Type of plant (Wild or Agricultural)
-</td>
-<td style="text-align:left;">
-Method used to estimate Vcmax (A-Ci curve or One point)
-</td>
-<td style="text-align:left;">
-Maximum rate of carboxylation at the reference temperature 25 degrees
-celcius calculated assuming infinite mesophyl conductance i.e. apparent
-Vcmax
-</td>
-<td style="text-align:left;">
-Maximum rate of electron transport per leaf area at the reference
-temperature 25 degrees celcius calculated assuming infinite mesophyll
-conductance and saturating light
-</td>
-<td style="text-align:left;">
-Triose phosphate utilization rate per leaf area at the reference
-temperature 25 degrees celcius
-</td>
-<td style="text-align:left;">
-Leaf surface temperature during the gas exchange measurements
-</td>
-<td style="text-align:left;">
-Reflectrance spectra from 350 nm to 2500 nm
-</td>
-<td style="text-align:left;">
-Leaf mass per surface area
-</td>
-<td style="text-align:left;">
-Nitrogen content per surface area
-</td>
-<td style="text-align:left;">
-Nitrogen content in percentage of dry mass
-</td>
-<td style="text-align:left;">
-Leaf water content
-</td>
+<tr class="odd">
+<td style="text-align: left;">Definition</td>
+<td style="text-align: left;">Identifier of the measured leaf</td>
+<td style="text-align: left;">Integer Identifier of the measured
+leaf</td>
+<td style="text-align: left;">Name of the dataset folder</td>
+<td style="text-align: left;">Full species name for example Cecropia
+insignis</td>
+<td style="text-align: left;">Growth environment for the measured plant
+(Natural, Glasshouse, Managed)</td>
+<td style="text-align: left;">Type of plant (Wild or Agricultural)</td>
+<td style="text-align: left;">Method used to estimate Vcmax (A-Ci curve
+or One point)</td>
+<td style="text-align: left;">Maximum rate of carboxylation at the
+reference temperature 25 degrees celcius calculated assuming infinite
+mesophyl conductance i.e. apparent Vcmax</td>
+<td style="text-align: left;">Maximum rate of electron transport per
+leaf area at the reference temperature 25 degrees celcius calculated
+assuming infinite mesophyll conductance and saturating light</td>
+<td style="text-align: left;">Triose phosphate utilization rate per leaf
+area at the reference temperature 25 degrees celcius</td>
+<td style="text-align: left;">Leaf surface temperature during the gas
+exchange measurements</td>
+<td style="text-align: left;">Reflectrance spectra from 350 nm to 2500
+nm</td>
+<td style="text-align: left;">Leaf mass per surface area</td>
+<td style="text-align: left;">Nitrogen content per surface area</td>
+<td style="text-align: left;">Nitrogen content in percentage of dry
+mass</td>
+<td style="text-align: left;">Leaf water content</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Unit
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-Integer
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-micromol m-2 s-1
-</td>
-<td style="text-align:left;">
-micromol m-2 s-1
-</td>
-<td style="text-align:left;">
-micromol m-2 s-1
-</td>
-<td style="text-align:left;">
-Degrees celcius
-</td>
-<td style="text-align:left;">
-percent 0 - 100
-</td>
-<td style="text-align:left;">
-g m-2
-</td>
-<td style="text-align:left;">
-g m-2
-</td>
-<td style="text-align:left;">
-percent 0 - 100
-</td>
-<td style="text-align:left;">
-percent 0 - 100
-</td>
+<tr class="even">
+<td style="text-align: left;">Unit</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">micromol m-2 s-1</td>
+<td style="text-align: left;">micromol m-2 s-1</td>
+<td style="text-align: left;">micromol m-2 s-1</td>
+<td style="text-align: left;">Degrees celcius</td>
+<td style="text-align: left;">percent 0 - 100</td>
+<td style="text-align: left;">g m-2</td>
+<td style="text-align: left;">g m-2</td>
+<td style="text-align: left;">percent 0 - 100</td>
+<td style="text-align: left;">percent 0 - 100</td>
 </tr>
 </tbody>
 </table>
