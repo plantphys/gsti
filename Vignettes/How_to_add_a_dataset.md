@@ -341,8 +341,10 @@ incident on the leaf in quanta per area</td>
 
 Estimation of V<sub>cmax</sub> is done in the ‘2\_Fit\_ACi.R’ code
 included in each dataset folder. This code calls the function
-f.fit\_Aci() to estimate the photosynthetic parameters Vcmax25, Jmax25,
-TPU25 and Rday25 from A-Ci curve. It produces several pdf files:
+f.fit\_Aci() to estimate the photosynthetic parameters
+Vcmax<sub>25</sub>, J<sub>max25</sub>, TPU<sub>25</sub> and
+R<sub>day25</sub> from A-C<sub>i</sub> curve. It produces several pdf
+files:
 
 -   2\_ACi\_fitting\_Ac.pdf
 
@@ -354,15 +356,21 @@ and
 
 -   2\_ACi\_fitting\_best\_model.pdf
 
-The first three pdf shows the fitting of each A-Ci curves when including
-the rate of maximum carboxylation (Ac), the rate of electron transport
-(Aj) and the rate of triose phosphate utilisation (Ap). The best model
-corresponds to the model with the lowest AIC that includes Ac or Ac + Aj
-or Ac + Aj + Ap. Note that if the models with the best AIC is the one
-only including Ac, then Vcmax25 and Rday25 are the only parameters
-estimated. If the model with the best AIC is Ac + Aj, then Jmax25 is
-also estimated. TPU25 is estimated if Ac, Aj and Ap are limiting. In all
-cases, transition between the Ac, Aj and Ap rates is determined
+The first three pdf shows the fitting of each A-C<sub>i</sub> curves
+when including the rate of maximum carboxylation (A<sub>c</sub>), the
+rate of electron transport (A<sub>j</sub>) and the rate of triose
+phosphate utilisation (A<sub>p</sub>).
+
+The best model corresponds to the model with the lowest AIC that
+includes A<sub>c</sub> or A<sub>c</sub> + A<sub>j</sub> or
+A<sub>c</sub> + A<sub>j</sub> + A<sub>p</sub>. Note that if the models
+with the best AIC is the one only including A<sub>c</sub>, then
+V<sub>cmax25</sub> and R<sub>day25</sub> are the only parameters
+estimated. If the model with the best AIC is A<sub>c</sub> +
+A<sub>j</sub>, then J<sub>max25</sub> is also estimated.
+TPU<sub>25</sub> is estimated if A<sub>c</sub>, A<sub>j</sub> and
+A<sub>p</sub> are limiting. In all cases, transition between the
+A<sub>c</sub>, A<sub>j</sub>, and A<sub>p</sub> rates is determined
 automatically by the fitting procedure to avoid manual and somehow
 subjective choices in the transitions.
 
@@ -461,11 +469,18 @@ curves</td>
 </tbody>
 </table>
 
-It is also possible to estimate Vcmax25 by the one point method (De
-Kauwe et al. 2016; Burnett et al. 2019). In that case, the measurements
-should be done at saturating irradiance in ambient CO2 conditions. You
-can use the function f.fit\_One\_Point() to estimate Vcmax25. It will
-produce the exact same data frame as when using the function f.fit\_Aci.
+It is also possible to estimate V<sub>cmax25</sub> by the one point
+method (De Kauwe et al. 2016; Burnett et al. 2019). In that case, the
+measurements should be done at saturating irradiance in ambient
+CO<sub>2</sub> conditions. You can use the function f.fit\_One\_Point()
+to estimate V<sub>cmax25</sub>. It will produce the exact same data
+frame as when using the function f.fit\_Aci.
+
+Importantly, the same temperature correction is used for all the
+datasets to estimate the parameters at 25°C. Since the Tleaf is also
+given in the output of the table, it will be possible to re estimate the
+parameters at the leaf temperature and to try other temperature
+dependence parametrization if needed.
 
 ## Adding the leaf spectra data and the leaf sample information
 
