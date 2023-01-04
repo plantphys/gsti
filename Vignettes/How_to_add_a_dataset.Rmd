@@ -25,11 +25,11 @@ knitr::kable(Description)
 
 ## Adding the gas exchange A-Ci data to the dataset folder
 
-The idea of this project is to include the raw A-Ci data so we can fit the curves and estimate Vcmax using the same method for all datasets.
+The idea of this project is to include the raw A-Ci data so we can fit the curves and estimate V<sub>cmax</sub> using the same method for all datasets.
 
 We have requirements for the final A-Ci data to be used by the fitting procedure (see table below with the needed column names). However, we don't have hard requirements in the way to obtain this final data. Note that the SampleID_num column will be used by the fitting procedure to identify individual A-Ci curves. If you made several A-Ci curves on the same leaf we recommend to only keep the best one. We decided to use a column SampleID and a column SampleID_num. SampleID should correspond to the original identifier of the leaves in the raw dataset which is often a complex string. The column SampleID_num should be an integer. We made the choice to use the SampleID_num to facilitate the QAQC of the curves and the ploting of the figures (title name). 
 
-The A-Ci data should be cleaned from spurious measurements and points that would impact Vcmax or Jmax estimation should not be included. 
+The A-Ci data should be cleaned from spurious measurements and points that would impact V<sub>cmax</sub> or J<sub>max</sub> estimation should not be included. 
 
 The curated A-Ci data should be present in the dataset folder in a Rdata format called '1_QC_data.Rdata' which contains the A-Ci data in a data.frame with at least the columns listed in the table below.
 
@@ -41,7 +41,7 @@ We are usually quite severe on the quality analysis to only keep the curves wher
 
 ```{r}
 Aci_data=read.csv(file='Aci_data.csv')
-knitr::kable(Aci_data, "html")
+knitr::kable(Aci_data)
 ```
 
 
@@ -67,7 +67,7 @@ This codes produces a dataframe, called Bilan which includes the folowing column
 
 ```{r}
 Bilan=read.csv(file='Bilan.csv',header = TRUE)
-knitr::kable(Bilan, "html")
+knitr::kable(Bilan)
 ```
 It is also possible to estimate Vcmax25 by the one point method (De Kauwe et al. 2016; Burnett et al. 2019).
 In that case, the measurements should be done at saturating irradiance in ambient CO2 conditions. You can use the function f.fit_One_Point() to estimate Vcmax25. It will produce the exact same data frame as when using the function f.fit_Aci.
@@ -81,7 +81,7 @@ This code produces a dataframe with as columns:
 
 ```{r}
 Spectra=read.csv(file='Spectra.csv',header = TRUE)
-knitr::kable(Spectra, "html")
+knitr::kable(Spectra)
 ```
 
 Note that the reflectance wavelength stored in the Spectra data should be from 350 nm to 2500 nm with 1 nm interval.
