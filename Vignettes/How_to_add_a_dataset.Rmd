@@ -20,7 +20,7 @@ If you have different sites on the same dataset with wide difference in position
 
 ```{r}
 Description=read.csv(file='Description.csv')
-knitr::kable(Description, "html")
+knitr::kable(Description)
 ```
 
 ## Adding the gas exchange A-Ci data to the dataset folder

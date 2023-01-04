@@ -20,64 +20,47 @@ difference in positions that makes a difference on a world map, you can
 add several rows to your Description.csv file
 
     Description=read.csv(file='Description.csv')
-    knitr::kable(Description, "html")
+    knitr::kable(Description)
 
 <table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 13%" />
+<col style="width: 20%" />
+<col style="width: 14%" />
+<col style="width: 6%" />
+<col style="width: 12%" />
+<col style="width: 13%" />
+<col style="width: 10%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:left;">
-Authors
-</th>
-<th style="text-align:left;">
-Acknowledgment
-</th>
-<th style="text-align:left;">
-Dataset\_DOI
-</th>
-<th style="text-align:left;">
-Publication\_Citation
-</th>
-<th style="text-align:left;">
-Email
-</th>
-<th style="text-align:left;">
-Lat
-</th>
-<th style="text-align:left;">
-Long
-</th>
-<th style="text-align:left;">
-Elevation
-</th>
+<tr class="header">
+<th style="text-align: left;">Authors</th>
+<th style="text-align: left;">Acknowledgment</th>
+<th style="text-align: left;">Dataset_DOI</th>
+<th style="text-align: left;">Publication_Citation</th>
+<th style="text-align: left;">Email</th>
+<th style="text-align: left;">Lat</th>
+<th style="text-align: left;">Long</th>
+<th style="text-align: left;">Elevation</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-List of authors of the dataset
-</td>
-<td style="text-align:left;">
-Acknowledgement of funding and help to generate the dataset
-</td>
-<td style="text-align:left;">
-Digital Object Identifier (DOI) associated with the dataset if the
-dataset was published
-</td>
-<td style="text-align:left;">
-Full citation associated with the paper that uses the dataset
-</td>
-<td style="text-align:left;">
-Contact email for the dataset
-</td>
-<td style="text-align:left;">
-Latitude of the dataset site study in decimal units (Y)
-</td>
-<td style="text-align:left;">
-Longitude of the dataset site study in decimals units (X)
-</td>
-<td style="text-align:left;">
-Elevation of the dataset site study if known.
-</td>
+<tr class="odd">
+<td style="text-align: left;">List of authors of the dataset</td>
+<td style="text-align: left;">Acknowledgement of funding and help to
+generate the dataset</td>
+<td style="text-align: left;">Digital Object Identifier (DOI) associated
+with the dataset if the dataset was published</td>
+<td style="text-align: left;">Full citation associated with the paper
+that uses the dataset</td>
+<td style="text-align: left;">Contact email for the dataset</td>
+<td style="text-align: left;">Latitude of the dataset site study in
+decimal units (Y)</td>
+<td style="text-align: left;">Longitude of the dataset site study in
+decimals units (X)</td>
+<td style="text-align: left;">Elevation of the dataset site study if
+known.</td>
 </tr>
 </tbody>
 </table>
@@ -282,6 +265,18 @@ TPU25
 Rday25
 </th>
 <th style="text-align:left;">
+StdError\_Vcmax25
+</th>
+<th style="text-align:left;">
+StdError\_Jmax25
+</th>
+<th style="text-align:left;">
+StdError\_TPU25
+</th>
+<th style="text-align:left;">
+StdError\_Rday25
+</th>
+<th style="text-align:left;">
 Tleaf
 </th>
 <th style="text-align:left;">
@@ -328,6 +323,18 @@ CO2 release from the leaf in the light at the reference temperature of
 25 degrees celcius
 </td>
 <td style="text-align:left;">
+Standard error of Vcmax25 estimation
+</td>
+<td style="text-align:left;">
+Standard Error of Jmax25 estimation
+</td>
+<td style="text-align:left;">
+Standard Error of TPU25 estimation
+</td>
+<td style="text-align:left;">
+Standard Error of Rday25 estimation
+</td>
+<td style="text-align:left;">
 Leaf surface temperature
 </td>
 <td style="text-align:left;">
@@ -351,6 +358,18 @@ Unit
 </td>
 <td style="text-align:left;">
 Integer
+</td>
+<td style="text-align:left;">
+micromol m-2 s-1
+</td>
+<td style="text-align:left;">
+micromol m-2 s-1
+</td>
+<td style="text-align:left;">
+micromol m-2 s-1
+</td>
+<td style="text-align:left;">
+micromol m-2 s-1
 </td>
 <td style="text-align:left;">
 micromol m-2 s-1
