@@ -1,0 +1,14 @@
+﻿Column_or_Row_Name,Unit,Definition,Data_Type
+SampleID,NA,Sample Identifier,text
+date,YYYY-MM-DD,Date of observation,text
+A,µmol m^-2 s^-1,Net CO₂ exchange per leaf area,numeric
+gsw,mmol m^-2 s^-1,Stomatal conductance to water vapor per leaf area,numeric
+Ci,µmol mol^-1,"Intercellular CO₂ concentration in air	",numeric
+Qin,µmol m^-2 s^-1,"in-chamber photosynthetic flux density (PPFD) incident on the leaf, quanta per area	",numeric
+VPDleaf,kPa,Leaf to air vapor pressure deficit,numeric
+Tair,°C,"Air temperature inside the chamber	",numeric
+RHs,%,Relative humidity of air inside the chamber,numeric
+Tleaf,°C,Leaf surface temperature,numeric
+CO2s,µmol mol^-1,CO₂ concentration in wet air inside chamber,numeric
+Patm,kPa,Atmospheric pressure,numeric
+E,mol m^-2 s^-1,Transpiration rate of H₂O per leaf area,numeric
