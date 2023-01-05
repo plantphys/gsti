@@ -45,6 +45,11 @@ knitr::kable(Biomes)
 A file called SampleDetails.csv also has to be included with at the column listed below. More columns can be added if necessary.
 Importantly, the Site_name has to be consistent with the Site_name written in the Site.csv file and the SampleID will have to be consistent with the identifier used for the gas exchange and for the spectra as the SampleId will be used to merge all the different data.
 
+The columns LMA, Narea and LWC do not necessary need to be filled if you don't have the data.
+
+For the species name, please write "Genus species", for exemple Cercropia insignis. If you know the genus but not the species, write for example "Cecropia species". If you dont know the genus, write "Family genus" for example (Urticaceae genus). If you don't know anything, well you can write "Unknown".
+
+
 You can use a R code or another way to create this file. If you use a R code, we recommend to leave it within the dataset folder and to call it "3_Import_transform_sample_info.R".
 
 ```{r}
@@ -108,24 +113,24 @@ In that case, the measurements should be done at saturating irradiance in ambien
 Importantly, the same temperature correction is used for all the datasets to estimate the parameters at 25°C. Since the Tleaf is also given in the output of the table, it will be possible to re estimate the parameters at the leaf temperature and to try other temperature dependence parametrization if needed.
 
 ## Adding the leaf spectra data
-!!! TO UPDATE !!!
+
+The spectral information should be a full range reflectance measurement (350 nm to 2500 nm) with a 1 nm resolution
+If you don't have values for all the wavelengths (for example from 350 nm to 500 nm or from 2400 nm to 2500 nm), you can put NA in those wavelengths. 
+
+A code "3_Import_transform_reflectance.R" should be used to create a R data frame file called "3_Reflectance_data.Rdata" with two columns: 
+* SampleID which has to be consistent with the previous files for each leaf,
+* spectra, which is a matrix with the reflectance in column (expressed in percent from 0 to 100).
+
+We use a matrix in the column spectra as in the pls package (Mevik & Wehrens, 2007). More information is given in the "pls" package documentation and manual (https://cran.r-project.org/web/packages/pls/vignettes/pls-manual.pdf)
+
+Bjørn-Helge Mevik and Ron Wehrens. The pls package: Principal component and partial
+least squares regression in R. Journal of Statistical Software, 18(2):1–24, 2007.
+
+
 
 ## Merging the leaf information
-!!! TO UPDATE !!!
 
-We merge the fitted parameters, the spectra and the leaf information in the code called '4_Combine_spectra_traits.R'.
-This code produces a dataframe with the folowing columns:
+We merge the fitted parameters, the spectra and the leaf information in the code called '4_Combine_spectra_traits.R' that produces a Rdata file called "4_Spectra_traits.Rdata".
 
-
-```{r}
-Spectra=read.csv(file='Spectra.csv',header = TRUE)
-knitr::kable(Spectra)
-```
-
-Note that the Spectra column stores a vector ranging from 350 nm to 2500 nm with a 1 nm interval (see code for storing a vector in a column).
-If you dont have values for 350 nm to 500 nm or from 2400 nm to 2500 nm, you can put NA in those wavelengths.
-
-The columns LMA, Narea and LWC do not neccessary need to be filled if you don't have the data. 
-
-For the species name, please write "Genus species", for exemple Cercropia insignis. If you know the genus but not the species, write for example "Cecropia species". If you dont know the genus, write "Family genus" for example (Urticaceae genus). If you don't know anything, well you can write "Unknown".
+The function "f.Check_data()" can be used to validate that the format of the data is correct (i.e that the required variables are present in the merged data and that the values are within a reasonable range).
 
