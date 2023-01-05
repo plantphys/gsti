@@ -155,5 +155,5 @@ f.fit_One_Point<-function(measures,param){
   Km=Kc*(1+param[['O2']]/Ko)
   Vcmax=measures$A/((measures$Ci-Gstar)/(measures$Ci+Km)-0.015)
   VcmaxRef=f.modified.arrhenius.inv(P = Vcmax,Ha = param[['VcmaxHa']],Hd = param[['VcmaxHd']],s = param[['VcmaxS']],Tleaf = measures$Tleaf,TRef = 273.16+25)
-  return(data.frame(sigma=NA,JmaxRef=NA,VcmaxRef=VcmaxRef,TpRef=NA,RdRef=NA,StdError_sigma=NA,StdError_JmaxRef=NA,StdError_VcmaxRef=VcmaxRef,StdError_TpRef=NA,StdError_RdRef=NA,AIC=NA,Tleaf=measures$Tleaf,SampleID_num=measures$SampleID_num,model=NA,Vcmax_method='One point'))
+  return(data.frame(sigma=NA,JmaxRef=NA,VcmaxRef=VcmaxRef,TpRef=NA,RdRef=NA,StdError_sigma=NA,StdError_JmaxRef=NA,StdError_VcmaxRef=NA,StdError_TpRef=NA,StdError_RdRef=NA,AIC=NA,Tleaf=measures$Tleaf,SampleID_num=measures$SampleID_num,model=NA,Vcmax_method='One point'))
 }
