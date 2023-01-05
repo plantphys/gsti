@@ -76,7 +76,8 @@ A file called Site.csv also has to be included with the column listed
 below.The latitude and longitude coordinates will be used to position
 the dataset on a world map. If you have different sites on the same
 dataset with wide difference in positions that makes a difference on a
-world map, you can add several rows to your Description.csv file.
+world map or if this include different biomes, you can add several rows
+to your Site.csv file.
 
     Site=read.csv(file='Site.csv')
     knitr::kable(Site)
@@ -229,8 +230,93 @@ scrub</td>
 <td style="text-align: right;">18</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Bioindustrial Ecosystems</td>
+<td style="text-align: left;">Other Managed Ecosystems</td>
 <td style="text-align: right;">19</td>
+</tr>
+</tbody>
+</table>
+
+### Adding a leaf sample information description csv file
+
+A file called SampleDetails.csv also has to be included with at the
+column listed below. More columns can be added if necessary.
+Importantly, the Site\_name has to be consistent with the Site\_name
+written in the Site.csv file and the SampleID will have to be consistent
+with the identifier used for the gas exchange and for the spectra as the
+SampleId will be used to merge all the different data.
+
+You can use a R code or another way to create this file. If you use a R
+code, we recommend to leave it within the dataset folder and to call it
+“3\_Import\_transform\_sample\_info.R”.
+
+    Biomes=read.csv(file='SampleDetails.csv')
+    knitr::kable(Biomes)
+
+<table>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 9%" />
+<col style="width: 23%" />
+<col style="width: 6%" />
+<col style="width: 15%" />
+<col style="width: 6%" />
+<col style="width: 9%" />
+<col style="width: 8%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">SampleID</th>
+<th style="text-align: left;">Species</th>
+<th style="text-align: left;">Sun_Shade</th>
+<th style="text-align: left;">Plant_type</th>
+<th style="text-align: left;">Soil</th>
+<th style="text-align: left;">LMA</th>
+<th style="text-align: left;">Narea</th>
+<th style="text-align: left;">Nmass</th>
+<th style="text-align: left;">LWC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Identifier of the measured leaf</td>
+<td style="text-align: left;">Full species name, for example Cecropia
+insignis</td>
+<td style="text-align: left;">Was the leaf at the top of the canopy and
+usually receiving light (sun) or a shaded leaf? Chose between Sun, Shade
+or leave empty</td>
+<td style="text-align: left;">Chose between Wild or Agricultural</td>
+<td style="text-align: left;">Please chose between natural ground, pot,
+or managed ground (Natural, Pot, Managed)</td>
+<td style="text-align: left;">Leaf dry mass per unit area in g m-2</td>
+<td style="text-align: left;">Nitrogen content of leaf per unit leaf
+area in g m-2</td>
+<td style="text-align: left;">Nitrogen content of leaf by dry mass in mg
+g-1</td>
+<td style="text-align: left;">Leaf water content. Percent water content
+of fresh leaf by mass in % (0-100)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BNL20202</td>
+<td style="text-align: left;">Cecropia insignis</td>
+<td style="text-align: left;">Sun</td>
+<td style="text-align: left;">Wild</td>
+<td style="text-align: left;">Natural</td>
+<td style="text-align: left;">90.24</td>
+<td style="text-align: left;">2.35</td>
+<td style="text-align: left;">2.6</td>
+<td style="text-align: left;">62</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BNL10101</td>
+<td style="text-align: left;">Cucurbit pepo</td>
+<td style="text-align: left;">Sun</td>
+<td style="text-align: left;">Agricultural</td>
+<td style="text-align: left;">Pot</td>
+<td style="text-align: left;">118.65</td>
+<td style="text-align: left;">2.59</td>
+<td style="text-align: left;">2.18</td>
+<td style="text-align: left;">70</td>
 </tr>
 </tbody>
 </table>
@@ -476,10 +562,16 @@ given in the output of the table, it will be possible to re estimate the
 parameters at the leaf temperature and to try other temperature
 dependence parametrization if needed.
 
-## Adding the leaf spectra data and the leaf sample information
+## Adding the leaf spectra data
+
+!!! TO UPDATE !!!
+
+## Merging the leaf information
+
+!!! TO UPDATE !!!
 
 We merge the fitted parameters, the spectra and the leaf information in
-the code called ‘3\_Combine\_spectra\_traits.R’. This code produces a
+the code called ‘4\_Combine\_spectra\_traits.R’. This code produces a
 dataframe with the folowing columns:
 
     Spectra=read.csv(file='Spectra.csv',header = TRUE)

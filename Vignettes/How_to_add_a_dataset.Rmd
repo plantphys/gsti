@@ -26,7 +26,7 @@ knitr::kable(Description)
 ### Adding a site description csv file
 
 A file called Site.csv also has to be included with the column listed below.The latitude and longitude coordinates will be used to position the dataset on a world map.
-If you have different sites on the same dataset with wide difference in positions that makes a difference on a world map, you can add several rows to your Description.csv file.
+If you have different sites on the same dataset with wide difference in positions that makes a difference on a world map or if this include different biomes, you can add several rows to your Site.csv file.
 
 ```{r}
 Site=read.csv(file='Site.csv')
@@ -40,6 +40,17 @@ Biomes=read.csv(file='Biomes.csv')
 knitr::kable(Biomes)
 ```
 
+### Adding a leaf sample information description csv file
+
+A file called SampleDetails.csv also has to be included with at the column listed below. More columns can be added if necessary.
+Importantly, the Site_name has to be consistent with the Site_name written in the Site.csv file and the SampleID will have to be consistent with the identifier used for the gas exchange and for the spectra as the SampleId will be used to merge all the different data.
+
+You can use a R code or another way to create this file. If you use a R code, we recommend to leave it within the dataset folder and to call it "3_Import_transform_sample_info.R".
+
+```{r}
+Biomes=read.csv(file='SampleDetails.csv')
+knitr::kable(Biomes)
+```
 
 
 ## Adding the gas exchange A-C<sub>i</sub> data to the dataset folder
@@ -96,10 +107,13 @@ In that case, the measurements should be done at saturating irradiance in ambien
 
 Importantly, the same temperature correction is used for all the datasets to estimate the parameters at 25°C. Since the Tleaf is also given in the output of the table, it will be possible to re estimate the parameters at the leaf temperature and to try other temperature dependence parametrization if needed.
 
-## Adding the leaf spectra data and the leaf sample information
+## Adding the leaf spectra data
+!!! TO UPDATE !!!
 
+## Merging the leaf information
+!!! TO UPDATE !!!
 
-We merge the fitted parameters, the spectra and the leaf information in the code called '3_Combine_spectra_traits.R'.
+We merge the fitted parameters, the spectra and the leaf information in the code called '4_Combine_spectra_traits.R'.
 This code produces a dataframe with the folowing columns:
 
 
