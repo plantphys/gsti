@@ -1,7 +1,7 @@
 library(here)
 library(readxl)
 path=here()
-## I downloaded this dataset from : 
+## I downloaded this dataset from : https://ngee-arctic.ornl.gov/data/pages/NGA215.html
 
 source(paste(path,'/R/Correspondance_tables_ESS.R',sep=''))
 setwd(paste(path,'/Datasets/Rogers_et_al_2020',sep=''))

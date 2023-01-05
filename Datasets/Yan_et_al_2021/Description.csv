@@ -1,4 +1,4 @@
-Authors,Acknowledgment,Dataset_DOI,Publication_Citation,Email,Lat,Long,Elevation
+Authors,Acknowledgment,Dataset_DOI,Publication_Citation,Email
 "Zhengbing Yan, Zhengfei Guo, Shawn P. Serbin, Guangqin Song, Yingyi Zhao, Yang Chen, Shengbiao Wu, Jing Wang, Xin Wang, Jing Li, Bin Wang, Yuntao Wu, Yanjun Su, Han Wang, Alistair Rogers, Lingli Liu, Jin Wu","J Wu, ZY, ZG, GS, YZ, YC, SW, and J Wang were supported by
 National Natural Science Foundation of China (nos. 31922090,
 31901086), the Research Grants Council Early Career
@@ -12,32 +12,4 @@ Science, and through the United States Department of Energy contract (no. DE-SC0
 The authors would like to thank the National Forest Ecosystem
 Research Stations at Xishuangbanna, Guanhua Dai and Jinlong
 Dong for canopy crane access assistance, thanks to Leung Kit Sum
-for providing help in laboratory chemical analyses of leaf samples.",,"Yan, Z., Guo, Z., Serbin, S.P., Song, G., Zhao, Y., Chen, Y., Wu, S., Wang, J., Wang, X., Li, J., Wang, B., Wu, Y., Su, Y., Wang, H., Rogers, A., Liu, L. and Wu, J. (2021), Spectroscopy outperforms leaf trait relationships for predicting photosynthetic capacity across different forest types. New Phytol, 232: 134-147. https://doi.org/10.1111/nph.17579",jinwu@hku.hk,42.4,128.1,
-"Zhengbing Yan, Zhengfei Guo, Shawn P. Serbin, Guangqin Song, Yingyi Zhao, Yang Chen, Shengbiao Wu, Jing Wang, Xin Wang, Jing Li, Bin Wang, Yuntao Wu, Yanjun Su, Han Wang, Alistair Rogers, Lingli Liu, Jin Wu","J Wu, ZY, ZG, GS, YZ, YC, SW, and J Wang were supported by
-National Natural Science Foundation of China (nos. 31922090,
-31901086), the Research Grants Council Early Career
-Scheme (no. 27306020) and Seed Fund for Basic Research
-(no. 201905159005). ZY was in part supported by the Division of
-Ecology and Biodiversity PDF research award. AR and SPS were
-supported by the Next-Generation Ecosystem Experiments (NGEE
-Tropics) project that is supported by the Office of Biological and
-Environmental Research in the Department of Energy, Office of
-Science, and through the United States Department of Energy contract (no. DE-SC0012704) to Brookhaven National Laboratory.
-The authors would like to thank the National Forest Ecosystem
-Research Stations at Xishuangbanna, Guanhua Dai and Jinlong
-Dong for canopy crane access assistance, thanks to Leung Kit Sum
-for providing help in laboratory chemical analyses of leaf samples.",,"Yan, Z., Guo, Z., Serbin, S.P., Song, G., Zhao, Y., Chen, Y., Wu, S., Wang, J., Wang, X., Li, J., Wang, B., Wu, Y., Su, Y., Wang, H., Rogers, A., Liu, L. and Wu, J. (2021), Spectroscopy outperforms leaf trait relationships for predicting photosynthetic capacity across different forest types. New Phytol, 232: 134-147. https://doi.org/10.1111/nph.17579",jinwu@hku.hk,23.166667,112.533333,
-"Zhengbing Yan, Zhengfei Guo, Shawn P. Serbin, Guangqin Song, Yingyi Zhao, Yang Chen, Shengbiao Wu, Jing Wang, Xin Wang, Jing Li, Bin Wang, Yuntao Wu, Yanjun Su, Han Wang, Alistair Rogers, Lingli Liu, Jin Wu","J Wu, ZY, ZG, GS, YZ, YC, SW, and J Wang were supported by
-National Natural Science Foundation of China (nos. 31922090,
-31901086), the Research Grants Council Early Career
-Scheme (no. 27306020) and Seed Fund for Basic Research
-(no. 201905159005). ZY was in part supported by the Division of
-Ecology and Biodiversity PDF research award. AR and SPS were
-supported by the Next-Generation Ecosystem Experiments (NGEE
-Tropics) project that is supported by the Office of Biological and
-Environmental Research in the Department of Energy, Office of
-Science, and through the United States Department of Energy contract (no. DE-SC0012704) to Brookhaven National Laboratory.
-The authors would like to thank the National Forest Ecosystem
-Research Stations at Xishuangbanna, Guanhua Dai and Jinlong
-Dong for canopy crane access assistance, thanks to Leung Kit Sum
-for providing help in laboratory chemical analyses of leaf samples.",,"Yan, Z., Guo, Z., Serbin, S.P., Song, G., Zhao, Y., Chen, Y., Wu, S., Wang, J., Wang, X., Li, J., Wang, B., Wu, Y., Su, Y., Wang, H., Rogers, A., Liu, L. and Wu, J. (2021), Spectroscopy outperforms leaf trait relationships for predicting photosynthetic capacity across different forest types. New Phytol, 232: 134-147. https://doi.org/10.1111/nph.17579",jinwu@hku.hk,21.783333,101.05,
+for providing help in laboratory chemical analyses of leaf samples.",,"Yan, Z., Guo, Z., Serbin, S.P., Song, G., Zhao, Y., Chen, Y., Wu, S., Wang, J., Wang, X., Li, J., Wang, B., Wu, Y., Su, Y., Wang, H., Rogers, A., Liu, L. and Wu, J. (2021), Spectroscopy outperforms leaf trait relationships for predicting photosynthetic capacity across different forest types. New Phytol, 232: 134-147. https://doi.org/10.1111/nph.17579",jinwu@hku.hk
