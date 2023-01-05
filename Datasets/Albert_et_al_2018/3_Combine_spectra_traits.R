@@ -8,10 +8,11 @@ load(file.path(here(),'Datasets/Albert_et_al_2018/2_Result_ACi_fitting.Rdata'),v
 spectra=merge(x=spectra,y=Bilan,by.x = 'BR_UID',by.y='SampleID')
 WV=colnames(spectra[,11:2161])
 WV=as.numeric(substr(WV,2,10))
-
-
+spectra[spectra$Growth.Environment=="Sunlit","Sun_Shade"]="Sun"
+spectra[spectra$Growth.Environment=="Shaded","Sun_Shade"]="Shade"
 spectra=data.frame(SampleID=spectra$BR_UID,
-                        dataset='Albert_et_al_2018',
+                        Dataset='Albert_et_al_2018',
+                        Site_name="TNF",
                         Species=spectra$Species,
                         N_pc=NA,
                         Na=NA,
