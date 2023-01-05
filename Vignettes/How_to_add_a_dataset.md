@@ -584,10 +584,13 @@ all the wavelengths (for example from 350 nm to 500 nm or from 2400 nm
 to 2500 nm), you can put NA in those wavelengths.
 
 A code “Import\_transform\_reflectance.R” should be used to create a R
-data frame file called “Reflectance\_data.Rdata” with two columns: ..\*
-SampleID which has to be consistent with the previous files for each
-leaf, ..\* spectra, which is a matrix with the reflectance in column
-(expressed in percent from 0 to 100).
+data frame file called “Reflectance\_data.Rdata” with two columns:
+
+-   SampleID which has to be consistent with the previous files for each
+    leaf,
+
+-   spectra, which is a matrix with the reflectance in column (expressed
+    in percent from 0 to 100).
 
 We use a matrix in the column spectra as in the pls package (Mevik &
 Wehrens, 2007). More information is given in the “pls” package
