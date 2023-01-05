@@ -1,4 +1,4 @@
-SampleID,Species,Sun_Shade,Plant_type,Soil,LMA,Narea,Nmass,LWC
-Identifier of the measured leaf,"Full species name, for example Cecropia insignis","Was the leaf at the top of the canopy and usually receiving light (sun) or a shaded leaf? Chose between Sun, Shade or leave empty",Chose between Wild or Agricultural,"Please chose between natural ground, pot, or managed ground (Natural, Pot, Managed)",Leaf dry mass per unit area in g m-2,Nitrogen content of leaf per unit leaf area in g m-2,Nitrogen content of leaf by dry mass in mg g-1,Leaf water content. Percent water content of fresh leaf by mass in % (0-100)
-BNL20202,Cecropia insignis,Sun,Wild,Natural,90.24,2.35,2.6,62
-BNL10101,Cucurbit pepo,Sun,Agricultural,Pot,118.65,2.59,2.18,70
+SampleID,Dataset_name,Site_name,Species,Sun_Shade,Plant_type,Soil,LMA,Narea,Nmass,LWC
+Identifier of the measured leaf,Name of the dataset,,"Full species name, for example Cecropia insignis","Was the leaf at the top of the canopy and usually receiving light (sun) or a shaded leaf? Chose between Sun, Shade or leave empty",Chose between Wild or Agricultural,"Please chose between natural ground, pot, or managed ground (Natural, Pot, Managed)",Leaf dry mass per unit area in g m-2,Nitrogen content of leaf per unit leaf area in g m-2,Nitrogen content of leaf by dry mass in mg g-1,Leaf water content. Percent water content of fresh leaf by mass in % (0-100)
+BNL20202,Davidson_et_al_2020,SLZ,Cecropia insignis,Sun,Wild,Natural,90.24,2.35,2.6,62
+BNL10101,Burnett_et_al_2018,BNL,Cucurbit pepo,Sun,Agricultural,Pot,118.65,2.59,2.18,70

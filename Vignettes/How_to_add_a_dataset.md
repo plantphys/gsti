@@ -22,23 +22,26 @@ acknoledgements.
 
 <table>
 <colgroup>
+<col style="width: 2%" />
 <col style="width: 13%" />
-<col style="width: 40%" />
-<col style="width: 11%" />
+<col style="width: 39%" />
+<col style="width: 10%" />
 <col style="width: 30%" />
 <col style="width: 3%" />
 </colgroup>
 <thead>
 <tr class="header">
+<th style="text-align: left;">Dataset_name</th>
 <th style="text-align: left;">Authors</th>
 <th style="text-align: left;">Acknowledgment</th>
 <th style="text-align: left;">Dataset_DOI</th>
 <th style="text-align: left;">Publication_Citation</th>
-<th style="text-align: left;">Email</th>
+<th style="text-align: left;">Contact_email</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: left;">Dataset name</td>
 <td style="text-align: left;">List of authors of the dataset</td>
 <td style="text-align: left;">Acknowledgement of funding and help to
 generate the dataset</td>
@@ -49,6 +52,7 @@ that uses the dataset</td>
 <td style="text-align: left;">Contact email for the dataset</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">Lamour_et_al_2021</td>
 <td style="text-align: left;">Julien Lamour, Kenneth J. Davidson, Kim S.
 Ely, Jeremiah A. Anderson, Alistair Rogers, Jin Wu , Shawn P.
 Serbin</td>
@@ -264,18 +268,22 @@ code, we recommend to leave it within the dataset folder and to call it
 <table>
 <colgroup>
 <col style="width: 5%" />
-<col style="width: 9%" />
-<col style="width: 23%" />
+<col style="width: 3%" />
+<col style="width: 1%" />
+<col style="width: 8%" />
+<col style="width: 22%" />
 <col style="width: 6%" />
-<col style="width: 15%" />
+<col style="width: 14%" />
 <col style="width: 6%" />
 <col style="width: 9%" />
 <col style="width: 8%" />
-<col style="width: 14%" />
+<col style="width: 13%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;">SampleID</th>
+<th style="text-align: left;">Dataset_name</th>
+<th style="text-align: left;">Site_name</th>
 <th style="text-align: left;">Species</th>
 <th style="text-align: left;">Sun_Shade</th>
 <th style="text-align: left;">Plant_type</th>
@@ -289,6 +297,8 @@ code, we recommend to leave it within the dataset folder and to call it
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Identifier of the measured leaf</td>
+<td style="text-align: left;">Name of the dataset</td>
+<td style="text-align: left;"></td>
 <td style="text-align: left;">Full species name, for example Cecropia
 insignis</td>
 <td style="text-align: left;">Was the leaf at the top of the canopy and
@@ -307,6 +317,8 @@ of fresh leaf by mass in % (0-100)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">BNL20202</td>
+<td style="text-align: left;">Davidson_et_al_2020</td>
+<td style="text-align: left;">SLZ</td>
 <td style="text-align: left;">Cecropia insignis</td>
 <td style="text-align: left;">Sun</td>
 <td style="text-align: left;">Wild</td>
@@ -318,6 +330,8 @@ of fresh leaf by mass in % (0-100)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">BNL10101</td>
+<td style="text-align: left;">Burnett_et_al_2018</td>
+<td style="text-align: left;">BNL</td>
 <td style="text-align: left;">Cucurbit pepo</td>
 <td style="text-align: left;">Sun</td>
 <td style="text-align: left;">Agricultural</td>
@@ -504,9 +518,9 @@ folowing column:
 <th style="text-align: left;">StdError_TPU25</th>
 <th style="text-align: left;">StdError_Rday25</th>
 <th style="text-align: left;">Tleaf</th>
-<th style="text-align: left;">sigma</th>
+<th style="text-align: left;">Sigma</th>
 <th style="text-align: left;">AIC</th>
-<th style="text-align: left;">model</th>
+<th style="text-align: left;">Model</th>
 <th style="text-align: left;">Vcmax_method</th>
 </tr>
 </thead>
@@ -580,9 +594,9 @@ to 2500 nm), you can put NA in those wavelengths.
 
 A code “3\_Import\_transform\_reflectance.R” should be used to create a
 R data frame file called “3\_Reflectance\_data.Rdata” with two columns:
-\* SampleID which has to be consistent with the previous files for each
-leaf, \* spectra, which is a matrix with the reflectance in column
-(expressed in percent from 0 to 100).
+..\* SampleID which has to be consistent with the previous files for
+each leaf, ..\* spectra, which is a matrix with the reflectance in
+column (expressed in percent from 0 to 100).
 
 We use a matrix in the column spectra as in the pls package (Mevik &
 Wehrens, 2007). More information is given in the “pls” package
