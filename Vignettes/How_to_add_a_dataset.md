@@ -245,6 +245,15 @@ written in the Site.csv file and the SampleID will have to be consistent
 with the identifier used for the gas exchange and for the spectra as the
 SampleId will be used to merge all the different data.
 
+The columns LMA, Narea and LWC do not necessary need to be filled if you
+don’t have the data.
+
+For the species name, please write “Genus species”, for exemple
+Cercropia insignis. If you know the genus but not the species, write for
+example “Cecropia species”. If you dont know the genus, write “Family
+genus” for example (Urticaceae genus). If you don’t know anything, well
+you can write “Unknown”.
+
 You can use a R code or another way to create this file. If you use a R
 code, we recommend to leave it within the dataset folder and to call it
 “3\_Import\_transform\_sample\_info.R”.
@@ -564,163 +573,32 @@ dependence parametrization if needed.
 
 ## Adding the leaf spectra data
 
-!!! TO UPDATE !!!
+The spectral information should be a full range reflectance measurement
+(350 nm to 2500 nm) with a 1 nm resolution If you don’t have values for
+all the wavelengths (for example from 350 nm to 500 nm or from 2400 nm
+to 2500 nm), you can put NA in those wavelengths.
+
+A code “3\_Import\_transform\_reflectance.R” should be used to create a
+R data frame file called “3\_Reflectance\_data.Rdata” with two columns:
+\* SampleID which has to be consistent with the previous files for each
+leaf, \* spectra, which is a matrix with the reflectance in column
+(expressed in percent from 0 to 100).
+
+We use a matrix in the column spectra as in the pls package (Mevik &
+Wehrens, 2007). More information is given in the “pls” package
+documentation and manual
+(<https://cran.r-project.org/web/packages/pls/vignettes/pls-manual.pdf>)
+
+Bjørn-Helge Mevik and Ron Wehrens. The pls package: Principal component
+and partial least squares regression in R. Journal of Statistical
+Software, 18(2):1–24, 2007.
 
 ## Merging the leaf information
 
-!!! TO UPDATE !!!
-
 We merge the fitted parameters, the spectra and the leaf information in
-the code called ‘4\_Combine\_spectra\_traits.R’. This code produces a
-dataframe with the folowing columns:
+the code called ‘4\_Combine\_spectra\_traits.R’ that produces a Rdata
+file called “4\_Spectra\_traits.Rdata”.
 
-    Spectra=read.csv(file='Spectra.csv',header = TRUE)
-    knitr::kable(Spectra)
-
-<table style="width:100%;">
-<colgroup>
-<col style="width: 3%" />
-<col style="width: 3%" />
-<col style="width: 2%" />
-<col style="width: 1%" />
-<col style="width: 4%" />
-<col style="width: 12%" />
-<col style="width: 3%" />
-<col style="width: 7%" />
-<col style="width: 5%" />
-<col style="width: 13%" />
-<col style="width: 15%" />
-<col style="width: 9%" />
-<col style="width: 5%" />
-<col style="width: 4%" />
-<col style="width: 2%" />
-<col style="width: 3%" />
-<col style="width: 1%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">SampleID</th>
-<th style="text-align: left;">SampleID_num</th>
-<th style="text-align: left;">Dataset</th>
-<th style="text-align: left;">Site_name</th>
-<th style="text-align: left;">Species</th>
-<th style="text-align: left;">Sun_Shade</th>
-<th style="text-align: left;">Plant_type</th>
-<th style="text-align: left;">Soil</th>
-<th style="text-align: left;">Vcmax_method</th>
-<th style="text-align: left;">Vcmax25</th>
-<th style="text-align: left;">Jmax25</th>
-<th style="text-align: left;">TPU25</th>
-<th style="text-align: left;">Tleaf</th>
-<th style="text-align: left;">Spectra</th>
-<th style="text-align: left;">LMA</th>
-<th style="text-align: left;">Narea</th>
-<th style="text-align: left;">LWC</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Identifier of the measured leaf</td>
-<td style="text-align: left;">Integer Identifier of the measured
-leaf</td>
-<td style="text-align: left;">Name of the dataset folder</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Full species name for example Cecropia
-insignis</td>
-<td style="text-align: left;">Was the leaf at the top of the canopy and
-usually receiving light (sun) or a shaded leaf? Chose between Sun, Shade
-or leave empty</td>
-<td style="text-align: left;">Chose between Wild or Agricultural</td>
-<td style="text-align: left;">Please chose between natural ground, pot,
-or managed ground (Natural, Pot, Managed)</td>
-<td style="text-align: left;">Method used to estimate Vcmax (A-Ci curve
-or One point)</td>
-<td style="text-align: left;">Maximum rate of carboxylation at the
-reference temperature 25 degrees celcius calculated assuming infinite
-mesophyl conductance i.e. apparent Vcmax</td>
-<td style="text-align: left;">Maximum rate of electron transport per
-leaf area at the reference temperature 25 degrees celcius calculated
-assuming infinite mesophyll conductance and saturating light</td>
-<td style="text-align: left;">Triose phosphate utilization rate per leaf
-area at the reference temperature 25 degrees celcius</td>
-<td style="text-align: left;">Leaf surface temperature during the gas
-exchange measurements</td>
-<td style="text-align: left;">Reflectrance spectra from 350 nm to 2500
-nm</td>
-<td style="text-align: left;">Leaf mass per surface area</td>
-<td style="text-align: left;">Nitrogen content per surface area</td>
-<td style="text-align: left;">Leaf water content</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Integer</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">micromol m-2 s-1</td>
-<td style="text-align: left;">micromol m-2 s-1</td>
-<td style="text-align: left;">micromol m-2 s-1</td>
-<td style="text-align: left;">Degrees celcius</td>
-<td style="text-align: left;">percent 0 - 100</td>
-<td style="text-align: left;">g m-2</td>
-<td style="text-align: left;">g m-2</td>
-<td style="text-align: left;">percent 0 - 100</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">BNL20202</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">Doe_et_al_2010</td>
-<td style="text-align: left;">SLZ</td>
-<td style="text-align: left;">Cecropia insignis</td>
-<td style="text-align: left;">Sun</td>
-<td style="text-align: left;">Wild</td>
-<td style="text-align: left;">Natural</td>
-<td style="text-align: left;">A-Ci curve</td>
-<td style="text-align: left;">88.77</td>
-<td style="text-align: left;">144.22</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">32</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">112</td>
-<td style="text-align: left;">1.63</td>
-<td style="text-align: left;">55</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">BNL10101</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">Doe_et_al_2010</td>
-<td style="text-align: left;">BNL_greenhouse</td>
-<td style="text-align: left;">Cucurbit pepo</td>
-<td style="text-align: left;">Sun</td>
-<td style="text-align: left;">Agricultural</td>
-<td style="text-align: left;">Pot</td>
-<td style="text-align: left;">One point</td>
-<td style="text-align: left;">75.51</td>
-<td style="text-align: left;">112.2</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">28</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">90</td>
-<td style="text-align: left;">1.42</td>
-<td style="text-align: left;">60</td>
-</tr>
-</tbody>
-</table>
-
-Note that the Spectra column stores a vector ranging from 350 nm to 2500
-nm with a 1 nm interval (see code for storing a vector in a column). If
-you dont have values for 350 nm to 500 nm or from 2400 nm to 2500 nm,
-you can put NA in those wavelengths.
-
-The columns LMA, Narea and LWC do not neccessary need to be filled if
-you don’t have the data.
-
-For the species name, please write “Genus species”, for exemple
-Cercropia insignis. If you know the genus but not the species, write for
-example “Cecropia species”. If you dont know the genus, write “Family
-genus” for example (Urticaceae genus). If you don’t know anything, well
-you can write “Unknown”.
+The function “f.Check\_data()” can be used to validate that the format
+of the data is correct (i.e that the required variables are present in
+the merged data and that the values are within a reasonable range).
