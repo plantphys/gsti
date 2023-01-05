@@ -247,7 +247,7 @@ column listed below. More columns can be added if necessary.
 Importantly, the Site\_name has to be consistent with the Site\_name
 written in the Site.csv file and the SampleID will have to be consistent
 with the identifier used for the gas exchange and for the spectra as the
-SampleId will be used to merge all the different data.
+SampleID will be used to merge all the different data.
 
 The columns LMA, Narea and LWC do not necessary need to be filled if you
 don’t have the data.
@@ -260,7 +260,7 @@ you can write “Unknown”.
 
 You can use a R code or another way to create this file. If you use a R
 code, we recommend to leave it within the dataset folder and to call it
-“3\_Import\_transform\_sample\_info.R”.
+“Import\_transform\_SampleDetails.R”.
 
     Biomes=read.csv(file='SampleDetails.csv')
     knitr::kable(Biomes)
@@ -373,23 +373,15 @@ If we have doubts on the quality of the data we tend to remove them from
 the final curated data.
 
 The curated A-C<sub>i</sub> data should be present in the dataset folder
-in a Rdata format called ‘1\_QC\_data.Rdata’ which contains the
+in a Rdata format called ‘QC\_ACi\_data.Rdata’ which contains the
 A-C<sub>i</sub> data in a data.frame with at least the columns listed in
 the table below.
 
 Note that we usually include in the dataset folder the raw data, as well
 as the R code used to read, import and transform the raw data. All those
 preliminary steps are made in a R code called
-‘0\_Import\_transform\_original\_ACi\_data.R’.We recommend to do the
-same, but again, we don’t have requirements on the code to do that.
-
-We also include the code used to check the quality of the
-A-C<sub>i</sub> data where we flag the bad points and delete the bad
-curves. This code is called ‘1\_QaQc\_curated\_ACi.R’ and produces the
-file ‘1\_QC\_data.Rdata’. This code usually produces a PDF file with a
-plot of each of the A-C<sub>i</sub> curves with the good point in dark
-and the bad points in red. You can find some examples in the different
-dataset folders.
+‘Import\_transform\_ACi.R’.We recommend to do the same, but again, we
+don’t have requirements on the code to do that.
 
     Aci_data=read.csv(file='Aci_data.csv')
     knitr::kable(Aci_data)
@@ -446,12 +438,11 @@ incident on the leaf in quanta per area</td>
 
 ## Fitting the A-C<sub>i</sub> data to estimate the photosynthetic traits
 
-Estimation of V<sub>cmax</sub> is done in the ‘2\_Fit\_ACi.R’ code
-included in each dataset folder. This code calls the function
-f.fit\_Aci() to estimate the photosynthetic parameters
-V<sub>cmax25</sub>, J<sub>max25</sub>, TPU<sub>25</sub> and
-R<sub>day25</sub> of the A-C<sub>i</sub> curve. It produces several pdf
-files:
+Estimation of V<sub>cmax</sub> is done in the ‘Fit\_ACi.R’ code included
+in each dataset folder. This code calls the function f.fit\_Aci() to
+estimate the photosynthetic parameters V<sub>cmax25</sub>,
+J<sub>max25</sub>, TPU<sub>25</sub> and R<sub>day25</sub> of the
+A-C<sub>i</sub> curve. It produces several pdf files:
 
 -   2\_ACi\_fitting\_Ac.pdf
 
@@ -592,11 +583,11 @@ The spectral information should be a full range reflectance measurement
 all the wavelengths (for example from 350 nm to 500 nm or from 2400 nm
 to 2500 nm), you can put NA in those wavelengths.
 
-A code “3\_Import\_transform\_reflectance.R” should be used to create a
-R data frame file called “3\_Reflectance\_data.Rdata” with two columns:
-..\* SampleID which has to be consistent with the previous files for
-each leaf, ..\* spectra, which is a matrix with the reflectance in
-column (expressed in percent from 0 to 100).
+A code “Import\_transform\_reflectance.R” should be used to create a R
+data frame file called “Reflectance\_data.Rdata” with two columns: ..\*
+SampleID which has to be consistent with the previous files for each
+leaf, ..\* spectra, which is a matrix with the reflectance in column
+(expressed in percent from 0 to 100).
 
 We use a matrix in the column spectra as in the pls package (Mevik &
 Wehrens, 2007). More information is given in the “pls” package
