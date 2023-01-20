@@ -1,6 +1,6 @@
 # Global_Vcmax
 
-The aim of this project is to generate a PLSR model able to predict the maximum carboxylation capacity (Vcmax25) of leaves from multiple species and biomes using full range reflectance data.
+Welcome to the Global Spectra-Trait Initiative (GSTI)! The aim of this project is to generate a PLSR model able to predict the maximum carboxylation capacity (Vcmax25) of leaves from multiple species and biomes using full range reflectance data.
 
 To do so, we curate and combine ACi datasets that are linked to full range reflectancce data (500 to 2400 nm). The A-Ci data are fitted using the same procedure and the same model to avoid including biases between datasets if they were fitted using multiple methods.
 
