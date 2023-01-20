@@ -589,8 +589,8 @@ data frame file called “Reflectance\_data.Rdata” with two columns:
 -   SampleID which has to be consistent with the previous files for each
     leaf,
 
--   spectra, which is a matrix with the reflectance in column (expressed
-    in percent from 0 to 100).
+-   Reflectance, which is a matrix with the reflectance in column
+    (expressed in percent from 0 to 100).
 
 We use a matrix in the column spectra as in the pls package (Mevik &
 Wehrens, 2007). More information is given in the “pls” package
