@@ -17,7 +17,7 @@ Only free use data ([CC BY 4](https://creativecommons.org/licenses/by/4.0/)) acc
 
 All data contributors will be included on an introductory paper planned for 2023.
 
-GSTO is not designed to be, and should not be treated as, a permanent data repository. It is a community resource of standardized spectra-trait datasets to faciliate a living set of algorithms that can be used by researchers to predict a host of leaf traits using spectral measurements. It is not an institutionally-backed repository like [Figshare](https://figshare.com/), [DataONE](https://www.dataone.org/), [ESS-DIV](https://ess-dive.lbl.gov/), etc. We recommend (but not require) depositing your data in one of these first, and providing its DOI in your dataset metadata.
+GSTI is not designed to be, and should not be treated as, a permanent data repository. It is a community resource of standardized spectra-trait datasets to faciliate a living set of algorithms that can be used by researchers to predict a host of leaf traits using spectral measurements. It is not an institutionally-backed repository like [Figshare](https://figshare.com/), [DataONE](https://www.dataone.org/), [ESS-DIV](https://ess-dive.lbl.gov/), etc. We recommend (but not require) depositing your data in one of these first, and providing its DOI in your dataset metadata.
 
 ## References
 
