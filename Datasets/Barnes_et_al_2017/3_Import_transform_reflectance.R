@@ -5,7 +5,7 @@ setwd(file.path(path,'/Datasets/Barnes_et_al_2017'))
 
 
 spectra=read.csv('9_processed_hyperspectral_wide.csv')
-load('2_Result_ACi_fitting.Rdata',verbose=TRUE)
+load('2_Fitted_ACi_data.Rdata',verbose=TRUE)
 
 ## The unique id is not the same between file so 
 ## I combine using the values of Vcmax and Jmax..

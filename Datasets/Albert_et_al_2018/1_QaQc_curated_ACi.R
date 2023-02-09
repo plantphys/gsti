@@ -28,4 +28,4 @@ text(x=curated_data[curated_data$SampleID_num==SampleID_num,'Ci'],y=curated_data
 dev.off()
 curated_data=curated_data[curated_data$QC=='ok',]
 
-save(curated_data,file='1_QC_data.Rdata')
+save(curated_data,file='1_QC_ACi_data.Rdata')

@@ -1,6 +1,11 @@
 library(here)
 
 ## I downloaded this dataset from the DOI  10.17605/OSF.IO/ZUR8E.
+path=here()
+
+source(file.path(path,'/R/Correspondance_tables_ESS.R'))
+setwd(file.path(path,'/Datasets/Barnes_et_al_2017'))
+
 
 
 filename = '7_quality_checked_licor_datafiles.csv'
