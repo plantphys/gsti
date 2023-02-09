@@ -375,6 +375,18 @@ of fresh leaf by mass in % (0-100)</td>
 </tbody>
 </table>
 
+## Adding darj adapted leaf respiration data (optional)
+
+If you measured the dark respiration of leaves you can also add them to
+the project. All you need is to include a file with as columns:
+
+-   SamppleID (the leaf identifier that is used everywhere to link
+    different data)
+-   Rdark (the dark respiration value, in micromol m-2 s-1, which
+    corresponds to the CO2 release from the leaf in the dark, at
+    measurement temperature, reported as a positive value)
+-   Tleaf, in degree celcius, the measurement leaf temperature
+
 ## Adding the gas exchange A-C<sub>i</sub> data to the dataset folder
 
 The idea of this project is to include the raw A-C<sub>i</sub> data so
