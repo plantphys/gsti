@@ -1,10 +1,12 @@
 # Global Spectra-Trait Initiative (GSTI)
 
-Welcome to the Global Spectra-Trait Initiative (GSTI)! The aim of this project is to generate a PLSR model able to predict the maximum carboxylation capacity (Vcmax25) of leaves from multiple species and biomes using full range reflectance data.
+Welcome to the Global Spectra-Trait Initiative (GSTI)! 
 
-To do so, we curate and combine ACi datasets that are linked to full range reflectancce data (500 to 2400 nm). The A-Ci data are fitted using the same procedure and the same model to avoid including biases between datasets if they were fitted using multiple methods.
+The aim of this project is to generate PLSR models using full range reflectance data for the prediction of leaf traits associated with the photosynthesis capacity of leaves. This includes the maximum carboxylation rate of rubisco (Vcmax), the maximum electron transport rate (Jmax), the dark respiration, as well as the prediction of leaf nitrogen, leaf mass per area (LMA), and leaf water content (LWC). Our aim is to gather datasets from multiple species and biomes over the world in order to build generalizable spectra trait models.
 
-An overview of the process to curate the datasets is given in the pdf: [Curation workflow](https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Overal_data_curation.pdf). The curation is divided in 4 steps (0 to 3) to import, analyse and produce a dataset with a determined format. Since all datasets are different, the code can be adapted for any of the steps but the data format have to be similar so all the datasets can be, in the end, combined. A guide to add a dataset is given here: [Guide](https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Vignettes/How_to_add_a_dataset.md). Please, don't hesitate to contact us when you add your dataset by submitting an "issue" on github or by sending us an email.
+If you want to participate, please send us an email or submit an issue in this github repository. We welcome raw A-Ci data, dark adapted respiration data as well as other structural and chemical leaf traits in a free format, and of course full range reflectance. An overview of the data curation workflow that we will follow is presented here: [Curation workflow](https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Overal_data_curation.pdf). It also details the data that is required to participate to the project. 
+
+More details on the processing chain that we follow to import, homogenise and produce a standardized database from multiple datasets are given on this guide: [Guide](https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Vignettes/How_to_add_a_dataset.md).
 
 The project utilizes the data and metadata formatting recommendations presented in the [Leaf-level gas exchange data and metadata reporting format](https://github.com/ess-dive-community/essdive-leaf-gas-exchange) (Ely et al, 2021). Data contributors are welcome to submit metadata that describes data collection protocols using the [methods metadata template](https://github.com/ess-dive-community/essdive-leaf-gas-exchange/blob/master/templates/methodsMetadataTemplate.xlsx).
 
@@ -28,8 +30,7 @@ Ely KS, Rogers A, Agarwal DA, Ainsworth EA, Albert LP, Ali A, et al. A reporting
 Farquhar, G.D., von Caemmerer, S. & Berry, J.A. A biochemical model of photosynthetic CO2 assimilation in leaves of C3 species. Planta 149, 78–90 (1980). https://doi.org/10.1007/BF00386231
 
 
-## Map of identified datasets
-
+# Overview of the database
 <img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Map_datasets.png" width="800">
 
 ## Overview of the combined dataset and performance of the PLSR model
