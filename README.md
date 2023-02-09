@@ -1,6 +1,7 @@
 # Global Spectra-Trait Initiative (GSTI)
 
 Welcome to the Global Spectra-Trait Initiative (GSTI)! 
+
 The aim of this project is to generate PLSR models using full range reflectance data for the prediction of leaf traits associated with the photosynthesis capacity of leaves. This includes the maximum carboxylation rate of rubisco (Vcmax), the maximum electron transport rate (Jmax), the dark respiration, as well as the prediction of leaf nitrogen, leaf mass per area (LMA), and leaf water content (LWC). Our aim is to gather datasets from multiple species and biomes over the world in order to build generalizable spectra trait models.
 
 If you want to participate, please send us an email or submit an issue in this github repository. We welcome raw A-Ci data, dark adapted respiration data as well as other structural and chemical leaf traits in a free format, and of course full range reflectance. An overview of the data curation workflow that we will follow is presented here: [Curation workflow](https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Overal_data_curation.pdf). It also details the data that is required to participate to the project. 
