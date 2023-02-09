@@ -2,20 +2,37 @@
 
 Each dataset is put into a folder called “Names\_Year” for example
 “Serbin\_et\_al\_2019”. Please, also add any article associated with the
-dataset or the protocol of measurement, which should include the
+dataset and the protocol of measurement, which should include the
 description of the gas exchange measurements, leaf reflectance
 measurements, as well as the equipments used. It should also include the
 location description, information on the growing conditions (Natural
 environment? Green house? Agricultural or experimental field? Plants in
 pots?) and information on the species (Natural species, agricultural
-species) as well as the status of the plants (stressed, not stressed?)
+species) as well as the status of the plants (stressed, not stressed?).
+Please, also mention what was your stability criterion to start the A-Ci
+curves (did you wait for stability of the photosynthesis rate and
+stomatal conductance before starting the curve? What was the average
+acclimation time of the leaf within the leaf chamber?) and within the
+A-Ci curves. Also include this information if you used the “one point
+method” (De Kauwe et al. 2016, Burnett et al. 2019).
+
+Burnett, AC, Davidson, KJ, Serbin, SP, Rogers, A. The “one-point method”
+for estimating maximum carboxylation capacity of photosynthesis: A
+cautionary tale. Plant Cell Environ. 2019; 42: 2472– 2481.
+<https://doi.org/10.1111/pce.13574>
+
+De Kauwe, M. G., Lin, Y. S., Wright, I. J., Medlyn, B. E., Crous, K. Y.,
+Ellsworth, D. S., … Domingues, T. F. (2016b). A test of the “one-point
+method” for estimating maximum carboxylation capacity from
+field-measured, light-saturated photosynthesis. New Phytologist, 210(3),
+1130– 1144. <https://doi.org/10.1111/nph.13815>
 
 ### Adding a dataset description csv file
 
 In each dataset folder a csv file called Description.csv has to be
 included. An example is given in the Folder 0\_Template. This file will
 be used to list the authors as well as associated papers and
-acknoledgements.
+acknowledgements.
 
     Description=read.csv(file='Description.csv')
     knitr::kable(Description)
@@ -77,8 +94,8 @@ class="email">jlamour.sci@gmail.com</a></td>
 ### Adding a site description csv file
 
 A file called Site.csv also has to be included with the column listed
-below.The latitude and longitude coordinates will be used to position
-the dataset on a world map. If you have different sites on the same
+below. The latitude and longitude coordinates will be used to position
+the dataset on a world map. If you have different sites for the same
 dataset with wide difference in positions that makes a difference on a
 world map or if this include different biomes, you can add several rows
 to your Site.csv file.
@@ -137,7 +154,7 @@ documentation (1 to 19)</td>
 </tbody>
 </table>
 
-For the Biome\_number column, please chose a number among the list
+For the Biome\_number column, please chose a number within the list
 below. We chose to use the Olson et al. (2001) list of 14 natural Biomes
 that we complemented with agricultural and managed biomes.
 
@@ -249,8 +266,10 @@ written in the Site.csv file and the SampleID will have to be consistent
 with the identifier used for the gas exchange and for the spectra as the
 SampleID will be used to merge all the different data.
 
-The columns LMA, Narea and LWC do not necessary need to be filled if you
-don’t have the data.
+The first columns have to be filled (SampleID, Dataset\_name,
+Site\_name, Species, Sun\_Shade, Plant\_type, Soil), the columns related
+to the leaf traits can be left empty if you don’t have the data (LMA,
+Narea, Nmass, Parea, Pmass, LWC).
 
 For the species name, please write “Genus species”, for exemple
 Cercropia insignis. If you know the genus but not the species, write for
@@ -267,17 +286,19 @@ code, we recommend to leave it within the dataset folder and to call it
 
 <table>
 <colgroup>
-<col style="width: 5%" />
-<col style="width: 3%" />
+<col style="width: 4%" />
+<col style="width: 2%" />
 <col style="width: 1%" />
-<col style="width: 8%" />
-<col style="width: 22%" />
+<col style="width: 7%" />
+<col style="width: 19%" />
+<col style="width: 5%" />
+<col style="width: 12%" />
+<col style="width: 5%" />
+<col style="width: 7%" />
 <col style="width: 6%" />
-<col style="width: 14%" />
-<col style="width: 6%" />
-<col style="width: 9%" />
 <col style="width: 8%" />
-<col style="width: 13%" />
+<col style="width: 7%" />
+<col style="width: 11%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -291,6 +312,8 @@ code, we recommend to leave it within the dataset folder and to call it
 <th style="text-align: left;">LMA</th>
 <th style="text-align: left;">Narea</th>
 <th style="text-align: left;">Nmass</th>
+<th style="text-align: left;">Parea</th>
+<th style="text-align: left;">Pmass</th>
 <th style="text-align: left;">LWC</th>
 </tr>
 </thead>
@@ -312,6 +335,10 @@ or managed ground (Natural, Pot, Managed)</td>
 area in g m-2</td>
 <td style="text-align: left;">Nitrogen content of leaf by dry mass in mg
 g-1</td>
+<td style="text-align: left;">Phosphorus content of leaf per unit leaf
+area in g m-2</td>
+<td style="text-align: left;">Phosophorus content of leaf by dry mass in
+mg g-1</td>
 <td style="text-align: left;">Leaf water content. Percent water content
 of fresh leaf by mass in % (0-100)</td>
 </tr>
@@ -326,6 +353,8 @@ of fresh leaf by mass in % (0-100)</td>
 <td style="text-align: left;">90.24</td>
 <td style="text-align: left;">2.35</td>
 <td style="text-align: left;">2.6</td>
+<td style="text-align: left;">0.27</td>
+<td style="text-align: left;">0.3</td>
 <td style="text-align: left;">62</td>
 </tr>
 <tr class="odd">
@@ -339,6 +368,8 @@ of fresh leaf by mass in % (0-100)</td>
 <td style="text-align: left;">118.65</td>
 <td style="text-align: left;">2.59</td>
 <td style="text-align: left;">2.18</td>
+<td style="text-align: left;">0.42</td>
+<td style="text-align: left;">0.35</td>
 <td style="text-align: left;">70</td>
 </tr>
 </tbody>
@@ -367,10 +398,10 @@ The A-C<sub>i</sub> data should be cleaned from spurious measurements
 and points that would impact V<sub>cmax</sub> or J<sub>max</sub>
 estimation should not be included. If several measurements were taken at
 a given Ci, please only chose one so each Ci has the same number of
-measurements.We are usually quite severe on the quality analysis to only
-keep the curves where the estimation of V<sub>cmax</sub> will be good.
-If we have doubts on the quality of the data we tend to remove them from
-the final curated data.
+measurements. We are usually quite conservative on the quality analysis
+and only keep the curves where the estimation of V<sub>cmax</sub> will
+be good. If we have doubts on the quality of the data we tend to remove
+them from the final curated data.
 
 The curated A-C<sub>i</sub> data should be present in the dataset folder
 in a Rdata format called ‘QC\_ACi\_data.Rdata’ which contains the
@@ -570,6 +601,8 @@ CO<sub>2</sub> conditions. You can use the function f.fit\_One\_Point()
 to estimate V<sub>cmax25</sub>. It will produce the exact same data
 frame as when using the function f.fit\_Aci.
 
+The one point method require an estimate of the e
+
 Importantly, the same temperature correction is used for all the
 datasets to estimate the parameters at 25°C. Since the Tleaf is also
 given in the output of the table, it will be possible to re estimate the
@@ -584,10 +617,16 @@ all the wavelengths (for example from 350 nm to 500 nm or from 2400 nm
 to 2500 nm), you can put NA in those wavelengths.
 
 A code “Import\_transform\_reflectance.R” should be used to create a R
-data frame file called “Reflectance\_data.Rdata” with two columns:
+data frame file called “Reflectance\_data.Rdata” with four columns:
 
 -   SampleID which has to be consistent with the previous files for each
     leaf,
+
+-   Spectrometer, which informs what was the spectrometer model used
+    (PSR+ 3500, SVC XHR-1024i, ASD FieldSpec 4 Hi-Res, …)
+
+-   Leaf\_clip, which informs what was the leaf clip used (SVC LC-RP
+    Pro, ASD Leaf Clip, …)
 
 -   Reflectance, which is a matrix with the reflectance in column
     (expressed in percent from 0 to 100).
