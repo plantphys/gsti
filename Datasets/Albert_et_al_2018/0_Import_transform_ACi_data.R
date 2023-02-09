@@ -1,6 +1,10 @@
 ## I downloaded this dataset from :doi:10.5061/dryad.h83t0
+library(here)
+path=here()
 
-source('R/Correspondance_tables_ESS.R')
+source(file.path(path,'/R/Correspondance_tables_ESS.R'))
+setwd(file.path(path,'/Datasets/Albert_et_al_2018'))
+
 
 ls_files=dir(recursive = TRUE)
 ls_files_Aci=ls_files[which(grepl(x=ls_files,pattern="ACI_curve",ignore.case = TRUE))]

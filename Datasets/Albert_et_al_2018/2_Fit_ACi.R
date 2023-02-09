@@ -1,8 +1,8 @@
 library(here)
 path=here()
-source(paste(path,'/R/fit_Vcmax.R',sep=''))
-source(paste(path,'/R/Photosynthesis_tools.R',sep=''))
-setwd(paste(path,'/Datasets/Albert_et_al_2018',sep=''))
+source(file.path(path,'/R/fit_Vcmax.R'))
+source(file.path(path,'/R/Photosynthesis_tools.R'))
+setwd(file.path(path,'/Datasets/Albert_et_al_2018'))
 
 
 load('1_QC_data.Rdata',verbose=TRUE)
@@ -17,14 +17,14 @@ Bilan=f.fit_Aci(measures=curated_data,param = f.make.param())## After manual ins
 ## 8,12,15,17,18,20,21,32,47,48,56,58,68,86.
 ## Some were very noisy, or probably measured at a too low light irradiance
 
-
+## Finding the curves with the highest standard deviation of the residuals
 Bilan[Bilan$sigma>quantile(x = Bilan$sigma,probs = 0.95),'SampleID_num']
 ## After manual inspection, those fittings seem fine, at least for Vcmax.
 
-hist(Bilan$VcmaxRef)
-plot(x=Bilan$VcmaxRef,y=Bilan$JmaxRef,xlab='Vcmax25',ylab='Jmax25',xlim=c(min(c(Bilan$VcmaxRef,Bilan$JmaxRef),na.rm=TRUE),max(c(Bilan$VcmaxRef,Bilan$JmaxRef),na.rm=TRUE)),ylim=c(min(c(Bilan$VcmaxRef,Bilan$JmaxRef),na.rm=TRUE),max(c(Bilan$VcmaxRef,Bilan$JmaxRef),na.rm=TRUE)))
+hist(Bilan$Vcmax25) ## Checking the distribution of Vcmax25
+plot(x=Bilan$Vcmax25,y=Bilan$Jmax25,xlab='Vcmax25',ylab='Jmax25',xlim=c(min(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE),max(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE)),ylim=c(min(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE),max(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE)))
 abline(a=c(0,1))
-abline(lm(JmaxRef~0+VcmaxRef,data=Bilan),col='red')
+abline(lm(Jmax25~0+Vcmax25,data=Bilan),col='red')
 
 
 ## Adding the SampleID column
