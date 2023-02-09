@@ -1,10 +1,13 @@
 library(bbmle)
 library(readxl)
 
-## The code below comes was adapted from the LeafGasExchange package (Lamour & Serbin, 2021) 
+## The code below was adapted from the LeafGasExchange package (Lamour & Serbin, 2021) 
 ## available on github: https://github.com/TESTgroup-BNL/LeafGasExchange
 ## More information is given on the package github.
+## Note that Rd was renamed Rday and Tp was renamed TPU in this code
 
+
+#' @title Arrhenius function to calculate the temperature effect on some parameters
 #' @param PRef Value of the parameter at the reference temperature
 #' @param TRef Reference temperature
 #' @param Ha Enthalpie of activation in J.mol-1
@@ -15,15 +18,15 @@ library(readxl)
 #' @export
 #' @references VON CAEMMERER, S. (2013), Steady state models of photosynthesis. Plant Cell Environ, 36: 1617-1630. doi:10.1111/pce.12098
 #'  Bernacchi, C.J., Singsaas, E.L., Pimentel, C., Portis Jr, A.R. and Long, S.P. (2001), Improved temperature response functions for models of Rubisco‐limited photosynthesis. Plant, Cell & Environment, 24: 253-259. doi:10.1111/j.1365-3040.2001.00668.x
-#' @examples plot(x=seq(25,35,0.1),y=f.arrhenius(PRef=1,Ha=46390,Tleaf=seq(273.15+25,273.15+35,0.1),R=8.314),xlab='Temperature degree C',ylab='Rd')
+#' @examples plot(x=seq(25,35,0.1),y=f.arrhenius(PRef=1,Ha=46390,Tleaf=seq(273.15+25,273.15+35,0.1),R=8.314),xlab='Temperature degree C',ylab='Rday')
 
 f.arrhenius<-function(PRef,Ha,Tleaf,TRef=298.16,R=8.314){
   P=PRef*exp(Ha/(R*TRef)-Ha/(R*Tleaf))
   return(P)
 }
 
-#' @title Temperature dependence of Gamma star, Ko, Kc and Rd
-#' @details Retrieve the value of the parameter at Tref knowing its value at Tleaf
+#' @title Temperature dependence of Gamma star, Ko, Kc and Rday
+#' @details Retrieve the value of the parameter at TRef knowing its value at Tleaf
 #' @inheritParams f.arrhenius
 #' @param P Value of the parameter at Tleaf
 #' @return
@@ -74,7 +77,7 @@ f.modified.arrhenius.inv<-function(P,Ha,Hd,s,Tleaf,TRef=298.16,R=8.314){
 #' @details The call of this function is made using f.make.param(). If a parameter is modified for example writting f.make.param(VcmaxRef=10), this function will return all the default parameters from FATES TBM with VcmaxRef = 10 instead of its default value
 #' @param R Ideal gas constant
 #' @param O2 O2 concentration in ppm
-#' @param TRef Reference temperature for Kc, Ko, Rd,GammaStar Vcmax, Jmax
+#' @param TRef Reference temperature for Kc, Ko, Rday,GammaStar Vcmax, Jmax
 #' @param Patm Atmospheric pressure in kPa
 #' @param JmaxRef Maximum electron transport rate in micromol.m-2.s-1
 #' @param JmaxHa Energy of activation for Jmax in J.mol-1
@@ -84,14 +87,14 @@ f.modified.arrhenius.inv<-function(P,Ha,Hd,s,Tleaf,TRef=298.16,R=8.314){
 #' @param VcmaxHa Energy of activation for Vcmax in J.mol-1
 #' @param VcmaxHd Energy of desactivation for Vcmax in J.mol-1
 #' @param VcmaxS Entropy term for Vcmax in J.mol-1.K-1
-#' @param TpRef Triose Phosphate Utilization rate in micromol.m-2.s-1
-#' @param TpHa Energy of activation for Tp in J.mol-1
-#' @param TpHd Energy of desactivation for Tp in J.mol-1
-#' @param TpS Entropy term for Tp in J.mol-1.K-1
+#' @param TPURef Triose Phosphate Utilization rate in micromol.m-2.s-1
+#' @param TPUHa Energy of activation for TPU in J.mol-1
+#' @param TPUHd Energy of desactivation for TPU in J.mol-1
+#' @param TPUS Entropy term for TPU in J.mol-1.K-1
 #' @param thetacj Smoothing factor of the collatz equation between Ac and Aj limitations
 #' @param thetaip Smoothing factor of the collatz equation between Aj and Ap limitations
-#' @param RdRef Respiration value at the reference temperature
-#' @param RdHa Energie of activation for Rd in J.mol-1
+#' @param RdayRef Respiration value at the reference temperature
+#' @param RdayHa Energie of activation for Rday in J.mol-1
 #' @param KcRef Michaelis-Menten constant of Rubisco for CO2 at the reference temperature in micromol.mol-1
 #' @param KcHa Energy of activation for Kc in J.mol-1
 #' @param KoRef ichaelis-Menten constant of Rubisco for CO2 at the reference temperature in milimol.mol-1
@@ -113,7 +116,7 @@ f.modified.arrhenius.inv<-function(P,Ha,Hd,s,Tleaf,TRef=298.16,R=8.314){
 
 #' @export
 #'
-#' @examples param1=f.make.param(JmaxRef=100,VcmaxRef=60,RdRef=1,TpRef=10)
+#' @examples param1=f.make.param(JmaxRef=100,VcmaxRef=60,RdayRef=1,TPURef=10)
 
 f.make.param<-function(R=NA,O2=NA,TRef=NA,
                        Patm=NA,JmaxRef=	NA,
@@ -124,16 +127,16 @@ f.make.param<-function(R=NA,O2=NA,TRef=NA,
                        VcmaxHa	=NA,
                        VcmaxHd	=NA,
                        VcmaxS	=NA,
-                       TpRef=NA,
-                       TpHa=NA,
-                       TpHd=NA,
-                       TpS=NA,
+                       TPURef=NA,
+                       TPUHa=NA,
+                       TPUHd=NA,
+                       TPUS=NA,
                        thetacj=NA,
                        thetaip=NA,
-                       RdRef=	NA,
-                       RdHa=	NA,
-                       RdHd=NA,
-                       RdS=NA,
+                       RdayRef=	NA,
+                       RdayHa=	NA,
+                       RdayHd=NA,
+                       RdayS=NA,
                        KcRef=	NA,
                        KcHa=	NA,
                        KoRef=	NA,
@@ -144,26 +147,32 @@ f.make.param<-function(R=NA,O2=NA,TRef=NA,
                        aQY=NA,
                        Theta=NA
                        ){
+  
+  ## Default parameters
     param=list(R=8.314,O2=210,TRef=298.16,Patm=101,
                JmaxRef=	83.5,JmaxHa=	43540,JmaxHd=	152040,JmaxS	=495,
                VcmaxRef=	50,VcmaxHa	=65330,VcmaxHd	=149250,VcmaxS	=485,
-               TpRef=1/6*50,TpHa=53100,TpHd=150650,TpS=490,
+               TPURef=1/6*50,TPUHa=53100,TPUHd=150650,TPUS=490,
                thetacj=0.999,thetaip=0.999,
-               RdRef=	1.43,RdHa=	46390,RdHd=150650,RdS=490,
+               RdayRef=	1.43,RdayHa=	46390,RdayHd=150650,RdayS=490,
                KcRef=	404.9,KcHa=	79430,KoRef=	278.4,KoHa=	36380,GstarRef=	42.75,GstarHa	=37830,
                abso=	0.85,aQY=	0.425,Theta=(0.7))
   
+  ## Param modified in the call of the function by the user (default is NA if the user dont modify the parameters)
   param_fun=list(R=R,O2=O2,TRef=TRef,Patm=Patm,JmaxRef=JmaxRef,JmaxHa=	JmaxHa,
                  JmaxHd=	JmaxHd,JmaxS	=JmaxS,VcmaxRef=VcmaxRef,VcmaxHa	= VcmaxHa,VcmaxHd	=VcmaxHd,
                  VcmaxS	=VcmaxS,
-                 TpRef=TpRef,TpHa=TpHa,TpHd=TpHd,TpS=TpS,
+                 TPURef=TPURef,TPUHa=TPUHa,TPUHd=TPUHd,TPUS=TPUS,
                  thetacj=thetacj,thetaip=thetaip,
-                 RdRef=RdRef,RdHa=RdHa, RdHd=RdHd,RdS=RdS,
+                 RdayRef=RdayRef,RdayHa=RdayHa, RdayHd=RdayHd,RdayS=RdayS,
                  KcRef= KcRef,KcHa=	KcHa,KoRef=KoRef,KoHa=	KoHa,GstarRef=	GstarRef,
                  GstarHa	=GstarHa,abso=	abso,aQY=aQY,Theta=Theta)
+  ## Finding modified parameters if any in param_fun
   modified=which(lapply(X=param_fun,FUN = is.na)==FALSE)
+  ## Modifying the defaut parametrization with the user inputs:
   if(length(modified)>=1){
-    for(i in 1: length(modified)){param[names(modified[i])]=param_fun[modified[i]]}
+    for(i in 1: length(modified)){
+      param[names(modified[i])]=param_fun[modified[i]]}
   }
   param_fun[names(param)]=param
   return(param_fun)
@@ -180,26 +189,30 @@ f.make.param<-function(R=NA,O2=NA,TRef=NA,
 #' @examples ci=seq(40,1500,10)
 #' plot(x=ci,y=f.Aci(PFD=2000,ci=ci,Tleaf=300,param=f.make.param())$A)
 f.Aci<-function(PFD,ci,Tleaf,param=f.make.param()){
-  
+  ## Calculating the temperature dependence of the photosynthetic parameters:
   Kc=f.arrhenius(param[['KcRef']],param[['KcHa']],Tleaf)
   Ko=f.arrhenius(param[['KoRef']],param[['KoHa']],Tleaf)
   Gstar=f.arrhenius(param[['GstarRef']],param[['GstarHa']],Tleaf)
   
-  Rd=f.modified.arrhenius(PRef=param[['RdRef']],param[['RdHa']],param[['RdHd']],param[['RdS']],Tleaf)
+  Rday=f.modified.arrhenius(PRef=param[['RdayRef']],param[['RdayHa']],param[['RdayHd']],param[['RdayS']],Tleaf)
   Vcmax=f.modified.arrhenius(PRef=param[['VcmaxRef']],param[['VcmaxHa']],param[['VcmaxHd']],param[['VcmaxS']],Tleaf)
   Jmax=f.modified.arrhenius(PRef=param[['JmaxRef']],param[['JmaxHa']],param[['JmaxHd']],param[['JmaxS']],Tleaf)
+  TPU=f.modified.arrhenius(PRef=param[['TPURef']],param[['TPUHa']],param[['TPUHd']],param[['TPUS']],Tleaf)
   
+  ## Calculating the electron transport rate
   I2=PFD*param[['abso']]*(param[['aQY']])
   J=(I2+Jmax-((I2+Jmax)^2-4*(param[['Theta']])*I2*Jmax)^0.5)/(2*(param[['Theta']]))
   
-  Tp=f.modified.arrhenius(PRef=param[['TpRef']],param[['TpHa']],param[['TpHd']],param[['TpS']],Tleaf)
-  Wp=3*Tp
+  ## Calculating the different photosynthesis limiting rates Wc, Wj, and Wp
+  Wp=3*TPU
   Wc=Vcmax*(ci-Gstar)/(ci+Kc*(1+param[['O2']]/Ko))
   Wj=J/4*(ci-Gstar)/(ci+2*Gstar)
+  
+  ## Smoothing the transitions between photosynthesis limitations
   Ai=f.smooth(A1 = Wc,A2 = Wj,theta=param[['thetacj']])*as.numeric(ci>Gstar)+f.smooth(A1 = Wc,A2 = Wj,theta=param[['thetacj']],root = 2)*as.numeric(ci<=Gstar)
-  A=f.smooth(A1=Ai,A2=Wp,theta=param[['thetaip']])-Rd
+  A=f.smooth(A1=Ai,A2=Wp,theta=param[['thetaip']])-Rday
  
-  result=data.frame(A=A,Ac=Wc-Rd,Aj=Wj-Rd,Ap=Wp-Rd,Ag=A+Rd)
+  result=data.frame(A=A,Ac=Wc-Rday,Aj=Wj-Rday,Ap=Wp-Rday,Ag=A+Rday)
   return(result)
 }
 
@@ -298,16 +311,16 @@ f.MinusLogL<-function(data,sigma,R=0.75,O2=0.75,TRef=0.75,
                       VcmaxHa	=0.75,
                       VcmaxHd	=0.75,
                       VcmaxS	=0.75,
-                      TpRef=0.75,
-                      TpHa=0.75,
-                      TpHd=0.75,
-                      TpS=0.75,
+                      TPURef=0.75,
+                      TPUHa=0.75,
+                      TPUHd=0.75,
+                      TPUS=0.75,
                       thetacj=0.75,
                       thetaip=0.75,
-                      RdRef=	0.75,
-                      RdHa=	0.75,
-                      RdHd=0.75,
-                      RdS=0.75,
+                      RdayRef=	0.75,
+                      RdayHa=	0.75,
+                      RdayHd=0.75,
+                      RdayS=0.75,
                       KcRef=	0.75,
                       KcHa=	0.75,
                       KoRef=	0.75,
@@ -321,9 +334,9 @@ f.MinusLogL<-function(data,sigma,R=0.75,O2=0.75,TRef=0.75,
   param=list(R=R,O2=O2,TRef=TRef,Patm=Patm,JmaxRef=JmaxRef,JmaxHa=	JmaxHa,
              JmaxHd=	JmaxHd,JmaxS	=JmaxS,VcmaxRef=VcmaxRef,VcmaxHa	= VcmaxHa,VcmaxHd	=VcmaxHd,
              VcmaxS	=VcmaxS,
-             TpRef=TpRef,TpHa=TpHa,TpHd=TpHd,TpS=TpS,
+             TPURef=TPURef,TPUHa=TPUHa,TPUHd=TPUHd,TPUS=TPUS,
              thetacj=thetacj,thetaip=thetaip,
-             RdRef=RdRef,RdHa=RdHa, RdHd=RdHd,RdS=RdS,
+             RdayRef=RdayRef,RdayHa=RdayHa, RdayHd=RdayHd,RdayS=RdayS,
              KcRef= KcRef,KcHa=	KcHa,KoRef=KoRef,KoHa=KoHa,GstarRef=	GstarRef,
              GstarHa	=GstarHa,abso=	abso,aQY=aQY,Theta=Theta)
   A_pred=f.Aci(ci=data$Ci,PFD=data$Qin,Tleaf=data$Tleaf,param=param)
@@ -350,9 +363,12 @@ f.MinusLogL<-function(data,sigma,R=0.75,O2=0.75,TRef=0.75,
 #' Ci=seq(40,1500,75),Qin=rep(2000,20),Tair=300,RHs=70,VPDleaf=2,Patm=101,A=f.Aci(PFD=2000,Tleaf=300,ci=seq(40,1500,75),
 #' param=f.make.param())$A+rnorm(n = 20,mean = 0,sd = 0.5))
 #'
-#' f.fitting(measures=data,id.name=NULL,Start=list(JmaxRef=90,VcmaxRef=70,RdRef=1),param=f.make.param())
-f.fitting<-function(measures,id.name=NULL,Start=list(JmaxRef=90,VcmaxRef=70,RdRef=1),param=f.make.param(),modify.init=TRUE,do.plot=TRUE,type='Aci'){
+#' f.fitting(measures=data,id.name=NULL,Start=list(JmaxRef=90,VcmaxRef=70,RdayRef=1),param=f.make.param())
+f.fitting<-function(measures,id.name=NULL,Start=list(JmaxRef=90,VcmaxRef=70,RdayRef=1),param=f.make.param(),modify.init=TRUE,do.plot=TRUE,type='Aci'){
   Fixed=param[!names(param)%in%names(Start)]
+  
+  ## Here I use some empirical tricks to create a list of initial values for the estimated parameters that span a large range of possible values
+  ## so we increase the chance to find a good solution and not a local minimum
   if(modify.init){
     if('JmaxRef'%in%names(Start)){Start[['JmaxRef']]=f.modified.arrhenius.inv(P = 6*(max(measures$A,na.rm=TRUE)+1),Ha = param[['JmaxHa']],Hd = param[['JmaxHd']],s = param[['JmaxS']],Tleaf = mean(measures$Tleaf,na.rm=TRUE),TRef = param[['TRef']],R = param[['R']])}
     if('JmaxRef'%in%names(Start)&'VcmaxRef'%in%names(Start)){Start[['VcmaxRef']]=Start[['JmaxRef']]/2}
@@ -387,6 +403,8 @@ f.fitting<-function(measures,id.name=NULL,Start=list(JmaxRef=90,VcmaxRef=70,RdRe
     for(i in names(Estimation2@coef[names(Estimation2@coef)%in%names(param)])){param[i]=Estimation2@coef[i]}
     if(do.plot){f.plot(measures=measures,name=name,param =param,list_legend = as.list(Estimation2@coef),type=type)}
   })
+  
+  ## Here, I compute the average environmental conditions during the curve 
   Envir=NA
   try({
     Envir=c(Tair=mean(measures$Tair,na.rm=TRUE),Tleaf=mean(measures$Tleaf,na.rm=TRUE),RHs=mean(measures$RHs,na.rm=TRUE),VPDleaf=mean(measures$VPDleaf,na.rm=TRUE),Qin=mean(measures$Qin,na.rm=TRUE),Patm=mean(measures$Patm,na.rm=TRUE))
