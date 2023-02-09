@@ -3,8 +3,13 @@ curated_data$QC='ok'
 hist(curated_data$Ci) ## No below zero value
 hist(curated_data$gsw) ## The conductance is sometimes low.. To consider in the quality check
 
+## Here I create a quality check table where I manually write the points of the curves that are bad.
+## This is a table with the number of the points (record) and the SampleID_num. Other methods could be used.. but I usually work like this
+## 
+
 QC_table=cbind.data.frame(SampleID_num=c(4,4,4,4,4,6,8,9,10,25,27,35,35,35,55,55,55,69,69),
                           Record=c(13,14,15,16,17,16,4,15,2,25,28,50,51,52,28,29,30,42,43)) ## I had to do a heavy QaQc
+
 ls_bad_curve=c(1,2,16,19,34,37,43,46,49,50,54,61,63,64,71,79,90,93,95)
 ls_bad_curve=c(ls_bad_curve,8,12,15,17,18,20,21,32,47,48,56,58,68,86)## This curves were removed after checking the fittings
 curated_data[paste(curated_data$SampleID_num,curated_data$Record)%in%paste(QC_table$SampleID_num,QC_table$Record),'QC']='bad'
