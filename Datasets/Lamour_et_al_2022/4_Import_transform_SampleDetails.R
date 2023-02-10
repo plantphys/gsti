@@ -1,27 +1,15 @@
-library(spectratrait)
 library(here)
 path=here()
-setwd(file.path(path,'/Datasets/Barnes_et_al_2017'))
+setwd(file.path(path,'/Datasets/Lamour_et_al_2022'))
+load(file = "2_Fitted_ACi_data.Rdata",verbose=TRUE)
+SampleDetails=read.csv("PA_2022_SampleDetails.csv")
 
-
-Reflectance=read.csv('9_processed_hyperspectral_wide.csv')
-load('2_Fitted_ACi_data.Rdata',verbose=TRUE)
-
-## The unique id is not the same between file so 
-## I combine using the values of Vcmax and Jmax..
-## Uggly, but, Hey, it works!
-
-Reflectance$VcmaxJmax=paste(substr(Reflectance$Vcmax,1,6),substr(Reflectance$Jmax,1,6))
-Bilan$VcmaxJmax=paste(substr(Bilan$Vcmax,1,6),substr(Bilan$Jmax,1,6))
-
-SampleDetails=merge(x=Reflectance,y=Bilan,by.x = 'VcmaxJmax',by.y='VcmaxJmax')
-
-SampleDetails$Site_name="Biosphere 2"
-SampleDetails$Dataset_name="Barnes_et_al_2017"
-SampleDetails$Species="Populus deltoides"
-SampleDetails$Sun_Shade="Sun"
-SampleDetails$Plant_type="Agricultural"
-SampleDetails$Soil="Managed"
+SampleDetails$Site_name=substr(x = SampleDetails$Site,start = 4,stop = 7)
+SampleDetails$Dataset_name="Lamour_et_al_2022"
+SampleDetails$Species=SampleDetails$Genus_species
+SampleDetails$Sun_Shade=NA
+SampleDetails$Plant_type="Wild"
+SampleDetails$Soil="Natural"
 SampleDetails$LMA=NA
 SampleDetails$Narea=NA
 SampleDetails$Nmass=NA
