@@ -1,14 +1,13 @@
 library(here)
 path <- here()
 setwd(file.path(path,'/Datasets/Serbin_et_al_2019'))
-getwd()
 
 source(file.path(path,'/R/fit_Vcmax.R'))
 source(file.path(path,'/R/Photosynthesis_tools.R'))
 
 
 
-load('1_QC_data.Rdata',verbose=TRUE)
+load('1_QC_ACi_data.Rdata',verbose=TRUE)
 head(curated_data)
 
 curated_data$Tleaf <- curated_data$Tleaf+273.16 ## Conversion to kelvin
@@ -24,20 +23,20 @@ Bilan <- f.fit_Aci(measures=curated_data,param = f.make.param())
 #Bilan <- cbind.data.frame(Bilan,Bilan_JB)
 
 ## Fitting quality check
-# Are there particularly low or high VcmaxRef?
-hist(Bilan$VcmaxRef)
-range(Bilan$VcmaxRef)
+# Are there particularly low or high Vcmax25?
+hist(Bilan$Vcmax25)
+range(Bilan$Vcmax25)
 
 # Here, I look at the residual standard error and try to identify bad curves
-Bilan[Bilan$sigma/Bilan$VcmaxRef>quantile(x = Bilan$sigma/Bilan$VcmaxRef,probs = 0.95),'SampleID_num']
+Bilan[Bilan$sigma/Bilan$Vcmax25>quantile(x = Bilan$sigma/Bilan$Vcmax25,probs = 0.95),'SampleID_num']
 # 6, 28
 
-# I check if the JmaxRef/ VcmaxRef ratio look correct
-plot(x=Bilan$VcmaxRef,y=Bilan$JmaxRef,xlab='Vcmax25',ylab='Jmax25',xlim=c(min(c(Bilan$VcmaxRef,Bilan$JmaxRef),na.rm=TRUE), 
-                                                                          max(c(Bilan$VcmaxRef,Bilan$JmaxRef),na.rm=TRUE)), 
-     ylim=c(min(c(Bilan$VcmaxRef,Bilan$JmaxRef),na.rm=TRUE),max(c(Bilan$VcmaxRef,Bilan$JmaxRef),na.rm=TRUE)))
+# I check if the Jmax25/ Vcmax25 ratio look correct
+plot(x=Bilan$Vcmax25,y=Bilan$Jmax25,xlab='Vcmax25',ylab='Jmax25',xlim=c(min(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE), 
+                                                                          max(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE)), 
+     ylim=c(min(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE),max(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE)))
 abline(a=c(0,1))
-abline(lm(JmaxRef~0+VcmaxRef,data=Bilan),col='red')
+abline(lm(Jmax25~0+Vcmax25,data=Bilan),col='red')
 
 ## Adding the SampleID column
 Table_SampleID <- curated_data[!duplicated(curated_data$SampleID),c('SampleID','SampleID_num','Sample_ID_Name')]
@@ -62,10 +61,10 @@ old_fitted_data.1$SampleID <- as.numeric(as.factor(sampID))
 # but the results are close!
 comparison_data <- merge(x=old_fitted_data.1,y=Bilan,by='SampleID')
 names(comparison_data)
-plot(x=comparison_data$VcmaxRef,y=comparison_data$Fitted.Vcmax,xlab='Vcmax25',ylab='Vcmax25_authors',
+plot(x=comparison_data$Vcmax25,y=comparison_data$Fitted.Vcmax,xlab='Vcmax25',ylab='Vcmax25_authors',
      xlim=c(30,400), ylim=c(30,400))
 abline(a = c(0,1))
 
 
 # Output results
-save(Bilan,file='2_Result_ACi_fitting.Rdata')
+save(Bilan,file='2_Fitted_ACi_data.Rdata')

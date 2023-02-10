@@ -25,7 +25,7 @@ abline(lm(Jmax25~0+Vcmax25,data=Bilan),col='red')
 Table_SampleID=curated_data[!duplicated(curated_data$SampleID),c('SampleID','SampleID_num')]
 Bilan=merge(x=Bilan,y=Table_SampleID,by.x='SampleID_num',by.y='SampleID_num')
 
-save(Bilan,file='2_Fitted_ACi_data.Rdata')
+
 
 
 ## Comparison with the Authors fitting
@@ -33,7 +33,7 @@ save(Bilan,file='2_Fitted_ACi_data.Rdata')
 Author_fitting=read.csv(file='10_vcmax_jmax_estimates.csv')
 Author_fitting=merge(x=Author_fitting,y=Bilan,by.x='fname',by.y='SampleID')
 Bilan=merge(x=Bilan,y=Author_fitting[,c('fname','Vcmax','Jmax')],by.x='SampleID',by.y='fname')
-
+save(Bilan,file='2_Fitted_ACi_data.Rdata')
 
 param=f.make.param()
 Author_fitting$Vcmax_new=f.modified.arrhenius(PRef = Author_fitting$Vcmax25,Ha = param$VcmaxHa,Hd = param$VcmaxHd,s = param$VcmaxS,Tleaf = Author_fitting$Tleaf,TRef = 25+273.16)

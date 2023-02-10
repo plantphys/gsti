@@ -4,30 +4,25 @@ path=here()
 setwd(file.path(path,'/Datasets/Barnes_et_al_2017'))
 
 
-spectra=read.csv('9_processed_hyperspectral_wide.csv')
+Reflectance=read.csv('9_processed_hyperspectral_wide.csv')
 load('2_Fitted_ACi_data.Rdata',verbose=TRUE)
 
 ## The unique id is not the same between file so 
 ## I combine using the values of Vcmax and Jmax..
 ## Uggly, but, Hey, it works!
 
-spectra$VcmaxJmax=paste(substr(spectra$Vcmax,1,6),substr(spectra$Jmax,1,6))
+Reflectance$VcmaxJmax=paste(substr(Reflectance$Vcmax,1,6),substr(Reflectance$Jmax,1,6))
 Bilan$VcmaxJmax=paste(substr(Bilan$Vcmax,1,6),substr(Bilan$Jmax,1,6))
 
-spectra=merge(x=spectra,y=Bilan,by.x = 'VcmaxJmax',by.y='VcmaxJmax')
-spectra=data.frame(SampleID=spectra$uniqueID,
-                        dataset='Barnes_et_al_2017',
-                        Species='Populus deltoides',
-                        N_pc=NA,
-                        Na=NA,
-                        LMA=NA,
-                        LWC=NA,
-                        Vcmax25=spectra$VcmaxRef,
-                        Jmax25=spectra$JmaxRef,
-                        Tp25=spectra$TpRef,
-                        Tleaf_ACi=spectra$Tleaf,
-                        Spectra=I(as.matrix(spectra[,10:2160]*100)))## Reflectance in % (0-100)
-f.plot.spec(Z = spectra$Spectra,wv = 350:2500)
+Reflectance=merge(x=Reflectance,y=Bilan,by.x = 'VcmaxJmax',by.y='VcmaxJmax')
 
 
-save(spectra,file='3_Spectra_traits.Rdata')
+Reflectance$Spectrometer="ASD FieldSpec 3"
+Reflectance$Leaf_clip="ASD Leaf Clip"
+
+Reflectance$Reflectance=I(as.matrix(Reflectance[,10:2160]))
+
+f.plot.spec(Z = Reflectance$Reflectance,wv = 350:2500)
+
+Reflectance=Reflectance[,c("SampleID","Reflectance","Spectrometer","Leaf_clip")]
+save(Reflectance,file='3_QC_Reflectance_data.Rdata')
