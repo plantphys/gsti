@@ -1,0 +1,46 @@
+library(here)
+library(spectratrait)
+path=here()
+setwd(file.path(path,'/Datasets/Rogers_et_al_2017'))
+load('2_Fitted_ACi_data.Rdata',verbose=TRUE)
+
+
+############# Code from Shawn Serbin #################
+# NGEE Arctic Leaf Spectral Reflectance and Transmittance Data 2014 to 2016 Utqiagvik (Barrow) Alaska
+ecosis_id <- "bf41fff2-8571-4f34-bd7d-a3240a8f7dc8"
+Reflectance <- get_ecosis_data(ecosis_id = ecosis_id)
+
+# clean up
+Reflectance[Reflectance==-9999]=NA
+Reflectance=Reflectance[Reflectance$`Foreoptic Specifications`!="SVC_Integrating_Sphere",]
+which(duplicated(Reflectance$BNL_Barcode))
+unique(Reflectance$`Foreoptic Specifications`)
+
+######################
+
+Reflectance$Spectrometer="SVC HR-1024i"
+Reflectance$Leaf_clip="SVC LC-RP Pro"
+Reflectance[Reflectance$`Foreoptic Specifications`=="Fiber_1_LC_RP","Leaf_clip"]="SVC LC-RP"
+Reflectance$SampleID=Reflectance$Sample_ID
+Reflectance$Reflectance=I(as.matrix(Reflectance[,36:2186]))
+f.plot.spec(Z = Reflectance$Reflectance,wv = 350:2500)
+save(Reflectance,file="3_QC_Reflectance_data.Rdata")
+
+spectra=merge(x=spectra,y=Bilan,by.x = 'Sample_ID',by.y='SampleID')
+
+spectra=data.frame(SampleID=spectra$SampleID,
+                        dataset='Rogers_et_al_2017',
+                        Species=paste(spectra$`Latin Genus`,spectra$`Latin Species`),
+                        N_pc=spectra$N_mass_g_g,
+                        Na=spectra$N_area_g_m2,
+                        LMA=spectra$LMA_g_m2,
+                        LWC=NA,
+                        Vcmax25=spectra$VcmaxRef,
+                        Jmax25=spectra$JmaxRef,
+                        Tp25=spectra$TpRef,
+                        Tleaf_ACi=spectra$Tleaf,
+                        Spectra=I(as.matrix(spectra[,36:2186])))## Reflectance in % (0-100)
+
+
+
+save(spectra,file='3_Spectra_traits.Rdata')
