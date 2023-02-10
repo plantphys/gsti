@@ -12,4 +12,4 @@ hist(curated_data$Ci) ## No below zero value
 hist(curated_data$Qin) 
 hist(curated_data$Tleaf)
 
-save(curated_data,file='1_QC_data.Rdata')
+save(curated_data,file='1_QC_ACi_data.Rdata')

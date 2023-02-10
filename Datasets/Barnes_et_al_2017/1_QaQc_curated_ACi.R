@@ -1,3 +1,9 @@
+library(here)
+path <- here()
+
+setwd(file.path(path,'/Datasets/Barnes_et_al_2017'))
+
+
 load('0_curated_data.Rdata',verbose=TRUE)
 curated_data$QC='ok'
 hist(curated_data$Ci) ## No below zero value

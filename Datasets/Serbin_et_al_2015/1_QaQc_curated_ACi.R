@@ -71,12 +71,12 @@ ls_bad_curve <- sort(unique(curated_data[curated_data$SampleID%in%bad_curve_list
 ls_bad_curve
 
 ## Build QC table
-QC_table <- cbind.data.frame(SampleID_num=c(),Obs=c())
+QC_table <- cbind.data.frame(SampleID_num=c(),Record=c())
 
-curated_data[paste(curated_data$SampleID_num,curated_data$Obs) %in% paste(QC_table$SampleID_num,QC_table$Obs),'QC']='bad'
+curated_data[paste(curated_data$SampleID_num,curated_data$Record) %in% paste(QC_table$SampleID_num,QC_table$Record),'QC']='bad'
 
 ## Remove additional curves with less than 3 pts
-n_points_curves <- tapply(X=curated_data[curated_data$QC=="ok",'Obs'],INDEX = curated_data[curated_data$QC=="ok",'SampleID_num'],FUN = function(x){length(x)})
+n_points_curves <- tapply(X=curated_data[curated_data$QC=="ok",'Record'],INDEX = curated_data[curated_data$QC=="ok",'SampleID_num'],FUN = function(x){length(x)})
 #short_curves=n_points_curves[n_points_curves<5]
 short_curves <- n_points_curves[n_points_curves < 3]
 ls_bad_curve=c(ls_bad_curve,names(short_curves))
@@ -86,7 +86,7 @@ curated_data[curated_data$SampleID_num %in% ls_bad_curve,'QC']='bad'
 
 ## I DONT KNOW WHAT ALL OF THIS IS DOING - SEEMS OVERLY COMPLICATED
 # That is Just a PDF file whith each Aci curve. The title of the Aci curve on the pdf file is the SampleID_num.
-# Each point of the Aci curve as the Obs number written on it. If the point is in red it means that this point
+# Each point of the Aci curve as the Record number written on it. If the point is in red it means that this point
 # is bad and that it is present in the QC_table table or in the ls_bad_curve vector. 
 
 pdf(file='1_QA_QC_Aci.pdf',)
@@ -104,7 +104,7 @@ pdf(file='1_QA_QC_Aci.pdf',)
  }
  text(x=curated_data[curated_data$SampleID_num==SampleID_num,'Ci'],
       y=curated_data[curated_data$SampleID_num==SampleID_num,'A'], 
-      labels=curated_data[curated_data$SampleID_num==SampleID_num,'Obs'],cex=0.7)
+      labels=curated_data[curated_data$SampleID_num==SampleID_num,'Record'],cex=0.7)
    
  }
 dev.off()
@@ -113,4 +113,4 @@ dev.off()
 # Keep only "good" data for the rest of the workflow
 curated_data <- curated_data[curated_data$QC=='ok',]
 
-save(curated_data,file='1_QC_data.Rdata')
+save(curated_data,file='1_QC_ACi_data.Rdata')
