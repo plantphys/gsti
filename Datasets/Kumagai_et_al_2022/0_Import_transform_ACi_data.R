@@ -6,16 +6,18 @@
 
 library(magrittr)
 library(readxl)
-setwd("~/Global_Vcmax/")
-source('R/Correspondance_tables_ESS.R')
-data_folder <- "Datasets/Kumagai_et_al_2022/Licor_data"
-aci_files <- list.files(data_folder, pattern = "*.xlsx")
-outfile <- 'Datasets/Kumagai_et_al_2022/0_curated_data.Rdata'
+path=here()
+
+source(file.path(path,'/R/Correspondance_tables_ESS.R'))
+setwd(file.path(path,'/Datasets/Kumagai_et_al_2022'))
+
+aci_files <- list.files(file.path(path,"Datasets/Kumagai_et_al_2022/Licor_data"), pattern = "*.xlsx")
+outfile <- '0_curated_data.Rdata'
 
 curated_data <- data.frame()
 for(file in aci_files) {
     print(file)
-    filepath <- paste0(data_folder, '/', file)
+    filepath <-file.path(path,"Datasets/Kumagai_et_al_2022/Licor_data",file)
     (excel_cnames <- read_excel(filepath, skip = 14, n_max = 0) %>%
                     names())
     excel_data <- read_excel(filepath, skip = 16, col_names = excel_cnames)

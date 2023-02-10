@@ -33,12 +33,12 @@ head(curated_data)
 
 curated_data[curated_data$Replicate==-9999,'Replicate']=1
 curated_data$QCauthors[curated_data$QCauthors==0L]=NA
-#curated_data$Obs=NA
+#curated_data$Record=NA
 head(curated_data)
 
-## Adding a 'Obs' information to the dataset
+## Adding a 'Record' information to the dataset
 #for(SampleID in curated_data$SampleID){
-#  curated_data[curated_data$SampleID==SampleID,'Obs']=1:nrow(curated_data[curated_data$SampleID==SampleID,])
+#  curated_data[curated_data$SampleID==SampleID,'Record']=1:nrow(curated_data[curated_data$SampleID==SampleID,])
 #}
 #head(curated_data)
 

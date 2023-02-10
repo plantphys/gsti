@@ -5,15 +5,18 @@
 
 library(magrittr)
 library(readxl)
-setwd("~/Global_Vcmax/")
-source('R/Correspondance_tables_ESS.R')
-data_folder <- "Datasets/Meacham_Hensold_et_al_2019/Licor_data"
-aci_files <- list.files(data_folder, pattern = "*.xlsx")
+library(here)
+path=here()
+source(file.path(path,'/R/Correspondance_tables_ESS.R'))
+setwd(file.path(path,'/Datasets/Meacham_Hensold_et_al_2019'))
+
+aci_files <- list.files(file.path(path,"Datasets/Meacham_Hensold_et_al_2019/Licor_data"), pattern = "*.xlsx")
+
 
 curated_data <- data.frame()
 for(file in aci_files) {
-    print(file)
-    filepath <- paste0(data_folder, '/', file)
+  print(file)
+  filepath <-file.path(path,"Datasets/Meacham_Hensold_et_al_2019/Licor_data",file)
     (excel_cnames <- read_excel(filepath, n_max = 0) %>%
                     names())
     excel_data <- read_excel(filepath, skip = 2, col_names = excel_cnames)
@@ -28,4 +31,4 @@ for(file in aci_files) {
 }
 
 curated_data$SampleID_num <- as.numeric(as.factor(curated_data$SampleID))
-save(curated_data,file = paste0('Datasets/Meacham_Hensold_et_al_2019/0_curated_data.Rdata'))
+save(curated_data,file = '0_curated_data.Rdata')

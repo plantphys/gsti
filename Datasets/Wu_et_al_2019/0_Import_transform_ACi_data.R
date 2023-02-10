@@ -2,8 +2,8 @@ library(here)
 path=here()
 ## I downloaded this dataset from :
 
-source(paste(path,'/R/Correspondance_tables_ESS.R',sep=''))
-setwd(paste(path,'/Datasets/Wu_et_al_2019',sep=''))
+source(file.path(path,'/R/Correspondance_tables_ESS.R'))
+setwd(file.path(path,'/Datasets/Wu_et_al_2019'))
 
 original_data=read.csv('2016ENSO_Panama_ACi.csv')
 curated_data=original_data

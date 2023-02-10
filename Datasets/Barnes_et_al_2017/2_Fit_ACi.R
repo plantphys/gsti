@@ -25,7 +25,7 @@ abline(lm(Jmax25~0+Vcmax25,data=Bilan),col='red')
 Table_SampleID=curated_data[!duplicated(curated_data$SampleID),c('SampleID','SampleID_num')]
 Bilan=merge(x=Bilan,y=Table_SampleID,by.x='SampleID_num',by.y='SampleID_num')
 
-save(Bilan,file='2_Result_ACi_fitting.Rdata')
+save(Bilan,file='2_Fitted_ACi_data.Rdata')
 
 
 ## Comparison with the Authors fitting

@@ -1,8 +1,8 @@
 library(here)
 path=here()
 ## I downloaded this dataset from: https://ecosis.org/package/seasonal-measurements-of-photosynthesis-and-leaf-traits-in-scarlet-oak
-source(paste(path,'/R/Correspondance_tables_ESS.R',sep=''))
-setwd(paste(path,'/Datasets/Burnett_et_al_2021',sep=''))
+source(file.path(path,'/R/Correspondance_tables_ESS.R'))
+setwd(file.path(path,'/Datasets/Burnett_et_al_2021'))
 
 
 original_data=read.csv(file = 'raw_gas_exchange_li6400.csv')

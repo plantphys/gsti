@@ -2,8 +2,8 @@ library(here)
 path=here()
 ## I downloaded this dataset from : https://doi.org/10.15486/ngt/1896884 and https://doi.org/10.15486/ngt/1896889
 
-source(paste(path,'/R/Correspondance_tables_ESS.R',sep=''))
-setwd(paste(path,'/Datasets/Lamour_et_al_2022',sep=''))
+source(file.path(path,'/R/Correspondance_tables_ESS.R'))
+setwd(file.path(path,'/Datasets/Lamour_et_al_2022'))
 
 original_data=read.csv('PA_2022_Aci_data.csv')
 curated_data=original_data[,c("SampleID", "record","A","Ci","CO2s","CO2r","SampleID","Patm","Qin","RHs","Tleaf","Remove")]

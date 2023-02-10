@@ -3,8 +3,8 @@ library(readxl)
 path=here()
 ## Data from Jin Wu and Zhengbing Yan
 
-source(paste(path,'/R/Correspondance_tables_ESS.R',sep=''))
-setwd(paste(path,'/Datasets/Yan_et_al_2021',sep=''))
+source(file.path(path,'/R/Correspondance_tables_ESS.R'))
+setwd(file.path(path,'/Datasets/Yan_et_al_2021'))
 
 original_data=read_xlsx('Yan et al. 2021. NPH. ACi curve data_LiCor1_LiCor2_Licor4.xlsx',sheet = 2)
 curated_data=original_data[,c("Leaf Code", "Obs","Photo","Ci","CO2S","CO2R","Cond","Press","PARi","RH_S","Tleaf")]
