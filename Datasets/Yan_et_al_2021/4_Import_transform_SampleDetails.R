@@ -1,36 +1,30 @@
+library(spectratrait)
 library(here)
-setwd(file.path(here(),'Datasets/Albert_et_al_2018'))
-load(file='2_Result_ACi_fitting.Rdata')
-SampleDetails <- read.csv('Wu_etal_2019_spectra_brazil.csv')
+path=here()
+setwd(file.path(path,'/Datasets/Barnes_et_al_2017'))
 
-SampleDetails$SampleID=SampleDetails$BR_UID
-SampleDetails$Site_name="TNF"
-SampleDetails$Dataset_name="Albert_et_al_2018"
-SampleDetails$Species
-SampleDetails[SampleDetails$Growth.Environment=="Sunlit","Sun_Shade"]="Sun"
-SampleDetails[SampleDetails$Growth.Environment=="Shaded","Sun_Shade"]="Shade"
-SampleDetails$Plant_type="Wild"
-SampleDetails$Soil="Natural"
 
-## Finding a unique identifier between files to merge the chemical data with the spectra
-## Wow I feel I found a mysterious key for a treasure. That was not simple!
-Chem_data <- read.csv("Albert_et_al_2018_TNF_leaf_chem_trait_data.csv")
-Chem_data$Date=as.character(Chem_data$Date)
-Chem_data[nchar(Chem_data$Date)==7,"Date"]=paste("0",Chem_data[nchar(Chem_data$Date)==7,"Date"],sep="")
-Chem_data$Date=paste(substr(Chem_data$Date,start = 1,stop = 4),substr(Chem_data$Date,start = 7,stop = 8),sep="")
-Chem_data$Leaf_ID=paste(Chem_data$Unique_Tree_ID,Chem_data$Date,Chem_data$Branch_Light_Environment,Chem_data$Leaf_number,sep="_")
-gasex_data<- read.csv("Albert_et_al_2018_TNF_gas_exchange_parameters.csv")
-Chem_data=merge(Chem_data,gasex_data,by.x="Leaf_ID",by.y="Leaf_ID")
+Reflectance=read.csv('9_processed_hyperspectral_wide.csv')
+load('2_Fitted_ACi_data.Rdata',verbose=TRUE)
 
-SampleDetails=merge(SampleDetails,Chem_data,by.x="BR_UID",by.y="code_for_matching",all.x=TRUE)
+## The unique id is not the same between file so 
+## I combine using the values of Vcmax and Jmax..
+## Uggly, but, Hey, it works!
 
-SampleDetails$LMA=1/as.numeric(SampleDetails$SLA_JW)*10000 ## Conversion from g.cm-2 to g.m-2
-hist(SampleDetails$LMA)
-SampleDetails$Narea=SampleDetails$percent_N/100*SampleDetails$LMA
-hist(SampleDetails$Narea)
+Reflectance$VcmaxJmax=paste(substr(Reflectance$Vcmax,1,6),substr(Reflectance$Jmax,1,6))
+Bilan$VcmaxJmax=paste(substr(Bilan$Vcmax,1,6),substr(Bilan$Jmax,1,6))
 
-SampleDetails$Nmass=SampleDetails$percent_N*10
-hist(SampleDetails$Nmass)
+SampleDetails=merge(x=Reflectance,y=Bilan,by.x = 'VcmaxJmax',by.y='VcmaxJmax')
+
+SampleDetails$Site_name="Biosphere 2"
+SampleDetails$Dataset_name="Barnes_et_al_2017"
+SampleDetails$Species="Populus deltoides"
+SampleDetails$Sun_Shade="Sun"
+SampleDetails$Plant_type="Agricultural"
+SampleDetails$Soil="Managed"
+SampleDetails$LMA=NA
+SampleDetails$Narea=NA
+SampleDetails$Nmass=NA
 SampleDetails$Parea=NA
 SampleDetails$Pmass=NA
 SampleDetails$LWC=NA
