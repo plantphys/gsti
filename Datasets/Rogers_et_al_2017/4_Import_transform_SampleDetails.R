@@ -22,3 +22,4 @@ SampleDetails=SampleDetails[SampleDetails$SampleID%in%Bilan$SampleID,]
 SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
 
 save(SampleDetails,file="4_SampleDetails.Rdata")
+
