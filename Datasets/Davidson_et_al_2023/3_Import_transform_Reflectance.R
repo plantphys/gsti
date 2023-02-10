@@ -6,8 +6,8 @@ setwd(file.path(path,'/Datasets/Davidson_et_al_2023'))
 
 Reflectance <- read.csv('Spec_Data.csv')
 
-Reflectance$Spectrometer="KEN?"
-Reflectance$Leaf_clip="KEN?"
+Reflectance$Spectrometer="SVC XHR-1024i"
+Reflectance$Leaf_clip="SVC LC-RP Pro"
 
 Reflectance$Reflectance=I(as.matrix(Reflectance[,4:2154]))
 
