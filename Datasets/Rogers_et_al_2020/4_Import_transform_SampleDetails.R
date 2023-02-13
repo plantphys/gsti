@@ -9,7 +9,7 @@ SampleDetails=Reflectance
 SampleDetails$Site_name=SampleDetails$`Location Name`
 SampleDetails$Dataset_name="Rogers_et_al_2020"
 SampleDetails$Species=paste(SampleDetails$`Latin Genus`,SampleDetails$`Latin Species`)
-SampleDetails$Sun_Shade="Sun"### ????????????????? Is that correct Kim or Alistair???????????????????
+SampleDetails$Sun_Shade="Sun"
 SampleDetails$Plant_type="Wild"
 SampleDetails$Soil="Natural"
 SampleDetails$LMA
