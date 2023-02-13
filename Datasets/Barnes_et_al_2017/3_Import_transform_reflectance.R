@@ -20,7 +20,7 @@ Reflectance=merge(x=Reflectance,y=Bilan,by.x = 'VcmaxJmax',by.y='VcmaxJmax')
 Reflectance$Spectrometer="ASD FieldSpec 3"
 Reflectance$Leaf_clip="ASD Leaf Clip"
 
-Reflectance$Reflectance=I(as.matrix(Reflectance[,10:2160]))
+Reflectance$Reflectance=I(as.matrix(Reflectance[,10:2160]))*100
 
 f.plot.spec(Z = Reflectance$Reflectance,wv = 350:2500)
 

@@ -13,18 +13,23 @@ library(spectratrait)
 path <- here()
 setwd(path)
 
-### Importing the dataset descriptions
+### Importing the Site Sites
 
 ls_files <- dir(recursive = TRUE)
-ls_files_Description <- ls_files[which(grepl(x=ls_files,pattern="Description.csv",ignore.case = TRUE))]
-ls_files_Description <- ls_files_Description[which(grepl(x=ls_files_Description,pattern="Datasets",ignore.case = TRUE))]
-ls_files_Description <- ls_files_Description[-which(grepl(x=ls_files_Description,pattern="TEMPLATE",ignore.case = TRUE))]
-All_Description <- do.call("rbind", apply(X = as.matrix(ls_files_Description),FUN = read.csv,MARGIN = 1))
+ls_files_Site <- ls_files[which(grepl(x=ls_files,pattern="Site.csv",ignore.case = TRUE))]
+ls_files_Site <- ls_files_Site[which(grepl(x=ls_files_Site,pattern="Datasets",ignore.case = TRUE))]
+All_sites=data.frame()
+for(site in ls_files_Site){
+  print(site)
+  data_site=read.csv(site)
+  All_sites=rbind.data.frame(All_sites,data_site)
+}
+
 
 ### Creating a map of all datasets
 world <- ne_countries(scale = "medium", returnclass = "sf")
 Map_datasets <- ggplot(data = world) + geom_sf() + xlab("Longitude") + 
-  ylab("Latitude") +geom_point(data= All_Description,aes(x=Long, y=Lat),color = "red")
+  ylab("Latitude") +geom_point(data= All_sites,aes(x=Longitude, y=Latitude),color = "red")
 #jpeg(filename = 'Map_datasets.jpeg',width = 170,height = 170,units = 'mm',res=150)
 
 ## !! TO DO - Update this to add X/Y labels etc, make prettier

@@ -11,6 +11,10 @@ Reflectance$Leaf_clip="SVC LC-RP Pro"
 
 Reflectance$Reflectance=I(as.matrix(Reflectance[,4:2154]))
 
+#I remove the duplicated sample
+SampleID_duplicated=Reflectance[which(duplicated(Reflectance$SampleID)),"SampleID"]
+Reflectance=Reflectance[!Reflectance$SampleID%in%SampleID_duplicated,]
+
 f.plot.spec(Z = Reflectance$Reflectance,wv = 350:2500)
 
 Reflectance=Reflectance[,c("SampleID","Reflectance","Spectrometer","Leaf_clip")]

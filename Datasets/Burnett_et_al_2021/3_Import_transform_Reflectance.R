@@ -12,7 +12,7 @@ Reflectance$Spectrometer="PSR+ 3500"
 Reflectance$Leaf_clip="SVC LC-RP Pro"
 Reflectance$SampleID=Reflectance$Sample_ID
 
-Reflectance$Reflectance=I(as.matrix(Reflectance[,2:2152]))
+Reflectance$Reflectance=I(as.matrix(Reflectance[,2:2152]))*100
 
 f.plot.spec(Z = Reflectance$Reflectance,wv = 350:2500)
 
