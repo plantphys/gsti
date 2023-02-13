@@ -14,6 +14,13 @@ print("### Beginning of tests ###")
  
   ## Checking the Site and Description metadata
   Site=read.csv("Site.csv")
+  
+  Site_colnames=c("Site_name","Longitude","Latitude","Elevation","Biome_number")
+  if(any(!Site_colnames%in%colnames(Site))){print("!!! Your Site dataframe misses some columns:")
+    print(Site_colnames[!Site_colnames%in%colnames(Site)])
+    stop()}
+  
+  
   Description=read.csv("Description.csv")
   load("4_SampleDetails.Rdata")
   if(any(is.na(c(Site$Site_name,Site$Latitude,Site$Longitude,Site$Biome_number)))){print("!!! You did not provide the Site_name, Latitude, Longitude or Biome number")
@@ -28,7 +35,7 @@ print("### Beginning of tests ###")
   load(file ="2_Fitted_ACi_data.Rdata")
   Bilan_colnames=c("SampleID_num","Vcmax25","Jmax25","TPU25","Rday25","StdError_Vcmax25","StdError_Jmax25","StdError_TPU25","StdError_Rday25","Tleaf","sigma","AIC","Model","Fitting_method","SampleID")
   if(any(!Bilan_colnames%in%colnames(Bilan))){print("!!! Your Bilan dataframe misses some columns:")
-    Bilan_colnames[!Bilan_colnames%in%colnames(Bilan)]
+    print(Bilan_colnames[!Bilan_colnames%in%colnames(Bilan)])
     stop()}
   
   
@@ -54,9 +61,10 @@ print("### Beginning of tests ###")
                                             stop()}
   ls_SampleID_not_in_Reflectance=Bilan[!Bilan$SampleID%in%Reflectance$SampleID,"SampleID"]
   ls_SampleID_not_in_Bilan=Reflectance[!Reflectance$SampleID%in%Bilan$SampleID,"SampleID"]
-  if(length(ls_SampleID_not_in_Reflectance)>0){paste("Some leaves in 2_Fitted_ACi_data.Rdata file do not have an associated Reflectance data, correct if necessary :",paste(ls_SampleID_not_in_Reflectance,collapse=" "))}
-  if(length(ls_SampleID_not_in_Bilan)>0){paste("Some Reflectance spectra do not have an associated leaf fitted ACi data in 2_Fitted_ACi_data.Rdata, correct if necessary :",paste(ls_SampleID_not_in_Bilan,collapse=" "))}
-  if(mean(Reflectance$Reflectance,na.rm=TRUE)<1)("Your reflectance data are expressed in 0-1. They should be expressed in percent from 0 to 100, please correct")
+  if(length(ls_SampleID_not_in_Reflectance)>0){print(paste("Some leaves in 2_Fitted_ACi_data.Rdata file do not have an associated Reflectance data, correct if necessary :",paste(ls_SampleID_not_in_Reflectance,collapse=" ")))}
+  if(length(ls_SampleID_not_in_Bilan)>0){print(paste("Some Reflectance spectra do not have an associated leaf fitted ACi data in 2_Fitted_ACi_data.Rdata, correct if necessary :",paste(ls_SampleID_not_in_Bilan,collapse=" ")))}
+  if(mean(Reflectance$Reflectance,na.rm=TRUE)<1){print("Your reflectance data are expressed in 0-1. They should be expressed in percent from 0 to 100, please correct")
+                                                  stop()}
   invisible(readline(prompt="Press [enter] to continue"))
   
   ## Checking SampleDetails data
