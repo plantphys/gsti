@@ -72,6 +72,13 @@ print("### Beginning of tests ###")
   SampleDetails_colnames=c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")
   if(any(!SampleDetails_colnames%in%colnames(SampleDetails))){print("!!! Your SampleDetails dataframe misses some columns:")
     SampleDetails_colnames[!SampleDetails_colnames%in%colnames(SampleDetails)]}
+  
+  ## Is the site name given in this dataframe the same as the ones in the Site.csv file?
+  if(any(!SampleDetails$Site_name%in%Site$Site_name)){print("The site names in SampleDetails do not correspond to the site names you provided in Site.csv. Please correct 4_Import_transform_SampleDetails.R or Site.csv")
+    print(paste("Site_name in SampleDetails:",paste(unique(SampleDetails$Site_name),collapse = " ")))
+    print(paste("Site_name in Site.csv:",paste(unique(Site$Site_name),collapse = " ")))
+    stop()}
+  
   if(any(!SampleDetails$Sun_Shade%in%c("Sun","Shade",NA))){print("Column Sun_Shade only accepts Sun Shade or NA values")
                                                           stop()}
   if(any(!SampleDetails$Plant_type%in%c("Wild","Agricultural"))){print("Column Plant_type only accepts Wild or Agricultural values")
