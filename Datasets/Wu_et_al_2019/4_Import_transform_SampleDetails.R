@@ -2,6 +2,7 @@ library(here)
 path=here()
 setwd(file.path(path,'/Datasets/Wu_et_al_2019'))
 SampleDetails=read.csv('Wu et al. 2019 spectra panama.csv')
+load("2_Fitted_ACi_data.Rdata")
 Site_info=read.csv('2017_SLZ_ACi_comp.csv')
 Site_info=Site_info[,c('Site','Sample_ID')]
 
