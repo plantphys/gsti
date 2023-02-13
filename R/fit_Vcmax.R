@@ -133,9 +133,9 @@ f.fit_Aci<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdayRef = 2, TPURef
   dev.off()
   
   ## Renaming Bilan so it corresponds to the standard used in this repo:
-  colnames(Bilan)=c("sigma","Jmax25","Vcmax25","TPU25","Rday25","StdError_sigma","StdError_Jmax25","StdError_Vcmax25","StdError_TPU25","StdError_Rday25","AIC","Tleaf","SampleID_num","model") 
+  colnames(Bilan)=c("sigma","Jmax25","Vcmax25","TPU25","Rday25","StdError_sigma","StdError_Jmax25","StdError_Vcmax25","StdError_TPU25","StdError_Rday25","AIC","Tleaf","SampleID_num","Model","Fitting_method") 
   
-  return(Bilan)
+  return(Bilan[,c("SampleID_num","Vcmax25","Jmax25","TPU25","Rday25","StdError_Vcmax25","StdError_Jmax25","StdError_TPU25","StdError_Rday25","Tleaf","sigma","AIC","Model","Fitting_method")])
 }
 
 
@@ -159,5 +159,5 @@ f.fit_One_Point<-function(measures,param){
   Km=Kc*(1+param[['O2']]/Ko)
   Vcmax=measures$A/((measures$Ci-Gstar)/(measures$Ci+Km)-0.015)
   Vcmax25=f.modified.arrhenius.inv(P = Vcmax,Ha = param[['VcmaxHa']],Hd = param[['VcmaxHd']],s = param[['VcmaxS']],Tleaf = measures$Tleaf,TRef = 273.16+25)
-  return(data.frame(sigma=NA,JmaxRef=NA,Vcmax25=Vcmax25,TPURef=NA,RdayRef=NA,StdError_sigma=NA,StdError_JmaxRef=NA,StdError_Vcmax25=NA,StdError_TPURef=NA,StdError_RdayRef=NA,AIC=NA,Tleaf=measures$Tleaf,SampleID_num=measures$SampleID_num,model=NA,Vcmax_method='One point'))
+  return(data.frame(SampleID_num=measures$SampleID_num,Vcmax25=Vcmax25,Jmax25=NA,TPU25=NA,Rday25=NA,StdError_Vcmax25=NA,StdError_Jmax25=NA,StdError_TPU25=NA,StdError_Rday25=NA,Tleaf=measures$Tleaf,sigma=NA,AIC=NA,Model=NA,Fitting_method='One point'))
 }
