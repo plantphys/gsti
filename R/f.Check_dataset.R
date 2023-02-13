@@ -9,7 +9,7 @@ print("### Beginning of tests ###")
   ls_files=dir()
   
   ## Are all the required Rdata files present in the folder?
-  if(all(ls_data_files%in%ls_files)){"!!! All the required Rdata files were included"} else {(print(paste("Missing Rdata files:",ls_data_files[which(!ls_data_files%in%ls_files)])))
+  if(all(ls_data_files%in%ls_files)){"All the required Rdata files were included"} else {(print(paste("Missing Rdata files:",ls_data_files[which(!ls_data_files%in%ls_files)])))
     stop()}
  
   ## Checking the Site and Description metadata
@@ -57,7 +57,7 @@ print("### Beginning of tests ###")
   print("Does the reflectance look ok? If not revise step 3")
   f.plot.spec(Z = Reflectance$Reflectance,wv = 350:2500)
   
-  if(any(duplicated(Reflectance$SampleID))){"!!! You have duplicated SampleID names in your Reflectance dataframe"
+  if(any(duplicated(Reflectance$SampleID))){print("!!! You have duplicated SampleID names in your Reflectance dataframe")
                                             stop()}
   ls_SampleID_not_in_Reflectance=Bilan[!Bilan$SampleID%in%Reflectance$SampleID,"SampleID"]
   ls_SampleID_not_in_Bilan=Reflectance[!Reflectance$SampleID%in%Bilan$SampleID,"SampleID"]
