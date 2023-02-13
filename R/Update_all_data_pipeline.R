@@ -3,6 +3,7 @@ path <- here()
 
 refit_aci <- FALSE
 recombine_spec_trait <- FALSE
+update_database <-TRUE
 
 ## Re-run all the '2_Fit_Aci.R' codes
 if(refit_aci) {
@@ -27,32 +28,35 @@ if(recombine_spec_trait) {
 ## Re-run all the '4_Import_transform_SampleDetails.R' codes - to update existing data or add new
 
 
-## Create a curated database
-ls_required_data_files=c("2_Fitted_ACi_data.Rdata","3_QC_Reflectance_data.Rdata","4_SampleDetails.Rdata","Site.csv","Description.csv")
-Bilan_columns=c("Vcmax25","Jmax25","TPU25","Rday25","StdError_Vcmax25","StdError_Jmax25","StdError_TPU25","StdError_Rday25","Tleaf","sigma","AIC","Model","Fitting_method","SampleID") 
-Reflectance_columns=c("SampleID","Spectrometer","Leaf_clip","Reflectance")
-SampleDetails_columns=c("SampleID" ,"Site_name","Dataset_name","Species","Sun_Shade","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")
+## Update the curated database
+if(update_database){
+  ls_required_data_files=c("2_Fitted_ACi_data.Rdata","3_QC_Reflectance_data.Rdata","4_SampleDetails.Rdata","Site.csv","Description.csv")
+  Bilan_columns=c("Vcmax25","Jmax25","TPU25","Rday25","StdError_Vcmax25","StdError_Jmax25","StdError_TPU25","StdError_Rday25","Tleaf","sigma","AIC","Model","Fitting_method","SampleID") 
+  Reflectance_columns=c("SampleID","Spectrometer","Leaf_clip","Reflectance")
+  SampleDetails_columns=c("SampleID" ,"Site_name","Dataset_name","Species","Sun_Shade","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")
   
-ls_folder_dataset=list.dirs(file.path(here(),"Datasets"),recursive = FALSE)
-database=data.frame()
-for(dataset in ls_folder_dataset){
-  print(dataset)
-  ls_files=dir(dataset,recursive=FALSE)
-  if(all(ls_required_data_files%in%ls_files)){
-    print("Including dataset in the database")
-    load(file = file.path(dataset,"2_Fitted_ACi_data.Rdata"),verbose=TRUE)
-    load(file = file.path(dataset,"3_QC_Reflectance_data.Rdata"),verbose=TRUE)
-    load(file = file.path(dataset,"4_SampleDetails.Rdata"),verbose=TRUE)
-    Site=read.csv(file.path(dataset,"Site.csv"))
-    Description=read.csv(file.path(dataset,"Description.csv"))
-    Dataset_data=merge(x=SampleDetails[,SampleDetails_columns],y=Bilan[,Bilan_columns],by="SampleID",all=FALSE)
-    Dataset_data=merge(x=Dataset_data,y=Reflectance[,Reflectance_columns],by="SampleID",all=FALSE)
-    Dataset_data=merge(x=Dataset_data,y=Site,by="Site_name")
-    Dataset_data=cbind.data.frame(Dataset_data,Description)
-    database=rbind.data.frame(database,Dataset_data)
+  ls_folder_dataset=list.dirs(file.path(here(),"Datasets"),recursive = FALSE)
+  database=data.frame()
+  for(dataset in ls_folder_dataset){
+    print(dataset)
+    ls_files=dir(dataset,recursive=FALSE)
+    if(all(ls_required_data_files%in%ls_files)){
+      print("Including dataset in the database")
+      load(file = file.path(dataset,"2_Fitted_ACi_data.Rdata"),verbose=TRUE)
+      load(file = file.path(dataset,"3_QC_Reflectance_data.Rdata"),verbose=TRUE)
+      load(file = file.path(dataset,"4_SampleDetails.Rdata"),verbose=TRUE)
+      Site=read.csv(file.path(dataset,"Site.csv"))
+      Description=read.csv(file.path(dataset,"Description.csv"))
+      Dataset_data=merge(x=SampleDetails[,SampleDetails_columns],y=Bilan[,Bilan_columns],by="SampleID",all=FALSE)
+      Dataset_data=merge(x=Dataset_data,y=Reflectance[,Reflectance_columns],by="SampleID",all=FALSE)
+      Dataset_data=merge(x=Dataset_data,y=Site,by="Site_name")
+      Dataset_data=cbind.data.frame(Dataset_data,Description)
+      database=rbind.data.frame(database,Dataset_data)
     } else (print(" !!! Dataset not included: missing files"))
+  }
+  write.csv(database,file=file.path(path,"Database/Database.csv"),row.names = FALSE)
+  
 }
-write.csv(database,file=file.path(path,"Database/Database.csv"),row.names = FALSE)
 
 ## Re-run the PLSR models
 #source('C:/Users/jlamour/Documents/GitHub/Global_Vcmax/PLSR/PLSR_models.R')
