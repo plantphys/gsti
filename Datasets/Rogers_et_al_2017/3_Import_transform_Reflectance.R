@@ -24,23 +24,5 @@ Reflectance[Reflectance$`Foreoptic Specifications`=="Fiber_1_LC_RP","Leaf_clip"]
 Reflectance$SampleID=Reflectance$Sample_ID
 Reflectance$Reflectance=I(as.matrix(Reflectance[,36:2186]))
 f.plot.spec(Z = Reflectance$Reflectance,wv = 350:2500)
-save(Reflectance,file="3_QC_Reflectance_data.Rdata")
+save(Reflectance,file="3_QC_Reflectance_data.Rdata") ## Note that this file is used and modified in 4_Import_transform_SampleDetails.R
 
-spectra=merge(x=spectra,y=Bilan,by.x = 'Sample_ID',by.y='SampleID')
-
-spectra=data.frame(SampleID=spectra$SampleID,
-                        dataset='Rogers_et_al_2017',
-                        Species=paste(spectra$`Latin Genus`,spectra$`Latin Species`),
-                        N_pc=spectra$N_mass_g_g,
-                        Na=spectra$N_area_g_m2,
-                        LMA=spectra$LMA_g_m2,
-                        LWC=NA,
-                        Vcmax25=spectra$VcmaxRef,
-                        Jmax25=spectra$JmaxRef,
-                        Tp25=spectra$TpRef,
-                        Tleaf_ACi=spectra$Tleaf,
-                        Spectra=I(as.matrix(spectra[,36:2186])))## Reflectance in % (0-100)
-
-
-
-save(spectra,file='3_Spectra_traits.Rdata')

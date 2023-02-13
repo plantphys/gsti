@@ -1,30 +1,20 @@
-library(spectratrait)
 library(here)
+library(spectratrait)
 path=here()
-setwd(file.path(path,'/Datasets/Barnes_et_al_2017'))
+setwd(file.path(path,'/Datasets/Rogers_et_al_2020'))
+load('3_QC_Reflectance_data.Rdata',verbose=TRUE)
 
+SampleDetails=Reflectance
 
-Reflectance=read.csv('9_processed_hyperspectral_wide.csv')
-load('2_Fitted_ACi_data.Rdata',verbose=TRUE)
-
-## The unique id is not the same between file so 
-## I combine using the values of Vcmax and Jmax..
-## Uggly, but, Hey, it works!
-
-Reflectance$VcmaxJmax=paste(substr(Reflectance$Vcmax,1,6),substr(Reflectance$Jmax,1,6))
-Bilan$VcmaxJmax=paste(substr(Bilan$Vcmax,1,6),substr(Bilan$Jmax,1,6))
-
-SampleDetails=merge(x=Reflectance,y=Bilan,by.x = 'VcmaxJmax',by.y='VcmaxJmax')
-
-SampleDetails$Site_name="Biosphere 2"
-SampleDetails$Dataset_name="Barnes_et_al_2017"
-SampleDetails$Species="Populus deltoides"
-SampleDetails$Sun_Shade="Sun"
-SampleDetails$Plant_type="Agricultural"
-SampleDetails$Soil="Managed"
-SampleDetails$LMA=NA
-SampleDetails$Narea=NA
-SampleDetails$Nmass=NA
+SampleDetails$Site_name=SampleDetails$`Location Name`
+SampleDetails$Dataset_name="Rogers_et_al_2020"
+SampleDetails$Species=paste(SampleDetails$`Latin Genus`,SampleDetails$`Latin Species`)
+SampleDetails$Sun_Shade="Sun"### ????????????????? Is that correct Kim or Alistair???????????????????
+SampleDetails$Plant_type="Wild"
+SampleDetails$Soil="Wild"
+SampleDetails$LMA
+SampleDetails$Narea
+SampleDetails$Nmass
 SampleDetails$Parea=NA
 SampleDetails$Pmass=NA
 SampleDetails$LWC=NA
@@ -33,3 +23,5 @@ SampleDetails=SampleDetails[SampleDetails$SampleID%in%Bilan$SampleID,]
 SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
 
 save(SampleDetails,file="4_SampleDetails.Rdata")
+Reflectance=Reflectance[,c("SampleID","Spectrometer","Leaf_clip","Reflectance")]
+save(Reflectance,file="3_QC_Reflectance_data.Rdata")
