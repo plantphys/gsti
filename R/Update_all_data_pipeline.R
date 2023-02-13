@@ -52,6 +52,7 @@ for(dataset in ls_folder_dataset){
     database=rbind.data.frame(database,Dataset_data)
     } else (print(" !!! Dataset not included: missing files"))
 }
+write.csv(database,file=file.path(path,"Database/Database.csv"),row.names = FALSE)
 
 ## Re-run the PLSR models
 #source('C:/Users/jlamour/Documents/GitHub/Global_Vcmax/PLSR/PLSR_models.R')
