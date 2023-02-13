@@ -352,9 +352,9 @@ of fresh leaf by mass in % (0-100)</td>
 <td style="text-align: left;">Natural</td>
 <td style="text-align: left;">90.24</td>
 <td style="text-align: left;">2.35</td>
-<td style="text-align: left;">2.6</td>
+<td style="text-align: left;">26</td>
 <td style="text-align: left;">0.27</td>
-<td style="text-align: left;">0.3</td>
+<td style="text-align: left;">3</td>
 <td style="text-align: left;">62</td>
 </tr>
 <tr class="odd">
@@ -369,18 +369,18 @@ of fresh leaf by mass in % (0-100)</td>
 <td style="text-align: left;">2.59</td>
 <td style="text-align: left;">2.18</td>
 <td style="text-align: left;">0.42</td>
-<td style="text-align: left;">0.35</td>
+<td style="text-align: left;">3.5</td>
 <td style="text-align: left;">70</td>
 </tr>
 </tbody>
 </table>
 
-## Adding darj adapted leaf respiration data (optional)
+## Adding dark adapted leaf respiration data (optional)
 
 If you measured the dark respiration of leaves you can also add them to
 the project. All you need is to include a file with as columns:
 
--   SamppleID (the leaf identifier that is used everywhere to link
+-   SampleID (the leaf identifier that is used everywhere to link
     different data)
 -   Rdark (the dark respiration value, in micromol m-2 s-1, which
     corresponds to the CO2 release from the leaf in the dark, at
@@ -635,10 +635,11 @@ data frame file called “Reflectance\_data.Rdata” with four columns:
     leaf,
 
 -   Spectrometer, which informs what was the spectrometer model used
-    (PSR+ 3500, SVC XHR-1024i, ASD FieldSpec 4 Hi-Res, …)
+    (PSR+ 3500,SVC XHR-1024i, SVC XHR-1024i, ASD FieldSpec 3, ASD
+    FieldSpec 4, ASD FieldSpec 4 Hi-Res, …)
 
--   Leaf\_clip, which informs what was the leaf clip used (SVC LC-RP
-    Pro, ASD Leaf Clip, …)
+-   Leaf\_clip, which informs what was the leaf clip used (SVC LC-RP,
+    SVC LC-RP Pro, ASD Leaf Clip, …)
 
 -   Reflectance, which is a matrix with the reflectance in column
     (expressed in percent from 0 to 100).
