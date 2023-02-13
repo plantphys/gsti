@@ -21,8 +21,9 @@ for (filename in datafiles){
 # spectra <- as.data.frame(lapply(spectra, as.numeric))
 # spectra$ID <- paste(excel_data$Year, excel_data$Date, excel_data$Name, sep = " ")
 Reflectance <- merge(x = Reflectance, y = Bilan, by.x = 'ID', by.y='SampleID')
+Reflectance$SampleID=Reflectance$ID
 Reflectance$Spectrometer="ASD FieldSpec 4 Hi-Res"
 Reflectance$Leaf_clip="ASD Leaf Clip"
 Reflectance$Reflectance=I(as.matrix(Reflectance[,3:2153] * 100))
 f.plot.spec(Z = Reflectance$Reflectance, wv = 350:2500)
-save(spectra,file = '3_Reflectance_data.Rdata')
+save(spectra,file = '3_QC_Reflectance_data.Rdata')

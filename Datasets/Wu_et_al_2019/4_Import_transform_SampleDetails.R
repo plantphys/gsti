@@ -50,3 +50,6 @@ SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","
 
 save(SampleDetails,file="4_SampleDetails.Rdata")
 
+## Checking the dataset
+source(file.path(path,'/R/f.CHeck_dataset.R'))
+f.Check_data(folder_path = getwd())

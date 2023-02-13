@@ -35,3 +35,4 @@ author_fitting=merge(x=author_fitting,y=Bilan,by.x = 'Sample_ID',by.y = 'SampleI
 plot(x=author_fitting$Vcmax25.x,y=author_fitting$Vcmax25.y,xlab='Author_Vcmax25',ylab='New_Vcmax25')
 abline(c(0,1))
 summary(lm(author_fitting$Vcmax25.x~author_fitting$Vcmax25.y))
+
