@@ -1,6 +1,6 @@
 library(here)
 path=here()
-## I downloaded this dataset from :
+## I downloaded this dataset from :https://doi.org/10.15486/ngt/1866615.  https://doi.org/10.15486/ngt/1905761.  http://dx.doi.org/10.15486/ngt/1508118. and http://dx.doi.org/10.15486/ngt/1411867.
 
 source(file.path(path,'/R/Correspondance_tables_ESS.R'))
 setwd(file.path(path,'/Datasets/Wu_et_al_2019'))

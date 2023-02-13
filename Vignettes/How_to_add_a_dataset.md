@@ -635,7 +635,7 @@ data frame file called “Reflectance\_data.Rdata” with four columns:
     leaf,
 
 -   Spectrometer, which informs what was the spectrometer model used
-    (PSR+ 3500,SVC XHR-1024i, SVC XHR-1024i, ASD FieldSpec 3, ASD
+    (PSR+ 3500, SVC HR-1024i, SVC XHR-1024i, ASD FieldSpec 3, ASD
     FieldSpec 4, ASD FieldSpec 4 Hi-Res, …)
 
 -   Leaf\_clip, which informs what was the leaf clip used (SVC LC-RP,
