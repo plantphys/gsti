@@ -4,15 +4,15 @@ Welcome to the Global Spectra-Trait Initiative (GSTI).
 
 The aim of this project is to generate PLSR models using full range reflectance data for the prediction of leaf traits associated with the photosynthesis capacity of leaves. This includes the maximum carboxylation rate of rubisco (Vcmax), the maximum electron transport rate (Jmax), the dark respiration, as well as the prediction of leaf nitrogen, leaf mass per area (LMA), and leaf water content (LWC). Our aim is to gather datasets from multiple species and biomes over the world in order to build generalizable spectra trait models.
 
-If you want to participate, please send us an email or submit an issue in this github repository. We welcome raw A-Ci data, dark adapted respiration data as well as other structural and chemical leaf traits in a free format, and of course full range reflectance (500 nm to 2400 nm). An overview of the data curation workflow that we will follow is presented here: [Curation workflow](https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Overal_data_curation.pdf). It also details the data that is required to participate to the project. 
+If you want to participate, please send us an email or submit an issue in this github repository. We welcome raw A-Ci data, dark adapted respiration data as well as other structural and chemical leaf traits in a free format, and of course full range reflectance (500 nm to 2400 nm). An overview of the data curation workflow that we will follow is presented here: [Curation workflow](https://github.com/TESTgroup-BNL/gsti/blob/main/Overal_data_curation.pdf). It also details the data that is required to participate to the project. 
 
-More details on the processing chain that we follow to import, homogenise and produce a standardized database from multiple datasets are given on this guide: [Guide](https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Vignettes/How_to_add_a_dataset.md).
+More details on the processing chain that we follow to import, homogenise and produce a standardized database from multiple datasets are given on this guide: [Guide](https://github.com/TESTgroup-BNL/gsti/blob/main/Vignettes/How_to_add_a_dataset.md).
 
 The project utilizes the data and metadata formatting recommendations presented in the [Leaf-level gas exchange data and metadata reporting format](https://github.com/ess-dive-community/essdive-leaf-gas-exchange) (Ely et al, 2021). Data contributors are welcome to submit metadata that describes data collection protocols using the [methods metadata template](https://github.com/ess-dive-community/essdive-leaf-gas-exchange/blob/master/templates/methodsMetadataTemplate.xlsx).
 
-The A-Ci fitting is based on the FvCB model of photosynthesis (Farquhar et al. 1980), as implemented and parametrized in CLM4.5, and detailed here: [FvCB equations and parametrization](https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/FvCB%20equations%20parameters%20and%20fitting%20procedures.docx).
+The A-Ci fitting is based on the FvCB model of photosynthesis (Farquhar et al. 1980), as implemented and parametrized in CLM4.5, and detailed here: [FvCB equations and parametrization](https://github.com/TESTgroup-BNL/gsti/blob/main/FvCB%20equations%20parameters%20and%20fitting%20procedures.docx).
 
-The PLSR modeling approach is based on the best-practice guide by Burnett et al. (2021). An example of fitting is given here: [PLSR](https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/PLSR/Validation_Alldatasets_2022-09-19.pdf)
+The PLSR modeling approach is based on the best-practice guide by Burnett et al. (2021). An example of fitting is given here: [PLSR](https://github.com/TESTgroup-BNL/gsti/blob/main/PLSR/Validation_Alldatasets_2022-09-19.pdf)
 
 ## Principles and general information
 Only free use data ([CC BY 4](https://creativecommons.org/licenses/by/4.0/)) accepted. We request that users cite the Zenodo DOI for this repository, and strongly encourage them to (i) cite all dataset primary publications, and (ii) involve data contributors as co-authors when possible.
@@ -31,10 +31,10 @@ Farquhar, G.D., von Caemmerer, S. & Berry, J.A. A biochemical model of photosynt
 
 
 # Overview of the database
-<img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Map_datasets.png" width="800">
+<img src="https://github.com/TESTgroup-BNL/gsti/blob/main/Map_datasets.png" width="800">
 
 ## Overview of the combined dataset and performance of the PLSR model
-<img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Hist_Vcmax25.jpeg" width="400"> <img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Reflectance.jpeg" width="400">
+<img src="https://github.com/TESTgroup-BNL/gsti/blob/main/Hist_Vcmax25.jpeg" width="400"> <img src="https://github.com/TESTgroup-BNL/gsti/blob/main/Reflectance.jpeg" width="400">
 
 <br>
 
@@ -42,7 +42,7 @@ Farquhar, G.D., von Caemmerer, S. & Berry, J.A. A biochemical model of photosynt
 
 <br>
 
-<img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/PLSR/Validation_random.jpeg" width="600">
+<img src="https://github.com/TESTgroup-BNL/gsti/blob/main/PLSR/Validation_random.jpeg" width="600">
 
 <br>
 <br>
@@ -51,10 +51,10 @@ Farquhar, G.D., von Caemmerer, S. & Berry, J.A. A biochemical model of photosynt
 
 <br>
 
-<img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/PLSR/Validation_datasets.jpeg" width="600">
+<img src="https://github.com/TESTgroup-BNL/gsti/blob/main/PLSR/Validation_datasets.jpeg" width="600">
 
 <br>
 <br>
 
 ### List of species and number of observations
-<img src="https://github.com/TESTgroup-BNL/Global_Vcmax/blob/main/Leaf_per_species.jpeg" width="400"> 
+<img src="https://github.com/TESTgroup-BNL/gsti/blob/main/Leaf_per_species.jpeg" width="400"> 
