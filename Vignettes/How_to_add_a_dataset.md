@@ -1,5 +1,8 @@
 ## Creation of a Dataset folder
 
+You can use the folder Lamour\_et\_al\_2021 as a template. The code is
+commented and correspond to all the steps of this guide.
+
 Each dataset is put into a folder called “Names\_Year” for example
 “Serbin\_et\_al\_2019”. Please, also add any article associated with the
 dataset and the protocol of measurement, which should include the
@@ -257,124 +260,6 @@ scrub</td>
 </tbody>
 </table>
 
-### Adding a leaf sample information description csv file
-
-A file called SampleDetails.csv also has to be included with at the
-column listed below. More columns can be added if necessary.
-Importantly, the Site\_name has to be consistent with the Site\_name
-written in the Site.csv file and the SampleID will have to be consistent
-with the identifier used for the gas exchange and for the spectra as the
-SampleID will be used to merge all the different data.
-
-The first columns have to be filled (SampleID, Dataset\_name,
-Site\_name, Species, Sun\_Shade, Plant\_type, Soil), the columns related
-to the leaf traits can be left empty if you don’t have the data (LMA,
-Narea, Nmass, Parea, Pmass, LWC).
-
-For the species name, please write “Genus species”, for exemple
-Cercropia insignis. If you know the genus but not the species, write for
-example “Cecropia species”. If you dont know the genus, write “Family
-genus” for example (Urticaceae genus). If you don’t know anything, well
-you can write “Unknown”.
-
-You can use a R code or another way to create this file. If you use a R
-code, we recommend to leave it within the dataset folder and to call it
-“Import\_transform\_SampleDetails.R”.
-
-    Biomes=read.csv(file='SampleDetails.csv')
-    knitr::kable(Biomes)
-
-<table>
-<colgroup>
-<col style="width: 4%" />
-<col style="width: 2%" />
-<col style="width: 1%" />
-<col style="width: 7%" />
-<col style="width: 19%" />
-<col style="width: 5%" />
-<col style="width: 12%" />
-<col style="width: 5%" />
-<col style="width: 7%" />
-<col style="width: 6%" />
-<col style="width: 8%" />
-<col style="width: 7%" />
-<col style="width: 11%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">SampleID</th>
-<th style="text-align: left;">Dataset_name</th>
-<th style="text-align: left;">Site_name</th>
-<th style="text-align: left;">Species</th>
-<th style="text-align: left;">Sun_Shade</th>
-<th style="text-align: left;">Plant_type</th>
-<th style="text-align: left;">Soil</th>
-<th style="text-align: left;">LMA</th>
-<th style="text-align: left;">Narea</th>
-<th style="text-align: left;">Nmass</th>
-<th style="text-align: left;">Parea</th>
-<th style="text-align: left;">Pmass</th>
-<th style="text-align: left;">LWC</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Identifier of the measured leaf</td>
-<td style="text-align: left;">Name of the dataset</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Full species name, for example Cecropia
-insignis</td>
-<td style="text-align: left;">Was the leaf at the top of the canopy and
-usually receiving light (sun) or a shaded leaf? Chose between Sun, Shade
-or leave empty</td>
-<td style="text-align: left;">Chose between Wild or Agricultural</td>
-<td style="text-align: left;">Please chose between natural ground, pot,
-or managed ground (Natural, Pot, Managed)</td>
-<td style="text-align: left;">Leaf dry mass per unit area in g m-2</td>
-<td style="text-align: left;">Nitrogen content of leaf per unit leaf
-area in g m-2</td>
-<td style="text-align: left;">Nitrogen content of leaf by dry mass in mg
-g-1</td>
-<td style="text-align: left;">Phosphorus content of leaf per unit leaf
-area in g m-2</td>
-<td style="text-align: left;">Phosophorus content of leaf by dry mass in
-mg g-1</td>
-<td style="text-align: left;">Leaf water content. Percent water content
-of fresh leaf by mass in % (0-100)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">BNL20202</td>
-<td style="text-align: left;">Davidson_et_al_2020</td>
-<td style="text-align: left;">SLZ</td>
-<td style="text-align: left;">Cecropia insignis</td>
-<td style="text-align: left;">Sun</td>
-<td style="text-align: left;">Wild</td>
-<td style="text-align: left;">Natural</td>
-<td style="text-align: left;">90.24</td>
-<td style="text-align: left;">2.35</td>
-<td style="text-align: left;">26</td>
-<td style="text-align: left;">0.27</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">62</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">BNL10101</td>
-<td style="text-align: left;">Burnett_et_al_2018</td>
-<td style="text-align: left;">BNL</td>
-<td style="text-align: left;">Cucurbit pepo</td>
-<td style="text-align: left;">Sun</td>
-<td style="text-align: left;">Agricultural</td>
-<td style="text-align: left;">Pot</td>
-<td style="text-align: left;">118.65</td>
-<td style="text-align: left;">2.59</td>
-<td style="text-align: left;">2.18</td>
-<td style="text-align: left;">0.42</td>
-<td style="text-align: left;">3.5</td>
-<td style="text-align: left;">70</td>
-</tr>
-</tbody>
-</table>
-
 ## Adding dark adapted leaf respiration data (optional)
 
 If you measured the dark respiration of leaves you can also add them to
@@ -416,15 +301,14 @@ be good. If we have doubts on the quality of the data we tend to remove
 them from the final curated data.
 
 The curated A-C<sub>i</sub> data should be present in the dataset folder
-in a Rdata format called ‘QC\_ACi\_data.Rdata’ which contains the
+in a Rdata format called ‘2\_Fitted\_ACi\_data.Rdata’ which contains the
 A-C<sub>i</sub> data in a data.frame with at least the columns listed in
 the table below.
 
-Note that we usually include in the dataset folder the raw data, as well
-as the R code used to read, import and transform the raw data. All those
-preliminary steps are made in a R code called
-‘Import\_transform\_ACi.R’.We recommend to do the same, but again, we
-don’t have requirements on the code to do that.
+Note that we include in the dataset folder the raw data, as well as the
+R code used to read, import and transform the raw data. All those
+preliminary steps are made in two R codes called
+‘0\_Import\_transform\_ACi\_data.R’ and ‘1\_QaQc\_curated\_ACi.R’.
 
     Aci_data=read.csv(file='Aci_data.csv')
     knitr::kable(Aci_data)
@@ -481,11 +365,12 @@ incident on the leaf in quanta per area</td>
 
 ## Fitting the A-C<sub>i</sub> data to estimate the photosynthetic traits
 
-Estimation of V<sub>cmax</sub> is done in the ‘Fit\_ACi.R’ code included
-in each dataset folder. This code calls the function f.fit\_Aci() to
-estimate the photosynthetic parameters V<sub>cmax25</sub>,
-J<sub>max25</sub>, TPU<sub>25</sub> and R<sub>day25</sub> of the
-A-C<sub>i</sub> curve. It produces several pdf files:
+Estimation of V<sub>cmax</sub> is done in the ‘2\_Fit\_ACi.R’ code
+included in each dataset folder. This code calls the function
+f.fit\_Aci() to estimate the photosynthetic parameters
+V<sub>cmax25</sub>, J<sub>max25</sub>, TPU<sub>25</sub> and
+R<sub>day25</sub> of the A-C<sub>i</sub> curve. It produces several pdf
+files:
 
 -   2\_ACi\_fitting\_Ac.pdf
 
@@ -613,8 +498,6 @@ CO<sub>2</sub> conditions. You can use the function f.fit\_One\_Point()
 to estimate V<sub>cmax25</sub>. It will produce the exact same data
 frame as when using the function f.fit\_Aci.
 
-The one point method require an estimate of the e
-
 Importantly, the same temperature correction is used for all the
 datasets to estimate the parameters at 25°C. Since the Tleaf is also
 given in the output of the table, it will be possible to re estimate the
@@ -624,12 +507,13 @@ dependence parametrization if needed.
 ## Adding the leaf spectra data
 
 The spectral information should be a full range reflectance measurement
-(350 nm to 2500 nm) with a 1 nm resolution If you don’t have values for
+(350 nm to 2500 nm) with a 1 nm resolution. If you don’t have values for
 all the wavelengths (for example from 350 nm to 500 nm or from 2400 nm
 to 2500 nm), you can put NA in those wavelengths.
 
-A code “Import\_transform\_reflectance.R” should be used to create a R
-data frame file called “Reflectance\_data.Rdata” with four columns:
+A code “3\_Import\_transform\_Reflectance.R” should be used to create a
+R data frame file called “3\_QC\_Reflectance\_data.Rdata” with four
+columns:
 
 -   SampleID which has to be consistent with the previous files for each
     leaf,
@@ -653,12 +537,131 @@ Bjørn-Helge Mevik and Ron Wehrens. The pls package: Principal component
 and partial least squares regression in R. Journal of Statistical
 Software, 18(2):1–24, 2007.
 
-## Merging the leaf information
+### Adding a leaf sample information description csv file
 
-We merge the fitted parameters, the spectra and the leaf information in
-the code called ‘4\_Combine\_spectra\_traits.R’ that produces a Rdata
-file called “4\_Spectra\_traits.Rdata”.
+A data frame called SampleDetails has to be included with the columns
+listed below.
+
+Importantly, the Site\_name has to be consistent with the Site\_name
+written in the Site.csv file and the SampleID will have to be consistent
+with the identifier used for the gas exchange and for the spectra as the
+SampleID will be used to merge all the different data.
+
+The first columns have to be filled (SampleID, Dataset\_name,
+Site\_name, Species, Sun\_Shade, Plant\_type, Soil), the columns related
+to the leaf traits can be left empty if you don’t have the data (LMA,
+Narea, Nmass, Parea, Pmass, LWC). Note that the leaf water content, LWC,
+corresponds to (fresh weight - dry weight) / fresh weight.
+
+For the species name, please write “Genus species”, for exemple
+Cercropia insignis. If you know the genus but not the species, write for
+example “Cecropia species”. If you dont know the genus, write “Family
+genus” for example (Urticaceae genus). If you don’t know anything, well
+you can write “Unknown”.
+
+A code called “4\_Import\_transform\_SampleDetails.R” should be used to
+create the SampleDetails dataframe.
+
+    SampleDetails=read.csv(file='SampleDetails.csv')
+    knitr::kable(SampleDetails)
+
+<table>
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 2%" />
+<col style="width: 1%" />
+<col style="width: 7%" />
+<col style="width: 19%" />
+<col style="width: 5%" />
+<col style="width: 12%" />
+<col style="width: 5%" />
+<col style="width: 7%" />
+<col style="width: 6%" />
+<col style="width: 8%" />
+<col style="width: 7%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">SampleID</th>
+<th style="text-align: left;">Dataset_name</th>
+<th style="text-align: left;">Site_name</th>
+<th style="text-align: left;">Species</th>
+<th style="text-align: left;">Sun_Shade</th>
+<th style="text-align: left;">Plant_type</th>
+<th style="text-align: left;">Soil</th>
+<th style="text-align: left;">LMA</th>
+<th style="text-align: left;">Narea</th>
+<th style="text-align: left;">Nmass</th>
+<th style="text-align: left;">Parea</th>
+<th style="text-align: left;">Pmass</th>
+<th style="text-align: left;">LWC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Identifier of the measured leaf</td>
+<td style="text-align: left;">Name of the dataset</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Full species name, for example Cecropia
+insignis</td>
+<td style="text-align: left;">Was the leaf at the top of the canopy and
+usually receiving light (sun) or a shaded leaf? Chose between Sun, Shade
+or leave empty</td>
+<td style="text-align: left;">Chose between Wild or Agricultural</td>
+<td style="text-align: left;">Please chose between natural ground, pot,
+or managed ground (Natural, Pot, Managed)</td>
+<td style="text-align: left;">Leaf dry mass per unit area in g m-2</td>
+<td style="text-align: left;">Nitrogen content of leaf per unit leaf
+area in g m-2</td>
+<td style="text-align: left;">Nitrogen content of leaf by dry mass in mg
+g-1</td>
+<td style="text-align: left;">Phosphorus content of leaf per unit leaf
+area in g m-2</td>
+<td style="text-align: left;">Phosophorus content of leaf by dry mass in
+mg g-1</td>
+<td style="text-align: left;">Leaf water content. Percent water content
+of fresh leaf by mass in % (0-100)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BNL20202</td>
+<td style="text-align: left;">Davidson_et_al_2020</td>
+<td style="text-align: left;">SLZ</td>
+<td style="text-align: left;">Cecropia insignis</td>
+<td style="text-align: left;">Sun</td>
+<td style="text-align: left;">Wild</td>
+<td style="text-align: left;">Natural</td>
+<td style="text-align: left;">90.24</td>
+<td style="text-align: left;">2.35</td>
+<td style="text-align: left;">26</td>
+<td style="text-align: left;">0.27</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">62</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BNL10101</td>
+<td style="text-align: left;">Burnett_et_al_2018</td>
+<td style="text-align: left;">BNL</td>
+<td style="text-align: left;">Cucurbit pepo</td>
+<td style="text-align: left;">Sun</td>
+<td style="text-align: left;">Agricultural</td>
+<td style="text-align: left;">Pot</td>
+<td style="text-align: left;">118.65</td>
+<td style="text-align: left;">2.59</td>
+<td style="text-align: left;">2.18</td>
+<td style="text-align: left;">0.42</td>
+<td style="text-align: left;">3.5</td>
+<td style="text-align: left;">70</td>
+</tr>
+</tbody>
+</table>
+
+## Checking the overall dataset information
 
 The function “f.Check\_data()” can be used to validate that the format
-of the data is correct (i.e that the required variables are present in
-the merged data and that the values are within a reasonable range).
+of the curated dataset is correct and that all the required files are
+provided. The function checks if required variables are present in the
+data files and if all the information can be merged together.
+
+This function is called in the last R file
+“4\_Import\_transform\_SampleDetails.R”

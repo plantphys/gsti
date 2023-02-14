@@ -10,6 +10,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Creation of a Dataset folder
 
+You can use the folder Lamour_et_al_2021 as a template. The code is commented and correspond to all the steps of this guide.
+
 Each dataset is put into a folder called "Names_Year" for example "Serbin_et_al_2019". 
 Please, also add any article associated with the dataset and the protocol of measurement, which should include the description of the gas exchange measurements, leaf reflectance measurements, as well as the equipments used. It should also include the location description, information on the growing conditions (Natural environment? Green house? Agricultural or experimental field? Plants in pots?) and information on the species (Natural species, agricultural species) as well as the status of the plants (stressed, not stressed?).
 Please, also mention what was your stability criterion to start the A-Ci curves (did you wait for stability of the photosynthesis rate and stomatal conductance before starting the curve? What was the average acclimation time of the leaf within the leaf chamber?) and within the A-Ci curves. Also include this information if you used the "one point method" (De Kauwe et al. 2016, Burnett et al. 2019).
@@ -48,22 +50,6 @@ Biomes=read.csv(file='Biomes.csv')
 knitr::kable(Biomes)
 ```
 
-### Adding a leaf sample information description csv file
-
-A file called SampleDetails.csv also has to be included with at the column listed below. More columns can be added if necessary.
-Importantly, the Site_name has to be consistent with the Site_name written in the Site.csv file and the SampleID will have to be consistent with the identifier used for the gas exchange and for the spectra as the SampleID will be used to merge all the different data.
-
-The first columns have to be filled (SampleID, Dataset_name, Site_name, Species, Sun_Shade, Plant_type, Soil), the columns related to the leaf traits can be left empty if you don't have the data (LMA, Narea, Nmass, Parea, Pmass, LWC).
-
-For the species name, please write "Genus species", for exemple Cercropia insignis. If you know the genus but not the species, write for example "Cecropia species". If you dont know the genus, write "Family genus" for example (Urticaceae genus). If you don't know anything, well you can write "Unknown".
-
-
-You can use a R code or another way to create this file. If you use a R code, we recommend to leave it within the dataset folder and to call it "Import_transform_SampleDetails.R".
-
-```{r}
-Biomes=read.csv(file='SampleDetails.csv')
-knitr::kable(Biomes)
-```
 
 ## Adding dark adapted leaf respiration data (optional)
 
@@ -81,9 +67,9 @@ We have requirements for the final A-C<sub>i</sub> data to be used by the fittin
 
 The A-C<sub>i</sub> data should be cleaned from spurious measurements and points that would impact V<sub>cmax</sub> or J<sub>max</sub> estimation should not be included. If several measurements were taken at a given Ci, please only chose one so each Ci has the same number of measurements. We are usually quite conservative on the quality analysis and only keep the curves where the estimation of V<sub>cmax</sub> will be good. If we have doubts on the quality of the data we tend to remove them from the final curated data.
 
-The curated A-C<sub>i</sub> data should be present in the dataset folder in a Rdata format called 'QC_ACi_data.Rdata' which contains the A-C<sub>i</sub> data in a data.frame with at least the columns listed in the table below.
+The curated A-C<sub>i</sub> data should be present in the dataset folder in a Rdata format called '2_Fitted_ACi_data.Rdata' which contains the A-C<sub>i</sub> data in a data.frame with at least the columns listed in the table below.
 
-Note that we usually include in the dataset folder the raw data, as well as the R code used to read, import and transform the raw data. All those preliminary steps are made in a R code called 'Import_transform_ACi.R'.We recommend to do the same, but again, we don't have requirements on the code to do that.
+Note that we include in the dataset folder the raw data, as well as the R code used to read, import and transform the raw data. All those preliminary steps are made in two R codes called '0_Import_transform_ACi_data.R' and '1_QaQc_curated_ACi.R'. 
 
 
 ```{r}
@@ -95,7 +81,7 @@ knitr::kable(Aci_data)
 
 ## Fitting the A-C<sub>i</sub> data to estimate the photosynthetic traits
 
-Estimation of V<sub>cmax</sub> is done in the 'Fit_ACi.R' code included in each dataset folder.
+Estimation of V<sub>cmax</sub> is done in the '2_Fit_ACi.R' code included in each dataset folder.
 This code calls the function f.fit_Aci() to estimate the photosynthetic parameters V<sub>cmax25</sub>, J<sub>max25</sub>, TPU<sub>25</sub> and R<sub>day25</sub> of the A-C<sub>i</sub> curve.  It produces several pdf files:
 
 -   2_ACi_fitting_Ac.pdf
@@ -122,16 +108,15 @@ knitr::kable(Bilan)
 It is also possible to estimate V<sub>cmax25</sub> by the one point method (De Kauwe et al. 2016; Burnett et al. 2019).
 In that case, the measurements should be done at saturating irradiance in ambient CO<sub>2</sub> conditions. You can use the function f.fit_One_Point() to estimate V<sub>cmax25</sub>. It will produce the exact same data frame as when using the function f.fit_Aci.
 
-The one point method require an estimate of the e
 
 Importantly, the same temperature correction is used for all the datasets to estimate the parameters at 25°C. Since the Tleaf is also given in the output of the table, it will be possible to re estimate the parameters at the leaf temperature and to try other temperature dependence parametrization if needed.
 
 ## Adding the leaf spectra data
 
-The spectral information should be a full range reflectance measurement (350 nm to 2500 nm) with a 1 nm resolution
+The spectral information should be a full range reflectance measurement (350 nm to 2500 nm) with a 1 nm resolution.
 If you don't have values for all the wavelengths (for example from 350 nm to 500 nm or from 2400 nm to 2500 nm), you can put NA in those wavelengths. 
 
-A code "Import_transform_reflectance.R" should be used to create a R data frame file called "Reflectance_data.Rdata" with four columns:
+A code "3_Import_transform_Reflectance.R" should be used to create a R data frame file called "3_QC_Reflectance_data.Rdata" with four columns:
 
 -   SampleID which has to be consistent with the previous files for each leaf,
 
@@ -146,11 +131,30 @@ We use a matrix in the column spectra as in the pls package (Mevik & Wehrens, 20
 Bjørn-Helge Mevik and Ron Wehrens. The pls package: Principal component and partial
 least squares regression in R. Journal of Statistical Software, 18(2):1–24, 2007.
 
+### Adding a leaf sample information description csv file
+
+A data frame called SampleDetails has to be included with the columns listed below.
+
+Importantly, the Site_name has to be consistent with the Site_name written in the Site.csv file and the SampleID will have to be consistent with the identifier used for the gas exchange and for the spectra as the SampleID will be used to merge all the different data.
+
+The first columns have to be filled (SampleID, Dataset_name, Site_name, Species, Sun_Shade, Plant_type, Soil), the columns related to the leaf traits can be left empty if you don't have the data (LMA, Narea, Nmass, Parea, Pmass, LWC). Note that the leaf water content, LWC, corresponds to (fresh weight - dry weight) / fresh weight.
+
+For the species name, please write "Genus species", for exemple Cercropia insignis. If you know the genus but not the species, write for example "Cecropia species". If you dont know the genus, write "Family genus" for example (Urticaceae genus). If you don't know anything, well you can write "Unknown".
 
 
-## Merging the leaf information
+A code called "4_Import_transform_SampleDetails.R" should be used to create the SampleDetails dataframe.
 
-We merge the fitted parameters, the spectra and the leaf information in the code called '4_Combine_spectra_traits.R' that produces a Rdata file called "4_Spectra_traits.Rdata".
+```{r}
+SampleDetails=read.csv(file='SampleDetails.csv')
+knitr::kable(SampleDetails)
+```
 
-The function "f.Check_data()" can be used to validate that the format of the data is correct (i.e that the required variables are present in the merged data and that the values are within a reasonable range).
+
+## Checking the overall dataset information
+
+The function "f.Check_data()" can be used to validate that the format of the curated dataset is correct and that all the required files are provided. The function checks if required variables are present in the data files and if all the information can be merged together.
+
+This function is called in the last R file "4_Import_transform_SampleDetails.R"
+
+
 
