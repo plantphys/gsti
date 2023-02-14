@@ -15,14 +15,14 @@ data_Rdark=read.csv("PA-SLZ_2020_darkAdaptedRdark_data.csv")
 
 # Averaging the one minute data per SampleID
 Rdark=-tapply(X = data_Rdark$A,INDEX = data_Rdark$SampleID,FUN = mean,na.rm=TRUE)
-Tleaf=tapply(X=data_Rdark$Tleaf,INDEX = data_Rdark$SampleID,FUN = mean,na.rm=TRUE)
+Tleaf_Rdark=tapply(X=data_Rdark$Tleaf,INDEX = data_Rdark$SampleID,FUN = mean,na.rm=TRUE)
 
 # Creating a Rdark dataframe
-Rdark=data.frame(SampleID=names(Rdark),Rdark=Rdark,Tleaf=Tleaf)
+Rdark=data.frame(SampleID=names(Rdark),Rdark=Rdark,Tleaf_Rdark=Tleaf_Rdark)
 
 # Checking data quality
 hist(Rdark$Rdark) # No negative values
-hist(Rdark$Tleaf)
+hist(Rdark$Tleaf_Rdark)
 
 
 # Saving Rdark data

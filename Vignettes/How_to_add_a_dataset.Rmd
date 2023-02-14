@@ -112,7 +112,7 @@ If you measured the dark respiration of leaves you can also add them to the proj
 
 - SampleID (the leaf identifier that is used everywhere to link different data)
 - Rdark (the dark respiration value, in micromol m-2 s-1, which corresponds to the CO2 release from the leaf in the dark, at measurement temperature, reported as a positive value)
-- Tleaf, in degree celcius, the measurement leaf temperature
+- Tleaf_Rdark, in degree celcius, the measurement leaf temperature
 
 
 ## Adding the leaf spectra data

@@ -3,6 +3,7 @@ path <- here()
 
 refit_aci <- FALSE
 recombine_spec_trait <- FALSE
+check_pipeline <- TRUE
 update_database <-TRUE
 
 ## Re-run all the '2_Fit_Aci.R' codes
@@ -25,15 +26,29 @@ if(recombine_spec_trait) {
 }
 
 
-## Re-run all the '4_Import_transform_SampleDetails.R' codes - to update existing data or add new
+## Re-run all the '4_Import_transform_SampleDetails.R' codes - This checks the overall pipeline!
+if(check_pipeline) {
+  ls_files <- dir(path = path, recursive = TRUE)
+  ls_files <- ls_files[which(grepl(x=ls_files,pattern="4_Import_transform_SampleDetails.R",ignore.case = TRUE))]
+  ls_files <- file.path(path,ls_files)
+  for(i in seq_along(ls_files)){
+    print(ls_files[i])
+    source(ls_files[i])
+    Sys.sleep(1)
+  }
+} else {
+  print("**** Skipping checking the whole pipeline **** ")
+}
+
 
 
 ## Update the curated database
 if(update_database){
   ls_required_data_files=c("2_Fitted_ACi_data.Rdata","3_QC_Reflectance_data.Rdata","4_SampleDetails.Rdata","Site.csv","Description.csv")
-  Bilan_columns=c("Vcmax25","Jmax25","TPU25","Rday25","StdError_Vcmax25","StdError_Jmax25","StdError_TPU25","StdError_Rday25","Tleaf","sigma","AIC","Model","Fitting_method","SampleID") 
-  Reflectance_columns=c("SampleID","Spectrometer","Leaf_clip","Reflectance")
-  SampleDetails_columns=c("SampleID" ,"Site_name","Dataset_name","Species","Sun_Shade","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")
+  #Bilan colnames with Rdark and Tleaf_Rdark included
+  Bilan_colnames=c("Vcmax25","Jmax25","TPU25","Rday25","StdError_Vcmax25","StdError_Jmax25","StdError_TPU25","StdError_Rday25","Tleaf","sigma","AIC","Model","Fitting_method","SampleID","Rdark","Tleaf_Rdark") 
+  Reflectance_colnames=c("SampleID","Spectrometer","Leaf_clip","Reflectance")
+  SampleDetails_colnames=c("SampleID" ,"Site_name","Dataset_name","Species","Sun_Shade","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")
   
   ls_folder_dataset=list.dirs(file.path(here(),"Datasets"),recursive = FALSE)
   database=data.frame()
@@ -47,14 +62,19 @@ if(update_database){
       load(file = file.path(dataset,"4_SampleDetails.Rdata"),verbose=TRUE)
       Site=read.csv(file.path(dataset,"Site.csv"))
       Description=read.csv(file.path(dataset,"Description.csv"))
-      Dataset_data=merge(x=SampleDetails[,SampleDetails_columns],y=Bilan[,Bilan_columns],by="SampleID",all=FALSE)
-      Dataset_data=merge(x=Dataset_data,y=Reflectance[,Reflectance_columns],by="SampleID",all=FALSE)
+      if("Rdark_data.Rdata"%in%ls_files){load(file = file.path(dataset,"Rdark_data.Rdata"))
+                                          Bilan=merge(x=Bilan,y=Rdark,by="SampleID",all=TRUE)} else ({Bilan$Rdark=NA
+                                                                                                      Bilan$Tleaf_Rdark=NA})
+      Dataset_data=merge(x=SampleDetails[,SampleDetails_colnames],y=Bilan[,Bilan_colnames],by="SampleID",all=FALSE)
+      Dataset_data=merge(x=Dataset_data,y=Reflectance[,Reflectance_colnames],by="SampleID",all=FALSE)
       Dataset_data=merge(x=Dataset_data,y=Site,by="Site_name")
       Dataset_data=cbind.data.frame(Dataset_data,Description)
       database=rbind.data.frame(database,Dataset_data)
     } else (print(" !!! Dataset not included: missing files"))
   }
+  
   write.csv(database,file=file.path(path,"Database/Database.csv"),row.names = FALSE)
+  print("Database successfully updated")
   
 }
 

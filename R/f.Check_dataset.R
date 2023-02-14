@@ -15,7 +15,7 @@ f.Check_data=function(folder_path=NA){
   Bilan_colnames=c("SampleID_num","Vcmax25","Jmax25","TPU25","Rday25","StdError_Vcmax25","StdError_Jmax25","StdError_TPU25","StdError_Rday25","Tleaf","sigma","AIC","Model","Fitting_method","SampleID")
   Reflectance_colnames=c("SampleID","Spectrometer","Leaf_clip","Reflectance")
   SampleDetails_colnames=c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")
-  
+  Rdark_colnames=c("SampleID","Rdark","Tleaf_Rdark")
   
   # List of files included in the dataset folder
   ls_files=dir()
@@ -127,16 +127,27 @@ f.Check_data=function(folder_path=NA){
   # Is the optional Rdark data included?
   if("Rdark_data.Rdata"%in%ls_files){ load("Rdark_data.Rdata")
                                       print("Rdark data was included in the dataset")
-                                    if(!any(Rdark$SampleID%in%SampleDetails$SampleID)){print("SampleID in Rdark data do not match")}}else(print("Optional Rdark data not included in the dataset"))
+                                      if(any(!Rdark_colnames%in%colnames(Rdark))){print("!!! Rdark colnames are not valid.")
+                                                                                  stop()}
+                                      if(is.nan(mean(Rdark$Tleaf_Rdark,na.rm=TRUE))){print("!!! Tleaf_Rdark values are required but are not provided")
+                                        stop()}
+                                      if(mean(Rdark$Tleaf_Rdark,na.rm=TRUE)>70){print("!!! Rdark Tleaf values seem high. Are you sure they are in degree Celcius?")
+                                        stop()}
+                                      if(!any(Rdark$SampleID%in%SampleDetails$SampleID)){print("SampleID in Rdark data do not match SampleID in SampleDetails")
+                                                                                        stop()}}else(print("Optional Rdark data not included in the dataset"))
   
   print("Checking if all the data can be merged together")
 
-  test=try({Dataset_data=merge(x=SampleDetails[,SampleDetails_colnames],y=Bilan[,Bilan_colnames],by="SampleID",all=FALSE)
+  test=try({if("Rdark_data.Rdata"%in%ls_files){load(file = "Rdark_data.Rdata")
+    Bilan=merge(x=Bilan,y=Rdark,by="SampleID",all=TRUE)} else ({Bilan$Rdark=NA
+    Bilan$Tleaf_Rdark=NA})
+    Dataset_data=merge(x=SampleDetails[,SampleDetails_colnames],y=Bilan[,Bilan_colnames],by="SampleID",all=FALSE)
             Dataset_data=merge(x=Dataset_data,y=Reflectance[,Reflectance_colnames],by="SampleID",all=FALSE)
             Dataset_data=merge(x=Dataset_data,y=Site,by="Site_name")
             Dataset_data=cbind.data.frame(Dataset_data,Description)},silent=TRUE)
 
-  if(class(test)=="data.frame"){print("The data was successfully merged")}else(print("The data could not be merged."))
+  if(class(test)=="data.frame"){print("The data was successfully merged")}else({print("!!! The data could not be merged.")
+                                                                                      stop()})
   
 print("### End of tests ###")
 }
