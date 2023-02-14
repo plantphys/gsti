@@ -33,28 +33,7 @@ Farquhar, G.D., von Caemmerer, S. & Berry, J.A. A biochemical model of photosynt
 # Overview of the database
 <img src="https://github.com/TESTgroup-BNL/gsti/blob/main/Map_datasets.png" width="800">
 
-## Overview of the combined dataset and performance of the PLSR model
 <img src="https://github.com/TESTgroup-BNL/gsti/blob/main/Hist_Vcmax25.jpeg" width="400"> <img src="https://github.com/TESTgroup-BNL/gsti/blob/main/Reflectance.jpeg" width="400">
 
 <br>
-
-### Validation of the PLSR model on the validation dataset which comprises 20 % of the observation of each individual datasets
-
-<br>
-
-<img src="https://github.com/TESTgroup-BNL/gsti/blob/main/PLSR/Validation_random.jpeg" width="600">
-
-<br>
-<br>
-
-### Validation of the PLSR model using successively each dataset as a validation dataset
-
-<br>
-
-<img src="https://github.com/TESTgroup-BNL/gsti/blob/main/PLSR/Validation_datasets.jpeg" width="600">
-
-<br>
-<br>
-
-### List of species and number of observations
 <img src="https://github.com/TESTgroup-BNL/gsti/blob/main/Leaf_per_species.jpeg" width="400"> 
