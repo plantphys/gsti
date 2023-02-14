@@ -13,18 +13,11 @@ library(spectratrait)
 path <- here()
 setwd(path)
 
-### Importing the Site Sites
+# Importing the database
+Database=read.csv(file=file.path(path,"database/Database.csv"))
 
-ls_files <- dir(recursive = TRUE)
-ls_files_Site <- ls_files[which(grepl(x=ls_files,pattern="Site.csv",ignore.case = TRUE))]
-ls_files_Site <- ls_files_Site[which(grepl(x=ls_files_Site,pattern="Datasets",ignore.case = TRUE))]
-All_sites=data.frame()
-for(site in ls_files_Site){
-  print(site)
-  data_site=read.csv(site)
-  All_sites=rbind.data.frame(All_sites,data_site)
-}
-
+# Identifying unique sites
+All_sites=Database[-which(duplicated(paste(Database$Site_name,Database$Longitude))),c("Site_name","Longitude","Latitude")]
 
 ### Creating a map of all datasets
 world <- ne_countries(scale = "medium", returnclass = "sf")
@@ -39,19 +32,9 @@ dev.off()
 
 print(Map_datasets)
 
-### Importing curated datasets - TODO: replace = with <-
-
-ls_files=dir(recursive = TRUE)
-ls_files_Curated=ls_files[which(grepl(x=ls_files,pattern="3_Spectra_traits.Rdata",ignore.case = TRUE))]
-data_curated=data.frame()
-for(files in ls_files_Curated){
-  print(files)
-  load(files,verbose=TRUE)
-  data_curated=rbind.data.frame(data_curated,spectra)
-}
 
 ### Computing the number of leaves per species
-Resume=data.frame(table(data_curated$Species))
+Resume=data.frame(table(Database$Species))
 colnames(Resume)=c('Species','N_leaf')
 Resume$Species=as.character(Resume$Species)
 Resume=rbind.data.frame(Resume,c('Total leaves',sum(as.numeric(Resume$N_leaf))))
@@ -62,11 +45,12 @@ dev.off()
 
 ## Histogram of Vcmax25 in the combined dataset
 jpeg("Hist_Vcmax25.jpeg", height=100, width=100,units = 'mm',res=300)
-hist(data_curated$Vcmax25,breaks = 20,xlab=expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1),ylab='Number of leaves',main='')
+hist(Database$Vcmax25,breaks = 20,xlab=expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1),ylab='Number of leaves',main='')
 dev.off()
 
 ## Reflectance spectra of the combined dataset
+Reflectance=I(as.matrix(Database[,31:2181]))
 jpeg("Reflectance.jpeg", height=100, width=100,units = 'mm',res=300)
-f.plot.spec(Z = data_curated$Spectra,wv = 350:2500)
+f.plot.spec(Z = Reflectance,wv = 350:2500)
 dev.off()
 

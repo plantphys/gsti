@@ -79,12 +79,11 @@ if(update_database){
 }
 
 ## Re-run the PLSR models
-#source('C:/Users/jlamour/Documents/GitHub/Global_Vcmax/PLSR/PLSR_models.R')
-print("**** Re-fitting PLSR models **** ")
-source(file.path(here(),'PLSR/PLSR_models.R'))
+#print("**** Re-fitting PLSR models **** ")
+#source(file.path(here(),'PLSR/PLSR_models.R'))
 
 ## Re-run the summary and create the maps and tables for the read me
-#source('C:/Users/jlamour/Documents/GitHub/Global_Vcmax/R/Datasets_Map_and_resume.R')
+
 print("**** Creating dataset information and study map **** ")
 source(file.path(here(),'R/Datasets_Map_and_resume.R'))
 
