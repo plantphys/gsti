@@ -6,7 +6,7 @@
 library(magrittr)
 library(readxl)
 library(here)
-path=here()
+path<-here()
 source(file.path(path,'/R/Correspondance_tables_ESS.R'))
 setwd(file.path(path,'/Datasets/Meacham_Hensold_et_al_2019'))
 
@@ -31,4 +31,5 @@ for(file in aci_files) {
 }
 
 curated_data$SampleID_num <- as.numeric(as.factor(curated_data$SampleID))
+curated_data<-curated_data[order(curated_data$SampleID_num),]
 save(curated_data,file = '0_curated_data.Rdata')

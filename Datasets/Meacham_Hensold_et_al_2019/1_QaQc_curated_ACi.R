@@ -11,6 +11,9 @@ hist(curated_data$gsw) ## The conductance is sometimes low.. To consider in the 
 # found some points that needs to be removed with ci values or gsw values less than 0.
 QC_table <- cbind.data.frame(SampleID_num = c(57, 60, 67, 117, 169, 250, 255, 57),
                            Record = c(48, 59, 37, 23, 45, 1, 12, 57))
+# JL on february 14th 2023 Removed the first point of each curve which is often very poor
+first_point<-tapply(X = curated_data$Record,INDEX = curated_data$SampleID_num,FUN = min)
+first_point<-data.frame(SampleID_num=names(first_point),Record=first_point)
 
 # Below are the curve points that are removed as they are not good for fitting
 Curve_table1 <- cbind(SampleID_num = c(9, 36, 24, 5, 39, 40, 8, 33, 42, 44, 46, 49, 53, 56, 59, 63, 65, 62, 45, 45, 47, 50, 51, 61),
@@ -23,17 +26,22 @@ Curve_table3 <- cbind(SampleID_num = c(152, 145, 142, 159, 155, 173, 175, 177, 1
                        Record = c(45, 56, 67, 1, 12, 12, 23, 34, 12, 45, 67, 56, 67, 12, 34, 56, 14, 36, 45))
 Curve_table4 <- cbind(SampleID_num = c(213, 235, 234, 234, 237, 237, 244, 241, 227, 232, 232, 247, 230, 231, 245, 236, 252),
                        Record = c(47, 21, 31, 37, 11, 41, 55, 68, 5, 14, 16, 38, 12, 23, 50, 61, 23))                    
-# combine all the observed bad points (Visually checked)
-QC_table <- rbind.data.frame(QC_table, Curve_table1, Curve_table2, Curve_table3, Curve_table4)
 
-ls_bad_curve <- c(46, 47, 110, 111, 115, 120, 173, 176, 177, 185, 188, 195, 220, 221, 227, 239, 
-                  256, 30, 55, 180, 234) # removed as derived fitting results (vcmax or Jmax) seems too high
-                  # I may be conservative here for thes high values (more than 400 u mol m-2 s-1)
+Curve_tableJL <-cbind(SampleID_num = c(8,8,10,15,68,68,69,69,110,110,115,124,126,131,133,134,141,177,219),
+                      Record = c(67,68,78,34,57,58,35,36,69,70,57,23,12,45,34,33,34,34,21))                    
+
+# combine all the observed bad points (Visually checked)
+QC_table <- rbind.data.frame(QC_table, first_point,Curve_table1, Curve_table2, Curve_table3, Curve_table4, Curve_tableJL)
+
+ls_bad_curve <- c(44:48, 53, 80, 85, 87, 91, 93, 100, 101, 111,139,144,165,170, 173,176,177, 185, 188, 195, 203:217, 220, 221, 224,226,227, 229, 232,234, 239, 
+                  241,243,247,249,256,261) 
+
+ls_bad_fit <-c(18,22,49,51,59,61,63:65,244) # Jl added these bad curves. 
 
 curated_data[paste(curated_data$SampleID_num, curated_data$Record) %in% paste(QC_table$SampleID_num, QC_table$Record),'QC']='bad'
 
 curated_data[curated_data$SampleID_num %in% ls_bad_curve, 'QC'] <-'bad'
-
+curated_data[curated_data$SampleID_num %in% ls_bad_fit, 'QC'] <-'bad'
 pdf(file = '1_QA_QC_Aci.pdf',)
 for(SampleID_num in unique(curated_data$SampleID_num)) {
   plot(x = curated_data[curated_data$SampleID_num == SampleID_num,'Ci'],

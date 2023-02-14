@@ -32,4 +32,5 @@ for(file in aci_files) {
 }
 
 curated_data$SampleID_num <- as.numeric(as.factor(curated_data$SampleID))
+curated_data<-curated_data[order(curated_data$SampleID_num),]
 save(curated_data, file = outfile)
