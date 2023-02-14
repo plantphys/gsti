@@ -1,7 +1,9 @@
-## Creation of a Dataset folder
+This guide describes all the steps needed to add a new dataset. The
+folder Lamour\_et\_al\_2021 can be used as a template. The code within
+this folder has been commented and correspond to all the steps of this
+guide.
 
-You can use the folder Lamour\_et\_al\_2021 as a template. The code is
-commented and correspond to all the steps of this guide.
+## Creation of a Dataset folder
 
 Each dataset is put into a folder called “Names\_Year” for example
 “Serbin\_et\_al\_2019”. Please, also add any article associated with the
@@ -12,30 +14,19 @@ location description, information on the growing conditions (Natural
 environment? Green house? Agricultural or experimental field? Plants in
 pots?) and information on the species (Natural species, agricultural
 species) as well as the status of the plants (stressed, not stressed?).
+
 Please, also mention what was your stability criterion to start the A-Ci
 curves (did you wait for stability of the photosynthesis rate and
 stomatal conductance before starting the curve? What was the average
 acclimation time of the leaf within the leaf chamber?) and within the
 A-Ci curves. Also include this information if you used the “one point
-method” (De Kauwe et al. 2016, Burnett et al. 2019).
+method” to estimate Vcmax (De Kauwe et al. 2016, Burnett et al. 2019).
 
-Burnett, AC, Davidson, KJ, Serbin, SP, Rogers, A. The “one-point method”
-for estimating maximum carboxylation capacity of photosynthesis: A
-cautionary tale. Plant Cell Environ. 2019; 42: 2472– 2481.
-<https://doi.org/10.1111/pce.13574>
+## Adding a dataset description csv file
 
-De Kauwe, M. G., Lin, Y. S., Wright, I. J., Medlyn, B. E., Crous, K. Y.,
-Ellsworth, D. S., … Domingues, T. F. (2016b). A test of the “one-point
-method” for estimating maximum carboxylation capacity from
-field-measured, light-saturated photosynthesis. New Phytologist, 210(3),
-1130– 1144. <https://doi.org/10.1111/nph.13815>
-
-### Adding a dataset description csv file
-
-In each dataset folder a csv file called Description.csv has to be
-included. An example is given in the Folder 0\_Template. This file will
-be used to list the authors as well as associated papers and
-acknowledgements.
+In each dataset folder a csv file called **Description.csv** has to be
+included. This file will be used to list the authors as well as
+associated papers and acknowledgements.
 
     Description=read.csv(file='Description.csv')
     knitr::kable(Description)
@@ -94,14 +85,15 @@ class="email">jlamour.sci@gmail.com</a></td>
 </tbody>
 </table>
 
-### Adding a site description csv file
+## Adding a site description csv file
 
-A file called Site.csv also has to be included with the column listed
-below. The latitude and longitude coordinates will be used to position
-the dataset on a world map. If you have different sites for the same
-dataset with wide difference in positions that makes a difference on a
-world map or if this include different biomes, you can add several rows
-to your Site.csv file.
+A file called **Site.csv** also has to be included with the column
+listed below. The latitude and longitude coordinates will be used to
+position the dataset on a world map.
+
+If you have different sites for the same dataset with wide difference in
+positions that makes a difference on a world map or if this include
+different biomes, you can add several rows to your Site.csv file.
 
     Site=read.csv(file='Site.csv')
     knitr::kable(Site)
@@ -260,18 +252,6 @@ scrub</td>
 </tbody>
 </table>
 
-## Adding dark adapted leaf respiration data (optional)
-
-If you measured the dark respiration of leaves you can also add them to
-the project. All you need is to include a file with as columns:
-
--   SampleID (the leaf identifier that is used everywhere to link
-    different data)
--   Rdark (the dark respiration value, in micromol m-2 s-1, which
-    corresponds to the CO2 release from the leaf in the dark, at
-    measurement temperature, reported as a positive value)
--   Tleaf, in degree celcius, the measurement leaf temperature
-
 ## Adding the gas exchange A-C<sub>i</sub> data to the dataset folder
 
 The idea of this project is to include the raw A-C<sub>i</sub> data so
@@ -289,10 +269,10 @@ SampleID\_num. SampleID should correspond to the original identifier of
 the leaves in the raw dataset which is often a complex string. The
 column SampleID\_num should be an integer. We made the choice to use the
 SampleID\_num to facilitate the QAQC of the curves and the ploting of
-the figures (title name).
+the figures.
 
 The A-C<sub>i</sub> data should be cleaned from spurious measurements
-and points that would impact V<sub>cmax</sub> or J<sub>max</sub>
+and points that would bias V<sub>cmax</sub> or J<sub>max</sub>
 estimation should not be included. If several measurements were taken at
 a given Ci, please only chose one so each Ci has the same number of
 measurements. We are usually quite conservative on the quality analysis
@@ -301,14 +281,15 @@ be good. If we have doubts on the quality of the data we tend to remove
 them from the final curated data.
 
 The curated A-C<sub>i</sub> data should be present in the dataset folder
-in a Rdata format called ‘2\_Fitted\_ACi\_data.Rdata’ which contains the
-A-C<sub>i</sub> data in a data.frame with at least the columns listed in
-the table below.
+in a Rdata format called **‘2\_Fitted\_ACi\_data.Rdata’** which contains
+the A-C<sub>i</sub> data in a data.frame with at least the columns
+listed in the table below.
 
 Note that we include in the dataset folder the raw data, as well as the
 R code used to read, import and transform the raw data. All those
 preliminary steps are made in two R codes called
-‘0\_Import\_transform\_ACi\_data.R’ and ‘1\_QaQc\_curated\_ACi.R’.
+**‘0\_Import\_transform\_ACi\_data.R’** and
+**‘1\_QaQc\_curated\_ACi.R’**.
 
     Aci_data=read.csv(file='Aci_data.csv')
     knitr::kable(Aci_data)
@@ -365,7 +346,7 @@ incident on the leaf in quanta per area</td>
 
 ## Fitting the A-C<sub>i</sub> data to estimate the photosynthetic traits
 
-Estimation of V<sub>cmax</sub> is done in the ‘2\_Fit\_ACi.R’ code
+Estimation of V<sub>cmax</sub> is done in the **‘2\_Fit\_ACi.R’** code
 included in each dataset folder. This code calls the function
 f.fit\_Aci() to estimate the photosynthetic parameters
 V<sub>cmax25</sub>, J<sub>max25</sub>, TPU<sub>25</sub> and
@@ -401,7 +382,7 @@ automatically by the fitting procedure to avoid manual and somehow
 subjective choices in the transitions.
 
 This codes produces a dataframe, called Bilan which includes the
-folowing column:
+folowing columns:
 
     Bilan=read.csv(file='Bilan.csv',header = TRUE)
     knitr::kable(Bilan)
@@ -492,7 +473,7 @@ curves</td>
 </table>
 
 It is also possible to estimate V<sub>cmax25</sub> by the one point
-method (De Kauwe et al. 2016; Burnett et al. 2019). In that case, the
+method (De Kauwe et al. 2016; Burnett et al. 2019).In that case, the
 measurements should be done at saturating irradiance in ambient
 CO<sub>2</sub> conditions. You can use the function f.fit\_One\_Point()
 to estimate V<sub>cmax25</sub>. It will produce the exact same data
@@ -504,6 +485,18 @@ given in the output of the table, it will be possible to re estimate the
 parameters at the leaf temperature and to try other temperature
 dependence parametrization if needed.
 
+## Adding dark adapted leaf respiration data (optional)
+
+If you measured the dark respiration of leaves you can also add them to
+the project. All you need is to include a file with as columns:
+
+-   SampleID (the leaf identifier that is used everywhere to link
+    different data)
+-   Rdark (the dark respiration value, in micromol m-2 s-1, which
+    corresponds to the CO2 release from the leaf in the dark, at
+    measurement temperature, reported as a positive value)
+-   Tleaf, in degree celcius, the measurement leaf temperature
+
 ## Adding the leaf spectra data
 
 The spectral information should be a full range reflectance measurement
@@ -511,9 +504,9 @@ The spectral information should be a full range reflectance measurement
 all the wavelengths (for example from 350 nm to 500 nm or from 2400 nm
 to 2500 nm), you can put NA in those wavelengths.
 
-A code “3\_Import\_transform\_Reflectance.R” should be used to create a
-R data frame file called “3\_QC\_Reflectance\_data.Rdata” with four
-columns:
+A code **“3\_Import\_transform\_Reflectance.R”** should be used to
+create a R data frame file called **“3\_QC\_Reflectance\_data.Rdata”**
+with four columns:
 
 -   SampleID which has to be consistent with the previous files for each
     leaf,
@@ -528,9 +521,9 @@ columns:
 -   Reflectance, which is a matrix with the reflectance in column
     (expressed in percent from 0 to 100).
 
-We use a matrix in the column spectra as in the pls package (Mevik &
-Wehrens, 2007). More information is given in the “pls” package
-documentation and manual
+We use a matrix in the column Reflectance, folowing the “pls” package
+requirement (Mevik & Wehrens, 2007). More information is given in the
+“pls” package documentation and manual
 (<https://cran.r-project.org/web/packages/pls/vignettes/pls-manual.pdf>)
 
 Bjørn-Helge Mevik and Ron Wehrens. The pls package: Principal component
@@ -539,28 +532,8 @@ Software, 18(2):1–24, 2007.
 
 ### Adding a leaf sample information description csv file
 
-A data frame called SampleDetails has to be included with the columns
-listed below.
-
-Importantly, the Site\_name has to be consistent with the Site\_name
-written in the Site.csv file and the SampleID will have to be consistent
-with the identifier used for the gas exchange and for the spectra as the
-SampleID will be used to merge all the different data.
-
-The first columns have to be filled (SampleID, Dataset\_name,
-Site\_name, Species, Sun\_Shade, Plant\_type, Soil), the columns related
-to the leaf traits can be left empty if you don’t have the data (LMA,
-Narea, Nmass, Parea, Pmass, LWC). Note that the leaf water content, LWC,
-corresponds to (fresh weight - dry weight) / fresh weight.
-
-For the species name, please write “Genus species”, for exemple
-Cercropia insignis. If you know the genus but not the species, write for
-example “Cecropia species”. If you dont know the genus, write “Family
-genus” for example (Urticaceae genus). If you don’t know anything, well
-you can write “Unknown”.
-
-A code called “4\_Import\_transform\_SampleDetails.R” should be used to
-create the SampleDetails dataframe.
+A code called **“4\_Import\_transform\_SampleDetails.R”** should be used
+to create a **‘SampleDetails’** dataframe with the folowing columns:
 
     SampleDetails=read.csv(file='SampleDetails.csv')
     knitr::kable(SampleDetails)
@@ -656,6 +629,26 @@ of fresh leaf by mass in % (0-100)</td>
 </tbody>
 </table>
 
+Importantly, the Site\_name has to be consistent with the Site\_name
+written in the Site.csv file and the SampleID will have to be consistent
+with the identifier used for the gas exchange and for the spectra as the
+SampleID will be used to merge all the different data.
+
+The first columns have to be filled (SampleID, Dataset\_name,
+Site\_name, Species, Sun\_Shade, Plant\_type, Soil), the columns related
+to the leaf traits can be left empty if you don’t have the data (LMA,
+Narea, Nmass, Parea, Pmass, LWC). Note that the leaf water content, LWC,
+corresponds to (fresh weight - dry weight) / fresh weight.
+
+For the species name, please write “Genus species”, for exemple
+Cercropia insignis. If you know the genus but not the species, write for
+example “Cecropia species”. If you dont know the genus, write “Family
+genus” for example (Urticaceae genus). If you don’t know anything, well
+you can write “Unknown”.
+
+The SampleDetails dataframe is stored in the Rdata file
+**‘4\_SampleDetails.Rdata’**.
+
 ## Checking the overall dataset information
 
 The function “f.Check\_data()” can be used to validate that the format
@@ -665,3 +658,26 @@ data files and if all the information can be merged together.
 
 This function is called in the last R file
 “4\_Import\_transform\_SampleDetails.R”
+
+### References
+
+Burnett, AC, Davidson, KJ, Serbin, SP, Rogers, A. The “one-point method”
+for estimating maximum carboxylation capacity of photosynthesis: A
+cautionary tale. Plant Cell Environ. 2019; 42: 2472– 2481.
+<https://doi.org/10.1111/pce.13574>
+
+De Kauwe, M. G., Lin, Y. S., Wright, I. J., Medlyn, B. E., Crous, K. Y.,
+Ellsworth, D. S., … Domingues, T. F. (2016b). A test of the “one-point
+method” for estimating maximum carboxylation capacity from
+field-measured, light-saturated photosynthesis. New Phytologist, 210(3),
+1130– 1144. <https://doi.org/10.1111/nph.13815>
+
+David M. Olson, Eric Dinerstein, Eric D. Wikramanayake, Neil D. Burgess,
+George V. N. Powell, Emma C. Underwood, Jennifer A. D’amico, Illanga
+Itoua, Holly E. Strand, John C. Morrison, Colby J. Loucks, Thomas F.
+Allnutt, Taylor H. Ricketts, Yumiko Kura, John F. Lamoreux, Wesley W.
+Wettengel, Prashant Hedao, Kenneth R. Kassem, Terrestrial Ecoregions of
+the World: A New Map of Life on Earth: A new global map of terrestrial
+ecoregions provides an innovative tool for conserving biodiversity,
+BioScience, Volume 51, Issue 11, November 2001, Pages 933–938,
+<https://doi.org/10.1641/0006-3568(2001)051%5B0933:TEOTWA%5D2.0.CO;2>
