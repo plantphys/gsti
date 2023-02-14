@@ -27,7 +27,7 @@ Map_datasets <- ggplot(data = world) + geom_sf() + xlab("Longitude") +
 
 ## !! TO DO - Update this to add X/Y labels etc, make prettier
 png(filename = 'Map_datasets.png',width = 250,height = 150,units = 'mm',res=150)
-Map_datasets
+print(Map_datasets)
 dev.off()
 
 print(Map_datasets)
