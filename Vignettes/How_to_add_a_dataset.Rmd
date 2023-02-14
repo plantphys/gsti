@@ -27,7 +27,7 @@ In each dataset folder a csv file called **Description.csv** has to be included.
 This file will be used to list the authors as well as associated papers and acknowledgements.
 
 
-```{r}
+```{r,include=FALSE}
 Description=read.csv(file='Description.csv')
 knitr::kable(Description)
 ```
@@ -39,10 +39,11 @@ A file called **Site.csv** also has to be included with the column listed below.
 
 If you have different sites for the same dataset with wide difference in positions that makes a difference on a world map or if this include different biomes, you can add several rows to your Site.csv file.
 
-```{r}
+```{r,include=FALSE}
 Site=read.csv(file='Site.csv')
 knitr::kable(Site)
 ```
+
 
 For the Biome_number column, please chose a number within the list below. We chose to use the Olson et al. (2001) list of 14 natural Biomes that we complemented with agricultural and managed biomes. 
 
@@ -66,7 +67,7 @@ The curated A-C<sub>i</sub> data should be present in the dataset folder in a Rd
 Note that we include in the dataset folder the raw data, as well as the R code used to read, import and transform the raw data. All those preliminary steps are made in two R codes called **'0_Import_transform_ACi_data.R'** and **'1_QaQc_curated_ACi.R'**. 
 
 
-```{r}
+```{r,include=FALSE}
 Aci_data=read.csv(file='Aci_data.csv')
 knitr::kable(Aci_data)
 ```
@@ -116,6 +117,7 @@ If you measured the dark respiration of leaves you can also add them to the proj
 ## Adding the leaf spectra data
 
 The spectral information should be a full range reflectance measurement (350 nm to 2500 nm) with a 1 nm resolution.
+
 If you don't have values for all the wavelengths (for example from 350 nm to 500 nm or from 2400 nm to 2500 nm), you can put NA in those wavelengths. 
 
 A code **"3_Import_transform_Reflectance.R"** should be used to create a R data frame file called **"3_QC_Reflectance_data.Rdata"** with four columns:
@@ -137,7 +139,7 @@ least squares regression in R. Journal of Statistical Software, 18(2):1–24, 20
 
 A code called **"4_Import_transform_SampleDetails.R"** should be used to create a **'SampleDetails'** dataframe with the folowing columns: 
 
-```{r}
+```{r,include=FALSE}
 SampleDetails=read.csv(file='SampleDetails.csv')
 knitr::kable(SampleDetails)
 ```

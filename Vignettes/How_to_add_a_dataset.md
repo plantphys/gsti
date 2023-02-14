@@ -28,63 +28,6 @@ In each dataset folder a csv file called **Description.csv** has to be
 included. This file will be used to list the authors as well as
 associated papers and acknowledgements.
 
-    Description=read.csv(file='Description.csv')
-    knitr::kable(Description)
-
-<table>
-<colgroup>
-<col style="width: 2%" />
-<col style="width: 13%" />
-<col style="width: 39%" />
-<col style="width: 10%" />
-<col style="width: 30%" />
-<col style="width: 3%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Dataset_name</th>
-<th style="text-align: left;">Authors</th>
-<th style="text-align: left;">Acknowledgment</th>
-<th style="text-align: left;">Dataset_DOI</th>
-<th style="text-align: left;">Publication_Citation</th>
-<th style="text-align: left;">Contact_email</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Dataset name</td>
-<td style="text-align: left;">List of authors of the dataset</td>
-<td style="text-align: left;">Acknowledgement of funding and help to
-generate the dataset</td>
-<td style="text-align: left;">Digital Object Identifier (DOI) associated
-with the dataset if the dataset was published</td>
-<td style="text-align: left;">Full citation associated with the paper
-that uses the dataset</td>
-<td style="text-align: left;">Contact email for the dataset</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Lamour_et_al_2021</td>
-<td style="text-align: left;">Julien Lamour, Kenneth J. Davidson, Kim S.
-Ely, Jeremiah A. Anderson, Alistair Rogers, Jin Wu , Shawn P.
-Serbin</td>
-<td style="text-align: left;">This work was supported by the
-Next-Generation Ecosystem Experiments (NGEE Tropics) project that is
-supported by the Office of Biological and Environmental Research in the
-Department of Energy, Office of Science, and through the United States
-Department of Energy contract No. DE-SC0012704 to Brookhaven National
-Laboratory.</td>
-<td style="text-align: left;">10.15486/ngt/1781003,
-10.15486/ngt/1781004</td>
-<td style="text-align: left;">Julien Lamour, Kenneth J. Davidson, Kim S.
-Ely, Jeremiah A. Anderson, Alistair Rogers, Jin Wu , Shawn P. Serbin.
-Rapid estimation of photosynthetic leaf traits of tropical plants in
-diverse environmental conditions using reflectance spectroscopy</td>
-<td style="text-align: left;"><a href="mailto:jlamour.sci@gmail.com"
-class="email">jlamour.sci@gmail.com</a></td>
-</tr>
-</tbody>
-</table>
-
 ## Adding a site description csv file
 
 A file called **Site.csv** also has to be included with the column
@@ -94,60 +37,6 @@ position the dataset on a world map.
 If you have different sites for the same dataset with wide difference in
 positions that makes a difference on a world map or if this include
 different biomes, you can add several rows to your Site.csv file.
-
-    Site=read.csv(file='Site.csv')
-    knitr::kable(Site)
-
-<table>
-<colgroup>
-<col style="width: 30%" />
-<col style="width: 12%" />
-<col style="width: 12%" />
-<col style="width: 17%" />
-<col style="width: 27%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Site_name</th>
-<th style="text-align: left;">Latitude</th>
-<th style="text-align: left;">Longitude</th>
-<th style="text-align: left;">Elevation</th>
-<th style="text-align: left;">Biome_number</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Short text name for the site where the
-measurements were taken</td>
-<td style="text-align: left;">Latitude in decimal units</td>
-<td style="text-align: left;">Longitude in decimal units</td>
-<td style="text-align: left;">Elevation in meters above sea level</td>
-<td style="text-align: left;">Biome number as described in the
-documentation (1 to 19)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">BCI</td>
-<td style="text-align: left;">9.1562792</td>
-<td style="text-align: left;">-79.862707</td>
-<td style="text-align: left;">30</td>
-<td style="text-align: left;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">PNM</td>
-<td style="text-align: left;">8.9943457</td>
-<td style="text-align: left;">-79.543073</td>
-<td style="text-align: left;">100</td>
-<td style="text-align: left;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Black Rock Forest</td>
-<td style="text-align: left;">41.413708</td>
-<td style="text-align: left;">-74.010606</td>
-<td style="text-align: left;">1100</td>
-<td style="text-align: left;">5</td>
-</tr>
-</tbody>
-</table>
 
 For the Biome\_number column, please chose a number within the list
 below. We chose to use the Olson et al. (2001) list of 14 natural Biomes
@@ -290,59 +179,6 @@ R code used to read, import and transform the raw data. All those
 preliminary steps are made in two R codes called
 **‘0\_Import\_transform\_ACi\_data.R’** and
 **‘1\_QaQc\_curated\_ACi.R’**.
-
-    Aci_data=read.csv(file='Aci_data.csv')
-    knitr::kable(Aci_data)
-
-<table>
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 13%" />
-<col style="width: 8%" />
-<col style="width: 10%" />
-<col style="width: 13%" />
-<col style="width: 7%" />
-<col style="width: 26%" />
-<col style="width: 8%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">SampleID</th>
-<th style="text-align: left;">SampleID_num</th>
-<th style="text-align: left;">record</th>
-<th style="text-align: left;">A</th>
-<th style="text-align: left;">Ci</th>
-<th style="text-align: left;">Patm</th>
-<th style="text-align: left;">Qin</th>
-<th style="text-align: left;">Tleaf</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Identifier of the measured leaf</td>
-<td style="text-align: left;">Integer Identifier of the measured
-leaf</td>
-<td style="text-align: left;">Observation record number</td>
-<td style="text-align: left;">Net CO2 exchange per leaf area</td>
-<td style="text-align: left;">Intercellular CO2 concentration in
-air</td>
-<td style="text-align: left;">Atmospheric pressure</td>
-<td style="text-align: left;">In chamber photosynthetic flux density
-incident on the leaf in quanta per area</td>
-<td style="text-align: left;">Leaf surface temperature</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Integer</td>
-<td style="text-align: left;">Integer</td>
-<td style="text-align: left;">micromol m-2 s-1</td>
-<td style="text-align: left;">micromol mol-1</td>
-<td style="text-align: left;">kPa</td>
-<td style="text-align: left;">micromol m-2 s-1</td>
-<td style="text-align: left;">degrees celcius</td>
-</tr>
-</tbody>
-</table>
 
 ## Fitting the A-C<sub>i</sub> data to estimate the photosynthetic traits
 
@@ -500,9 +336,11 @@ the project. All you need is to include a file with as columns:
 ## Adding the leaf spectra data
 
 The spectral information should be a full range reflectance measurement
-(350 nm to 2500 nm) with a 1 nm resolution. If you don’t have values for
-all the wavelengths (for example from 350 nm to 500 nm or from 2400 nm
-to 2500 nm), you can put NA in those wavelengths.
+(350 nm to 2500 nm) with a 1 nm resolution.
+
+If you don’t have values for all the wavelengths (for example from 350
+nm to 500 nm or from 2400 nm to 2500 nm), you can put NA in those
+wavelengths.
 
 A code **“3\_Import\_transform\_Reflectance.R”** should be used to
 create a R data frame file called **“3\_QC\_Reflectance\_data.Rdata”**
@@ -534,100 +372,6 @@ Software, 18(2):1–24, 2007.
 
 A code called **“4\_Import\_transform\_SampleDetails.R”** should be used
 to create a **‘SampleDetails’** dataframe with the folowing columns:
-
-    SampleDetails=read.csv(file='SampleDetails.csv')
-    knitr::kable(SampleDetails)
-
-<table>
-<colgroup>
-<col style="width: 4%" />
-<col style="width: 2%" />
-<col style="width: 1%" />
-<col style="width: 7%" />
-<col style="width: 19%" />
-<col style="width: 5%" />
-<col style="width: 12%" />
-<col style="width: 5%" />
-<col style="width: 7%" />
-<col style="width: 6%" />
-<col style="width: 8%" />
-<col style="width: 7%" />
-<col style="width: 11%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">SampleID</th>
-<th style="text-align: left;">Dataset_name</th>
-<th style="text-align: left;">Site_name</th>
-<th style="text-align: left;">Species</th>
-<th style="text-align: left;">Sun_Shade</th>
-<th style="text-align: left;">Plant_type</th>
-<th style="text-align: left;">Soil</th>
-<th style="text-align: left;">LMA</th>
-<th style="text-align: left;">Narea</th>
-<th style="text-align: left;">Nmass</th>
-<th style="text-align: left;">Parea</th>
-<th style="text-align: left;">Pmass</th>
-<th style="text-align: left;">LWC</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Identifier of the measured leaf</td>
-<td style="text-align: left;">Name of the dataset</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Full species name, for example Cecropia
-insignis</td>
-<td style="text-align: left;">Was the leaf at the top of the canopy and
-usually receiving light (sun) or a shaded leaf? Chose between Sun, Shade
-or leave empty</td>
-<td style="text-align: left;">Chose between Wild or Agricultural</td>
-<td style="text-align: left;">Please chose between natural ground, pot,
-or managed ground (Natural, Pot, Managed)</td>
-<td style="text-align: left;">Leaf dry mass per unit area in g m-2</td>
-<td style="text-align: left;">Nitrogen content of leaf per unit leaf
-area in g m-2</td>
-<td style="text-align: left;">Nitrogen content of leaf by dry mass in mg
-g-1</td>
-<td style="text-align: left;">Phosphorus content of leaf per unit leaf
-area in g m-2</td>
-<td style="text-align: left;">Phosophorus content of leaf by dry mass in
-mg g-1</td>
-<td style="text-align: left;">Leaf water content. Percent water content
-of fresh leaf by mass in % (0-100)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">BNL20202</td>
-<td style="text-align: left;">Davidson_et_al_2020</td>
-<td style="text-align: left;">SLZ</td>
-<td style="text-align: left;">Cecropia insignis</td>
-<td style="text-align: left;">Sun</td>
-<td style="text-align: left;">Wild</td>
-<td style="text-align: left;">Natural</td>
-<td style="text-align: left;">90.24</td>
-<td style="text-align: left;">2.35</td>
-<td style="text-align: left;">26</td>
-<td style="text-align: left;">0.27</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">62</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">BNL10101</td>
-<td style="text-align: left;">Burnett_et_al_2018</td>
-<td style="text-align: left;">BNL</td>
-<td style="text-align: left;">Cucurbit pepo</td>
-<td style="text-align: left;">Sun</td>
-<td style="text-align: left;">Agricultural</td>
-<td style="text-align: left;">Pot</td>
-<td style="text-align: left;">118.65</td>
-<td style="text-align: left;">2.59</td>
-<td style="text-align: left;">2.18</td>
-<td style="text-align: left;">0.42</td>
-<td style="text-align: left;">3.5</td>
-<td style="text-align: left;">70</td>
-</tr>
-</tbody>
-</table>
 
 Importantly, the Site\_name has to be consistent with the Site\_name
 written in the Site.csv file and the SampleID will have to be consistent
