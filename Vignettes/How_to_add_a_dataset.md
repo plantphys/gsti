@@ -1,7 +1,10 @@
-This guide describes all the steps needed to add a new dataset. The
-folder Lamour\_et\_al\_2021 can be used as a template. The code within
-this folder has been commented and correspond to all the steps of this
-guide.
+This guide describes all the steps needed to add a new dataset. An
+overview of the process is presented
+[here](https://github.com/TESTgroup-BNL/gsti/blob/main/Overal_data_curation.pdf).
+
+The folder Lamour\_et\_al\_2021 can be used as a template. The code
+within this folder has been commented and correspond to all the steps of
+this guide.
 
 ## Creation of a Dataset folder
 
