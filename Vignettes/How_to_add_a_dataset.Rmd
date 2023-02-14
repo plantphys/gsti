@@ -34,7 +34,7 @@ knitr::kable(Description)
 
 ## Adding a site description csv file
 
-A file called **Site.csv** also has to be included with the column listed below. The latitude and longitude coordinates will be used to position the dataset on a world map.
+A file called **Site.csv** also has to be included with the columns listed below. The latitude and longitude coordinates will be used to position the dataset on a world map.
 
 
 If you have different sites for the same dataset with wide difference in positions that makes a difference on a world map or if this include different biomes, you can add several rows to your Site.csv file.

@@ -30,7 +30,7 @@ associated papers and acknowledgements.
 
 ## Adding a site description csv file
 
-A file called **Site.csv** also has to be included with the column
+A file called **Site.csv** also has to be included with the columns
 listed below. The latitude and longitude coordinates will be used to
 position the dataset on a world map.
 
