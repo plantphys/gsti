@@ -1,6 +1,6 @@
 library(here)
 path <- here()
-setwd(file.path(path,'/Datasets/Serbin_et_al_2019'))
+setwd(file.path(path,'/Datasets/Serbin_et_al_2019_hyspiri'))
 
 load('0_curated_data.Rdata',verbose=TRUE)
 curated_data$QC <- 'ok'
@@ -42,9 +42,13 @@ unique(species)
 # instead of a complicated file name or SampleId name..
 
 # !!! I copy Julien!  Thanks for the details !!!
+#bad_curve_list <- c("KARE_Plot1_PIME4_L2_GE_1_2015-06-08", 
+#                    "KARE_Plot1_PIME4_L26_GE_1_2015-06-08")
+
+
 
 ### List of author curated "bad" curves and data points (based on original QCauthor column)
-bad_curve_list <- c("KARE_Plot1_PIME4_L2_GE_1_2015-06-08", "KARE_Plot1_PIME4_L26_GE_1_2015-06-08", 
+bad_curve_list <- c("KARE_Plot1_PIME4_L2_GE_1_2015-06-08", "KARE_Plot1_PIME4_L26_GE_1_2015-06-08",
                     "KARE_Plot1_PIME4_L27_GE_1_2015-06-08", "KARE_Plot1_PUGR2_L10_GE_1_2015-06-07",
                     "KARE_Plot1_PUGR2_L11_GE_1_2015-06-07", "KARE_Plot1_PUGR2_L12_GE_1_2015-06-07",
                     "KARE_Plot2_FICA_L11_GE_1_2015-06-06", "KARE_PLot2_FICA_L2_GE_2_2015-06-06",
@@ -64,25 +68,41 @@ bad_curve_list <- c("KARE_Plot1_PIME4_L2_GE_1_2015-06-08", "KARE_Plot1_PIME4_L26
                     "DREC_Plot1_BEVU2_L12T_GE_1_2015-06-11","REC_Plot3_BEVU2_L10T_GE_1_2015-06-11",
                     "DREC_Plot3_BEVU2_L7T_GE_1_2015-06-11","KARE_Plot1_FICA_L10_GE_1_2015-06-06",
                     "KARE_Plot1_FICA_L2large_GE_1_2015-06-05","KARE_Plot1_FICA_L3large_GE_1_2015-06-05",
-                    "DREC_Plot3_BEVU2_L10T_GE_1_2015-06-11")
-# Display the SampleID_num of each bad curve
-sort(unique(curated_data[curated_data$SampleID%in%bad_curve_list,'SampleID_num']))
-ls_bad_curve <- sort(unique(curated_data[curated_data$SampleID%in%bad_curve_list,'SampleID_num']))
+                    "DREC_Plot3_BEVU2_L10T_GE_1_2015-06-11","KARE_Plot1_PUGR2_L10_GE_1_2015−06−07",
+                    "DREC_Plot1_BEVU2_L11T_GE_1_2015−06−11","DREC_Plot1_BEVU2_L12T_GE_1_2015−06−11",
+                    "DREC_Plot1_BEVU2_L1T_GE_1_2015−06−11","DREC_Plot1_BEVU2_L8T_GE_1_2015−06−11",
+                    "DREC_Plot1_BEVU2_L9T_GE_1_2015−06−11","DREC_Plot2_BEVU2_L2T_GE_1_2015−06−11",
+                    "Shafter_SOTU_Plot3_L9T_GE_1_2015−06−10",
+                    "Shafter_SOTU_Plot4_L15T_GE_1_2015−06−10",
+                    "Shafter_SOTU_Plot4_L25T_GE_1_2015−06−10",
+                    "Shafter_SOTU_Plot4_L8T_GE_1_2015−06−10")
+# Display the SampleID_num of each bad curve. -- THIS IS NO LONGER WORKING CORRECTLY
+#curated_data[curated_data$SampleID %in% bad_curve_list, 'SampleID_num']
+
+sort(unique(curated_data[curated_data$SampleID %in% bad_curve_list, 'SampleID_num']))
+ls_bad_curve <- sort(unique(curated_data[curated_data$SampleID %in% bad_curve_list,
+                                         'SampleID_num']))
 ls_bad_curve
 
 ## Build QC table
 QC_table <- cbind.data.frame(SampleID_num=c(),Record=c())
 
-curated_data[paste(curated_data$SampleID_num,curated_data$Record) %in% paste(QC_table$SampleID_num,QC_table$Record),'QC']='bad'
+curated_data[paste(curated_data$SampleID_num,curated_data$Record) %in% 
+               paste(QC_table$SampleID_num,QC_table$Record),'QC']='bad'
+
+head(curated_data)
 
 ## Remove additional curves with less than 3 pts
-n_points_curves <- tapply(X=curated_data[curated_data$QC=="ok",'Record'],INDEX = curated_data[curated_data$QC=="ok",'SampleID_num'],FUN = function(x){length(x)})
+n_points_curves <- tapply(X=curated_data[curated_data$QC=="ok",'Record'],
+                          INDEX = curated_data[curated_data$QC=="ok",
+                                               'SampleID_num'],
+                          FUN = function(x){length(x)})
 #short_curves=n_points_curves[n_points_curves<5]
 short_curves <- n_points_curves[n_points_curves < 3]
-ls_bad_curve=c(ls_bad_curve,names(short_curves))
+ls_bad_curve <- c(ls_bad_curve,names(short_curves))
+ls_bad_curve # this is in string format
 
-curated_data[curated_data$SampleID_num %in% ls_bad_curve,'QC']='bad'
-
+curated_data[curated_data$SampleID_num %in% as.numeric(ls_bad_curve),'QC']='bad'
 
 ## I DONT KNOW WHAT ALL OF THIS IS DOING - SEEMS OVERLY COMPLICATED
 # That is Just a PDF file whith each Aci curve. The title of the Aci curve on the pdf file is the SampleID_num.

@@ -1,6 +1,6 @@
 library(here)
 path <- here()
-setwd(file.path(path,'/Datasets/Serbin_et_al_2019'))
+setwd(file.path(path,'/Datasets/Serbin_et_al_2019_hyspiri'))
 
 source(file.path(path,'/R/fit_Vcmax.R'))
 source(file.path(path,'/R/Photosynthesis_tools.R'))
