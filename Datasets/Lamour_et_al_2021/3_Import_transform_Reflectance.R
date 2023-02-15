@@ -18,7 +18,7 @@ setwd(file.path(path,'/Datasets/Lamour_et_al_2021'))
 Reflectance=read.csv('PA-SLZ_2020_Reflectance.csv')
 
 # Informing the spectrometer model used used (PSR+ 3500, SVC HR-1024i, SVC XHR-1024i, ASD FieldSpec 3, ASD FieldSpec 4, ASD FieldSpec 4 Hi-Res,...)
-Reflectance$Spectrometer="PSR+ 3500"
+Reflectance$Spectrometer="SE PSR+ 3500"
 
 # Informing the leaf clip used (SVC LC-RP, SVC LC-RP Pro, ASD Leaf Clip, ...)
 Reflectance$Leaf_clip="SVC LC-RP Pro"

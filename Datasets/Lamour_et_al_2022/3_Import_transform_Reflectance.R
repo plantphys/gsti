@@ -3,7 +3,7 @@ library(spectratrait)
 path=here()
 setwd(file.path(path,'/Datasets/Lamour_et_al_2022'))
 Reflectance=read.csv('PA_2022_LeafReflectance.csv')
-Reflectance$Spectrometer="SVC XHR-1024i"
+Reflectance$Spectrometer="SVC HR-1024i"
 Reflectance$Leaf_clip="SVC LC-RP Pro"
 load('2_Fitted_ACi_data.Rdata',verbose=TRUE)
 Reflectance=merge(Reflectance,Bilan,by.x="SampleID",by.y="SampleID")

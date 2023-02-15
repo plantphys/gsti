@@ -516,8 +516,8 @@ with four columns:
 -   SampleID which has to be consistent with the previous files for each
     leaf,
 
--   Spectrometer, which informs what was the spectrometer model used
-    (PSR+ 3500, SVC HR-1024i, SVC XHR-1024i, ASD FieldSpec 3, ASD
+-   Spectrometer, which informs what was the spectrometer model used (SE
+    PSR+ 3500, SVC HR-1024i, SVC XHR-1024i, ASD FieldSpec 3, ASD
     FieldSpec 4, ASD FieldSpec 4 Hi-Res, …)
 
 -   Leaf\_clip, which informs what was the leaf clip used (SVC LC-RP,

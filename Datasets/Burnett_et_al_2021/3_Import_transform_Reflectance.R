@@ -8,7 +8,7 @@ load('2_Fitted_ACi_data.Rdata',verbose=TRUE)
 
 
 #Reflectance=merge(x=Reflectance,y=Bilan,by.x = 'Sample_ID',by.y='SampleID')
-Reflectance$Spectrometer="PSR+ 3500"
+Reflectance$Spectrometer="SE PSR+ 3500"
 Reflectance$Leaf_clip="SVC LC-RP Pro"
 Reflectance$SampleID=Reflectance$Sample_ID
 
