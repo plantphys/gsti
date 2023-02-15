@@ -13,13 +13,14 @@ f.fit_Aci<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdayRef = 2, TPURef
 ## Basic checks
   if(any(measures$Ci < 0)) {stop("Ci contains negative values")}
   if(any(is.na(c(measures$A,measures$Ci,measures$Tleaf,measures$Qin,measures$SampleID_num)))) {stop("Ci, A, Tleaf or Qin have NA values")}
-  if(any(measures$Tleaf < 273)) {stop("Check Tleaf values. Should be in Kelvin")}
+  if(any(measures$Tleaf > 100)) {stop("Check Tleaf values. Should be in degree celcius")}
   if(is.null(measures$SampleID_num)|is.null(measures$Ci)|is.null(measures$Tleaf)|is.null(measures$Qin)|is.null(measures$A)){stop("Your dataframe measures does not contain the colums SampleID_num or A or Tleaf or Ci")}
   n_points_curves=tapply(X=measures$SampleID_num,INDEX = measures$SampleID_num,FUN = function(x) length(x))
   min_Ci_curve=tapply(X=measures$Ci,INDEX = measures$SampleID_num,FUN = min)
   if(any(n_points_curves<3)){stop("Some of your A-Ci curves have less than 3 points")}
   if(any(min_Ci_curve>270)){stop("Some of your A-Ci curves have a minimum Ci above 270 ppm meaning that Vcmax cant be estimated")}
   
+  measures$Tleaf=measures$Tleaf+273## Conversion in Kelvin
   param[['TPURef']]=9999
 
 ## Fitting of the Aci curve using Ac and Aj limitation
@@ -134,12 +135,12 @@ f.fit_Aci<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdayRef = 2, TPURef
   
   ## Renaming Bilan so it corresponds to the standard used in this repo:
   colnames(Bilan)=c("sigma","Jmax25","Vcmax25","TPU25","Rday25","StdError_sigma","StdError_Jmax25","StdError_Vcmax25","StdError_TPU25","StdError_Rday25","AIC","Tleaf","SampleID_num","Model","Fitting_method") 
-  
+  Bilan$Tleaf=Bilan$Tleaf-273 ## Conversion to degree Celcius
   return(Bilan[,c("SampleID_num","Vcmax25","Jmax25","TPU25","Rday25","StdError_Vcmax25","StdError_Jmax25","StdError_TPU25","StdError_Rday25","Tleaf","sigma","AIC","Model","Fitting_method")])
 }
 
 
-#' @param measures Aci curve dataframe with at least the columns A, Ci, Qin and Tleaf (in K)
+#' @param measures Aci curve dataframe with at least the columns A, Ci, Qin and Tleaf (in degree celcius)
 #' @param param See f.make.param for details. Determine the parameters used for the fitting
 #' @return Return a dataframe (Bilan) with for each curve in row the estimated parameters as well as the model used (Ac, Ac and Aj, Ac and Aj and Ap)
 #' @export
@@ -147,17 +148,18 @@ f.fit_Aci<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdayRef = 2, TPURef
 #' @examples
 f.fit_One_Point<-function(measures,param){
   if(any(measures$Ci < 0)) {stop("Ci contains negative values")}
-  if(any(measures$Tleaf < 273)) {stop("Check Tleaf values. Should be in Kelvin")}
+  if(any(measures$Tleaf > 100)) {stop("Check Tleaf values. Should be in degree celcius")}
   if(is.null(measures$SampleID_num)|is.null(measures$Ci)|is.null(measures$Tleaf)|is.null(measures$Qin)|is.null(measures$A)){stop("Your dataframe measures do not contain the colums SampleID_num or A or Tleaf or Ci")}
   n_points_curves=tapply(X=measures$SampleID_num,INDEX = measures$SampleID_num,FUN = function(x) length(x))
   if(any(n_points_curves>1)){warning("Some of your SampleID_num have more than one measurements")}
   if(any(measures$Ci>400)){stop("Some of your Ci are above 400 ppm meaning that Vcmax cant be estimated")}
   
+  measures$Tleaf=measures$Tleaf+273
   Gstar=f.arrhenius(param[['GstarRef']],param[['GstarHa']],measures$Tleaf)
   Kc=f.arrhenius(param[['KcRef']],param[['KcHa']],measures$Tleaf)
   Ko=f.arrhenius(param[['KoRef']],param[['KoHa']],measures$Tleaf)
   Km=Kc*(1+param[['O2']]/Ko)
   Vcmax=measures$A/((measures$Ci-Gstar)/(measures$Ci+Km)-0.015)
   Vcmax25=f.modified.arrhenius.inv(P = Vcmax,Ha = param[['VcmaxHa']],Hd = param[['VcmaxHd']],s = param[['VcmaxS']],Tleaf = measures$Tleaf,TRef = 273.16+25)
-  return(data.frame(SampleID_num=measures$SampleID_num,Vcmax25=Vcmax25,Jmax25=NA,TPU25=NA,Rday25=NA,StdError_Vcmax25=NA,StdError_Jmax25=NA,StdError_TPU25=NA,StdError_Rday25=NA,Tleaf=measures$Tleaf,sigma=NA,AIC=NA,Model=NA,Fitting_method='One point'))
+  return(data.frame(SampleID_num=measures$SampleID_num,Vcmax25=Vcmax25,Jmax25=NA,TPU25=NA,Rday25=NA,StdError_Vcmax25=NA,StdError_Jmax25=NA,StdError_TPU25=NA,StdError_Rday25=NA,Tleaf=measures$Tleaf-273,sigma=NA,AIC=NA,Model=NA,Fitting_method='One point'))
 }

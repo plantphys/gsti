@@ -10,17 +10,13 @@ source(file.path(path,'/R/Photosynthesis_tools.R'))
 load('1_QC_ACi_data.Rdata',verbose=TRUE)
 head(curated_data)
 
-curated_data$Tleaf <- curated_data$Tleaf+273.16 ## Conversion to kelvin
+
 curated_data <- curated_data[order(curated_data$SampleID_num,curated_data$Ci),]
 head(curated_data)
 
 ## Fitting of the ACi curves using Ac, Ac+Aj or Ac+Aj+Ap limitations
 Bilan <- f.fit_Aci(measures=curated_data,param = f.make.param())
 ## After manual inspection, those fittings seem fine, at least for Vcmax.
-#Bilan_JB <- f.fit_Aci_JB(measures=curated_data,param = f.make.param_JB(RdHd = 0,RdS = 0))
-## After manual inspection, those fittings seem fine, at least for Vcmax.
-
-#Bilan <- cbind.data.frame(Bilan,Bilan_JB)
 
 ## Fitting quality check
 # Are there particularly low or high Vcmax25?

@@ -7,7 +7,6 @@ source(file.path(path,'/R/fit_Vcmax.R'))
 source(file.path(path,'/R/Photosynthesis_tools.R'))
 
 load('1_QC_ACi_data.Rdata',verbose=TRUE)
-curated_data$Tleaf=curated_data$Tleaf+273.16 ## Conversion to kelvin
 
 ## Fitting of the one point Vcmax
 Bilan=f.fit_One_Point(measures = curated_data,param = f.make.param())

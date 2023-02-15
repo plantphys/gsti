@@ -18,8 +18,6 @@ source(file.path(path,'/R/Photosynthesis_tools.R'))
 # Load the quality checked ACi curves processed in step 1
 load('1_QC_ACi_data.Rdata',verbose=TRUE)
 
-# Conversion of the leaf temperature from °C to Kelvin
-curated_data$Tleaf=curated_data$Tleaf+273.16 
 
 # Sorting the points in the Aci curves so the ci are in an increasing order. It helps with the plots
 curated_data=curated_data[order(curated_data$SampleID_num,curated_data$Ci),] 

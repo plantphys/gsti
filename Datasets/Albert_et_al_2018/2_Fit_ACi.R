@@ -6,7 +6,6 @@ setwd(file.path(path,'/Datasets/Albert_et_al_2018'))
 
 
 load('1_QC_ACi_data.Rdata',verbose=TRUE)
-curated_data$Tleaf=curated_data$Tleaf+273.16 ## Conversion to kelvin
 curated_data=curated_data[order(curated_data$SampleID_num,curated_data$Ci),]
 
 ## Fitting of the ACi curves using Ac, Ac+Aj or Ac+Aj+Ap limitations

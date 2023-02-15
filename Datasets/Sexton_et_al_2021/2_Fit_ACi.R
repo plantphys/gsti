@@ -8,7 +8,6 @@ source(file.path(path,'/R/Photosynthesis_tools.R'))
 
 
 load('1_QC_ACi_data.Rdata',verbose=TRUE)
-curated_data$Tleaf=curated_data$Tleaf+273.16 ## Conversion to kelvin
 curated_data=curated_data[order(curated_data$SampleID_num,curated_data$Ci),] ## Sorting the points in the Aci curves so the ci are in an increasing order. It helps with the plots
 
 ## Fitting of the ACi curves using Ac, Ac+Aj or Ac+Aj+Ap limitations

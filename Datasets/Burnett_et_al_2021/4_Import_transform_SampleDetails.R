@@ -18,7 +18,7 @@ SampleDetails$Narea
 SampleDetails$Nmass
 SampleDetails$Parea=NA
 SampleDetails$Pmass=NA
-SampleDetails$LWC=NA
+SampleDetails$LWC=SampleDetails$RWC
 
 
 SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]

@@ -8,7 +8,6 @@ source(file.path(path,'/R/Photosynthesis_tools.R'))
 
 
 load('1_QC_ACi_data.Rdata',verbose=TRUE)
-curated_data$Tleaf <- curated_data$Tleaf+273.16 ## Conversion to kelvin
 
 ## Fitting of the ACi curves using Ac, Ac+Aj or Ac+Aj+Ap limitations
 Bilan <-f.fit_One_Point(measures=curated_data,param = f.make.param())
