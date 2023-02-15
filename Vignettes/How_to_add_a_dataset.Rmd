@@ -28,7 +28,7 @@ In each dataset folder a csv file called **Description.csv** has to be included.
 This file will be used to list the authors as well as associated papers and acknowledgements.
 
 
-```{r,include=FALSE}
+```{r}
 Description=read.csv(file='Description.csv')
 knitr::kable(Description)
 ```
@@ -40,7 +40,7 @@ A file called **Site.csv** also has to be included with the columns listed below
 
 If you have different sites for the same dataset with wide difference in positions that makes a difference on a world map or if this include different biomes, you can add several rows to your Site.csv file.
 
-```{r,include=FALSE}
+```{r}
 Site=read.csv(file='Site.csv')
 knitr::kable(Site)
 ```
@@ -68,7 +68,7 @@ The curated A-C<sub>i</sub> data should be present in the dataset folder in a Rd
 Note that we include in the dataset folder the raw data, as well as the R code used to read, import and transform the raw data. All those preliminary steps are made in two R codes called **'0_Import_transform_ACi_data.R'** and **'1_QaQc_curated_ACi.R'**. 
 
 
-```{r,include=FALSE}
+```{r}
 Aci_data=read.csv(file='Aci_data.csv')
 knitr::kable(Aci_data)
 ```
@@ -140,7 +140,8 @@ least squares regression in R. Journal of Statistical Software, 18(2):1–24, 20
 
 A code called **"4_Import_transform_SampleDetails.R"** should be used to create a **'SampleDetails'** dataframe with the folowing columns: 
 
-```{r,include=FALSE}
+
+```{r}
 SampleDetails=read.csv(file='SampleDetails.csv')
 knitr::kable(SampleDetails)
 ```
