@@ -24,6 +24,11 @@ f.auto_plsr<-function(inVar,wv=500:2400,cal.plsr.data,val.plsr.data,file_name,me
   print(paste("Cal observations: ",dim(cal.plsr.data)[1],sep=""))
   print(paste("Val observations: ",dim(val.plsr.data)[1],sep=""))
   
+  ## Replace Reflectance colname with Spectra to be compatible with the spectratrait package
+  colnames(cal.plsr.data)[colnames(cal.plsr.data)=="Reflectance"]<-"Spectra"
+  colnames(val.plsr.data)[colnames(val.plsr.data)=="Reflectance"]<-"Spectra"
+  
+  
   ## Range of the data for the plots
   minX <- min(c(cal.plsr.data[,paste0(inVar)],val.plsr.data[,paste0(inVar)]),na.rm=TRUE) 
   maxX <- max(c(cal.plsr.data[,paste0(inVar)],val.plsr.data[,paste0(inVar)]),na.rm=TRUE)
@@ -122,7 +127,7 @@ f.auto_plsr<-function(inVar,wv=500:2400,cal.plsr.data,val.plsr.data,file_name,me
   val.R2 <- round(reg_val$r.squared,2)
   val.RMSEP <- round(reg_val$sigma,2)
   
-  cal_scatter_plot <- ggplot(cal.plsr.output, aes(x=PLSR_CV_Predicted, y=get(inVar),color=dataset)) + 
+  cal_scatter_plot <- ggplot(cal.plsr.output, aes(x=PLSR_CV_Predicted, y=get(inVar),color=Dataset_name)) + 
     theme_bw() + geom_point() + geom_abline(intercept = 0, slope = 1, color="dark grey", 
                                             linetype="dashed", size=1.5) + xlim(minX,maxX) + 
     ylim(minX, maxX) +
@@ -140,7 +145,7 @@ f.auto_plsr<-function(inVar,wv=500:2400,cal.plsr.data,val.plsr.data,file_name,me
     theme(axis.text.x = element_text(angle = 0,vjust = 0.5),
           panel.border = element_rect(linetype = "solid", fill = NA, size=1.5))
   
-  val_scatter_plot <- ggplot(val.plsr.output, aes(x=PLSR_Predicted, y=get(inVar),color=dataset)) + 
+  val_scatter_plot <- ggplot(val.plsr.output, aes(x=PLSR_Predicted, y=get(inVar),color=Dataset_name)) + 
     theme_bw() + geom_point() + geom_abline(intercept = 0, slope = 1, color="dark grey", 
                                             linetype="dashed", size=1.5) + xlim(minX,maxX) + 
     ylim(minX,maxX) +
