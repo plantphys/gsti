@@ -59,6 +59,7 @@ if(update_database){
       print("Including dataset in the database")
       load(file = file.path(dataset,"2_Fitted_ACi_data.Rdata"),verbose=TRUE)
       load(file = file.path(dataset,"3_QC_Reflectance_data.Rdata"),verbose=TRUE)
+      colnames(Reflectance$Reflectance)=paste("Wave_",350:2500)
       load(file = file.path(dataset,"4_SampleDetails.Rdata"),verbose=TRUE)
       Site=read.csv(file.path(dataset,"Site.csv"))
       Description=read.csv(file.path(dataset,"Description.csv"))
@@ -72,6 +73,9 @@ if(update_database){
       database=rbind.data.frame(database,Dataset_data)
     } else (print(" !!! Dataset not included: missing files"))
   }
+  #Detach the matrix reflectance:
+  Reflectance_matrix=database$Reflectance
+  database=cbind.data.frame(database[,!colnames(database)%in%"Reflectance"],Reflectance_matrix)
   
   write.csv(database,file=file.path(path,"Database/Database.csv"),row.names = FALSE)
   print("Database successfully updated")
