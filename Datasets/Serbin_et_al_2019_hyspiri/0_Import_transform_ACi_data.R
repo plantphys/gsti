@@ -61,7 +61,10 @@ curated_data <- curated_data[order(curated_data$SampleID_num),]
 save(curated_data,file='0_curated_data.Rdata')
 #--------------------------------------------------------------------------------------------------#
 
-
+#--------------------------------------------------------------------------------------------------#
+# curate the non Ag datasets HERE
+# TBD
+#--------------------------------------------------------------------------------------------------#
 ## TODO: NEED TO PROCESS ALL SRC DATA SIMILARLY THEN ADD TO A SINGLE L0 FILE
 
 
