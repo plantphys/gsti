@@ -9,6 +9,9 @@ SampleDetails$Dataset_name="Albert_et_al_2018"
 SampleDetails$Species
 SampleDetails[SampleDetails$Growth.Environment=="Sunlit","Sun_Shade"]="Sun"
 SampleDetails[SampleDetails$Growth.Environment=="Shaded","Sun_Shade"]="Shade"
+SampleDetails[SampleDetails$Age_class%in%c("Y","YM"),"Phenological_stage"]="Young"
+SampleDetails[SampleDetails$Age_class%in%c("M"),"Phenological_stage"]="Mature"
+SampleDetails[SampleDetails$Age_class%in%c("O","OS","S"),"Phenological_stage"]="Old"
 SampleDetails$Plant_type="Wild"
 SampleDetails$Soil="Natural"
 
@@ -36,7 +39,7 @@ SampleDetails$Pmass=NA
 SampleDetails$LWC=NA
 
 SampleDetails=SampleDetails[SampleDetails$SampleID%in%Bilan$SampleID,]
-SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
+SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Plant_type","Phenological_stage","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
 
 save(SampleDetails,file="4_SampleDetails.Rdata")
 

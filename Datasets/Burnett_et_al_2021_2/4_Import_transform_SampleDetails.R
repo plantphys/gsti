@@ -12,6 +12,7 @@ SampleDetails$Dataset_name="Burnett_et_al_2021_2"
 SampleDetails$Species=as.character(factor(SampleDetails$Species,levels = c("CAAN4","CUPE","HEAN3","POCA19","RASA2","SEIT","SOBI2"),labels = c("Capsicum annuum","Cucurbita pepo","Helianthus annuus","Populus canadensis","Raphanus sativus","Setaria italica","Sorghum bicolor")))
 
 SampleDetails$Sun_Shade="Sun"
+SampleDetails$Phenological_stage="Mature"
 SampleDetails$Plant_type="Agricultural"
 SampleDetails[SampleDetails$Location=="glasshouse","Soil"]="Pot"
 SampleDetails[SampleDetails$Location=="field","Soil"]="Managed"
@@ -23,7 +24,7 @@ SampleDetails$Parea=NA
 SampleDetails$Pmass=NA
 SampleDetails$LWC=SampleDetails$RWC
 
-SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
+SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
 
 save(SampleDetails,file="4_SampleDetails.Rdata")
 

@@ -12,6 +12,9 @@ SampleDetails$Site_name="BRF"
 SampleDetails$Dataset_name="Davidson_et_al_2023"
 SampleDetails$Species=SampleDetails$USDA_Code
 SampleDetails$Sun_Shade="Sun"
+SampleDetails$Phenological_stage="Mature"
+SampleDetails[substr(SampleDetails$date,5,6)=="05","Phenological_stage"]="Young"
+SampleDetails[substr(SampleDetails$date,5,6)=="10","Phenological_stage"]="Old"
 SampleDetails$Plant_type="Wild"
 SampleDetails$Soil="Natural"
 SampleDetails$LMA
@@ -22,7 +25,7 @@ SampleDetails$Pmass=NA
 SampleDetails$LWC=1-SampleDetails$LDMC
 
 
-SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
+SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
 
 save(SampleDetails,file="4_SampleDetails.Rdata")
 

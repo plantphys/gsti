@@ -543,21 +543,22 @@ to create a **‘SampleDetails’** dataframe with the folowing columns:
     SampleDetails=read.csv(file='SampleDetails.csv')
     knitr::kable(SampleDetails)
 
-<table>
+<table style="width:100%;">
 <colgroup>
 <col style="width: 4%" />
 <col style="width: 2%" />
 <col style="width: 1%" />
-<col style="width: 7%" />
-<col style="width: 19%" />
-<col style="width: 5%" />
-<col style="width: 12%" />
+<col style="width: 6%" />
+<col style="width: 17%" />
+<col style="width: 6%" />
+<col style="width: 4%" />
+<col style="width: 11%" />
 <col style="width: 5%" />
 <col style="width: 7%" />
 <col style="width: 6%" />
-<col style="width: 8%" />
 <col style="width: 7%" />
-<col style="width: 11%" />
+<col style="width: 6%" />
+<col style="width: 10%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -566,6 +567,7 @@ to create a **‘SampleDetails’** dataframe with the folowing columns:
 <th style="text-align: left;">Site_name</th>
 <th style="text-align: left;">Species</th>
 <th style="text-align: left;">Sun_Shade</th>
+<th style="text-align: left;">Phenological_stage</th>
 <th style="text-align: left;">Plant_type</th>
 <th style="text-align: left;">Soil</th>
 <th style="text-align: left;">LMA</th>
@@ -586,6 +588,8 @@ insignis</td>
 <td style="text-align: left;">Was the leaf at the top of the canopy and
 usually receiving light (sun) or a shaded leaf? Chose between Sun, Shade
 or leave empty</td>
+<td style="text-align: left;">Leaf phenological stage (Young, Mature,
+Old)</td>
 <td style="text-align: left;">Chose between Wild or Agricultural</td>
 <td style="text-align: left;">Please chose between natural ground, pot,
 or managed ground (Natural, Pot, Managed)</td>
@@ -607,6 +611,7 @@ of fresh leaf by mass in % (0-100)</td>
 <td style="text-align: left;">SLZ</td>
 <td style="text-align: left;">Cecropia insignis</td>
 <td style="text-align: left;">Sun</td>
+<td style="text-align: left;">Mature</td>
 <td style="text-align: left;">Wild</td>
 <td style="text-align: left;">Natural</td>
 <td style="text-align: left;">90.24</td>
@@ -622,6 +627,7 @@ of fresh leaf by mass in % (0-100)</td>
 <td style="text-align: left;">BNL</td>
 <td style="text-align: left;">Cucurbit pepo</td>
 <td style="text-align: left;">Sun</td>
+<td style="text-align: left;">Old</td>
 <td style="text-align: left;">Agricultural</td>
 <td style="text-align: left;">Pot</td>
 <td style="text-align: left;">118.65</td>
@@ -640,10 +646,11 @@ with the identifier used for the gas exchange and for the spectra as the
 SampleID will be used to merge all the different data.
 
 The first columns have to be filled (SampleID, Dataset\_name,
-Site\_name, Species, Sun\_Shade, Plant\_type, Soil), the columns related
-to the leaf traits can be left empty if you don’t have the data (LMA,
-Narea, Nmass, Parea, Pmass, LWC). Note that the leaf water content, LWC,
-corresponds to (fresh weight - dry weight) / fresh weight.
+Site\_name, Species, Sun\_Shade, Phenological\_stage, Plant\_type,
+Soil), the columns related to the leaf traits can be left empty if you
+don’t have the data (LMA, Narea, Nmass, Parea, Pmass, LWC). Note that
+the leaf water content, LWC, corresponds to (fresh weight - dry weight)
+/ fresh weight.
 
 For the species name, please write “Genus species”, for exemple
 Cercropia insignis. If you know the genus but not the species, write for

@@ -3,7 +3,7 @@ path <- here()
 
 refit_aci <- FALSE
 recombine_spec_trait <- FALSE
-check_pipeline <- TRUE
+check_pipeline <- FALSE
 update_database <-TRUE
 
 ## Re-run all the '2_Fit_Aci.R' codes
@@ -58,7 +58,7 @@ if(update_database){
   #Bilan colnames with Rdark and Tleaf_Rdark included
   Bilan_colnames=c("Vcmax25","Jmax25","TPU25","Rday25","StdError_Vcmax25","StdError_Jmax25","StdError_TPU25","StdError_Rday25","Tleaf","sigma","AIC","Model","Fitting_method","SampleID","Rdark","Tleaf_Rdark") 
   Reflectance_colnames=c("SampleID","Spectrometer","Leaf_clip","Reflectance")
-  SampleDetails_colnames=c("SampleID" ,"Site_name","Dataset_name","Species","Sun_Shade","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")
+  SampleDetails_colnames=c("SampleID" ,"Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")
   
   ls_folder_dataset=list.dirs(file.path(here(),"Datasets"),recursive = FALSE)
   database=data.frame()
