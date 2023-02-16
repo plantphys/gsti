@@ -1,35 +1,37 @@
-This guide describes all the steps needed to add a new dataset. An
-overview of the process is presented
-[here](https://github.com/TESTgroup-BNL/gsti/blob/main/Overal_data_curation.pdf).
+This guide provides a comprehensive overview of all the necessary steps
+to add a new dataset. The folder “Lamour\_et\_al\_2021” can be used as a
+template since the code within the folder has been commented and
+corresponds to each step outlined in this guide.
 
-The folder Lamour\_et\_al\_2021 can be used as a template. The code
-within this folder has been commented and correspond to all the steps of
-this guide.
+An overview of the process and database organisation is presented
+[here](https://github.com/TESTgroup-BNL/gsti/blob/main/Overal_data_curation.pdf).
 
 ## Creation of a Dataset folder
 
-Each dataset is put into a folder called “Names\_Year” for example
-“Serbin\_et\_al\_2019”. Please, also add any article associated with the
-dataset and the protocol of measurement, which should include the
-description of the gas exchange measurements, leaf reflectance
-measurements, as well as the equipments used. It should also include the
-location description, information on the growing conditions (Natural
-environment? Green house? Agricultural or experimental field? Plants in
-pots?) and information on the species (Natural species, agricultural
-species) as well as the status of the plants (stressed, not stressed?).
+Each dataset should be put into a folder named “Names\_Year” for example
+“Serbin\_et\_al\_2019”. Please, also include any article associated with
+the dataset and the protocol of measurement, which should detail the gas
+exchange measurements, leaf reflectance measurements, as well as the
+equipments used. The protocol should also provide information about the
+location, growing conditions (e.g., natural environment, greenhouse,
+agricultural or experimental field, plants in pots), species (e.g.,
+natural or agricultural), and plant status (e.g., stressed or not
+stressed).
 
-Please, also mention what was your stability criterion to start the A-Ci
-curves (did you wait for stability of the photosynthesis rate and
-stomatal conductance before starting the curve? What was the average
-acclimation time of the leaf within the leaf chamber?) and within the
-A-Ci curves. Also include this information if you used the “one point
+In addition, please include details about your stability criterion to
+initiate the A-Ci curves. For example, did you wait for stability of the
+photosynthesis rate and stomatal conductance before starting the curve?
+What was the average acclimation time of the leaf within the leaf
+chamber? Also include this information if you used the “one point
 method” to estimate Vcmax (De Kauwe et al. 2016, Burnett et al. 2019).
 
 ## Adding a dataset description csv file
 
-In each dataset folder a csv file called **Description.csv** has to be
-included. This file will be used to list the authors as well as
-associated papers and acknowledgements.
+Within each dataset folder, a csv file called **Description.csv** has to
+be included.
+
+This file will be used to list the authors, associated papers, and
+acknowledgements.
 
     Description=read.csv(file='Description.csv')
     knitr::kable(Description)
@@ -90,9 +92,9 @@ class="email">jlamour.sci@gmail.com</a></td>
 
 ## Adding a site description csv file
 
-A file called **Site.csv** also has to be included with the columns
-listed below. The latitude and longitude coordinates will be used to
-position the dataset on a world map.
+A file named **Site.csv** must be included in the dataset folder with
+the columns listed below. The latitude and longitude coordinates will be
+used to position the dataset on a world map.
 
 If you have different sites for the same dataset with wide difference in
 positions that makes a difference on a world map or if this include
@@ -257,22 +259,22 @@ scrub</td>
 
 ## Adding the gas exchange A-C<sub>i</sub> data to the dataset folder
 
-The idea of this project is to include the raw A-C<sub>i</sub> data so
-we can fit the curves and estimate V<sub>cmax</sub> using the same
+The aim of this project is to include the raw A-C<sub>i</sub> data so
+that we can fit the curves and estimate V<sub>cmax</sub> using the same
 method for all datasets.
 
-We have requirements for the final A-C<sub>i</sub> data to be used by
-the fitting procedure (see table below with the needed column names).
-However, we don’t have hard requirements in the way to obtain this final
-data. Note that the SampleID\_num column will be used by the fitting
-procedure to identify individual A-C<sub>i</sub> curves. If you made
-several A-C<sub>i</sub> curves on the same leaf we recommend to only
-keep the best one. We decided to use a column SampleID and a column
-SampleID\_num. SampleID should correspond to the original identifier of
-the leaves in the raw dataset which is often a complex string. The
-column SampleID\_num should be an integer. We made the choice to use the
-SampleID\_num to facilitate the QAQC of the curves and the ploting of
-the figures.
+The final A-C<sub>i</sub> data to be used by the fitting procedure must
+meet certain requirements (see table below with the required column
+names). However, we don’t have hard requirements in the way to obtain
+this final data. Note that the SampleID\_num column will be used by the
+fitting procedure to identify individual A-C<sub>i</sub> curves. If you
+made several A-C<sub>i</sub> curves on the same leaf we recommend to
+only keep the best one. We decided to use a column SampleID\_num in
+addition to the SampleID column. SampleID should correspond to the
+original identifier of the leaves in the raw dataset which is often a
+complex string. The column SampleID\_num should be an integer. We made
+the choice to use the SampleID\_num to facilitate the QAQC of the curves
+and the ploting of the figures.
 
 The A-C<sub>i</sub> data should be cleaned from spurious measurements
 and points that would bias V<sub>cmax</sub> or J<sub>max</sub>
@@ -366,15 +368,15 @@ and
 
 -   2\_ACi\_fitting\_best\_model.pdf
 
-The first three pdf shows the fitting of each A-C<sub>i</sub> curves
-when including the rate of maximum carboxylation (A<sub>c</sub>), the
-rate of electron transport (A<sub>j</sub>) and the rate of triose
-phosphate utilisation (A<sub>p</sub>).
+The first three pdf show the fitting of each A-C<sub>i</sub> curves when
+including the rate of maximum carboxylation (A<sub>c</sub>), the rate of
+electron transport (A<sub>j</sub>) and the rate of triose phosphate
+utilization (A<sub>p</sub>).
 
 The best model corresponds to the model with the lowest AIC that
 includes A<sub>c</sub> or A<sub>c</sub> + A<sub>j</sub> or
-A<sub>c</sub> + A<sub>j</sub> + A<sub>p</sub>. Note that if the models
-with the best AIC is the one only including A<sub>c</sub>, then
+A<sub>c</sub> + A<sub>j</sub> + A<sub>p</sub>. Note that if the model
+with the best AIC is the one including A<sub>c</sub> only, then
 V<sub>cmax25</sub> and R<sub>day25</sub> are the only parameters
 estimated. If the model with the best AIC is A<sub>c</sub> +
 A<sub>j</sub>, then J<sub>max25</sub> is also estimated.
@@ -384,8 +386,7 @@ A<sub>c</sub>, A<sub>j</sub>, and A<sub>p</sub> rates is determined
 automatically by the fitting procedure to avoid manual and somehow
 subjective choices in the transitions.
 
-This codes produces a dataframe, called Bilan which includes the
-folowing columns:
+This codes produces a dataframe, called Bilan with the folowing columns:
 
     Bilan=read.csv(file='Bilan.csv',header = TRUE)
     knitr::kable(Bilan)
@@ -486,12 +487,14 @@ Importantly, the same temperature correction is used for all the
 datasets to estimate the parameters at 25°C. Since the Tleaf is also
 given in the output of the table, it will be possible to re estimate the
 parameters at the leaf temperature and to try other temperature
-dependence parametrization if needed.
+dependence parametrization if needed. The A-C<sub>i</sub> fitting can
+also be re-run with different parametrizations for all the datasets
+using the output from step 1.
 
 ## Adding dark adapted leaf respiration data (optional)
 
 If you measured the dark respiration of leaves you can also add them to
-the project. All you need is to include a file with as columns:
+the dataset. All you need is to include a file with as columns:
 
 -   SampleID (the leaf identifier that is used everywhere to link
     different data)
@@ -502,7 +505,7 @@ the project. All you need is to include a file with as columns:
 
 ## Adding the leaf spectra data
 
-The spectral information should be a full range reflectance measurement
+The spectral information is ideally a full range reflectance measurement
 (350 nm to 2500 nm) with a 1 nm resolution.
 
 If you don’t have values for all the wavelengths (for example from 350
@@ -523,8 +526,8 @@ with four columns:
 -   Leaf\_clip, which informs what was the leaf clip used (SVC LC-RP,
     SVC LC-RP Pro, ASD Leaf Clip, …)
 
--   Reflectance, which is a matrix with the reflectance in column
-    (expressed in percent from 0 to 100).
+-   Reflectance, which is a matrix with the Reflectance in column
+    expressed in percent from 0 to 100.
 
 We use a matrix in the column Reflectance, folowing the “pls” package
 requirement (Mevik & Wehrens, 2007). More information is given in the
