@@ -14,7 +14,7 @@ f.Check_data=function(folder_path=NA){
   Site_colnames=c("Site_name","Longitude","Latitude","Elevation","Biome_number")
   Bilan_colnames=c("SampleID_num","Vcmax25","Jmax25","TPU25","Rday25","StdError_Vcmax25","StdError_Jmax25","StdError_TPU25","StdError_Rday25","Tleaf","sigma","AIC","Model","Fitting_method","SampleID")
   Reflectance_colnames=c("SampleID","Spectrometer","Leaf_clip","Reflectance")
-  SampleDetails_colnames=c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")
+  SampleDetails_colnames=c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")
   Rdark_colnames=c("SampleID","Rdark","Tleaf_Rdark")
   
   # List of files included in the dataset folder
@@ -102,6 +102,8 @@ f.Check_data=function(folder_path=NA){
     stop()}
   
   if(any(!SampleDetails$Sun_Shade%in%c("Sun","Shade",NA))){print("Column Sun_Shade only accepts Sun Shade or NA values")
+                                                          stop()}
+  if(any(!SampleDetails$Phenological_stage%in%c("Young","Mature","Old"))){print("Column Phenological_stage only accepts Young, Mature or Old values")
                                                           stop()}
   if(any(!SampleDetails$Plant_type%in%c("Wild","Agricultural"))){print("Column Plant_type only accepts Wild or Agricultural values")
                                                           stop()}

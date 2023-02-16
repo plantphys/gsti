@@ -10,6 +10,9 @@ SampleDetails$Site_name=as.character(SampleDetails$Site)
 SampleDetails$Dataset_name="Yan_et_al_2021"
 SampleDetails$Species=SampleDetails$SpeciesName
 SampleDetails$Sun_Shade="Sun"
+SampleDetails[SampleDetails$`Leaf age (Y-young; M-mature; O-old)`=="Y","Phenological_stage"]="Young"
+SampleDetails[SampleDetails$`Leaf age (Y-young; M-mature; O-old)`=="M","Phenological_stage"]="Mature"
+SampleDetails[SampleDetails$`Leaf age (Y-young; M-mature; O-old)`=="O","Phenological_stage"]="Old"
 SampleDetails$Plant_type="Wild"
 SampleDetails$Soil="Natural"
 SampleDetails$LMA=NA
@@ -20,7 +23,7 @@ SampleDetails$Pmass=NA
 SampleDetails$LWC=NA
 
 
-SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
+SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
 
 save(SampleDetails,file="4_SampleDetails.Rdata")
 
