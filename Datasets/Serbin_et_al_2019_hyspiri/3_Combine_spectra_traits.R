@@ -106,6 +106,31 @@ abline(0,1,lty=2)
 plot(Reflectance$N_mass_g_g,Reflectance$Vcmax25, xlim=c(0,5),
      ylim=c(40,300))
 plot(Reflectance$LMA_gDW_m2,Reflectance$Vcmax25)
+
+
+plot(Reflectance$Vcmax25,Reflectance$Jmax25,xlim=c(40,400),
+     ylim=c(40,400))
+abline(0,1,lty=2)
+
+# jvratio <- lm(formula = Reflectance$Jmax25~Reflectance$Vcmax25)
+# summary(jvratio)
+# 
+# predict(jvratio)
+# hist(residuals(jvratio))
+# 
+# remove <- which(as.vector(residuals(jvratio)) > 100 | 
+#                   as.vector(residuals(jvratio)) < -100)
+# remove
+# 
+# Reflectance2 <- Reflectance[-remove,]
+# 
+# plot(Reflectance2$Vcmax25,Reflectance2$Jmax25,xlim=c(40,400),
+#      ylim=c(40,400))
+# abline(0,1,lty=2)
+# 
+# jvratio <- lm(formula = Reflectance2$Jmax25~Reflectance2$Vcmax25)
+# summary(jvratio)
+# hist(residuals(jvratio))
 #--------------------------------------------------------------------------------------------------#
 
 

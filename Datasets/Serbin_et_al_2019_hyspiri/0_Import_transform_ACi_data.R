@@ -11,6 +11,12 @@ src_data_dir <- file.path("LiCor_data")
 # curate the Ag datasets
 orig_ag_data <- read.csv(file.path(src_data_dir,'concatenated_ag_gasex_data.csv'), 
                          header = T, stringsAsFactors = F)
+
+# using combined is going to take some additional work to get whats needed to match with spec
+# not in the ecosis version
+#orig_ag_data <- read.csv(file.path(src_data_dir,'concatenated_gasex_data.csv'), 
+#                         header = T, stringsAsFactors = F)
+
 head(orig_ag_data)
 names(orig_ag_data)
 

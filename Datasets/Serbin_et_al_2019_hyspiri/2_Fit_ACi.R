@@ -42,6 +42,7 @@ range(Bilan$Vcmax25, na.rm=T)
 # DROP bad curves here:
 drop_rows <- which(Bilan$sigma/Bilan$Vcmax25 > quantile(x = Bilan$sigma/Bilan$Vcmax25, 
                                            probs = 0.95, na.rm=T))
+drop_rows
 Bilan[drop_rows,'SampleID_num']
 Bilan2 <- Bilan[-drop_rows,]
 Bilan <- Bilan2

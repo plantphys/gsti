@@ -3,7 +3,9 @@ library(dplyr)
 library(purrr)
 path <- here()
 path
+#--------------------------------------------------------------------------------------------------#
 
+#--------------------------------------------------------------------------------------------------#
 ag_datasets <- file.path(here(),'Datasets/Serbin_et_al_2019_hyspiri/LiCor_data/ag_sites/')
 ag_data_files <- list.files(path = ag_datasets, pattern = "*.csv", full.names = T)
 ag_data_files
@@ -14,7 +16,9 @@ head(ag_data)
 output_dir <- file.path(here(),'Datasets/Serbin_et_al_2019_hyspiri/LiCor_data/')
 write.csv(ag_data, file = file.path(output_dir, "concatenated_ag_gasex_data.csv"), 
           row.names = F)
+#--------------------------------------------------------------------------------------------------#
 
+#--------------------------------------------------------------------------------------------------#
 nonag_datasets <- file.path(here(),'Datasets/Serbin_et_al_2019_hyspiri/LiCor_data/non_ag_sites')
 nonag_data_files <- list.files(path = nonag_datasets, pattern = "*.csv", full.names = T)
 nonag_data_files
@@ -25,7 +29,9 @@ head(nonag_data)
 output_dir <- file.path(here(),'Datasets/Serbin_et_al_2019_hyspiri/LiCor_data/')
 write.csv(nonag_data, file = file.path(output_dir, "concatenated_nonag_gasex_data.csv"), 
           row.names = F)
+#--------------------------------------------------------------------------------------------------#
 
+#--------------------------------------------------------------------------------------------------#
 # what species?
 unique(nonag_data$USDA_Species)
 
@@ -65,9 +71,9 @@ PISA2_sdev_area
 # [1] 1.913644
 # > PISA2_sdev_area
 # [1] 0.0391704
+#--------------------------------------------------------------------------------------------------#
 
-
-
+#--------------------------------------------------------------------------------------------------#
 # Combined data
 names(ag_data)
 names(nonag_data)
@@ -76,5 +82,6 @@ output_data <- rbind(ag_data,nonag_data)
 output_dir <- file.path(here(),'Datasets/Serbin_et_al_2019_hyspiri/LiCor_data/')
 write.csv(output_data, file = file.path(output_dir, "concatenated_gasex_data.csv"), 
           row.names = F)
+#--------------------------------------------------------------------------------------------------#
 
 #eof
