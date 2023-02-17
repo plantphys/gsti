@@ -105,7 +105,10 @@ bad_curve_list <- c("KARE_Plot1_PIME4_L2_GE_1_2015-06-08","KARE_Plot1_PIME4_L26_
                     "KARE_Plot2_PIME4_L18_GE_1_2015-06-08","KARE_Plot2_PIME4_L19_GE_1_2015-06-08",
                     "KARE_Plot2_PIME4_L5_GE_1_2015-06-08","KARE_Plot2_PIME4_L7_GE_1_2015-06-08",
                     "KARE_Plot2_PIME4_L8_GE_1_2015-06-08","KARE_Plot2_PIME4_L9_GE_1_2015-06-08",
-                    "KARE_Plot2_PUGR2_L13_GE_1_2015-06-07","KARE_Plot2_PUGR2_L9_GE_1_2015-06-07")
+                    "KARE_Plot2_PUGR2_L13_GE_1_2015-06-07","KARE_Plot2_PUGR2_L9_GE_1_2015-06-07",
+                    "KARE_Plot3_FICA_L14_GE_1_2015-06-06","KARE_Plot3_FICA_L20_GE_1_2015-06-06",
+                    "KARE_Plot3_PUGR2_L4_GE_1_2015-06-07","KARE_Plot4_FICA_L12_GE_1_2015-06-06",
+                    "Kingsburg_Plot2_PRDU_L2T_GE_1_2015-06-09")
 #--------------------------------------------------------------------------------------------------#
 
 
