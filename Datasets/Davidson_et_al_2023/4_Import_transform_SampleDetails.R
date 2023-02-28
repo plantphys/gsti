@@ -1,6 +1,6 @@
 library(spectratrait)
 library(here)
-path <- here()
+path <- "~/Google Drive/BNL/TEST_Group_Papers/gsti/gsti"
 
 setwd(file.path(path,'/Datasets/Davidson_et_al_2023'))
 
