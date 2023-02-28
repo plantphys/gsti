@@ -12,7 +12,7 @@ Each dataset should be put into a folder named “Names\_Year” for example
 “Serbin\_et\_al\_2019”. Please, also include any article associated with
 the dataset and the protocol of measurement, which should detail the gas
 exchange measurements, leaf reflectance measurements, as well as the
-equipments used. The protocol should also provide information about the
+equipment used. The protocol should also provide information about the
 location, growing conditions (e.g., natural environment, greenhouse,
 agricultural or experimental field, plants in pots), species (e.g.,
 natural or agricultural), and plant status (e.g., stressed or not
@@ -97,7 +97,7 @@ the columns listed below. The latitude and longitude coordinates will be
 used to position the dataset on a world map.
 
 If you have different sites for the same dataset with wide difference in
-positions that makes a difference on a world map or if this include
+positions that makes a difference on a world map or if this includes
 different biomes, you can add several rows to your Site.csv file.
 
     Site=read.csv(file='Site.csv')
