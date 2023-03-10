@@ -9,32 +9,35 @@ An overview of the process and database organisation is presented
 ## Recommended github steps prior to the inclusion of a new dataset
 1) Fork this github repo into your own github space
 
-2) Clone the forked repo onto your local machine
+2) Clone the forked repo onto your local machine <br>
     e.g. git clone git@github.com:TESTgroup-BNL/gsti.git
     
     OR
     
     e.g. gh repo clone TESTgroup-BNL/gsti
 
-3) Define the upstream repository 
+3) Define the upstream repository <br>
     e.g. git remote add upstream git@github.com:TESTgroup-BNL/gsti.git
 
-4) Ensure you are starting with the "main" branch in your cloned repo and make sure its up to date:
+4) Ensure you are starting with the "main" branch in your cloned repo and make sure its up to date <br>
     e.g. git checkout main && git pull upstream main
  
-6) Create a new branch and give it a descriptive branch name 
-    e.g. git checkout -b <branchname>
+6) Create a new branch and give it a descriptive branch name <br>
+    e.g. git checkout -b branchname
     
-7) Work on your branch, commit changes, keep a changelog
+7) Work on your branch, commit changes, keep a changelog 
 
-8) Push this branch to your github space
-    e.g. git push origin <branchname>
+8) Push this branch to your github space <br>
+    e.g. git push origin branchname
     
 9) Submit a pull request
 
-10) After the PR is merged, delete the branch on github and locally
-    e.g. git push origin --delete <branchname>
-    e.g. git branch -D <branchname>
+10) After the PR is merged, delete the branch on github and locally <br>
+    e.g. git push origin --delete branchname <br>
+    
+    and then to delete local branch <br>
+    
+    e.g. git branch -D branchname
 
 ## Creation of a Dataset folder
 
