@@ -6,7 +6,8 @@ library(here)
 
 
 # Set the working directory to the 'Davidson_et_al_2023' folder where the data is located
-setwd("~/Google Drive/BNL/TEST_Group_Papers/gsti/gsti/Datasets/Davidson_et_al_2023")
+path=here()
+setwd(file.path(path,'/Datasets/Davidson_et_al_2023'))
 
 # Importing the author's Rdark data
 data_Rdark <- read.csv("Leaf_Trait_Data.csv")

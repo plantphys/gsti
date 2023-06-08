@@ -54,7 +54,9 @@ if(check_pipeline) {
 
 ## Update the curated database
 if(update_database){
-  ls_required_data_files=c("2_Fitted_ACi_data.Rdata","3_QC_Reflectance_data.Rdata","4_SampleDetails.Rdata","Site.csv","Description.csv")
+  ls_required_data_files=c("3_QC_Reflectance_data.Rdata","4_SampleDetails.Rdata","Site.csv","Description.csv")
+  ls_ACi_files=c("0_curated_data.Rdata","1_QC_ACi_data.Rdata","2_Fitted_ACi_data.Rdata")
+  ls_Rdark_files=c("Rdark_data.Rdata")
   #Bilan colnames with Rdark and Tleaf_Rdark included
   Bilan_colnames=c("Vcmax25","Jmax25","TPU25","Rday25","StdError_Vcmax25","StdError_Jmax25","StdError_TPU25","StdError_Rday25","Tleaf","sigma","AIC","Model","Fitting_method","SampleID","Rdark","Tleaf_Rdark") 
   Reflectance_colnames=c("SampleID","Spectrometer","Leaf_clip","Reflectance")
@@ -65,17 +67,21 @@ if(update_database){
   for(dataset in ls_folder_dataset){
     print(dataset)
     ls_files=dir(dataset,recursive=FALSE)
-    if(all(ls_required_data_files%in%ls_files)){
+    if(all(ls_required_data_files%in%ls_files)&(all(ls_ACi_files%in%ls_files)|ls_Rdark_files%in%ls_files)){
       print("Including dataset in the database")
-      load(file = file.path(dataset,"2_Fitted_ACi_data.Rdata"),verbose=TRUE)
+      
       load(file = file.path(dataset,"3_QC_Reflectance_data.Rdata"),verbose=TRUE)
       colnames(Reflectance$Reflectance)=paste("Wave_",350:2500)
       load(file = file.path(dataset,"4_SampleDetails.Rdata"),verbose=TRUE)
       Site=read.csv(file.path(dataset,"Site.csv"))
       Description=read.csv(file.path(dataset,"Description.csv"))
-      if("Rdark_data.Rdata"%in%ls_files){load(file = file.path(dataset,"Rdark_data.Rdata"))
-                                          Bilan=merge(x=Bilan,y=Rdark,by="SampleID",all=TRUE)} else ({Bilan$Rdark=NA
-                                                                                                      Bilan$Tleaf_Rdark=NA})
+      
+      if(all(ls_ACi_files%in%ls_files)){load(file = file.path(dataset,"2_Fitted_ACi_data.Rdata"),verbose=TRUE)}else{Bilan = data.frame(matrix(ncol = length(Bilan_colnames), nrow = 0))
+      colnames(Bilan)=Bilan_colnames}
+      if(ls_Rdark_files%in%ls_files){
+        load(file = file.path(dataset,"Rdark_data.Rdata"))
+        Bilan=merge(x=Bilan[,Bilan_colnames[-which(Bilan_colnames%in%c("Rdark","Tleaf_Rdark"))]],y=Rdark,all.y=TRUE)} else ({Bilan$Rdark=NA
+                                              Bilan$Tleaf_Rdark=NA})
       Dataset_data=merge(x=SampleDetails[,SampleDetails_colnames],y=Bilan[,Bilan_colnames],by="SampleID",all=FALSE)
       Dataset_data=merge(x=Dataset_data,y=Reflectance[,Reflectance_colnames],by="SampleID",all=FALSE)
       Dataset_data=merge(x=Dataset_data,y=Site,by="Site_name")

@@ -10,7 +10,8 @@ f.Check_data=function(folder_path=NA){
   
   #List of required files and required colnames
   ls_R_files=c("0_Import_transform_ACi_data.R","1_QaQc_curated_ACi.R","2_Fit_ACi.R","3_Import_transform_Reflectance.R","4_Import_transform_SampleDetails")
-  ls_data_files=c("0_curated_data.Rdata","1_QC_ACi_data.Rdata","2_Fitted_ACi_data.Rdata","3_QC_Reflectance_data.Rdata","4_SampleDetails.Rdata","Site.csv","Description.csv")
+  ls_required_data_files=c("3_QC_Reflectance_data.Rdata","4_SampleDetails.Rdata","Site.csv","Description.csv")
+  ls_ACi_files=c("0_curated_data.Rdata","1_QC_ACi_data.Rdata","2_Fitted_ACi_data.Rdata")
   Site_colnames=c("Site_name","Longitude","Latitude","Elevation","Biome_number")
   Bilan_colnames=c("SampleID_num","Vcmax25","Jmax25","TPU25","Rday25","StdError_Vcmax25","StdError_Jmax25","StdError_TPU25","StdError_Rday25","Tleaf","sigma","AIC","Model","Fitting_method","SampleID")
   Reflectance_colnames=c("SampleID","Spectrometer","Leaf_clip","Reflectance")
@@ -20,11 +21,31 @@ f.Check_data=function(folder_path=NA){
   # List of files included in the dataset folder
   ls_files=dir()
   
-  ## First test: Are all the required Rdata files present in the folder?
-  if(all(ls_data_files%in%ls_files)){"All the required Rdata files were included"} else {(print(paste("Missing Rdata files:",ls_data_files[which(!ls_data_files%in%ls_files)])))
+  ############################################
+  ###  Are all the needed files included ? ###
+  ############################################
+  # Checking if ls_required_data_files are all present
+  if(all(ls_required_data_files%in%ls_files)){print("All the required Rdata files were included")} else {print(paste("Missing Rdata files:",paste(ls_required_data_files[which(!ls_required_data_files%in%ls_files)],collapse = ", ")))
     stop()}
+  
+  # Checking if all Aci files are present if at least one is present
+  if(!all(ls_ACi_files%in%ls_files)&any(ls_ACi_files%in%ls_files)){print(paste(paste(ls_files[which(ls_ACi_files%in%ls_files)],collapse=", "),"were included in the folder but",paste(ls_ACi_files[which(!ls_ACi_files%in%ls_files)],collapse = " ,"),"is missing"))
+    stop()}
+  
+  ## Checking if the Rdark data is included
+  if("Rdark_data.Rdata"%in%ls_files){print("Rdark data included")
+    is_Rdark=TRUE}else{print("Rdark data was included in the dataset")
+      is_Rdark=FALSE}
+  
+  is_Rdark_and_Aci=FALSE
+  # If Rdark is not included, testing if all Aci files are included
+  if(!"Rdark_data.Rdata"%in%ls_files&!all(ls_ACi_files%in%ls_files)){print("There is no Rdark data and no ACi files (or one of the required ACi files is missing)")
+    stop()}else if("Rdark_data.Rdata"%in%ls_files&all(ls_ACi_files%in%ls_files)){is_Rdark_and_Aci=TRUE}
+
  
-  ## Checking the Site and Description metadata
+  #####################################################
+  ###   Checking the Site and Description metadata  ###
+  #####################################################
   Site=read.csv("Site.csv")
   
   if(any(!Site_colnames%in%colnames(Site))){print("!!! Your Site dataframe misses some columns:")
@@ -45,26 +66,34 @@ f.Check_data=function(folder_path=NA){
   
   invisible(readline(prompt="Press [enter] to continue"))
   
-  ## Checking Vcmax data
+  ############################################
+  ### Checking fitted ACi data if included ###
+  ############################################
   
-  load(file ="2_Fitted_ACi_data.Rdata")
-  if(any(!Bilan_colnames%in%colnames(Bilan))){print("!!! Your Bilan dataframe misses some columns:")
-    print(Bilan_colnames[!Bilan_colnames%in%colnames(Bilan)])
-    stop()}
-  
-  if(any(duplicated(Bilan$SampleID))){"!!! You have duplicated SampleID names in your Bilan dataframe"
-                                      stop()}
-  
-  n_sampleID=nrow(Bilan[!is.na(Bilan$Vcmax25),])
-  n_Vcmax25=nrow(Bilan[!is.na(Bilan$Vcmax25),])
-  
-  print("Is the histogram of Vcmax25 value correct? If not revise steps 0, 1, and 2")
-  
-  hist(Bilan$Vcmax25)
+  if("2_Fitted_ACi_data.Rdata"%in%ls_files){
+    load(file ="2_Fitted_ACi_data.Rdata")
+    if(any(!Bilan_colnames%in%colnames(Bilan))){print("!!! Your Bilan dataframe misses some columns:")
+      print(Bilan_colnames[!Bilan_colnames%in%colnames(Bilan)])
+      stop()}
+    
+    if(any(duplicated(Bilan$SampleID))){"!!! You have duplicated SampleID names in your Bilan dataframe"
+      stop()}
+    
+    n_sampleID=nrow(Bilan[!is.na(Bilan$Vcmax25),])
+    n_Vcmax25=nrow(Bilan[!is.na(Bilan$Vcmax25),])
+    
+    print("Is the histogram of Vcmax25 value correct? If not revise steps 0, 1, and 2")
+    
+    hist(Bilan$Vcmax25)
+  } else {print("No Vcmax data included")}
+
   
   invisible(readline(prompt="Press [enter] to continue"))
   
-  ## Checking Reflectance data
+  #################################
+  ## Checking Reflectance data  ###
+  #################################
+  
   load(file ="3_QC_Reflectance_data.Rdata")
   
   if(any(!Reflectance_colnames%in%colnames(Reflectance))){print("!!! Your Reflectance dataframe misses some columns:")
@@ -74,19 +103,24 @@ f.Check_data=function(folder_path=NA){
   print("Does the reflectance look ok? If not revise step 3")
   f.plot.spec(Z = Reflectance$Reflectance,wv = 350:2500)
   
+  
   if(any(duplicated(Reflectance$SampleID))){print("!!! You have duplicated SampleID names in your Reflectance dataframe")
                                             stop()}
   
-  ls_SampleID_not_in_Reflectance=Bilan[!Bilan$SampleID%in%Reflectance$SampleID,"SampleID"]
-  ls_SampleID_not_in_Bilan=Reflectance[!Reflectance$SampleID%in%Bilan$SampleID,"SampleID"]
-  if(length(ls_SampleID_not_in_Reflectance)>0){print(paste("Some leaves in 2_Fitted_ACi_data.Rdata file do not have an associated Reflectance data, correct if necessary :",paste(ls_SampleID_not_in_Reflectance,collapse=" ")))}
-  if(length(ls_SampleID_not_in_Bilan)>0){print(paste("Some Reflectance spectra do not have an associated leaf fitted ACi data in 2_Fitted_ACi_data.Rdata, correct if necessary :",paste(ls_SampleID_not_in_Bilan,collapse=" ")))}
+  if("2_Fitted_ACi_data.Rdata"%in%ls_files){
+    ls_SampleID_not_in_Reflectance=Bilan[!Bilan$SampleID%in%Reflectance$SampleID,"SampleID"]
+    ls_SampleID_not_in_Bilan=Reflectance[!Reflectance$SampleID%in%Bilan$SampleID,"SampleID"]
+    if(length(ls_SampleID_not_in_Reflectance)>0){print(paste("Some leaves in 2_Fitted_ACi_data.Rdata file do not have an associated Reflectance data, correct if necessary :",paste(ls_SampleID_not_in_Reflectance,collapse=" ")))}
+    if(length(ls_SampleID_not_in_Bilan)>0){print(paste("Some Reflectance spectra do not have an associated leaf fitted ACi data in 2_Fitted_ACi_data.Rdata, correct if necessary :",paste(ls_SampleID_not_in_Bilan,collapse=" ")))}
+  }
   if(mean(Reflectance$Reflectance,na.rm=TRUE)<1){print("Your reflectance data are expressed in 0-1. They should be expressed in percent from 0 to 100, please correct")
                                                   stop()}
   
   invisible(readline(prompt="Press [enter] to continue"))
   
-  ## Checking SampleDetails data
+  ####################################
+  ### Checking SampleDetails data  ###
+  ####################################
   
   load(file ="4_SampleDetails.Rdata")
   
@@ -111,10 +145,14 @@ f.Check_data=function(folder_path=NA){
                                                           stop()}
   
   ls_SampleID_not_in_SampleDetails=Bilan[!Bilan$SampleID%in%SampleDetails$SampleID,"SampleID"]
-  ls_SampleID_not_in_Bilan=SampleDetails[!SampleDetails$SampleID%in%Bilan$SampleID,"SampleID"]
   if(length(ls_SampleID_not_in_SampleDetails)>0){paste("Some leaves in 2_Fitted_ACi_data.Rdata file do not have an associated SampleDetails data, correct if necessary :",paste(ls_SampleID_not_in_SampleDetails,collapse=" "))}
-  if(length(ls_SampleID_not_in_Bilan)>0){paste("Some leaf in SampleDetails do not have an associated leaf fitted ACi data in 2_Fitted_ACi_data.Rdata, correct if necessary :",paste(ls_SampleID_not_in_Bilan,collapse=" "))}
+
+  if("2_Fitted_ACi_data.Rdata"%in%ls_files){
+    ls_SampleID_not_in_Bilan=SampleDetails[!SampleDetails$SampleID%in%Bilan$SampleID,"SampleID"]
+    if(length(ls_SampleID_not_in_Bilan)>0){paste("Some leaf in SampleDetails do not have an associated leaf fitted ACi data in 2_Fitted_ACi_data.Rdata, correct if necessary :",paste(ls_SampleID_not_in_Bilan,collapse=" "))}
+  }
   
+   
   mean_LMA=mean(SampleDetails$LMA,na.rm=TRUE)
   mean_Narea=mean(SampleDetails$Narea,na.rm=TRUE)
   mean_Nmass=mean(SampleDetails$Nmass,na.rm=TRUE)
@@ -126,9 +164,11 @@ f.Check_data=function(folder_path=NA){
   if(is.nan(mean_LWC)){print("No LWC data included. Consider adding LWC values if you have them")} else if(mean_LWC<20|mean_LWC>95){paste("Your average LWC looks low or high:",mean_LWC,"can you check if LWC is expressed in %?")}
 
   
-  # Is the optional Rdark data included?
+  #####################################
+  ## Checking Rdark data if included ##
+  #####################################
+  
   if("Rdark_data.Rdata"%in%ls_files){ load("Rdark_data.Rdata")
-                                      print("Rdark data was included in the dataset")
                                       if(any(!Rdark_colnames%in%colnames(Rdark))){print("!!! Rdark colnames are not valid.")
                                                                                   stop()}
                                       if(is.nan(mean(Rdark$Tleaf_Rdark,na.rm=TRUE))){print("!!! Tleaf_Rdark values are required but are not provided")
@@ -138,15 +178,39 @@ f.Check_data=function(folder_path=NA){
                                       if(!any(Rdark$SampleID%in%SampleDetails$SampleID)){print("SampleID in Rdark data do not match SampleID in SampleDetails")
                                                                                         stop()}}else(print("Optional Rdark data not included in the dataset"))
   
+  ############################################################
+  ## Checking if all the data files can be merged togather  ##
+  ############################################################
+  ## There are three cases: 1) ACi and Rdark data are included, 2)  Rdark data only are included, 3) ACi only are included
+  
   print("Checking if all the data can be merged together")
-
-  test=try({if("Rdark_data.Rdata"%in%ls_files){load(file = "Rdark_data.Rdata")
-    Bilan=merge(x=Bilan,y=Rdark,by="SampleID",all=TRUE)} else ({Bilan$Rdark=NA
-    Bilan$Tleaf_Rdark=NA})
-    Dataset_data=merge(x=SampleDetails[,SampleDetails_colnames],y=Bilan[,Bilan_colnames],by="SampleID",all=FALSE)
-            Dataset_data=merge(x=Dataset_data,y=Reflectance[,Reflectance_colnames],by="SampleID",all=FALSE)
-            Dataset_data=merge(x=Dataset_data,y=Site,by="Site_name")
-            Dataset_data=cbind.data.frame(Dataset_data,Description)},silent=TRUE)
+  if(is_Rdark_and_Aci){ ## case 1
+    test=try({
+      load(file = "Rdark_data.Rdata")
+      Bilan=merge(x=Bilan,y=Rdark,by="SampleID",all=TRUE)
+      Dataset_data=merge(x=SampleDetails[,SampleDetails_colnames],y=Bilan[,Bilan_colnames],by="SampleID",all=FALSE)
+      Dataset_data=merge(x=Dataset_data,y=Reflectance[,Reflectance_colnames],by="SampleID",all=FALSE)
+      Dataset_data=merge(x=Dataset_data,y=Site,by="Site_name")
+      Dataset_data=cbind.data.frame(Dataset_data,Description)},silent=TRUE)
+  }else if(is_Rdark){ ## case 2
+    test=try({
+      load(file = "Rdark_data.Rdata")
+      Bilan = data.frame(matrix(ncol = length(Bilan_colnames), nrow = 0))
+      colnames(Bilan)=Bilan_colnames
+      Bilan=merge(x=Bilan,y=Rdark,by="SampleID",all.y=TRUE)
+      Dataset_data=merge(x=SampleDetails[,SampleDetails_colnames],y=Bilan[,Bilan_colnames],by="SampleID",all=FALSE)
+      Dataset_data=merge(x=Dataset_data,y=Reflectance[,Reflectance_colnames],by="SampleID",all=FALSE)
+      Dataset_data=merge(x=Dataset_data,y=Site,by="Site_name")
+      Dataset_data=cbind.data.frame(Dataset_data,Description)},silent=TRUE)
+  } else { ## case 3
+    test=try({
+      Bilan$Rdark=NA
+      Bilan$Tleaf_Rdark=NA
+      Dataset_data=merge(x=SampleDetails[,SampleDetails_colnames],y=Bilan[,Bilan_colnames],by="SampleID",all=FALSE)
+      Dataset_data=merge(x=Dataset_data,y=Reflectance[,Reflectance_colnames],by="SampleID",all=FALSE)
+      Dataset_data=merge(x=Dataset_data,y=Site,by="Site_name")
+      Dataset_data=cbind.data.frame(Dataset_data,Description)},silent=TRUE)
+  }
 
   if(class(test)=="data.frame"){print("The data was successfully merged")}else({print("!!! The data could not be merged.")
                                                                                       stop()})
