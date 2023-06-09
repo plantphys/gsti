@@ -144,10 +144,10 @@ f.Check_data=function(folder_path=NA){
   if(any(!SampleDetails$Soil%in%c("Natural","Managed","Pot"))){print("Column Soil only accepts Natural, Managed and Pot values")
                                                           stop()}
   
-  ls_SampleID_not_in_SampleDetails=Bilan[!Bilan$SampleID%in%SampleDetails$SampleID,"SampleID"]
-  if(length(ls_SampleID_not_in_SampleDetails)>0){paste("Some leaves in 2_Fitted_ACi_data.Rdata file do not have an associated SampleDetails data, correct if necessary :",paste(ls_SampleID_not_in_SampleDetails,collapse=" "))}
-
+  
   if("2_Fitted_ACi_data.Rdata"%in%ls_files){
+    ls_SampleID_not_in_SampleDetails=Bilan[!Bilan$SampleID%in%SampleDetails$SampleID,"SampleID"]
+    if(length(ls_SampleID_not_in_SampleDetails)>0){paste("Some leaves in 2_Fitted_ACi_data.Rdata file do not have an associated SampleDetails data, correct if necessary :",paste(ls_SampleID_not_in_SampleDetails,collapse=" "))}
     ls_SampleID_not_in_Bilan=SampleDetails[!SampleDetails$SampleID%in%Bilan$SampleID,"SampleID"]
     if(length(ls_SampleID_not_in_Bilan)>0){paste("Some leaf in SampleDetails do not have an associated leaf fitted ACi data in 2_Fitted_ACi_data.Rdata, correct if necessary :",paste(ls_SampleID_not_in_Bilan,collapse=" "))}
   }
