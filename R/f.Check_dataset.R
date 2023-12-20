@@ -34,7 +34,7 @@ f.Check_data=function(folder_path=NA){
   
   ## Checking if the Rdark data is included
   if("Rdark_data.Rdata"%in%ls_files){print("Rdark data included")
-    is_Rdark=TRUE}else{print("Rdark data was included in the dataset")
+    is_Rdark=TRUE}else{print("Rdark data was not included in the dataset")
       is_Rdark=FALSE}
   
   is_Rdark_and_Aci=FALSE

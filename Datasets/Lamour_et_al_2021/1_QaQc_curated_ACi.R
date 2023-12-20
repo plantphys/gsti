@@ -33,8 +33,8 @@ curated_data[curated_data$Remove=='YES','QC']='bad'
 # This works well if there are few points to remove.
 # You can use another method if you need.
 
-QC_table=cbind.data.frame(SampleID_num=c(18,70,111),
-                          Record=c(14,20,20)) 
+QC_table=cbind.data.frame(SampleID_num=c(18,70,111,131),
+                          Record=c(14,20,20,13)) 
 # Here I flag the bad curves by writing down the SampleID_num of the bad curves.
 ls_bad_curve=c(11,52,77,127)
 

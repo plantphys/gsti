@@ -49,7 +49,7 @@ hist(Database$Vcmax25,breaks = 20,xlab=expression(italic(V)[cmax25]~mu*mol~m^-2~
 dev.off()
 
 ## Reflectance spectra of the combined dataset
-Reflectance=I(as.matrix(Database[,31:2181]))
+Reflectance=I(as.matrix(Database[,41:2191]))
 jpeg("Reflectance.jpeg", height=100, width=100,units = 'mm',res=300)
 f.plot.spec(Z = Reflectance,wv = 350:2500)
 dev.off()
