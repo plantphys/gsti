@@ -1,0 +1,22 @@
+Dear Josep,
+
+Please find attached the database with the processed reflectance data and gas exchange data from Verryckt_et_al_2022 using the GSTI pipeline.
+
+I have some questions regarding the data and information that I need to validate with you:
+
+What model of spectrometer and leaf clip were used for the reflectance measurement?
+
+I observed that the reflectance data were only recorded in 2015 but that there are additional gas exchange measurements in 2016, 2017, and 2019. Do you confirm that the reflectance measurement were only made in 2015?
+I processed the reflectance data to filter noise and interpolate the reflectane from 500 nm to 900 nm. I removed the data outside this range of wavelength that appeared more noisy.
+
+Are you ok with the dataset being called Verryckt_et_al_2022. Can you check the description file with the acknoledgments, article citations and authors?
+
+I had to make a choice to define shaded and sunlit leaves. I decided that leaves only the top leaves of trees with a crown illumination index above 3 (i.e 4 and 5) where sunlit.
+ 
+I have considered that all the leaves that were measured were mature, by default. Is this asusmption correct or have you also measured "old" or "young" immature leaves?
+
+The processed database is attached. You can find all the data in the folder .. if you want to look closer. Note that the final database in .. does not include yet your data. Ill update it when we publish the paper.
+
+Thank you!
+
+Julien
