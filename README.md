@@ -31,9 +31,9 @@ Farquhar, G.D., von Caemmerer, S. & Berry, J.A. A biochemical model of photosynt
 
 
 # Overview of the database
-<img src="https://github.com/TESTgroup-BNL/gsti/blob/main/Map_datasets.png" width="800">
+<img src="https://github.com/TESTgroup-BNL/gsti/blob/main/Outputs/Map_datasets.png" width="800">
 
-<img src="https://github.com/TESTgroup-BNL/gsti/blob/main/Hist_Vcmax25.jpeg" width="400"> 
+<img src="https://github.com/TESTgroup-BNL/gsti/blob/main/Outputs/Hist_Vcmax25.jpeg" width="400"> 
 
 <br>
-<img src="https://github.com/TESTgroup-BNL/gsti/blob/main/Leaf_per_species.jpeg" width="400"> 
+<img src="https://github.com/TESTgroup-BNL/gsti/blob/main/Outputs/Leaf_per_species.jpeg" width="400"> 
