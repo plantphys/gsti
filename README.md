@@ -10,7 +10,7 @@ More details on the processing chain to import, homogenise and produce a standar
 
 The project utilizes the data and metadata formatting recommendations presented in the [Leaf-level gas exchange data and metadata reporting format](https://github.com/ess-dive-community/essdive-leaf-gas-exchange) (Ely et al, 2021). Data contributors are welcome to submit metadata that describes data collection protocols using the [methods metadata template](https://github.com/ess-dive-community/essdive-leaf-gas-exchange/blob/master/templates/methodsMetadataTemplate.xlsx).
 
-The A-Ci fitting is based on the FvCB model of photosynthesis (Farquhar et al. 1980), as implemented and parametrized in CLM4.5, and detailed here: [FvCB equations and parametrization](https://github.com/TESTgroup-BNL/gsti/blob/main/Documentation/FvCB%20equations%20parameters%20and%20fitting%20procedures.docx).
+The A-Ci fitting is based on the FvCB model of photosynthesis (Farquhar et al. 1980), as implemented and parametrized in CLM4.5, and detailed here: [FvCB equations and parametrization](https://github.com/TESTgroup-BNL/gsti/blob/main/Documentation/FvCB_equations_parameters_and_fitting_procedures.pdf).
 
 The PLSR modeling approach is based on the best-practice guide by Burnett et al. (2021). An example of fitting is given here: [PLSR](https://github.com/TESTgroup-BNL/gsti/blob/main/PLSR/Validation_Alldatasets_2022-09-19.pdf)
 
