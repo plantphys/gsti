@@ -26,11 +26,11 @@ world <- ne_countries(scale = "medium", returnclass = "sf")
 Map_datasets <- ggplot(data = world) + geom_sf() + xlab("Longitude") + 
   ylab("Latitude") + geom_point(data= All_sites, aes(x=Longitude, 
                                                      y=Latitude), 
-                                color = "red", size = 4)
+                                color = "red", size = 4)+theme(panel.border = element_rect(linewidth = 1.3,colour = "black"))
 #jpeg(filename = 'Map_datasets.jpeg',width = 170,height = 170,units = 'mm',res=150)
 
 ## !! TO DO - Update this to add X/Y labels etc, make prettier
-png(filename = file.path(out_path,'Map_datasets.png'),width = 250,height = 150,units = 'mm',res=150)
+png(filename = file.path(out_path,'Map_datasets.png'),width = 240,height = 120,units = 'mm',res=300)
 print(Map_datasets)
 dev.off()
 
@@ -49,11 +49,12 @@ grid.arrange(p)
 dev.off()
 
 ## Histogram of Vcmax25 in the combined dataset
-jpeg(file.path(out_path,"Hist_Vcmax25.jpeg"), height=100, 
+jpeg(file.path(out_path,"Hist_Vcmax25.jpeg"), height=120, 
      width=100,units = 'mm',res=300)
 hist(Database$Vcmax25,breaks = 20, 
      xlab=expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1), 
      ylab='Number of leaves',main='')
+box(lwd=2.2)
 dev.off()
 
 ## Reflectance spectra of the combined dataset (Full range spectra only)
@@ -62,7 +63,7 @@ Reflectance=I(as.matrix(Database[,41:2191]))
 ls_not_full=which(is.na(Reflectance),arr.ind = TRUE)[,1]
 ls_not_full=ls_not_full[-which(duplicated(ls_not_full))]
 Reflectance_full=Reflectance[-ls_not_full,]
-jpeg(file.path(out_path,"Reflectance.jpeg"), height=120, width=150, 
+jpeg(file.path(out_path,"Reflectance.jpeg"), height=120, width=130, 
      units = 'mm',res=300)
 f.plot.spec(Z = Reflectance_full,wv = 350:2500,)
 dev.off()
