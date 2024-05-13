@@ -9,7 +9,7 @@ library(sf)
 library(rnaturalearth)
 library(rnaturalearthdata)
 #library(rgeos)
-library(spectratrait)
+library(spectratrait) ## Package available on github: devtools::install_github(repo = "TESTgroup-BNL/spectratrait", dependencies=TRUE)
 path <- here()
 out_path <- file.path(path,"Outputs")
 setwd(path)
@@ -56,10 +56,14 @@ hist(Database$Vcmax25,breaks = 20,
      ylab='Number of leaves',main='')
 dev.off()
 
-## Reflectance spectra of the combined dataset
+## Reflectance spectra of the combined dataset (Full range spectra only)
 Reflectance=I(as.matrix(Database[,41:2191]))
+# list of spectra that are not in the full range
+ls_not_full=which(is.na(Reflectance),arr.ind = TRUE)[,1]
+ls_not_full=ls_not_full[-which(duplicated(ls_not_full))]
+Reflectance_full=Reflectance[-ls_not_full,]
 jpeg(file.path(out_path,"Reflectance.jpeg"), height=120, width=150, 
      units = 'mm',res=300)
-f.plot.spec(Z = Reflectance,wv = 350:2500)
+f.plot.spec(Z = Reflectance_full,wv = 350:2500,)
 dev.off()
 
