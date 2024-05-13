@@ -16,12 +16,16 @@ SampleDetails[SampleDetails$`Leaf age (Y-young; M-mature; O-old)`=="M","Phenolog
 SampleDetails[SampleDetails$`Leaf age (Y-young; M-mature; O-old)`=="O","Phenological_stage"]="Old"
 SampleDetails$Plant_type="Wild"
 SampleDetails$Soil="Natural"
-SampleDetails$LMA=NA
-SampleDetails$Narea=NA
-SampleDetails$Nmass=NA
+
+Leaf_traits=read_xlsx(path = 'Yan et al., 2021. NPH. Leaf traits data.xlsx',sheet=2)
+any(duplicated(Leaf_traits$`Vcmax25 (umol m-2 s-1)`))## We can use the Vcmax25 column to merge the info between SampleDetails ad Leaf_traits
+SampleDetails=merge(x=SampleDetails,y=Leaf_traits[,c("Tree ID","Leaf ID","Vcmax25 (umol m-2 s-1)","LMA (g/m2)", "LWC (%)","Leaf N (g/m2)")],by="Vcmax25 (umol m-2 s-1)")
+SampleDetails$LMA=SampleDetails$`LMA (g/m2)`
+SampleDetails$Narea=SampleDetails$`Leaf N (g/m2)`
+SampleDetails$Nmass=SampleDetails$`Leaf N (g/m2)`*1000/SampleDetails$`LMA (g/m2)`
 SampleDetails$Parea=NA
 SampleDetails$Pmass=NA
-SampleDetails$LWC=NA
+SampleDetails$LWC=SampleDetails$`LWC (%)`*100
 
 
 SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Leaf_match","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
