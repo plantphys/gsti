@@ -58,7 +58,7 @@ box(lwd=2.2)
 dev.off()
 
 ## Reflectance spectra of the combined dataset (Full range spectra only)
-Reflectance=I(as.matrix(Database[,41:2191]))
+Reflectance=I(as.matrix(Database[,42:2192]))
 # list of spectra that are not in the full range
 ls_not_full=which(is.na(Reflectance),arr.ind = TRUE)[,1]
 ls_not_full=ls_not_full[-which(duplicated(ls_not_full))]
