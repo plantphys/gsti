@@ -36,6 +36,7 @@ SampleDetails$SampleID=SampleDetails$BNL_UID
 SampleDetails$Site_name=substr(SampleDetails$Site,4,6)
 SampleDetails$Dataset_name="Wu_et_al_2019"
 SampleDetails$Species=SampleDetails$Species.1
+SampleDetails$Leaf_match="Same"
 SampleDetails$Sun_Shade="Sun"
 SampleDetails[SampleDetails$Age_adj_final%in%c("Y","YM"),"Phenological_stage"]="Young"
 SampleDetails[SampleDetails$Age_adj_final%in%c("M","MO"),"Phenological_stage"]="Mature"
@@ -50,7 +51,7 @@ SampleDetails$Pmass=NA
 SampleDetails$LWC
 
 SampleDetails=SampleDetails[SampleDetails$SampleID%in%Bilan$SampleID,]
-SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
+SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Leaf_match","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
 
 save(SampleDetails,file="4_SampleDetails.Rdata")
 

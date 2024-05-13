@@ -23,6 +23,7 @@ SampleDetails=merge(x=SampleDetails,y=Chem_data,by.x="SampleID",by.y="SampleID")
 SampleDetails$Site_name="SLZ" # Note that the site_name should be present in your Site.csv file
 SampleDetails$Dataset_name="Lamour_et_al_2021"
 SampleDetails$Species=SampleDetails$Species_Name # Genus species
+SampleDetails$Leaf_match="Same"
 SampleDetails$Sun_Shade="Shade"
 SampleDetails[SampleDetails$Vertical_Elevation%in%c(0,1),"Sun_Shade"]="Sun" # Sun, Shade or NA
 SampleDetails$Phenological_stage=SampleDetails$Phenological_Stage
@@ -36,7 +37,7 @@ SampleDetails$Pmass=NA # Phosphorus content on a leaf dry weight basis
 SampleDetails$LWC # Leaf water content (Fresh_weight - dry weight)/Fresh weight
 
 # Keeping only the columns of the standard:
-SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
+SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Leaf_match","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
 
 # Saving the SampleDetails data
 save(SampleDetails,file="4_SampleDetails.Rdata")

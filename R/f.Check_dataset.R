@@ -15,7 +15,7 @@ f.Check_data=function(folder_path=NA){
   Site_colnames=c("Site_name","Longitude","Latitude","Elevation","Biome_number")
   Bilan_colnames=c("SampleID_num","Vcmax25","Jmax25","TPU25","Rday25","StdError_Vcmax25","StdError_Jmax25","StdError_TPU25","StdError_Rday25","Tleaf","sigma","AIC","Model","Fitting_method","SampleID")
   Reflectance_colnames=c("SampleID","Spectrometer","Leaf_clip","Reflectance")
-  SampleDetails_colnames=c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")
+  SampleDetails_colnames=c("SampleID","Site_name","Dataset_name","Species","Leaf_match","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")
   Rdark_colnames=c("SampleID","Rdark","Tleaf_Rdark")
   
   # List of files included in the dataset folder
@@ -134,7 +134,8 @@ f.Check_data=function(folder_path=NA){
     print(paste("Site_name in SampleDetails:",paste(unique(SampleDetails$Site_name),collapse = " ")))
     print(paste("Site_name in Site.csv:",paste(unique(Site$Site_name),collapse = " ")))
     stop()}
-  
+  if(any(!SampleDetails$Leaf_match%in%c("Same","Similar"))){print("Column Leaf_match only accepts the values Same and Similar. Same means that the gas exchange and spectra measurements were performed on the exact same leaf while Similar means that the measurements were made on distinct but similar leaves.")
+    stop()}
   if(any(!SampleDetails$Sun_Shade%in%c("Sun","Shade",NA))){print("Column Sun_Shade only accepts Sun Shade or NA values")
                                                           stop()}
   if(any(!SampleDetails$Phenological_stage%in%c("Young","Mature","Old"))){print("Column Phenological_stage only accepts Young, Mature or Old values")
@@ -179,7 +180,7 @@ f.Check_data=function(folder_path=NA){
                                                                                         stop()}}else(print("Optional Rdark data not included in the dataset"))
   
   ############################################################
-  ## Checking if all the data files can be merged togather  ##
+  ## Checking if all the data files can be merged together  ##
   ############################################################
   ## There are three cases: 1) ACi and Rdark data are included, 2)  Rdark data only are included, 3) ACi only are included
   

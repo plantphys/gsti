@@ -8,6 +8,7 @@ SampleDetails$SampleID=SampleDetails$ID
 SampleDetails$Site_name="Urbana"
 SampleDetails$Dataset_name="Kumagai_et_al_2022"
 SampleDetails$Species="Glycine max"
+SampleDetails$Leaf_match="Same"
 SampleDetails$Sun_Shade="Sun"
 SampleDetails$Phenological_stage="Mature"
 SampleDetails$Plant_type="Agricultural"
@@ -20,7 +21,7 @@ SampleDetails$Pmass=NA
 SampleDetails$LWC=NA
 
 SampleDetails=SampleDetails[SampleDetails$SampleID%in%Bilan$SampleID,]
-SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
+SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Leaf_match","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
 
 save(SampleDetails,file="4_SampleDetails.Rdata")
 source(file.path(path,'/R/f.CHeck_dataset.R'))

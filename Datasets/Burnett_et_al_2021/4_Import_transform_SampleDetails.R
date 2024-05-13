@@ -10,6 +10,7 @@ SampleDetails$SampleID=SampleDetails$Sample_ID
 SampleDetails$Site_name="BNL"
 SampleDetails$Dataset_name="Burnett_et_al_2021"
 SampleDetails$Species="Quercus coccinea"
+SampleDetails$Leaf_match="Same"
 SampleDetails$Sun_Shade="Sun"
 SampleDetails[SampleDetails$Measurement.Date=="20190529","Phenological_stage"]="Young"
 SampleDetails[SampleDetails$Measurement.Date%in%c("20190614","20190626","20190725","20190821","20190911","20190925"),"Phenological_stage"]="Mature"
@@ -24,9 +25,9 @@ SampleDetails$Pmass=NA
 SampleDetails$LWC=SampleDetails$RWC
 
 
-SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
+SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Leaf_match","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
 
 save(SampleDetails,file="4_SampleDetails.Rdata")
 
-source(file.path(path,'/R/f.CHeck_dataset.R'))
+source(file.path(path,'/R/f.Check_dataset.R'))
 f.Check_data(folder_path = getwd())

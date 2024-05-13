@@ -1,6 +1,6 @@
 library(spectratrait)
 library(here)
-path <- "~/Google Drive/BNL/TEST_Group_Papers/gsti/gsti"
+path <- here()
 
 setwd(file.path(path,'/Datasets/Davidson_et_al_2023'))
 
@@ -11,6 +11,7 @@ levels(SampleDetails$USDA_Code) <- c("Acer rubrum","Acer saccharum","Betula alle
 SampleDetails$Site_name="BRF"
 SampleDetails$Dataset_name="Davidson_et_al_2023"
 SampleDetails$Species=SampleDetails$USDA_Code
+SampleDetails$Leaf_match="Same"
 SampleDetails$Sun_Shade="Sun"
 SampleDetails$Phenological_stage="Mature"
 SampleDetails[substr(SampleDetails$date,5,6)=="05","Phenological_stage"]="Young"
@@ -25,7 +26,7 @@ SampleDetails$Pmass=NA
 SampleDetails$LWC=1-SampleDetails$LDMC
 
 
-SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
+SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Leaf_match","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
 
 save(SampleDetails,file="4_SampleDetails.Rdata")
 
