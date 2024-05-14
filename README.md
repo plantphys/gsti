@@ -12,7 +12,7 @@ The project utilizes the data and metadata formatting recommendations presented 
 
 The A-Ci fitting is based on the FvCB model of photosynthesis (Farquhar et al. 1980), as implemented and parametrized in CLM4.5, and detailed here: [FvCB equations and parametrization](https://github.com/TESTgroup-BNL/gsti/blob/main/Documentation/FvCB_equations_parameters_and_fitting_procedures.pdf).
 
-The PLSR modeling approach is based on the best-practice guide by Burnett et al. (2021). An example of fitting is given here: [PLSR](https://github.com/TESTgroup-BNL/gsti/blob/main/PLSR/Validation_Alldatasets_2022-09-19.pdf)
+The PLSR modeling approach is based on the best-practice guide by Burnett et al. (2021). An example of fitting is given here: [PLSR](https://github.com/TESTgroup-BNL/gsti/blob/main/PLSR/Validation_Alldatasets_2024-05-14.pdf)
 
 ## Principles and general information
 Only free use data ([CC BY 4](https://creativecommons.org/licenses/by/4.0/)) accepted. We request that users cite the Zenodo DOI for this repository, and strongly encourage them to (i) cite all dataset primary publications, and (ii) involve data contributors as co-authors when possible.
