@@ -31,10 +31,10 @@ SampleDetails[SampleDetails$Branch=="T"&SampleDetails$CII%in%c("4","5"),"Sun_Sha
 SampleDetails$Phenological_stage="Mature"
 SampleDetails$Plant_type="Wild" # Wild or Agricultural
 SampleDetails$Soil="Natural" # Natural, Managed or Pot
-SampleDetails$LMA=1/as.numeric(SampleDetails$SLA)*10000 # Leaf mass area in g m-2. Here, LMA is already informed so I just print it 
-SampleDetails$Narea=SampleDetails$LMA*as.numeric(SampleDetails$N) # Nitrogen content per surface area in g m-2
+SampleDetails$LMA=1/as.numeric(SampleDetails$SLA)*10000 # Leaf mass area in g m-2. 
+SampleDetails$Narea=SampleDetails$LMA*as.numeric(SampleDetails$N)/100 # Nitrogen content per surface area in g m-2
 SampleDetails$Nmass=as.numeric(SampleDetails$N)*10 # Nitrogen content on a leaf dry weight basis. In mg . g  (i.e per thousand)
-SampleDetails$Parea=SampleDetails$LMA*as.numeric(SampleDetails$P) # Phosphorus content per surface area in g m-2
+SampleDetails$Parea=SampleDetails$LMA*as.numeric(SampleDetails$P)/100 # Phosphorus content per surface area in g m-2
 SampleDetails$Pmass=SampleDetails$LMA*as.numeric(SampleDetails$P)*10 # Phosphorus content on a leaf dry weight basis
 SampleDetails$LWC=NA # Leaf water content (Fresh_weight - dry weight)/Fresh weight
 

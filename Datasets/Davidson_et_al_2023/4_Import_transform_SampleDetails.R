@@ -19,11 +19,11 @@ SampleDetails[substr(SampleDetails$date,5,6)=="10","Phenological_stage"]="Old"
 SampleDetails$Plant_type="Wild"
 SampleDetails$Soil="Natural"
 SampleDetails$LMA
-SampleDetails$Narea=SampleDetails$Na
-SampleDetails$Nmass=SampleDetails$Narea/SampleDetails$LMA
+SampleDetails$Narea=SampleDetails$Na/1000
+SampleDetails$Nmass=SampleDetails$Narea/SampleDetails$LMA*1000
 SampleDetails$Parea=NA
 SampleDetails$Pmass=NA
-SampleDetails$LWC=1-SampleDetails$LDMC
+SampleDetails$LWC=(1-SampleDetails$LDMC)*100
 
 
 SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Leaf_match","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
