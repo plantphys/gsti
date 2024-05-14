@@ -159,10 +159,18 @@ f.Check_data=function(folder_path=NA){
   mean_Nmass=mean(SampleDetails$Nmass,na.rm=TRUE)
   mean_LWC=mean(SampleDetails$LWC,na.rm=TRUE)
   
-  if(is.nan(mean_LMA)){print("No LMA data included. Consider adding LMA values if you have them")} else if(mean_LMA<20|mean_LMA>200){paste("Your average LMA looks low or high:",mean_LMA,"can you check if LMA is expressed in g. m-2?")}
-  if(is.nan(mean_Narea)){print("No Narea data included. Consider adding Narea values if you have them")} else if(mean_Narea<1|mean_Narea>10){paste("Your average Narea looks low or high:",mean_Narea,"can you check if Narea is expressed in g. m-2?")}
-  if(is.nan(mean_Nmass)){print("No Nmass data included. Consider adding Nmass values if you have them")} else if(mean_Nmass<10|mean_Nmass>100){paste("Your average Nmass looks low or high:",mean_Nmass,"can you check if Nmass is expressed in mg.g-1?")}
-  if(is.nan(mean_LWC)){print("No LWC data included. Consider adding LWC values if you have them")} else if(mean_LWC<20|mean_LWC>95){paste("Your average LWC looks low or high:",mean_LWC,"can you check if LWC is expressed in %?")}
+  if(is.nan(mean_LMA)){print("No LMA data included. Consider adding LMA values if you have them")} else if(mean_LMA<20|mean_LMA>200){
+    print(paste("Your average LMA looks low or high:",mean_LMA,"can you check if LMA is expressed in g. m-2?"))
+    invisible(readline(prompt="Press [enter] to continue"))}
+  if(is.nan(mean_Narea)){print("No Narea data included. Consider adding Narea values if you have them")} else if(mean_Narea<1|mean_Narea>10){
+    print(paste("Your average Narea looks low or high:",mean_Narea,"can you check if Narea is expressed in g. m-2?"))
+    invisible(readline(prompt="Press [enter] to continue"))}
+  if(is.nan(mean_Nmass)){print("No Nmass data included. Consider adding Nmass values if you have them")} else if(mean_Nmass<10|mean_Nmass>100){
+    print(paste("Your average Nmass looks low or high:",mean_Nmass,"can you check if Nmass is expressed in mg.g-1?"))
+    invisible(readline(prompt="Press [enter] to continue"))}
+  if(is.nan(mean_LWC)){print("No LWC data included. Consider adding LWC values if you have them")} else if(mean_LWC<20|mean_LWC>95){
+    print(paste("Your average LWC looks low or high:",mean_LWC,"can you check if LWC is expressed in %?"))
+    invisible(readline(prompt="Press [enter] to continue"))}
 
   
   #####################################
