@@ -101,9 +101,11 @@ f.Check_data=function(folder_path=NA){
     stop()}
   
   print("Does the reflectance look ok? If not revise step 3")
-  f.plot.spec(Z = Reflectance$Reflectance,wv = 350:2500)
+ 
+  if(any(!is.na(Reflectance$Reflectance)&Reflectance$Reflectance>70)){print("Some of your spectra have high reflectance values above 70%. Please check if this is expected")}
+   f.plot.spec(Z = Reflectance$Reflectance,wv = 350:2500)
   
-  
+  invisible(readline(prompt="Press [enter] to continue"))
   if(any(duplicated(Reflectance$SampleID))){print("!!! You have duplicated SampleID names in your Reflectance dataframe")
                                             stop()}
   
@@ -116,6 +118,7 @@ f.Check_data=function(folder_path=NA){
   if(mean(Reflectance$Reflectance,na.rm=TRUE)<1){print("Your reflectance data are expressed in 0-1. They should be expressed in percent from 0 to 100, please correct")
                                                   stop()}
   
+
   invisible(readline(prompt="Press [enter] to continue"))
   
   ####################################

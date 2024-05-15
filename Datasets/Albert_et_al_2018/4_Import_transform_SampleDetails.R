@@ -1,4 +1,5 @@
 library(here)
+path = here()
 setwd(file.path(here(),'Datasets/Albert_et_al_2018'))
 load(file='2_Fitted_ACi_data.Rdata')
 SampleDetails <- read.csv('Wu_etal_2019_spectra_brazil.csv')
