@@ -4,7 +4,11 @@
 ###   of the number of leaves, species, and biomes                    ###
 #########################################################################
 
+<<<<<<< HEAD
 ## Import libraries
+=======
+
+>>>>>>> 6e23b9f9539e7a65fa866f156508cad8ca2757f9
 
 #install.packages(c("cowplot", "googleway", "ggplot2", "ggrepel", 
 #                   "ggspatial", "libwgeom", "sf", "rnaturalearth", "rnaturalearthdata","rgeos"))
