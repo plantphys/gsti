@@ -1,3 +1,11 @@
+#########################################################################
+###   This code is used to do a summary of the database, including    ###
+###   a map of the sites included, and basic description statistics   ###
+###   of the number of leaves, species, and biomes                    ###
+#########################################################################
+
+
+
 #install.packages(c("cowplot", "googleway", "ggplot2", "ggrepel", 
 #                   "ggspatial", "libwgeom", "sf", "rnaturalearth", "rnaturalearthdata","rgeos"))
 
