@@ -6,39 +6,6 @@ corresponds to each step outlined in this guide.
 An overview of the process and database organisation is presented
 [here](https://github.com/TESTgroup-BNL/gsti/blob/main/Overal_data_curation.pdf).
 
-## Recommended github steps prior to the inclusion of a new dataset
-1) Fork this github repo into your own github space
-
-2) Clone the forked repo onto your local machine <br>
-    e.g. git clone git@github.com:TESTgroup-BNL/gsti.git
-    
-    OR
-    
-    e.g. gh repo clone TESTgroup-BNL/gsti
-
-3) Define the upstream repository <br>
-    e.g. git remote add upstream git@github.com:TESTgroup-BNL/gsti.git
-
-4) Ensure you are starting with the "main" branch in your cloned repo and make sure its up to date <br>
-    e.g. git checkout main && git pull upstream main
- 
-6) Create a new branch and give it a descriptive branch name <br>
-    e.g. git checkout -b branchname
-    
-7) Work on your branch, commit changes, keep a changelog 
-
-8) Push this branch to your github space <br>
-    e.g. git push origin branchname
-    
-9) Submit a pull request
-
-10) After the PR is merged, delete the branch on github and locally <br>
-    e.g. git push origin --delete branchname <br>
-    
-    and then to delete local branch <br>
-    
-    e.g. git branch -D branchname
-
 ## Creation of a Dataset folder
 
 Each dataset should be put into a folder named “Names\_Year” for example
@@ -581,20 +548,21 @@ to create a **‘SampleDetails’** dataframe with the folowing columns:
 
 <table style="width:100%;">
 <colgroup>
-<col style="width: 4%" />
+<col style="width: 3%" />
 <col style="width: 2%" />
 <col style="width: 1%" />
-<col style="width: 6%" />
-<col style="width: 17%" />
-<col style="width: 6%" />
-<col style="width: 4%" />
-<col style="width: 11%" />
 <col style="width: 5%" />
-<col style="width: 7%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 5%" />
+<col style="width: 4%" />
+<col style="width: 9%" />
+<col style="width: 4%" />
 <col style="width: 6%" />
-<col style="width: 7%" />
+<col style="width: 5%" />
 <col style="width: 6%" />
-<col style="width: 10%" />
+<col style="width: 5%" />
+<col style="width: 8%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -602,6 +570,7 @@ to create a **‘SampleDetails’** dataframe with the folowing columns:
 <th style="text-align: left;">Dataset_name</th>
 <th style="text-align: left;">Site_name</th>
 <th style="text-align: left;">Species</th>
+<th style="text-align: left;">Leaf_match</th>
 <th style="text-align: left;">Sun_Shade</th>
 <th style="text-align: left;">Phenological_stage</th>
 <th style="text-align: left;">Plant_type</th>
@@ -618,16 +587,19 @@ to create a **‘SampleDetails’** dataframe with the folowing columns:
 <tr class="odd">
 <td style="text-align: left;">Identifier of the measured leaf</td>
 <td style="text-align: left;">Name of the dataset</td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;">Name of the site</td>
 <td style="text-align: left;">Full species name, for example Cecropia
 insignis</td>
+<td style="text-align: left;">Were the gas exchange and spectra measured
+in the exact same leaf or distinct, similar leaves? Choose between
+“Same” and “Similar”.</td>
 <td style="text-align: left;">Was the leaf at the top of the canopy and
-usually receiving light (sun) or a shaded leaf? Chose between Sun, Shade
-or leave empty</td>
+usually receiving light (sun) or a shaded leaf? Choose between Sun,
+Shade or leave empty</td>
 <td style="text-align: left;">Leaf phenological stage (Young, Mature,
 Old)</td>
-<td style="text-align: left;">Chose between Wild or Agricultural</td>
-<td style="text-align: left;">Please chose between natural ground, pot,
+<td style="text-align: left;">Choose between Wild or Agricultural</td>
+<td style="text-align: left;">Please choose between natural ground, pot,
 or managed ground (Natural, Pot, Managed)</td>
 <td style="text-align: left;">Leaf dry mass per unit area in g m-2</td>
 <td style="text-align: left;">Nitrogen content of leaf per unit leaf
@@ -646,6 +618,7 @@ of fresh leaf by mass in % (0-100)</td>
 <td style="text-align: left;">Davidson_et_al_2020</td>
 <td style="text-align: left;">SLZ</td>
 <td style="text-align: left;">Cecropia insignis</td>
+<td style="text-align: left;">Same</td>
 <td style="text-align: left;">Sun</td>
 <td style="text-align: left;">Mature</td>
 <td style="text-align: left;">Wild</td>
@@ -662,13 +635,14 @@ of fresh leaf by mass in % (0-100)</td>
 <td style="text-align: left;">Burnett_et_al_2018</td>
 <td style="text-align: left;">BNL</td>
 <td style="text-align: left;">Cucurbit pepo</td>
+<td style="text-align: left;">Similar</td>
 <td style="text-align: left;">Sun</td>
 <td style="text-align: left;">Old</td>
 <td style="text-align: left;">Agricultural</td>
 <td style="text-align: left;">Pot</td>
 <td style="text-align: left;">118.65</td>
 <td style="text-align: left;">2.59</td>
-<td style="text-align: left;">2.18</td>
+<td style="text-align: left;">21.8</td>
 <td style="text-align: left;">0.42</td>
 <td style="text-align: left;">3.5</td>
 <td style="text-align: left;">70</td>
@@ -682,11 +656,11 @@ with the identifier used for the gas exchange and for the spectra as the
 SampleID will be used to merge all the different data.
 
 The first columns have to be filled (SampleID, Dataset\_name,
-Site\_name, Species, Sun\_Shade, Phenological\_stage, Plant\_type,
-Soil), the columns related to the leaf traits can be left empty if you
-don’t have the data (LMA, Narea, Nmass, Parea, Pmass, LWC). Note that
-the leaf water content, LWC, corresponds to (fresh weight - dry weight)
-/ fresh weight.
+Site\_name, Species, Leaf\_match, Sun\_Shade, Phenological\_stage,
+Plant\_type, Soil), the columns related to the leaf traits can be left
+empty if you don’t have the data (LMA, Narea, Nmass, Parea, Pmass, LWC).
+Note that the leaf water content, LWC, corresponds to (fresh weight -
+dry weight) / fresh weight.
 
 For the species name, please write “Genus species”, for exemple
 Cercropia insignis. If you know the genus but not the species, write for

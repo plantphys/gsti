@@ -68,3 +68,9 @@ jpeg(file.path(out_path,"Reflectance.jpeg"), height=120, width=130,
 f.plot.spec(Z = Reflectance_full,wv = 350:2500,)
 dev.off()
 
+
+table(Database$Fitting_method)/sum(table(Database$Fitting_method))
+Biomes=read.csv(file='Vignettes/Biomes.csv')
+Database=merge(Database,Biomes)
+prop_Biome=table(Database$Biome)/sum(table(Database$Biome))
+pie(prop_Biome)
