@@ -91,6 +91,7 @@ a=ggplot(data.frame(value=n_Leaf_Biome,Biome=names(n_Leaf_Biome)), aes(x = "", y
   geom_text(aes(x=1.25,label = value),
             position = position_stack(vjust = 0.5)) +
   coord_polar(theta = "y")  + theme_void() + theme(plot.title = element_text(hjust = 0.5))
+print(a)
 
 n_Species_Biome=tapply(X=Database$Species,INDEX = Database$Biome,FUN = function(x){length(unique(x))})
 
@@ -99,6 +100,7 @@ b=ggplot(data.frame(value=n_Species_Biome,Biome=names(n_Species_Biome)), aes(x =
   geom_text(aes(x=1.25,label = value),
             position = position_stack(vjust = 0.5)) +
   coord_polar(theta = "y")  + theme_void()+ theme(plot.title = element_text(hjust = 0.5))
+print(b)
 
 jpeg(file.path(out_path,"Number_observations.jpeg"), height=130, width=160, 
      units = 'mm',res=300)
