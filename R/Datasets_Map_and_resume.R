@@ -4,17 +4,13 @@
 ###   of the number of leaves, species, and biomes                    ###
 #########################################################################
 
-<<<<<<< HEAD
-## Import libraries
-=======
 
->>>>>>> 6e23b9f9539e7a65fa866f156508cad8ca2757f9
+## Import libraries
 
 #install.packages(c("cowplot", "googleway", "ggplot2", "ggrepel", 
 #                   "ggspatial", "libwgeom", "sf", "rnaturalearth", "rnaturalearthdata","rgeos"))
 
 library(ggplot2)
-library(cowplot)
 library(gridExtra)
 library(here)
 library(sf)
@@ -22,7 +18,7 @@ library(rnaturalearth)
 library(rnaturalearthdata)
 #library(rgeos)
 library(spectratrait) ## Package available on github: devtools::install_github(repo = "TESTgroup-BNL/spectratrait", dependencies=TRUE)
-
+library(cowplot)
 ## Define the working directory
 path <- here()
 out_path <- file.path(path,"Outputs")
@@ -40,7 +36,7 @@ world <- ne_countries(scale = "medium", returnclass = "sf")
 Map_datasets <- ggplot(data = world) + geom_sf() + xlab("Longitude") + 
   ylab("Latitude") + geom_point(data= All_sites, aes(x=Longitude, 
                                                      y=Latitude), 
-                                color = "red", size = 4)+theme(panel.border = element_rect(linewidth = 1.3,colour = "black"))
+                                color = "red", size = 4)+theme_bw()+theme(panel.border = element_rect(linewidth = 1.3,colour = "black"))
 
 png(filename = file.path(out_path,'Map_datasets.png'),width = 240,height = 120,units = 'mm',res=300)
 print(Map_datasets)
@@ -98,7 +94,7 @@ a=ggplot(data.frame(value=n_Leaf_Biome,Biome=names(n_Leaf_Biome)), aes(x = "", y
 
 n_Species_Biome=tapply(X=Database$Species,INDEX = Database$Biome,FUN = function(x){length(unique(x))})
 
-b=ggplot(data.frame(value=n_Species_Biome,Biome=names(prop_Species_Biome)), aes(x = "", y = value, fill =Biome)) +
+b=ggplot(data.frame(value=n_Species_Biome,Biome=names(n_Species_Biome)), aes(x = "", y = value, fill =Biome)) +
   geom_col(color="white",size=1.5,alpha=0.8) + labs(title="N species per Biome") +
   geom_text(aes(x=1.25,label = value),
             position = position_stack(vjust = 0.5)) +
