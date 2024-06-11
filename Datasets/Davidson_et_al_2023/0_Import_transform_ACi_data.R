@@ -1,5 +1,5 @@
 
-## Dataset accessible at XXXXX (will update when I have a DOI)
+## Dataset accessible at  https://doi.org/10.1111/nph.19137
 
 library(here)
 path <- here()

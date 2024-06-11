@@ -25,7 +25,6 @@ SampleDetails$Site_name="Paracou" # Note that the site_name should be present in
 SampleDetails[SampleDetails$Site=="NOU","Site_name"]="Nouragues" # Note that the site_name should be present in your Site.csv file
 SampleDetails$Dataset_name="Ogaya_et_al_2022"
 SampleDetails$Species=paste(SampleDetails$Genus,SampleDetails$Species) # Genus species
-SampleDetails$Leaf_match="Similar"
 SampleDetails$Sun_Shade="Shade" ## I considered that all the trees with CII less than 4 are shaded (JL 20231220)
 SampleDetails[SampleDetails$Branch=="T"&SampleDetails$CII%in%c("4","5"),"Sun_Shade"]="Sun"
 SampleDetails$Phenological_stage="Mature"
@@ -39,7 +38,7 @@ SampleDetails$Pmass=SampleDetails$LMA*as.numeric(SampleDetails$P)*10 # Phosphoru
 SampleDetails$LWC=NA # Leaf water content (Fresh_weight - dry weight)/Fresh weight
 
 # Keeping only the columns of the standard:
-SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Leaf_match","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
+SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
 
 # Saving the SampleDetails data
 save(SampleDetails,file="4_SampleDetails.Rdata")

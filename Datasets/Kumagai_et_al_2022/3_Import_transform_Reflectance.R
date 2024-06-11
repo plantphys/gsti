@@ -23,7 +23,9 @@ for (filename in datafiles){
 Reflectance <- merge(x = Reflectance, y = Bilan, by.x = 'ID', by.y='SampleID')
 Reflectance$SampleID=Reflectance$ID
 Reflectance$Spectrometer="ASD FieldSpec 4 Hi-Res"
-Reflectance$Leaf_clip="ASD Leaf Clip"
+Reflectance$Probe_type="Leaf clip"
+Reflectance$Probe_model="ASD Leaf Clip"
+Reflectance$Spectra_trait_pairing="Same"
 Reflectance$Reflectance=I(as.matrix(Reflectance[,3:2153] * 100))
 f.plot.spec(Z = Reflectance$Reflectance, wv = 350:2500)
 save(Reflectance,file = '3_QC_Reflectance_data.Rdata')

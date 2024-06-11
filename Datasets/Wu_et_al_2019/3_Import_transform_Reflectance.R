@@ -6,7 +6,9 @@ Reflectance=read.csv('Wu et al. 2019 spectra panama.csv')
 
 Reflectance$SampleID=Reflectance$BNL_UID
 Reflectance$Spectrometer="SVC HR-1024i"
-Reflectance$Leaf_clip="SVC LC-RP Pro"
+Reflectance$Probe_type="Leaf clip"
+Reflectance$Probe_model="SVC LC-RP Pro"
+Reflectance$Spectra_trait_pairing="Same"
 Reflectance$Reflectance=I(as.matrix(Reflectance[,11:2161]*100))
 f.plot.spec(Z = Reflectance$Reflectance,wv = 350:2500)
 

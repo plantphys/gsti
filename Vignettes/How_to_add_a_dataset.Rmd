@@ -1,7 +1,7 @@
 ---
 title: "How to add your dataset?"
 output: md_document
-date: "2022-09-27"
+date: "2024-06-11"
 ---
 
 ```{r setup, include=FALSE}
@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This guide provides a comprehensive overview of all the necessary steps to add a new dataset. The folder "Lamour_et_al_2021" can be used as a template since the code within the folder has been commented and corresponds to each step outlined in this guide.
 
-An overview of the process and database organisation is presented [here](https://github.com/TESTgroup-BNL/gsti/blob/main/Overal_data_curation.pdf).
+An overview of the process and database organization is presented [here](https://github.com/TESTgroup-BNL/gsti/blob/main/Overal_data_curation.pdf).
 
 
 ## Creation of a Dataset folder
@@ -95,7 +95,7 @@ The first three pdf show the fitting of each A-C<sub>i</sub> curves when includi
 
 The best model corresponds to the model with the lowest AIC that includes A<sub>c</sub> or A<sub>c</sub> + A<sub>j</sub> or A<sub>c</sub> + A<sub>j</sub> + A<sub>p</sub>. Note that if the model with the best AIC is the one including A<sub>c</sub> only, then V<sub>cmax25</sub> and R<sub>day25</sub> are the only parameters estimated. If the model with the best AIC is A<sub>c</sub> + A<sub>j</sub>, then J<sub>max25</sub> is also estimated. TPU<sub>25</sub> is estimated if A<sub>c</sub>, A<sub>j</sub> and A<sub>p</sub> are limiting. In all cases, transition between the A<sub>c</sub>, A<sub>j</sub>, and A<sub>p</sub> rates is determined automatically by the fitting procedure to avoid manual and somehow subjective choices in the transitions.
 
-This codes produces a dataframe, called Bilan with the folowing columns: 
+This codes produces a dataframe, called Bilan with the following columns: 
 
 ```{r}
 Bilan=read.csv(file='Bilan.csv',header = TRUE)
@@ -127,20 +127,24 @@ A code **"3_Import_transform_Reflectance.R"** should be used to create a R data 
 
 -   SampleID which has to be consistent with the previous files for each leaf,
 
--   Spectrometer, which informs what was the spectrometer model used (SE PSR+ 3500, SVC HR-1024i, SVC XHR-1024i, ASD FieldSpec 3, ASD FieldSpec 4, ASD FieldSpec 4 Hi-Res, ...)
+-   Spectrometer, the spectrometer model used (SE PSR+ 3500, SVC HR-1024i, SVC XHR-1024i, ASD FieldSpec 3, ASD FieldSpec 4, ASD FieldSpec 4 Hi-Res, ...)
 
--   Leaf_clip, which informs what was the leaf clip used (SVC LC-RP, SVC LC-RP Pro, ASD Leaf Clip, ...)
+-   Probe_type, the type of probe (Integrating sphere, Leaf clip, Imager)
+
+-   Probe_model, the reference of the probe model (SVC LC-RP, SVC LC-RP Pro, ASD Leaf Clip, ...)
+
+-   Spectra_trait_pairing, a column that explains how the gas exchange information is paired with the spectral data. If the gas exchange and leaf spectra were measured in the same leaf, chose "Same".     If they were measured in similar leaves, chose "Similar". Finally, if hyperspectral data was measured at the plant scale (and paired to gas exchange at the leaf scale), chose "Plant scale".
 
 -   Reflectance, which is a matrix with the Reflectance in column expressed in percent from 0 to 100.
 
-We use a matrix in the column Reflectance, folowing the "pls" package requirement (Mevik & Wehrens, 2007). More information is given in the "pls" package documentation and manual (https://cran.r-project.org/web/packages/pls/vignettes/pls-manual.pdf)
+We use a matrix in the column Reflectance, following the "pls" package requirement (Mevik & Wehrens, 2007). More information is given in the "pls" package documentation and manual (https://cran.r-project.org/web/packages/pls/vignettes/pls-manual.pdf)
 
 Bjørn-Helge Mevik and Ron Wehrens. The pls package: Principal component and partial
 least squares regression in R. Journal of Statistical Software, 18(2):1–24, 2007.
 
 ### Adding a leaf sample information description csv file
 
-A code called **"4_Import_transform_SampleDetails.R"** should be used to create a **'SampleDetails'** dataframe with the folowing columns: 
+A code called **"4_Import_transform_SampleDetails.R"** should be used to create a **'SampleDetails'** dataframe with the following columns: 
 
 
 ```{r}
@@ -150,7 +154,7 @@ knitr::kable(SampleDetails)
 
 Importantly, the Site_name has to be consistent with the Site_name written in the Site.csv file and the SampleID will have to be consistent with the identifier used for the gas exchange and for the spectra as the SampleID will be used to merge all the different data.
 
-The first columns have to be filled (SampleID, Dataset_name, Site_name, Species, Leaf_match, Sun_Shade, Phenological_stage, Plant_type, Soil), the columns related to the leaf traits can be left empty if you don't have the data (LMA, Narea, Nmass, Parea, Pmass, LWC). Note that the leaf water content, LWC, corresponds to (fresh weight - dry weight) / fresh weight.
+The first columns have to be filled (SampleID, Dataset_name, Site_name, Species, Sun_Shade, Phenological_stage, Plant_type, Soil), the columns related to the leaf traits can be left empty if you don't have the data (LMA, Narea, Nmass, Parea, Pmass, LWC). Note that the leaf water content, LWC, corresponds to (fresh weight - dry weight) / fresh weight.
 
 For the species name, please write "Genus species", for exemple Cercropia insignis. If you know the genus but not the species, write for example "Cecropia species". If you dont know the genus, write "Family genus" for example (Urticaceae genus). If you don't know anything, well you can write "Unknown".
 

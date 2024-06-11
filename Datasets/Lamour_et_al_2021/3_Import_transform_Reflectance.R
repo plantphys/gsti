@@ -20,7 +20,20 @@ Reflectance=read.csv('PA-SLZ_2020_Reflectance.csv')
 # Informing the spectrometer model used used (PSR+ 3500, SVC HR-1024i, SVC XHR-1024i, ASD FieldSpec 3, ASD FieldSpec 4, ASD FieldSpec 4 Hi-Res,...)
 Reflectance$Spectrometer="SE PSR+ 3500"
 
-# Informing the leaf clip used (SVC LC-RP, SVC LC-RP Pro, ASD Leaf Clip, ...)
+# Type of probe used to measure the spectra. Is it a "Leaf clip"? "Integating sphere"? Or an "imager"?
+Reflectance$Probe_type="Leaf clip"
+
+# Reference for the probe used (SVC LC-RP, SVC LC-RP Pro, ASD Leaf Clip, ...)
+Reflectance$Probe_model="SVC LC-RP Pro"
+
+# a column that explains how the gas exchange information is paired with the spectral data. 
+# If the gas exchange and leaf spectra were measured in the same leaf, choose “Same”. 
+# If they were measured in similar leaves, choose “Similar”. 
+# Finally, if hyperspectral data was measured at the plant scale (and paired to gas exchange at the leaf scale), choose “Plant scale”.
+Reflectance$Spectra_trait_pairing="Same"
+
+
+# Informing the leaf clip used 
 Reflectance$Leaf_clip="SVC LC-RP Pro"
 
 # Importing the wavelengths from 350 nm to 2500 nm and storing them into a matrix in the Reflectance dataframe
@@ -31,8 +44,8 @@ Reflectance$Reflectance=I(as.matrix(Reflectance[,19:2169]))
 # Plot of the reflectance data. If this doenst work, the most likely reason is that the format is not correct
 f.plot.spec(Z = Reflectance$Reflectance,wv = 350:2500)
 
-# Keeping only the SampleID, Spectrometer, Leaf_clip and Reflectance columns
-Reflectance=Reflectance[,c("SampleID","Spectrometer","Leaf_clip","Reflectance")]
+# Keeping only the SampleID, Spectrometer, Probe_type, Probe_model, and Spectra_trait_pairing columns
+Reflectance=Reflectance[,c("SampleID","Reflectance","Spectrometer","Probe_type","Probe_model","Spectra_trait_pairing")]
 
 # Saving the standardized reflectance data
 save(Reflectance,file='3_QC_Reflectance_data.Rdata')

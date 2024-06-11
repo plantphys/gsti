@@ -15,7 +15,9 @@ Reflectance[Reflectance==-9999]=NA
 ######################
 
 Reflectance$Spectrometer="SVC HR-1024i"
-Reflectance$Leaf_clip="SVC LC-RP Pro"
+Reflectance$Probe_type="Leaf clip"
+Reflectance$Probe_model="SVC LC-RP Pro"
+Reflectance$Spectra_trait_pairing="Same"
 Reflectance$Reflectance=I(as.matrix(Reflectance[,32:2182]))
 
 f.plot.spec(Z = Reflectance$Reflectance,wv = 350:2500) ## Checking if the reflectance looks correct

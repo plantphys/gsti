@@ -3,7 +3,7 @@ to add a new dataset. The folder “Lamour\_et\_al\_2021” can be used as a
 template since the code within the folder has been commented and
 corresponds to each step outlined in this guide.
 
-An overview of the process and database organisation is presented
+An overview of the process and database organization is presented
 [here](https://github.com/TESTgroup-BNL/gsti/blob/main/Overal_data_curation.pdf).
 
 ## Creation of a Dataset folder
@@ -314,7 +314,7 @@ preliminary steps are made in two R codes called
 <tr class="header">
 <th style="text-align: left;">SampleID</th>
 <th style="text-align: left;">SampleID_num</th>
-<th style="text-align: left;">record</th>
+<th style="text-align: left;">Record</th>
 <th style="text-align: left;">A</th>
 <th style="text-align: left;">Ci</th>
 <th style="text-align: left;">Patm</th>
@@ -386,7 +386,8 @@ A<sub>c</sub>, A<sub>j</sub>, and A<sub>p</sub> rates is determined
 automatically by the fitting procedure to avoid manual and somehow
 subjective choices in the transitions.
 
-This codes produces a dataframe, called Bilan with the folowing columns:
+This codes produces a dataframe, called Bilan with the following
+columns:
 
     Bilan=read.csv(file='Bilan.csv',header = TRUE)
     knitr::kable(Bilan)
@@ -519,17 +520,27 @@ with four columns:
 -   SampleID which has to be consistent with the previous files for each
     leaf,
 
--   Spectrometer, which informs what was the spectrometer model used (SE
-    PSR+ 3500, SVC HR-1024i, SVC XHR-1024i, ASD FieldSpec 3, ASD
-    FieldSpec 4, ASD FieldSpec 4 Hi-Res, …)
+-   Spectrometer, the spectrometer model used (SE PSR+ 3500, SVC
+    HR-1024i, SVC XHR-1024i, ASD FieldSpec 3, ASD FieldSpec 4, ASD
+    FieldSpec 4 Hi-Res, …)
 
--   Leaf\_clip, which informs what was the leaf clip used (SVC LC-RP,
-    SVC LC-RP Pro, ASD Leaf Clip, …)
+-   Probe\_type, the type of probe (Integrating sphere, Leaf clip,
+    Imager)
+
+-   Probe\_model, the reference of the probe model (SVC LC-RP, SVC LC-RP
+    Pro, ASD Leaf Clip, …)
+
+-   Spectra\_trait\_pairing, a column that explains how the gas exchange
+    information is paired with the spectral data. If the gas exchange
+    and leaf spectra were measured in the same leaf, chose “Same”. If
+    they were measured in similar leaves, chose “Similar”. Finally, if
+    hyperspectral data was measured at the plant scale (and paired to
+    gas exchange at the leaf scale), chose “Plant scale”.
 
 -   Reflectance, which is a matrix with the Reflectance in column
     expressed in percent from 0 to 100.
 
-We use a matrix in the column Reflectance, folowing the “pls” package
+We use a matrix in the column Reflectance, following the “pls” package
 requirement (Mevik & Wehrens, 2007). More information is given in the
 “pls” package documentation and manual
 (<https://cran.r-project.org/web/packages/pls/vignettes/pls-manual.pdf>)
@@ -541,28 +552,27 @@ Software, 18(2):1–24, 2007.
 ### Adding a leaf sample information description csv file
 
 A code called **“4\_Import\_transform\_SampleDetails.R”** should be used
-to create a **‘SampleDetails’** dataframe with the folowing columns:
+to create a **‘SampleDetails’** dataframe with the following columns:
 
     SampleDetails=read.csv(file='SampleDetails.csv')
     knitr::kable(SampleDetails)
 
-<table style="width:100%;">
+<table>
 <colgroup>
-<col style="width: 3%" />
+<col style="width: 4%" />
 <col style="width: 2%" />
-<col style="width: 1%" />
-<col style="width: 5%" />
-<col style="width: 15%" />
-<col style="width: 15%" />
-<col style="width: 5%" />
-<col style="width: 4%" />
-<col style="width: 9%" />
-<col style="width: 4%" />
+<col style="width: 2%" />
 <col style="width: 6%" />
-<col style="width: 5%" />
+<col style="width: 17%" />
 <col style="width: 6%" />
+<col style="width: 4%" />
+<col style="width: 11%" />
 <col style="width: 5%" />
-<col style="width: 8%" />
+<col style="width: 7%" />
+<col style="width: 6%" />
+<col style="width: 7%" />
+<col style="width: 6%" />
+<col style="width: 10%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -570,7 +580,6 @@ to create a **‘SampleDetails’** dataframe with the folowing columns:
 <th style="text-align: left;">Dataset_name</th>
 <th style="text-align: left;">Site_name</th>
 <th style="text-align: left;">Species</th>
-<th style="text-align: left;">Leaf_match</th>
 <th style="text-align: left;">Sun_Shade</th>
 <th style="text-align: left;">Phenological_stage</th>
 <th style="text-align: left;">Plant_type</th>
@@ -590,9 +599,6 @@ to create a **‘SampleDetails’** dataframe with the folowing columns:
 <td style="text-align: left;">Name of the site</td>
 <td style="text-align: left;">Full species name, for example Cecropia
 insignis</td>
-<td style="text-align: left;">Were the gas exchange and spectra measured
-in the exact same leaf or distinct, similar leaves? Choose between
-“Same” and “Similar”.</td>
 <td style="text-align: left;">Was the leaf at the top of the canopy and
 usually receiving light (sun) or a shaded leaf? Choose between Sun,
 Shade or leave empty</td>
@@ -618,7 +624,6 @@ of fresh leaf by mass in % (0-100)</td>
 <td style="text-align: left;">Davidson_et_al_2020</td>
 <td style="text-align: left;">SLZ</td>
 <td style="text-align: left;">Cecropia insignis</td>
-<td style="text-align: left;">Same</td>
 <td style="text-align: left;">Sun</td>
 <td style="text-align: left;">Mature</td>
 <td style="text-align: left;">Wild</td>
@@ -635,7 +640,6 @@ of fresh leaf by mass in % (0-100)</td>
 <td style="text-align: left;">Burnett_et_al_2018</td>
 <td style="text-align: left;">BNL</td>
 <td style="text-align: left;">Cucurbit pepo</td>
-<td style="text-align: left;">Similar</td>
 <td style="text-align: left;">Sun</td>
 <td style="text-align: left;">Old</td>
 <td style="text-align: left;">Agricultural</td>
@@ -647,6 +651,22 @@ of fresh leaf by mass in % (0-100)</td>
 <td style="text-align: left;">3.5</td>
 <td style="text-align: left;">70</td>
 </tr>
+<tr class="even">
+<td style="text-align: left;">W9_932</td>
+<td style="text-align: left;">Ting_et_al_2013</td>
+<td style="text-align: left;">AAPF</td>
+<td style="text-align: left;">Oryza sativa</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Mature</td>
+<td style="text-align: left;">Agricultural</td>
+<td style="text-align: left;">Pot</td>
+<td style="text-align: left;">101.81</td>
+<td style="text-align: left;">3.28</td>
+<td style="text-align: left;">32.2</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
 </tbody>
 </table>
 
@@ -656,11 +676,11 @@ with the identifier used for the gas exchange and for the spectra as the
 SampleID will be used to merge all the different data.
 
 The first columns have to be filled (SampleID, Dataset\_name,
-Site\_name, Species, Leaf\_match, Sun\_Shade, Phenological\_stage,
-Plant\_type, Soil), the columns related to the leaf traits can be left
-empty if you don’t have the data (LMA, Narea, Nmass, Parea, Pmass, LWC).
-Note that the leaf water content, LWC, corresponds to (fresh weight -
-dry weight) / fresh weight.
+Site\_name, Species, Sun\_Shade, Phenological\_stage, Plant\_type,
+Soil), the columns related to the leaf traits can be left empty if you
+don’t have the data (LMA, Narea, Nmass, Parea, Pmass, LWC). Note that
+the leaf water content, LWC, corresponds to (fresh weight - dry weight)
+/ fresh weight.
 
 For the species name, please write “Genus species”, for exemple
 Cercropia insignis. If you know the genus but not the species, write for

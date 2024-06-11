@@ -12,7 +12,7 @@ SampleDetails$Site_name=SampleDetails$Place.x
 
 SampleDetails$Dataset_name="Coast_et_al_2019"
 SampleDetails$Species="Triticum aestivum"
-SampleDetails$Leaf_match="Same"
+
   
 SampleDetails$Phenological_stage
 SampleDetails$"Sun_Shade"="Sun"
@@ -30,7 +30,7 @@ SampleDetails$Parea=NA
 SampleDetails$Pmass=NA
 SampleDetails$LWC=NA
 
-SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Leaf_match","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
+SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
 SampleDetails=SampleDetails[-which(is.na(SampleDetails$Phenological_stage)),]
 save(SampleDetails,file="4_SampleDetails.Rdata")
 

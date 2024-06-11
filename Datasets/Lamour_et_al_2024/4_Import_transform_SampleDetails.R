@@ -8,7 +8,6 @@ SampleDetails=merge(x = SampleDetails,y=TreeInfo,by ="TreeID" )
 SampleDetails$Site_name="Bionte"
 SampleDetails$Dataset_name="Lamour_et_al_2024"
 SampleDetails$Species=SampleDetails$species
-SampleDetails$Leaf_match="Same"
 SampleDetails$Phenological_stage="Mature"
 SampleDetails$Sun_Shade="Sun"
 SampleDetails$Plant_type="Wild"
@@ -20,7 +19,7 @@ SampleDetails$Parea=NA
 SampleDetails$Pmass=NA
 SampleDetails$LWC=NA
 
-SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Leaf_match","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
+SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
 
 save(SampleDetails,file="4_SampleDetails.Rdata")
 

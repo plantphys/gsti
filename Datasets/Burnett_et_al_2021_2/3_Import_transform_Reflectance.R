@@ -11,7 +11,9 @@ unique(Reflectance$Instrument)
 
 Reflectance$SampleID=Reflectance$uniquefield
 Reflectance$Spectrometer="SE PSR+ 3500"
-Reflectance$Leaf_clip="SVC LC-RP Pro"
+Reflectance$Probe_type="Leaf clip"
+Reflectance$Probe_model="SVC LC-RP Pro"
+Reflectance$Spectra_trait_pairing="Same"
 Reflectance=Reflectance[Reflectance$SampleID%in%LeafGasex$uniquefield,]
 
 Reflectance$Reflectance=I(as.matrix(Reflectance[,2:2152]))*100
@@ -28,6 +30,8 @@ dev.off()
 ls_bad=c("2018-04-18_40","2018-04-18_41","2018-04-18_42","2018-04-18_43","2018-04-18_45")
 Reflectance=Reflectance[-which(Reflectance$SampleID%in%ls_bad),]
 f.plot.spec(Z = Reflectance$Reflectance,wv = 350:2500)
+Reflectance=Reflectance[,c("SampleID","Reflectance","Spectrometer","Probe_type","Probe_model","Spectra_trait_pairing")]
+
 save(Reflectance,file='3_QC_Reflectance_data.Rdata')
 
 
