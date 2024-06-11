@@ -6,7 +6,6 @@ SampleDetails=read.csv("PA_2022_SampleDetails.csv")
 SampleDetails$Site_name=substr(x = SampleDetails$Site,start = 4,stop = 7)
 SampleDetails$Dataset_name="Lamour_et_al_2022"
 SampleDetails$Species=SampleDetails$Genus_species
-SampleDetails$Leaf_match="Same"
 SampleDetails$Phenological_stage="Mature"
 SampleDetails[SampleDetails$Vertical_Level%in%c(1,2),"Sun_Shade"]="Sun"
 SampleDetails[SampleDetails$Vertical_Level%in%3:10,"Sun_Shade"]="Shade"
@@ -22,7 +21,7 @@ SampleDetails$Parea=NA
 SampleDetails$Pmass=NA
 SampleDetails$LWC=NA
 
-SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Leaf_match","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
+SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
 
 save(SampleDetails,file="4_SampleDetails.Rdata")
 

@@ -21,9 +21,9 @@ Reflectance=read.csv('Reflectance data Guiana-Penuelas.csv')
 
 # Informing the spectrometer model used used (PSR+ 3500, SVC HR-1024i, SVC XHR-1024i, ASD FieldSpec 3, ASD FieldSpec 4, ASD FieldSpec 4 Hi-Res,...)
 Reflectance$Spectrometer=""
-
-# Informing the leaf clip used (SVC LC-RP, SVC LC-RP Pro, ASD Leaf Clip, ...)
-Reflectance$Leaf_clip=""
+Reflectance$Probe_type="Leaf clip"
+Reflectance$Probe_model=""
+Reflectance$Spectra_trait_pairing="Similar"
 
 # Importing the wavelengths from 350 nm to 2500 nm and storing them into a matrix in the Reflectance dataframe
 # The matrix needs to be 2151 columns wide. If the reflectance data covers a narrower range than 350 - 2500 nm, you ll need to put NA in the missing wavelengths
@@ -77,8 +77,8 @@ Reflectance[Reflectance$Branch.canopy.location=="up","BranchPosition"]="T"
 
 Reflectance$SampleID=paste0(Reflectance$Year,"_",Reflectance$Season,"_",Reflectance$Site_Verryckt,"-",Reflectance$Plot_Verryckt,"_",Reflectance$Plant,Reflectance$BranchPosition,Reflectance$Repetition)
 
-# Keeping only the SampleID, Spectrometer, Leaf_clip and Reflectance columns
-Reflectance=Reflectance[,c("SampleID","Spectrometer","Leaf_clip","Reflectance")]
+# Keeping only the "SampleID","Reflectance","Spectrometer","Probe_type","Probe_model", and "Spectra_trait_pairing" columns
+Reflectance=Reflectance[,c("SampleID","Reflectance","Spectrometer","Probe_type","Probe_model","Spectra_trait_pairing")]
 
 # Removing duplicated data
 Reflectance[duplicated(Reflectance$SampleID),"SampleID"]

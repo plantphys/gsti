@@ -19,8 +19,10 @@ unique(Reflectance$`Foreoptic Specifications`)
 ######################
 
 Reflectance$Spectrometer="SVC HR-1024i"
-Reflectance$Leaf_clip="SVC LC-RP Pro"
-Reflectance[Reflectance$`Foreoptic Specifications`=="Fiber_1_LC_RP","Leaf_clip"]="SVC LC-RP"
+Reflectance$Probe_type="Leaf clip"
+Reflectance$Probe_model="SVC LC-RP Pro"
+Reflectance$Spectra_trait_pairing="Same"
+Reflectance[Reflectance$`Foreoptic Specifications`=="Fiber_1_LC_RP","Probe_model"]="SVC LC-RP"
 Reflectance$SampleID=Reflectance$Sample_ID
 Reflectance$Reflectance=I(as.matrix(Reflectance[,36:2186]))
 f.plot.spec(Z = Reflectance$Reflectance,wv = 350:2500)

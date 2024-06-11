@@ -7,11 +7,13 @@ Reflectance=merge(x=Reflectance,y=Bilan,by.x = 'BR_UID',by.y='SampleID')
 WV=colnames(Reflectance[,11:2161])
 WV=as.numeric(substr(WV,2,10))
 Reflectance$Spectrometer="ASD FieldSpec Pro"
-Reflectance$Leaf_clip="ASD Leaf Clip"
+Reflectance$Probe_type="Leaf clip"
+Reflectance$Probe_model="ASD Leaf Clip"
+Reflectance$Spectra_trait_pairing="Same"
 Reflectance$Reflectance=I(as.matrix(Reflectance[,11:2161]*100))
 Reflectance$SampleID=Reflectance$BR_UID
 f.plot.spec(Z = Reflectance$Reflectance,wv = 350:2500)
 
-Reflectance=Reflectance[,c("SampleID","Reflectance","Spectrometer","Leaf_clip")]
+Reflectance=Reflectance[,c("SampleID","Reflectance","Spectrometer","Probe_type","Probe_model","Spectra_trait_pairing")]
 save(Reflectance,file='3_QC_Reflectance_data.Rdata')
 

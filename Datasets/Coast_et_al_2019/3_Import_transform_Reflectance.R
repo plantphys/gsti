@@ -9,7 +9,9 @@ setwd(file.path(path,'/Datasets/Coast_et_al_2019'))
 Reflectance=read.csv(file = "Coast_et_al_2019.csv",na.strings = "NA")
 Reflectance$SampleID=Reflectance$ID
 Reflectance$Spectrometer="ASD FieldSpec 4"
-Reflectance$Leaf_clip="ASD Leaf Clip"
+Reflectance$Probe_type="Leaf clip"
+Reflectance$Probe_model="ASD Leaf Clip"
+Reflectance$Spectra_trait_pairing="Same"
 Reflectance$Reflectance=I(as.matrix(Reflectance[,9:2159]))
 
 f.plot.spec(Z = Reflectance$Reflectance,wv = 350:2500) 
@@ -25,5 +27,5 @@ hist(Reflectance$Reflectance[,"Reflectance.X1000"])
 
 
 f.plot.spec(Z = Reflectance$Reflectance,wv = 350:2500) 
-Reflectance=Reflectance[,c("SampleID","Reflectance","Spectrometer","Leaf_clip")]
+Reflectance=Reflectance[,c("SampleID","Reflectance","Spectrometer","Probe_type","Probe_model","Spectra_trait_pairing")]
 save(Reflectance,file='3_QC_Reflectance_data.Rdata')

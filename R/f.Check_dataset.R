@@ -14,8 +14,8 @@ f.Check_data=function(folder_path=NA){
   ls_ACi_files=c("0_curated_data.Rdata","1_QC_ACi_data.Rdata","2_Fitted_ACi_data.Rdata")
   Site_colnames=c("Site_name","Longitude","Latitude","Elevation","Biome_number")
   Bilan_colnames=c("SampleID_num","Vcmax25","Jmax25","TPU25","Rday25","StdError_Vcmax25","StdError_Jmax25","StdError_TPU25","StdError_Rday25","Tleaf","sigma","AIC","Model","Fitting_method","SampleID")
-  Reflectance_colnames=c("SampleID","Spectrometer","Leaf_clip","Reflectance")
-  SampleDetails_colnames=c("SampleID","Site_name","Dataset_name","Species","Leaf_match","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")
+  Reflectance_colnames=c("SampleID","Spectrometer","Probe_type","Probe_model","Spectra_trait_pairing","Reflectance")
+  SampleDetails_colnames=c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")
   Rdark_colnames=c("SampleID","Rdark","Tleaf_Rdark")
   
   # List of files included in the dataset folder
@@ -136,8 +136,6 @@ f.Check_data=function(folder_path=NA){
   if(any(!SampleDetails$Site_name%in%Site$Site_name)){print("The site names in SampleDetails do not correspond to the site names you provided in Site.csv. Please correct 4_Import_transform_SampleDetails.R or Site.csv")
     print(paste("Site_name in SampleDetails:",paste(unique(SampleDetails$Site_name),collapse = " ")))
     print(paste("Site_name in Site.csv:",paste(unique(Site$Site_name),collapse = " ")))
-    stop()}
-  if(any(!SampleDetails$Leaf_match%in%c("Same","Similar"))){print("Column Leaf_match only accepts the values Same and Similar. Same means that the gas exchange and spectra measurements were performed on the exact same leaf while Similar means that the measurements were made on distinct but similar leaves.")
     stop()}
   if(any(!SampleDetails$Sun_Shade%in%c("Sun","Shade",NA))){print("Column Sun_Shade only accepts Sun Shade or NA values")
                                                           stop()}
