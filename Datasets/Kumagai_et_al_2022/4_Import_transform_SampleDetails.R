@@ -1,7 +1,15 @@
+library(here)
 path=here()
 setwd(file.path(path,'Datasets/Kumagai_et_al_2022'))
 load("2_Fitted_Aci_data.Rdata")
 load("3_QC_Reflectance_data.Rdata")
+
+# I load the suplementary data from Kumagai et al. 2022 to find the nitrogen values
+# I havent found an easy way to link the raw data with the data from this table (the ids are different).
+# The reflectance at 500 nm doesnt have duplicated values so I use the value as an identifier ...
+
+Kumagai_SI=read.csv("pce14204-sup-0001-data.csv",skip = 1)
+Reflectance=merge(x=Reflectance,y=Kumagai_SI[,c("Wave_500","Leaf.N.content")],by.x="Wave_500",by.y="Wave_500",all.x=TRUE)
 
 SampleDetails=Reflectance
 SampleDetails$SampleID=SampleDetails$ID
@@ -13,7 +21,7 @@ SampleDetails$Phenological_stage="Mature"
 SampleDetails$Plant_type="Agricultural"
 SampleDetails$Soil="Managed"
 SampleDetails$LMA=NA
-SampleDetails$Narea=NA
+SampleDetails$Narea=SampleDetails$Leaf.N.content
 SampleDetails$Nmass=NA
 SampleDetails$Parea=NA
 SampleDetails$Pmass=NA
