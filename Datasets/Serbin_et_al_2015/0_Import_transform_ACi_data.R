@@ -2,10 +2,9 @@ library(here)
 path <- here()
 
 source(file.path(path,'/R/Correspondance_tables_ESS.R'))
-setwd(file.path(path,'/Datasets/Serbin_et_al_2019'))
+setwd(file.path(path,'/Datasets/Serbin_et_al_2015'))
 
 src_data_dir <- file.path("LiCor_data")
-#original_data <- read.csv(file.path(src_data_dir,'CVARS_Compiled_ACi_Data_June2013.csv'), header = T)
 original_data <- read.csv(file.path(src_data_dir,'concatenated_ag_gasex_data.csv'), header = T, stringsAsFactors = F)
 head(original_data)
 names(original_data)
@@ -28,7 +27,6 @@ colnames(curated_data)=c(ESS_column,'Sample_ID_Name','QCauthors','Replicate')
 ##Julien modif: I changed your column name to be consistent with other datasets
 curated_data=curated_data[,-which(colnames(curated_data)=='SampleID')]
 curated_data$SampleID=curated_data$Sample_ID_Name
-
 head(curated_data)
 
 curated_data[curated_data$Replicate==-9999,'Replicate']=1
@@ -49,7 +47,8 @@ head(curated_data)
 curated_data$SampleID_num <- as.numeric(as.factor(curated_data$SampleID))
 head(curated_data)
 
-curated_data=curated_data[order(curated_data$SampleID_num),]
+curated_data <- curated_data[order(curated_data$SampleID_num),]
+head(curated_data)
 
 save(curated_data,file='0_curated_data.Rdata')
 

@@ -1,6 +1,6 @@
 library(here)
 path <- here()
-setwd(file.path(path,'/Datasets/Serbin_et_al_2019'))
+setwd(file.path(path,'/Datasets/Serbin_et_al_2015'))
 
 load('0_curated_data.Rdata',verbose=TRUE)
 curated_data$QC <- 'ok'
