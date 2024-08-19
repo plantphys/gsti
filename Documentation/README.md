@@ -1,0 +1,1 @@
+A documentation guide for adding a new dataset is provided in the repository Wiki (https://github.com/plantphys/gsti/wiki).
