@@ -33,9 +33,6 @@ Reflectance$Probe_model="SVC LC-RP Pro"
 Reflectance$Spectra_trait_pairing="Same"
 
 
-# Informing the leaf clip used 
-Reflectance$Leaf_clip="SVC LC-RP Pro"
-
 # Importing the wavelengths from 350 nm to 2500 nm and storing them into a matrix in the Reflectance dataframe
 # The matrix needs to be 2151 columns wide. If the reflectance data covers a narrower range than 350 - 2500 nm, you ll need to put NA in the missing wavelengths
 # Note that the reflectance has to be expressed in percent from 0 to 100
