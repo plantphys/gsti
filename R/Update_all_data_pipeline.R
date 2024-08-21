@@ -2,8 +2,8 @@ library(here)
 path <- here()
 
 refit_aci <- FALSE
-recombine_spec_trait <- TRUE
-check_pipeline <- TRUE
+recombine_spec_trait <- FALSE
+check_pipeline <- FALSE
 update_database <-TRUE
 
 ## Re-run all the '2_Fit_Aci.R' codes

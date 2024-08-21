@@ -36,7 +36,7 @@ world <- ne_countries(scale = "medium", returnclass = "sf")
 Map_datasets <- ggplot(data = world) + geom_sf() + xlab("Longitude") + 
   ylab("Latitude") + geom_point(data= All_sites, aes(x=Longitude, 
                                                      y=Latitude), 
-                                color = "red", size = 4)+theme_bw()+theme(panel.border = element_rect(linewidth = 1.3,colour = "black"))
+                                color = "red", size = 3)+theme_bw()+theme(panel.border = element_rect(linewidth = 1.3,colour = "black"))
 
 png(filename = file.path(out_path,'Map_datasets.png'),width = 240,height = 120,units = 'mm',res=300)
 print(Map_datasets)
