@@ -19,16 +19,10 @@ All data contributors will be included in an introductory paper planned for 2024
 
 GSTI is not designed to be, and should not be treated as, a permanent data repository. It is a community resource of standardized spectra-trait datasets to facilitate a living set of algorithms that can be used by researchers to predict a host of leaf traits using spectral measurements. It is not an institutionally-backed repository like [Figshare](https://figshare.com/), [DataONE](https://www.dataone.org/), [ESS-DIVE](https://ess-dive.lbl.gov/), etc. We recommend (but not require) depositing your data in one of these first, and providing its DOI in your dataset metadata.
 
-## References
-
-Ely KS, Rogers A, Agarwal DA, Ainsworth EA, Albert LP, Ali A, et al. A reporting format for leaf-level gas exchange data and metadata. Ecol Inform. 2021;61: 101232. https:doi.org/10.1016/j.ecoinf.2021.101232
-
-Farquhar, G.D., von Caemmerer, S. & Berry, J.A. A biochemical model of photosynthetic CO2 assimilation in leaves of C3 species. Planta 149, 78–90 (1980). https://doi.org/10.1007/BF00386231
-
-
 ## Overview of the database
 
-The raw datasets are stored in individual folders [Datasets](https://github.com/plantphys/gsti/tree/main/Datasets) 
+The raw datasets are stored in individual folders [Datasets](https://github.com/plantphys/gsti/tree/main/Datasets).
+
 The curated GSTI database is available here [Database](https://github.com/plantphys/gsti/tree/main/Database).
 
 <img src="https://github.com/TESTgroup-BNL/gsti/blob/main/Outputs/Map_datasets.png" width="742">
@@ -42,3 +36,10 @@ The curated GSTI database is available here [Database](https://github.com/plantp
 
 ## Database citation
 More to come
+
+## References
+
+Ely KS, Rogers A, Agarwal DA, Ainsworth EA, Albert LP, Ali A, et al. A reporting format for leaf-level gas exchange data and metadata. Ecol Inform. 2021;61: 101232. https:doi.org/10.1016/j.ecoinf.2021.101232
+
+Farquhar, G.D., von Caemmerer, S. & Berry, J.A. A biochemical model of photosynthetic CO2 assimilation in leaves of C3 species. Planta 149, 78–90 (1980). https://doi.org/10.1007/BF00386231
+
