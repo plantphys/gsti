@@ -1,5 +1,0 @@
-Site_name,Latitude,Longitude,Elevation,Biome_number
-Short text name for the site where the measurements were taken,Latitude in decimal units,Longitude in decimal units,Elevation in meters above sea level,Biome number as described in the documentation (1 to 19)
-BCI,9.1562792,-79.862707,30,1
-PNM,8.9943457,-79.543073,100,2
-BRF,41.413708,-74.010606,1100,5
