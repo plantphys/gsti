@@ -15,20 +15,13 @@ source(file.path(path,'/R/Correspondance_tables_ESS.R'))
 setwd(file.path(path,'/Datasets/Dauvissat_et_al_2024'))
 
 # Import the authors original raw data
-original_data=read.csv('FrenchGuiana_2024_Aq_data.csv')
-
+original_data=read.csv('FrenchGuiana_2024_Survey_data.csv')
+original_data$record=1 ## Adding the record data (not really useful for one point data, more usefull for full ACi curves)
 # Select specific columns from the original data to create the curated data set
-
-curated_data=original_data[,c("SampleID", "record","A","Ci","CO2s","CO2r","gsw","Patm","Qin","RHs","Tleaf","Remove")]
+curated_data=original_data[,c("SampleID", "record","A","Ci","CO2s","CO2r","gsw","Patm","Qin","RHs","Tleaf")]
 
 # Rename the columns of the curated dataset with the ESS standard
-# I also kept the column "Remove" which is not part of the standard and that will be usefull to analyse the
-# data quality. It corresponds to the author flagging of bad data. THis column doesnt have to be included
-# in other datasets.
-colnames(curated_data)=c(ESS_column,'Remove')
-
-# I only keep the first point of the curves with the light level above 700 mumolm-2s-1 to estimate Vcmax with the one point method
-curated_data=curated_data[curated_data$Qin>700&curated_data$Remove=="NO",]
+colnames(curated_data)=c(ESS_column)
 
 # Convert the 'SampleID' column to a numerical factor which is simpler to use and refer to for analyzing the data
 curated_data$SampleID_num=as.numeric(as.factor(curated_data$SampleID))

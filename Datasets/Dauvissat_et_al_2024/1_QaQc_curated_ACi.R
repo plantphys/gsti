@@ -46,3 +46,4 @@ curated_data=curated_data[curated_data$QC=='ok',]
 
 # Saving the Quality checked data to be used in the next step.
 save(curated_data,file='1_QC_ACi_data.Rdata')
+
