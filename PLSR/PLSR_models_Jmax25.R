@@ -32,15 +32,17 @@ ls_not_full_range=ls_not_full_range[-which(duplicated(ls_not_full_range))]
 Database=Database[-ls_not_full_range,]
 f.plot.spec(Z = Database$Spectra,wv = wv)
 
-## Using a LOO PLSR model to identify outlier.
+## Using a LOO PLSR model to identify outliers. ~1% of the values are removed
 ## This process takes 6 minutes
 test_LOO <- plsr(sqrt_Jmax25~ Spectra,ncomp = 19, data = Database, validation = "LOO")
 res_LOO <- test_LOO$validation$pred[,1,19]-Database$sqrt_Jmax25
 hist(res_LOO)
-abline(v=c(-3*sd(res_LOO),3*sd(res_LOO)))
-outliers <- which(abs(res_LOO)>3*sd(res_LOO))# 
+abline(v=c(-2.6*sd(res_LOO),2.6*sd(res_LOO)))
+outliers <- which(abs(res_LOO)>2.6*sd(res_LOO))# 
 Database <- Database[-outliers,]
-Database=Database[!is.na(Database$StdError_Jmax25)&Database$StdError_Jmax25<50,]
+## I also remove points with a very high standard deviation
+hist(Database$StdError_Jmax25/Database$Jmax25)
+Database=Database[!is.na(Database$StdError_Jmax25)&Database$StdError_Jmax25/Database$Jmax25<0.15,]
 
 ############################
 #### PLSR models Jmax25 ###
@@ -61,29 +63,26 @@ plsr_model <- f.auto_plsr(inVar = inVar, training = training,validation = valida
                        file_name = paste0('Validation_Alldatasets_', Sys.Date()), wv = wv,pwr_transform = 0.5)
 
 
-jpeg("Figure2_Jmax25.jpeg", height=120, width=120,units = 'mm',res=300)
 ggplot(data=plsr_model$Predictions,aes(y=Obs,x=mean_pred))+theme_bw()+
   geom_errorbar(data=plsr_model$Predictions,aes(x=mean_pred,ymin=lwr_obs,ymax=upr_obs),col="grey")+
 #geom_errorbarh(data=interval_valid,aes(y=Obs,xmin=lwr_pred,xmax=upr_pred),alpha=0.3)
 geom_errorbarh(data=plsr_model$Predictions,aes(y=Obs,xmin=lwr_conf,xmax=upr_conf),col="grey")+
-geom_point()+coord_cartesian(xlim=c(0,450),ylim=c(0,450))+
+geom_point()+coord_cartesian(xlim=c(0,500),ylim=c(0,500))+
   geom_abline(slope=1) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  ylab(expression(Observed~italic(J)[max25]))+xlab(expression(Predicted~italic(J)[max25]))+annotate(x=0,y=450,label=paste("R² =",round(plsr_model$R2,2)),"text",hjust=0,vjust=1)+annotate(x=0,y=420,label=paste("RMSE =",round(plsr_model$RMSE,1)),"text",hjust=0,vjust=1)
-dev.off()
+  ylab(expression(Observed~italic(J)[max25]))+xlab(expression(Predicted~italic(J)[max25]))+annotate(x=0,y=500,label=paste("R² =",round(plsr_model$R2,2)),"text",hjust=0,vjust=1)+annotate(x=0,y=470,label=paste("RMSE =",round(plsr_model$RMSE,1)),"text",hjust=0,vjust=1)
 
-jpeg("Figure2_Jmax25_dataset.jpeg", height=120, width=180,units = 'mm',res=300)
+
 ggplot(data=plsr_model$Predictions,aes(y=Obs,x=mean_pred,color=Dataset_name))+theme_bw()+
   geom_errorbar(data=plsr_model$Predictions,aes(x=mean_pred,ymin=lwr_obs,ymax=upr_obs),col="grey")+
   #geom_errorbarh(data=interval_valid,aes(y=Obs,xmin=lwr_pred,xmax=upr_pred),alpha=0.3)
   geom_errorbarh(data=plsr_model$Predictions,aes(y=Obs,xmin=lwr_conf,xmax=upr_conf),col="grey")+
-  geom_point()+coord_cartesian(xlim=c(0,450),ylim=c(0,450))+
+  geom_point()+coord_cartesian(xlim=c(0,500),ylim=c(0,500))+
   geom_abline(slope=1) + geom_smooth(method="lm",se=FALSE)+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  ylab(expression(Observed~italic(J)[max25]))+xlab(expression(Predicted~italic(J)[max25]))+annotate(x=0,y=450,label=paste("R² =",round(plsr_model$R2,2)),"text",hjust=0,vjust=1)+annotate(x=0,y=420,label=paste("RMSE =",round(plsr_model$RMSE,1)),"text",hjust=0,vjust=1)
-dev.off()
+  ylab(expression(Observed~italic(J)[max25]))+xlab(expression(Predicted~italic(J)[max25]))+annotate(x=0,y=500,label=paste("R² =",round(plsr_model$R2,2)),"text",hjust=0,vjust=1)+annotate(x=0,y=470,label=paste("RMSE =",round(plsr_model$RMSE,1)),"text",hjust=0,vjust=1)
 
-
+save(file="PLSR_model_Jmax25.Rdata",plsr_model)
 
 
 

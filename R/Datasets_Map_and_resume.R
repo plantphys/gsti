@@ -82,7 +82,7 @@ dev.off()
 
 ## Computing the number of leaves per biome and the number of species per biome
 
-Biomes=read.csv(file='Vignettes/Biomes.csv')
+Biomes=read.csv(file='Documentation/Biomes.csv')
 Database=merge(Database,Biomes)
 n_Leaf_Biome=tapply(X=Database$Species,INDEX = Database$Biome,FUN = length)
 

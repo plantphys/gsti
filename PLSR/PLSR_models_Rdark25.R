@@ -35,6 +35,7 @@ f.plot.spec(Z = Database$Spectra,wv = wv)
 ls_not_full_range=which(is.na(Database$Spectra),arr.ind = TRUE)[,1]
 ls_not_full_range=ls_not_full_range[-which(duplicated(ls_not_full_range))]
 Database=Database[-ls_not_full_range,]
+Database=Database[Database$Dataset_name!="Ting_et_al_2023",] # Not using imaging spectroscopy yet
 f.plot.spec(Z = Database$Spectra,wv = wv)
 
 ## Using a LOO PLSR model to identify outlier.
@@ -42,9 +43,10 @@ f.plot.spec(Z = Database$Spectra,wv = wv)
 test_LOO <- plsr(Rdark25~ Spectra,ncomp = 19, data = Database, validation = "LOO")
 res_LOO <- test_LOO$validation$pred[,1,19]-Database$Rdark25
 hist(res_LOO)
-abline(v=c(-3*sd(res_LOO),3*sd(res_LOO)))
-outliers <- which(abs(res_LOO)>3*sd(res_LOO))
+abline(v=c(-2.6*sd(res_LOO),2.6*sd(res_LOO)))
+outliers <- which(abs(res_LOO)>2.6*sd(res_LOO))
 Database <- Database[-outliers,]
+
 Database$StdError_Rdark25=NA
 
 ############################
@@ -63,10 +65,10 @@ training <- split_data$cal_data
 validation <- split_data$val_data
 
 plsr_model <- f.auto_plsr(inVar = inVar, training = training,validation = validation, 
-                       file_name = paste0('Validation_Alldatasets_Rdark25_', Sys.Date()), wv = wv,pwr_transform = 1)
+                       file_name = paste0('Validation_Alldatasets_Rdark25_', Sys.Date()), wv = wv,pwr_transform = 0.5)
 
 
-jpeg("Figure2_Rdark25.jpeg", height=120, width=120,units = 'mm',res=300)
+
 ggplot(data=plsr_model$Predictions,aes(y=Obs,x=mean_pred))+theme_bw()+
   geom_errorbar(data=plsr_model$Predictions,aes(x=mean_pred,ymin=lwr_obs,ymax=upr_obs),col="grey")+
 #geom_errorbarh(data=interval_valid,aes(y=Obs,xmin=lwr_pred,xmax=upr_pred),alpha=0.3)
@@ -75,9 +77,9 @@ geom_point()+coord_cartesian(xlim=c(0,2.5),ylim=c(0,2.5))+
   geom_abline(slope=1) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
   ylab(expression(Observed~italic(R)[dark25]))+xlab(expression(Predicted~italic(R)[dark25]))+annotate(x=0,y=2.5,label=paste("R² =",round(plsr_model$R2,2)),"text",hjust=0,vjust=1)+annotate(x=0,y=2.35,label=paste("RMSE =",round(plsr_model$RMSE,1)),"text",hjust=0,vjust=1)
-dev.off()
 
-jpeg("Figure2_Rdark25_dataset.jpeg", height=120, width=180,units = 'mm',res=300)
+
+
 ggplot(data=plsr_model$Predictions,aes(y=Obs,x=mean_pred,color=Dataset_name))+theme_bw()+
   geom_errorbar(data=plsr_model$Predictions,aes(x=mean_pred,ymin=lwr_obs,ymax=upr_obs),col="grey")+
   #geom_errorbarh(data=interval_valid,aes(y=Obs,xmin=lwr_pred,xmax=upr_pred),alpha=0.3)
@@ -86,9 +88,10 @@ ggplot(data=plsr_model$Predictions,aes(y=Obs,x=mean_pred,color=Dataset_name))+th
   geom_abline(slope=1) + geom_smooth(method="lm",se=FALSE)+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
   ylab(expression(Observed~italic(R)[dark25]))+xlab(expression(Predicted~italic(R)[dark25]))+annotate(x=0,y=2.50,label=paste("R² =",round(plsr_model$R2,2)),"text",hjust=0,vjust=1)+annotate(x=0,y=2.35,label=paste("RMSE =",round(plsr_model$RMSE,1)),"text",hjust=0,vjust=1)
-dev.off()
 
 
+
+save(file="PLSR_model_Rdark25.Rdata",plsr_model)
 
 
 
