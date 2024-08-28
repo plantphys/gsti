@@ -33,9 +33,14 @@ The curated GSTI database is available here [Database](https://github.com/plantp
 
 [List of Species](https://github.com/TESTgroup-BNL/gsti/blob/main/Outputs/Leaf_per_species.jpeg)
 
+Examples of generalized spectra trait models for the prediction of Vcmax25, Jmax25, and Rdark25 using the GSTI database are presented here: [Spectra trait models](https://github.com/plantphys/gsti/blob/main/Outputs/Results_PLSR.jpeg). These models were obtained using partial least squares regressions following Burnett et al.'s 2021 best practices.
 
 ## Database citation
 More to come
+
+## References
+
+Burnett, A.C., Anderson, J., Davidson, K.J., Ely, K.S., Lamour, J., Li, Q., Morrison, B.D., Yang, D., Rogers, A. and Serbin, S.P., 2021. A best-practice guide to predicting plant traits from leaf-level hyperspectral data using partial least squares regression. Journal of Experimental Botany, 72(18), pp.6175-6189.
 
 ## References
 
