@@ -13,6 +13,9 @@ setwd(file.path(path,'/Datasets/Heckmann_et_al_2017'))
 # Importing the author's sample information
 SampleDetails=read.csv("table_heckmann2017.csv")
 
+# Keeping C3 species only
+SampleDetails = SampleDetails[SampleDetails$photosynthesis=="C3",]
+
 # Inform the various information required
 SampleDetails$SampleID=SampleDetails$Li6400.file
 SampleDetails$Dataset_name = "Heckmann_et_al_2017"

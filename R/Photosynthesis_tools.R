@@ -417,7 +417,7 @@ f.fitting<-function(measures,id.name=NULL,Start=list(JmaxRef=90,VcmaxRef=70,Rday
 #' @description This functions allows to import the text file produced by LICOR as a data.frame
 #' @param file File to import by the function
 #' @param column_display The first lines of the file which are part of this list are displayed by this function after being imported.
-#' @references Adapted from http://www.ericrscott.com/2018/01/17/li-cor-wrangling/
+#' @references Adapted from https://ericrscott.com/posts/2018-01-17-li-cor-wrangling/index.html#tidying-up-raw-text
 #' @return dataframe
 #' @export
 #'
