@@ -29,7 +29,6 @@ Bilan=f.fit_Aci(measures=curated_data,param = f.make.param())
 # I manually check the fitting ("2_ACi_fitting_best_model.pdf").
 # If some fittings are bad, I go back to step 1 and remobve the bad points or bad curves
 # Here, the fittings looked ok, at least for Vcmax.
-Bilan[Bilan$Jmax25>1000,c("Jmax25","StdError_Jmax25")]=NA
 
 ## Fitting quality check
 # Are there particularly low or high Vcmax25?
