@@ -1,7 +1,2 @@
-Authors,Acknowledgment,Dataset_DOI,Publication_Citation,Email
-"Katherine Meacham-Hensold, Christopher M. Montes, Jin Wu, Kaiyu Guan, Peng Fu, Elizabeth A. Ainsworth, Taylor Pederson, Caitlin E. Moore, Kenny Lee Brown, Christine Raines, Carl J. Bernacchi","The information, data, or work presented herein was funded in parts
-by (1) Bill and Melinda Gates Foundation grant OPP1060461, titled
-“RIPE—Realizing increased photosynthetic efficiency for sustainable
-increases in crop yield”, (2) by the Advanced Research Projects Agency
-- Energy - U.S. Department of Energy, under Award Number DEAR0000598, and (3) by the Agricultural Research Service of the United
-States Department of Agriculture.",https://doi.org/10.1016/j.rse.2019.04.029,"Katherine Meacham-Hensold, Christopher M. Montes, Jin Wu, Kaiyu Guan, Peng Fu, Elizabeth A. Ainsworth, Taylor Pederson, Caitlin E. Moore, Kenny Lee Brown, Christine Raines, Carl J. Bernacchi",bernacch@illinois.edu
+Authors,Acknowledgment,Dataset_DOI,Publication_DOI,Email
+"Katherine Meacham-Hensold, Christopher M. Montes, Jin Wu, Kaiyu Guan, Peng Fu, Elizabeth A. Ainsworth, Taylor Pederson, Caitlin E. Moore, Kenny Lee Brown, Christine Raines, Carl J. Bernacchi","The information, data, or work presented herein was funded in parts by (1) Bill and Melinda Gates Foundation grant OPP1060461, titled “RIPE—Realizing increased photosynthetic efficiency for sustainable increases in crop yield”, (2) by the Advanced Research Projects Agency - Energy - U.S. Department of Energy, under Award Number DEAR0000598, and (3) by the Agricultural Research Service of the United States Department of Agriculture.",10.1016/j.rse.2019.04.029,10.1016/j.rse.2019.04.029,bernacch@illinois.edu

@@ -16,6 +16,7 @@ f.Check_data=function(folder_path=NA){
   Bilan_colnames=c("SampleID_num","Vcmax25","Jmax25","TPU25","Rday25","StdError_Vcmax25","StdError_Jmax25","StdError_TPU25","StdError_Rday25","Tleaf","sigma","AIC","Model","Fitting_method","SampleID")
   Reflectance_colnames=c("SampleID","Spectrometer","Probe_type","Probe_model","Spectra_trait_pairing","Reflectance")
   SampleDetails_colnames=c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")
+  Description_colnames=c("Authors","Acknowledgment","Dataset_DOI","Publication_DOI","Email")
   Rdark_colnames=c("SampleID","Rdark","Tleaf_Rdark")
   
   # List of files included in the dataset folder
@@ -53,6 +54,10 @@ f.Check_data=function(folder_path=NA){
     stop()}
   
   Description=read.csv("Description.csv")
+  if(any(!Description_colnames%in%colnames(Description))){print("!!! Your Description dataframe misses some columns:")
+    print(Description_colnames[!Description_colnames%in%colnames(Description)])
+    stop()}
+  
   load("4_SampleDetails.Rdata")
   
   if(any(is.na(c(Site$Site_name,Site$Latitude,Site$Longitude,Site$Biome_number)))){print("!!! You did not provide the Site_name, Latitude, Longitude or Biome number")

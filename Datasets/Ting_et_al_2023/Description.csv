@@ -1,2 +1,2 @@
-Authors,Acknowledgment,Dataset_DOI,Publication_Citation,Email
-"To-Chia Ting, Augusto C. M. Souza, Rachel K. Imel, Carmela R. Guadagno, Chris Hoagland, Yang Yang and Diane R. Wang",This work was partly funded by a USDA AFRI grant to Diane Wang (Grant number 2022-67013-36205). ,doi:10.4231/SY0A-W347,"To-Chia Ting, Augusto C. M. Souza, Rachel K. Imel, Carmela R. Guadagno, Chris Hoagland, Yang Yang and Diane R. Wang. Quantifying physiological trait variation with automated hyperspectral imaging in rice","drwang@purdue.edu, ting15@purdue.edu"
+Authors,Acknowledgment,Dataset_DOI,Publication_DOI,Email
+"To-Chia Ting, Augusto C. M. Souza, Rachel K. Imel, Carmela R. Guadagno, Chris Hoagland, Yang Yang and Diane R. Wang",This work was partly funded by a USDA AFRI grant to Diane Wang (Grant number 2022-67013-36205). ,doi:10.4231/SY0A-W347,10.3389/fpls.2023.1229161,"drwang@purdue.edu, ting15@purdue.edu"
