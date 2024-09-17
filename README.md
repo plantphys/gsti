@@ -4,7 +4,7 @@ Welcome to the Global Spectra-Trait Initiative (GSTI).
 
 This project aims to generate spectra trait models using reflectance data to predict leaf traits associated with the photosynthesis capacity of leaves. This includes the maximum carboxylation rate of rubisco (Vcmax), the maximum electron transport rate (Jmax), the dark respiration, as well as the prediction of leaf nitrogen, leaf mass per area (LMA), and leaf water content (LWC). We aim to gather datasets from multiple species and biomes worldwide to build generalizable spectra trait models.
 
-If you want to participate, please email us or submit an issue in this GitHub repository. We welcome raw A-Ci data, dark-adapted respiration data as well as other structural and chemical leaf traits in a free format, and of course leaf reflectance data (ideally full range from 500 nm to 2400 nm). An overview of the data curation workflow that we follow is presented here: [Curation workflow](https://github.com/TESTgroup-BNL/gsti/blob/main/Documentation/Overall_data_curation.pdf). It also details the data that is required to participate in the project. All data contributors will be included in an introductory paper planned for december 2024.
+If you want to participate, please email us or submit an issue in this GitHub repository. We welcome raw A-Ci data, dark-adapted respiration data as well as other structural and chemical leaf traits in a free format, and of course leaf reflectance data (ideally full range from 500 nm to 2400 nm). An overview of the data curation workflow that we follow is presented here: [Curation workflow](https://github.com/plantphys/gsti/blob/main/Documentation/Overall_data_curation.pdf). It also details the data that is required to participate in the project. All data contributors will be included in an introductory paper planned for december 2024.
 
 More details on the processing chain to import, homogenize, and produce a standardized database from multiple datasets are given in this guide: [Guide](https://github.com/plantphys/gsti/wiki/Dataset-creation-guide). 
 
@@ -23,13 +23,13 @@ The raw datasets are stored in individual folders [Datasets](https://github.com/
 
 The curated GSTI database is available here [Database](https://github.com/plantphys/gsti/tree/main/Database).
 
-<img src="https://github.com/TESTgroup-BNL/gsti/blob/main/Outputs/Map_datasets.png" width="742">
+<img src="https://github.com/plantphys/gsti/blob/main/Outputs/Map_datasets.png" width="742">
 
-<img src="https://github.com/TESTgroup-BNL/gsti/blob/main/Outputs/Hist_Vcmax25.jpeg" height="400"> <img src="https://github.com/TESTgroup-BNL/gsti/blob/main/Outputs/Reflectance.jpeg" height="400"> 
+<img src="https://github.com/plantphys/gsti/blob/main/Outputs/Hist_Vcmax25.jpeg" height="400"> <img src="https://github.com/TESTgroup-BNL/gsti/blob/main/Outputs/Reflectance.jpeg" height="400"> 
 
-<img src="https://github.com/TESTgroup-BNL/gsti/blob/main/Outputs/Number_observations.jpeg" height="400"> 
+<img src="https://github.com/plantphys/gsti/blob/main/Outputs/Number_observations.jpeg" height="400"> 
 
-[List of Species](https://github.com/TESTgroup-BNL/gsti/blob/main/Outputs/Leaf_per_species.jpeg)
+[List of Species](https://github.com/plantphys/gsti/blob/main/Outputs/Leaf_per_species.jpeg)
 
 Examples of generalized spectra trait models for the prediction of Vcmax25, Jmax25, and Rdark25 using the GSTI database are presented here: [Spectra trait models](https://github.com/plantphys/gsti/blob/main/Outputs/Results_PLSR.jpeg). These models were obtained using partial least squares regressions following Burnett et al.'s 2021 best practices.
 
