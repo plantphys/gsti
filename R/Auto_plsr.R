@@ -112,11 +112,12 @@ f.auto_plsr = function(training,validation,prop_internal_valid=0.7,n_resamp=1000
     +geom_abline(slope = 1,intercept = 0))
   
   print(fig)
-  res_all=summary(lm(Obs~mean_pred,data=interval_valid))
-  print(paste('Residual error sigma:',res_all$sigma))
-  print(paste('Coefficient of determination R2:',res_all$r.squared))
-
+  res_all=(lm(Obs~mean_pred,data=interval_valid))
+  RMSE = sqrt(mean(residuals(res_all)^2))
+  print(paste('Residual error sigma:',summary(res_all)$sigma))
+  print(paste('Coefficient of determination R2:',summary(res_all)$r.squared))
+  print(paste('RMSE',RMSE))
   if(!is.null(file_name)){dev.off()}
   
-  return(list(nComp=nComp,coefs=coefs[,,nComp],VIPs=VIPs[,,nComp],Predictions=interval_valid,R2=res_all$r.squared,RMSE=res_all$sigma))
+  return(list(nComp=nComp,coefs=coefs[,,nComp],VIPs=VIPs[,,nComp],Predictions=interval_valid,R2=res_all$r.squared,RMSE=RMSE))
 }

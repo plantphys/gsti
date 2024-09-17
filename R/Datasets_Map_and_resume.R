@@ -130,8 +130,8 @@ a=ggplot(data=Database,aes(x=LMA,y=Vcmax25))+geom_point(size = pt_size)+ylim(c(0
   ylab(expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1))+xlab(expression(LMA~g~m^-2))+
   annotate(x=0.5,y=300,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
   annotate(x=0.5,y=0.9*300,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
-       
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+ geom_smooth(method="lm")
+print(a)       
 
 reg = lm(Vcmax25~Narea,data=Database)
 summary(reg)
@@ -141,8 +141,9 @@ b=ggplot(data=Database,aes(x=Narea,y=Vcmax25))+geom_point(size = pt_size)+ylim(c
   ylab(expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1))+xlab(expression(N[area]~g~m^-2))+
   annotate(x=0.5,y=300,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
   annotate(x=0.5,y=0.9*300,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+ geom_smooth(method="lm")
 
+print(b)
 ##Gitelson index = (R_750−800)/(R_695−740) − 1
 R_750_800=rowMeans(Database[,colnames(Database)%in%paste("Wave_.",750:800,sep="")])
 R_695_740=rowMeans(Database[,colnames(Database)%in%paste("Wave_.",695:740,sep="")])
@@ -156,8 +157,9 @@ c=ggplot(data=Database,aes(x=Chl_Gitelson,y=Vcmax25))+geom_point(size = pt_size)
   ylab(expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1))+xlab(expression(Chl~index~value))+
   annotate(x=0,y=300,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
   annotate(x=0,y=0.9*300,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+ geom_smooth(method="lm")
 
+print(c)
 reg = lm(Jmax25~Vcmax25,data=Database)
 summary(reg)
 RMSE = sqrt(mean(residuals(reg)^2))
@@ -166,7 +168,9 @@ d=ggplot(data=Database,aes(x=Vcmax25,y=Jmax25))+geom_point(size = pt_size)+xlim(
   ylab(expression(italic(J)[max25]~mu*mol~m^-2~s^-1))+xlab(expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1))+
   annotate(x=0,y=600,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
   annotate(x=0,y=0.9*600,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+ geom_smooth(method="lm")
+
+print(d)
 jpeg("Outputs/Correlation_Vcmax25_traits.jpeg", height=180, width=180, units = 'mm',res=300)
 plot_grid(a,b,c,d,ncol=2,labels = c('(a)','(b)','(c)','(d)'),hjust = -0.1,align = 'hv')
 dev.off()

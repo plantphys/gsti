@@ -42,6 +42,7 @@ outliers = which(abs(res_LOO)>2.6*sd(res_LOO))
 Database = Database[-outliers,]
 
 ## I also remove points with a very high standard error
+hist(Database$StdError_Vcmax25/Database$Vcmax25)
 Database=Database[Database$StdError_Vcmax25/Database$Vcmax25<0.15|is.na(Database$StdError_Vcmax25),]
 
 ############################

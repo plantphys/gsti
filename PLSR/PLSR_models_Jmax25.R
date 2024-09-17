@@ -41,8 +41,8 @@ abline(v=c(-2.6*sd(res_LOO),2.6*sd(res_LOO)))
 outliers <- which(abs(res_LOO)>2.6*sd(res_LOO))# 
 Database <- Database[-outliers,]
 ## I also remove points with a very high standard deviation
-hist(Database$StdError_Jmax25/Database$Jmax25)
-Database=Database[!is.na(Database$StdError_Jmax25)&Database$StdError_Jmax25/Database$Jmax25<0.15,]
+#hist(Database$StdError_Jmax25/Database$Jmax25)
+#Database=Database[!is.na(Database$StdError_Jmax25)&Database$StdError_Jmax25/Database$Jmax25<0.15,]
 
 ############################
 #### PLSR models Jmax25 ###
