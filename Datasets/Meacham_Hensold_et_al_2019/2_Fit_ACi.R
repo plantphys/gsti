@@ -12,9 +12,6 @@ curated_data <- curated_data[order(curated_data$SampleID_num,curated_data$Ci),]
 ## Fitting of the ACi curves using Ac, Ac+Aj or Ac+Aj+Ap limitations
 Bilan <- f.fit_Aci(measures=curated_data,param = f.make.param())
 
-Bilan[Bilan$sigma > quantile(x = Bilan$sigma, probs = 0.95), 'SampleID_num']
-## After manual inspection, those fittings seem fine, at least for Vcmax.
-
 hist(Bilan$Vcmax25)
 plot(x=Bilan$Vcmax25,
      y=Bilan$Jmax25,xlab='Vcmax25',

@@ -34,9 +34,6 @@ Bilan=f.fit_Aci(measures=curated_data,param = f.make.param())
 # Are there particularly low or high Vcmax25?
 hist(Bilan$Vcmax25)
 
-# Here, I look at the residual standard error and try to identify bad curves.
-Bilan[Bilan$sigma/Bilan$Vcmax25>quantile(x = Bilan$sigma/Bilan$Vcmax25,probs = 0.95),'SampleID_num']
-
 # I check if the Jmax25/ Vcmax25 ratio look correct
 plot(x=Bilan$Vcmax25,y=Bilan$Jmax25,xlab='Vcmax25',ylab='Jmax25',xlim=c(min(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE),max(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE)),ylim=c(min(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE),max(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE)))
 abline(a=c(0,1))

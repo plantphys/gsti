@@ -20,8 +20,6 @@ hist(Bilan$Vcmax25)
 
 Bilan[Bilan$SampleID_num%in%c(3,13,31),c("Jmax25","StdError_Jmax25")]=NA
 
-# Here, I look at the residual standard error and try to identify bad curves
-Bilan[Bilan$sigma/Bilan$Vcmax25>quantile(x = Bilan$sigma/Bilan$Vcmax25,probs = 0.95),'SampleID_num']
 
 # I check if the Jmax25/ Vcmax25 ratio look correct
 plot(x=Bilan$Vcmax25,y=Bilan$Jmax25,xlab='Vcmax25',ylab='Jmax25',xlim=c(min(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE),max(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE)),ylim=c(min(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE),max(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE)))

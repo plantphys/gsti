@@ -159,7 +159,7 @@ f.fit_Aci<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdayRef = 2, TPURef
 ### Creating a pdf with the best model for each curve
   
   pdf(file = '2_ACi_fitting_best_model.pdf')
-  by(data = measures,INDICES = list(measures$SampleID_num),
+  A_limitations=by(data = measures,INDICES = list(measures$SampleID_num),
      FUN = function(x){
        param_leg=Bilan[Bilan$SampleID_num==unique(x$SampleID_num),c('VcmaxRef','JmaxRef','RdayRef','TPURef')]
        param_leg[is.na(param_leg)]=9999
@@ -168,9 +168,23 @@ f.fit_Aci<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdayRef = 2, TPURef
        param['RdayRef']=param_leg['RdayRef']
        param['TPURef']=param_leg['TPURef']
        f.plot(measures=x,list_legend = as.list(param_leg),param = param,name =unique(x$SampleID_num))
+       simu=f.Aci(PFD=x$Qin,Tleaf = x$Tleaf,ci = x$Ci,param = param)
+       ## Number of points limited by Ac, Aj and Ap
+       n_Ac=sum(simu$Ac<simu$Aj&simu$Ac<simu$Ap, na.rm = TRUE)
+       n_Aj=sum(simu$Aj<simu$Ac&simu$Aj<simu$Ap, na.rm = TRUE)
+       n_Ap=sum(simu$Ap<simu$Ac&simu$Ap<simu$Aj, na.rm = TRUE)
+       n_lim=c(SampleID_num=unique(x$SampleID_num),n_Ac=n_Ac,n_Aj=n_Aj,n_Ap=n_Ap)
+       return(n_lim)
      }
   )
   dev.off()
+  
+  A_limitations=do.call(rbind.data.frame, A_limitations)
+  colnames(A_limitations)=c("SampleID_num","n_Ac","n_Aj","n_Ap")
+  ## I remove estimates of Ac, Aj or Ap that are based on too few points. 
+  Bilan[A_limitations$n_Ac<=2,c("VcmaxRef","StdError_VcmaxRef")]=NA
+  Bilan[A_limitations$n_Aj<2,c("JmaxRef","StdError_JmaxRef")]=NA
+  Bilan[A_limitations$n_Ap<2,c("TpRef","StdError_TpRef")]=NA
   
   ## Renaming Bilan so it corresponds to the standard used in this repo:
   colnames(Bilan)=c("sigma","Jmax25","Vcmax25","TPU25","Rday25","StdError_sigma","StdError_Jmax25","StdError_Vcmax25","StdError_TPU25","StdError_Rday25","AIC","Tleaf","SampleID_num","Model","Fitting_method") 

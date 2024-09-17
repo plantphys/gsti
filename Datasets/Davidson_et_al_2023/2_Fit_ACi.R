@@ -10,7 +10,7 @@ source(file.path(path,'/R/Photosynthesis_tools.R'))
 load('1_QC_ACi_data.Rdata',verbose=TRUE)
 
 ## Estimation of Vcmax using the one point method
-Bilan <-f.fit_One_Point(measures=curated_data,param = f.make.param())
+Bilan = f.fit_One_Point(measures=curated_data,param = f.make.param())
 
 
 ## Fitting quality check

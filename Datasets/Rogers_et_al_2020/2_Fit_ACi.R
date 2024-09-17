@@ -17,10 +17,6 @@ Bilan=f.fit_Aci(measures=curated_data,param = f.make.param())## After manual ins
 # Are there particularly low or high Vcmax25?
 hist(Bilan$Vcmax25)
 
-Bilan[Bilan$sigma>quantile(x = Bilan$sigma,probs = 0.95),'SampleID_num']
-## After manual inspection, those fittings seem fine, at least for Vcmax.
-
-
 plot(x=Bilan$Vcmax25,y=Bilan$Jmax25,xlab='Vcmax25',ylab='Jmax25',xlim=c(min(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE),max(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE)),ylim=c(min(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE),max(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE)))
 abline(a=c(0,1))
 abline(lm(Jmax25~0+Vcmax25,data=Bilan),col='red')

@@ -35,15 +35,10 @@ Bilan=f.fit_Aci(measures=curated_data,param = f.make.param())
 # Are there particularly low or high Vcmax25?
 hist(Bilan$Vcmax25)
 
-# Here, I look at the residual standard error and try to identify bad curves.
-Bilan[Bilan$sigma/Bilan$Vcmax25>quantile(x = Bilan$sigma/Bilan$Vcmax25,probs = 0.95),'SampleID_num']
-
 # I check if the Jmax25/ Vcmax25 ratio look correct
 plot(x=Bilan$Vcmax25,y=Bilan$Jmax25,xlab='Vcmax25',ylab='Jmax25',xlim=c(min(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE),max(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE)),ylim=c(min(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE),max(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE)))
 abline(a=c(0,1))
 abline(lm(Jmax25~0+Vcmax25,data=Bilan),col='red')
-
-Bilan[Bilan$SampleID_num%in%c(66,68,76,133,148,160,232,405,406,721,724,746),"Jmax25"]=NA ## Removing Jmax25 in the curves where TPU was limiting before Jmax25
 
 # Adding the SampleID column
 Table_SampleID=curated_data[!duplicated(curated_data$SampleID),c('SampleID','SampleID_num')]
