@@ -6,7 +6,7 @@
 library(here)
 
 # Load the spectratrait package that is used to plot the Reflectance data
-library(spectratrait) # https://github.com/TESTgroup-BNL/spectratrait
+library(spectratrait) # https://github.com/plantphys/spectratrait
 # Load the signal package that I use to filter and interpolated the reflectance
 
 library(signal)

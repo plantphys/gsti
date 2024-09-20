@@ -6,7 +6,7 @@
 library(here)
 
 # Load the spectratrait package that is used to plot the Reflectance data
-library(spectratrait) # https://github.com/TESTgroup-BNL/spectratrait
+library(spectratrait) # https://github.com/plantphys/spectratrait
 
 # Find the path of the top relative directory
 path=here()
