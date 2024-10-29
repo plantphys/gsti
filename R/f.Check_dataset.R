@@ -15,7 +15,7 @@ f.Check_data=function(folder_path=NA){
   Site_colnames=c("Site_name","Longitude","Latitude","Elevation","Biome_number")
   Bilan_colnames=c("SampleID_num","Vcmax25","Jmax25","TPU25","Rday25","StdError_Vcmax25","StdError_Jmax25","StdError_TPU25","StdError_Rday25","Tleaf","sigma","AIC","Model","Fitting_method","SampleID")
   Reflectance_colnames=c("SampleID","Spectrometer","Probe_type","Probe_model","Spectra_trait_pairing","Reflectance")
-  SampleDetails_colnames=c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")
+  SampleDetails_colnames=c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Photosynthetic_pathway","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")
   Description_colnames=c("Authors","Acknowledgment","Dataset_DOI","Publication_DOI","Email")
   Rdark_colnames=c("SampleID","Rdark","Tleaf_Rdark")
   

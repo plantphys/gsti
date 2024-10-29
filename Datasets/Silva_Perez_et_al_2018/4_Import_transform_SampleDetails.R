@@ -23,6 +23,7 @@ SampleDetails[SampleDetails$Exp%in%c("BYPB_Aus3","CA_Aus3","EVA_Aus3"),"Site_nam
 SampleDetails$Species="Triticum species"
 SampleDetails$Sun_Shade="Sun"
 SampleDetails$Phenological_stage="Mature"
+SampleDetails$Photosynthetic_pathway="C3"
 SampleDetails$Plant_type="Agricultural" # Wild or Agricultural
 SampleDetails$Soil="Managed" # Natural, Managed or Pot
 SampleDetails[SampleDetails$Site_name=="CSIRO_BMC","Soil"]="Pot"
@@ -34,7 +35,7 @@ SampleDetails$Pmass=SampleDetails$Parea*1000/SampleDetails$LMA # Phosphorus cont
 SampleDetails$LWC=NA # Leaf water content (Fresh_weight - dry weight)/Fresh weight
 
 # Keeping only the columns of the standard:
-SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
+SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Photosynthetic_pathway","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
 
 # Saving the SampleDetails data
 save(SampleDetails,file="4_SampleDetails.Rdata")

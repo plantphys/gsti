@@ -18,6 +18,7 @@ Leaf_traits=read.csv("Leaf traits.csv")
 
 SampleDetails=merge(SampleDetails,Leaf_traits,by="SampleID",all.x=TRUE)
 # Inform the various information required
+SampleDetails$Photosynthetic_pathway="C3"
 SampleDetails$Soil = "Managed" # Natural, Managed or Pot
 SampleDetails$LMA = SampleDetails$Leaf_mass_per_area_g_m2
 SampleDetails$Narea = SampleDetails$Percent_nitrogen/100*SampleDetails$LMA # Nitrogen content per surface area in g m-2
@@ -27,7 +28,7 @@ SampleDetails$Pmass = NA # Phosphorus content on a leaf dry weight basis
 SampleDetails$LWC = NA # Leaf water content (Fresh_weight - dry weight)/Fresh weight
 
 # Keeping only the columns of the standard:
-SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
+SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Photosynthetic_pathway","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
 
 # Saving the SampleDetails data
 save(SampleDetails,file="4_SampleDetails.Rdata")

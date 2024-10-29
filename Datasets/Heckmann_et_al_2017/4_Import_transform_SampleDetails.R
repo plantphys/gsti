@@ -15,6 +15,7 @@ SampleDetails=read.csv("table_heckmann2017.csv")
 
 # Keeping C3 species only
 SampleDetails = SampleDetails[SampleDetails$photosynthesis=="C3",]
+SampleDetails$Photosynthetic_pathway="C3"
 
 # Inform the various information required
 SampleDetails$SampleID=SampleDetails$Li6400.file
@@ -27,7 +28,7 @@ SampleDetails$Pmass = NA # Phosphorus content on a leaf dry weight basis
 SampleDetails$LWC = SampleDetails$LWC # Leaf water content (Fresh_weight - dry weight)/Fresh weight
 
 # Keeping only the columns of the standard:
-SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
+SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Photosynthetic_pathway","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
 
 # Saving the SampleDetails data
 save(SampleDetails,file="4_SampleDetails.Rdata")

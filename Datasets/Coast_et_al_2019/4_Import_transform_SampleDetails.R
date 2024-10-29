@@ -18,6 +18,7 @@ SampleDetails$Phenological_stage
 SampleDetails$"Sun_Shade"="Sun"
 SampleDetails[SampleDetails$Measurement=="Low Light","Sun_Shade"]="Shade"
 
+SampleDetails$Photosynthetic_pathway="C3"
 SampleDetails$Plant_type="Agricultural"
 
 SampleDetails$Soil="Pot"
@@ -30,7 +31,7 @@ SampleDetails$Parea=NA
 SampleDetails$Pmass=NA
 SampleDetails$LWC=NA
 
-SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
+SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Photosynthetic_pathway","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
 SampleDetails=SampleDetails[-which(is.na(SampleDetails$Phenological_stage)),]
 save(SampleDetails,file="4_SampleDetails.Rdata")
 

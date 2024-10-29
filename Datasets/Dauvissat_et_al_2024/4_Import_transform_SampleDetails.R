@@ -20,6 +20,7 @@ SampleDetails$Dataset_name="Dauvissat_et_al_2024"
 SampleDetails$Species=SampleDetails$spp # Genus species
 SampleDetails$Sun_Shade="Shade"
 SampleDetails$Phenological_stage="Mature"
+SampleDetails$Photosynthetic_pathway="C3"
 SampleDetails$Plant_type="Wild" # Wild or Agricultural
 SampleDetails$Soil="Natural" # Natural, Managed or Pot
 SampleDetails$LMA=NA # Leaf mass area in g m-2. Here, LMA is already informed so I just print it 
@@ -30,7 +31,7 @@ SampleDetails$Pmass=NA # Phosphorus content on a leaf dry weight basis
 SampleDetails$LWC=NA # Leaf water content (Fresh_weight - dry weight)/Fresh weight
 
 # Keeping only the columns of the standard:
-SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
+SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Photosynthetic_pathway","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
 
 # Saving the SampleDetails data
 save(SampleDetails,file="4_SampleDetails.Rdata")

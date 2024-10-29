@@ -1,7 +1,7 @@
 library(here)
 path <- here()
 
-refit_aci <- FALSE
+refit_aci <- TRUE
 recombine_spec_trait <- FALSE
 check_pipeline <- FALSE
 update_database <-TRUE
@@ -60,7 +60,7 @@ if(update_database){
   #Bilan colnames with Rdark and Tleaf_Rdark included
   Bilan_colnames=c("Vcmax25","Jmax25","TPU25","Rday25","StdError_Vcmax25","StdError_Jmax25","StdError_TPU25","StdError_Rday25","Tleaf","sigma","AIC","Model","Fitting_method","SampleID","Rdark","Tleaf_Rdark") 
   Reflectance_colnames=c("SampleID","Spectrometer","Probe_type","Probe_model","Spectra_trait_pairing","Reflectance")
-  SampleDetails_colnames=c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")
+  SampleDetails_colnames=c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Photosynthetic_pathway","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")
   Description_colnames=c("Authors","Acknowledgment","Dataset_DOI","Publication_DOI","Email")
   
   ls_folder_dataset=list.dirs(file.path(here(),"Datasets"),recursive = FALSE)

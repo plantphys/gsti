@@ -28,6 +28,7 @@ SampleDetails$Species=paste(SampleDetails$Genus,SampleDetails$Species) # Genus s
 SampleDetails$Sun_Shade="Shade" ## I considered that all the trees with CII less than 4 are shaded (JL 20231220)
 SampleDetails[SampleDetails$Branch=="T"&SampleDetails$CII%in%c("4","5"),"Sun_Shade"]="Sun"
 SampleDetails$Phenological_stage="Mature"
+SampleDetails$Photosynthetic_pathway="C3"
 SampleDetails$Plant_type="Wild" # Wild or Agricultural
 SampleDetails$Soil="Natural" # Natural, Managed or Pot
 SampleDetails$LMA=1/as.numeric(SampleDetails$SLA)*10000 # Leaf mass area in g m-2. 
@@ -38,7 +39,7 @@ SampleDetails$Pmass=SampleDetails$LMA*as.numeric(SampleDetails$P)*10 # Phosphoru
 SampleDetails$LWC=NA # Leaf water content (Fresh_weight - dry weight)/Fresh weight
 
 # Keeping only the columns of the standard:
-SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
+SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Photosynthetic_pathway","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
 
 # Saving the SampleDetails data
 save(SampleDetails,file="4_SampleDetails.Rdata")

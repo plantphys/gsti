@@ -13,6 +13,7 @@ SampleDetails$Sun_Shade="Sun"
 SampleDetails[SampleDetails$`Leaf age (Y-young; M-mature; O-old)`=="Y","Phenological_stage"]="Young"
 SampleDetails[SampleDetails$`Leaf age (Y-young; M-mature; O-old)`=="M","Phenological_stage"]="Mature"
 SampleDetails[SampleDetails$`Leaf age (Y-young; M-mature; O-old)`=="O","Phenological_stage"]="Old"
+SampleDetails$Photosynthetic_pathway="C3"
 SampleDetails$Plant_type="Wild"
 SampleDetails$Soil="Natural"
 
@@ -27,7 +28,7 @@ SampleDetails$Pmass=NA
 SampleDetails$LWC=SampleDetails$`LWC (%)`*100
 
 
-SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
+SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Photosynthetic_pathway","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
 
 save(SampleDetails,file="4_SampleDetails.Rdata")
 
