@@ -16,8 +16,7 @@ library(here)
 library(sf)
 library(rnaturalearth)
 library(rnaturalearthdata)
-#library(rgeos)
-library(spectratrait) ## Package available on github: devtools::install_github(repo = "TESTgroup-BNL/spectratrait", dependencies=TRUE)
+library(spectratrait) 
 library(cowplot)
 
 ## Define the working directory
@@ -26,8 +25,13 @@ out_path <- file.path(path,"Outputs")
 setwd(path)
 getwd()
 
+source(file.path(path,'R/Photosynthesis_tools.R'))
+
 # Importing the database
-Database=read.csv(file=file.path(path,"database/Database.csv"))
+Database_p1=read.csv(file=file.path(path,"database/Database_p1.csv"))
+Database_p2=read.csv(file=file.path(path,"database/Database_p2.csv"))
+Database_p3=read.csv(file=file.path(path,"database/Database_p3.csv"))
+Database=rbind.data.frame(Database_p1,Database_p2,Database_p3)
 
 ###################################
 ###   Map of the dataset sites  ###
@@ -64,7 +68,7 @@ dev.off()
 
 ### Reflectance spectra of the combined dataset (Full range spectra only)
 
-Reflectance=I(as.matrix(Database[,43:2193]))
+Reflectance=I(as.matrix(Database[,44:2194]))
 # list of spectra that are not in the full range
 ls_not_full=which(is.na(Reflectance),arr.ind = TRUE)[,1]
 ls_not_full=ls_not_full[-which(duplicated(ls_not_full))]
@@ -79,7 +83,9 @@ dev.off()
 
 table(Database$Fitting_method)/sum(table(Database$Fitting_method))
 
-
+nrow(Database[!is.na(Database$Rdark),])
+nrow(Database[!is.na(Database$Fitting_method),])
+nrow(Database[!is.na(Database$Fitting_method)&!is.na(Database$Rdark),])
 ### Number of observations per species and biome
 
 Resume=data.frame(table(Database$Species))
@@ -117,7 +123,16 @@ jpeg(file.path(out_path,"Number_observations.jpeg"), height=140, width=160,
 plot_grid(a+theme(legend.position = "none"),b+theme(legend.position = "none"),get_legend(a),ncol=2,rel_heights = c(0.65,0.35))+theme(plot.background = element_rect(color = "black",linewidth = 1.2))
 dev.off()
 
+Species=Database[,c("Species","Plant_type")]
+Species=Species[-which(duplicated(paste(Species$Species,Species$Plant_type))),]
+Species[which(duplicated(Species$Species)),]
+length(unique(Species$Species))
+table(Species$Plant_type)
+nrow(Database[Database$Plant_type=="Agricultural",])
 
+Database$Rdark25=f.modified.arrhenius.inv(P = Database$Rdark,Tleaf = Database$Tleaf_Rdark+273.15,Ha = 46390,Hd=150650,s = 490)
+quantile(Database$Rdark25,probs=c(0.025,0.975),na.rm=TRUE)
+mean(Database$Rdark25,na.rm=TRUE)
 #######################################################
 ###   Correlation between Vcmax 25 and leaf traits  ###
 #######################################################
@@ -160,8 +175,10 @@ c=ggplot(data=Database,aes(x=Chl_Gitelson,y=Vcmax25))+geom_point(size = pt_size)
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+ geom_smooth(method="lm")
 
 print(c)
+
 reg = lm(Jmax25~Vcmax25,data=Database)
 summary(reg)
+summary(lm(Jmax25~0+Vcmax25,data=Database))
 RMSE = sqrt(mean(residuals(reg)^2))
 R2 = summary(reg)$adj.r.squared
 d=ggplot(data=Database,aes(x=Vcmax25,y=Jmax25))+geom_point(size = pt_size)+xlim(c(0,300))+ylim(c(0,600))+theme_bw()+
@@ -171,6 +188,20 @@ d=ggplot(data=Database,aes(x=Vcmax25,y=Jmax25))+geom_point(size = pt_size)+xlim(
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+ geom_smooth(method="lm")
 
 print(d)
-jpeg("Outputs/Correlation_Vcmax25_traits.jpeg", height=180, width=180, units = 'mm',res=300)
-plot_grid(a,b,c,d,ncol=2,labels = c('(a)','(b)','(c)','(d)'),hjust = -0.1,align = 'hv')
+
+reg = lm(Vcmax25~Rdark25,data=Database)
+summary(reg)
+RMSE = sqrt(mean(residuals(reg)^2))
+R2 = summary(reg)$adj.r.squared
+e=ggplot(data=Database,aes(x=Rdark25,y=Vcmax25))+geom_point(size = pt_size)+ylim(c(0,150))+theme_bw()+
+  ylab(expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1))+xlab(expression(italic(R)[dark25]~mu*mol~m^-2~s^-1))+
+  annotate(x=0,y=150,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
+  annotate(x=0,y=0.9*150,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+ geom_smooth(method="lm")
+
+print(e)
+
+
+jpeg("Outputs/Correlation_Vcmax25_traits.jpeg", height=270, width=180, units = 'mm',res=300)
+plot_grid(a,b,c,d,e,ncol=2,labels = c('(a)','(b)','(c)','(d)','(e)'),hjust = -0.1,align = 'hv')
 dev.off()

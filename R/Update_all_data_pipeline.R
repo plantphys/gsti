@@ -94,7 +94,14 @@ if(update_database){
   Reflectance_matrix=database$Reflectance
   database=cbind.data.frame(database[,!colnames(database)%in%"Reflectance"],Reflectance_matrix)
   
-  write.csv(database,file=file.path(path,"Database/Database.csv"),row.names = FALSE)
+  ## The database is too large for GitHub, so I split the files in three parts
+  nrow_database=nrow(database)
+  database_p1=database[1:floor(nrow_database/3),]
+  database_p2=database[(floor(nrow_database/3)+1):(floor(2*nrow_database/3)),]
+  database_p3=database[(floor(2*nrow_database/3)+1):nrow_database,]
+  write.csv(database_p1,file=file.path(path,"Database/Database_p1.csv"),row.names = FALSE)
+  write.csv(database_p2,file=file.path(path,"Database/Database_p2.csv"),row.names = FALSE)
+  write.csv(database_p3,file=file.path(path,"Database/Database_p3.csv"),row.names = FALSE)
   print("Database successfully updated")
   
 }
