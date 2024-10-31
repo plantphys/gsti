@@ -1,4 +1,11 @@
-#' @param measures Aci curve dataframe with at least the columns A, Ci, Qin and Tleaf (in K)
+#' @title Function used to fit ACi curves
+#' @description This function fits the C3 photosynthesis model to A-Ci curves measured with a gas exchange analyser (usually a Licor or a Walz).
+#' All the ACi curves need to be organized into a dataframe called measures with at least the columns A, Ci, Qin, Tleaf (in degree celcius) and SampleID_num, the unique identifier of the ACi curves.
+#' It returns a dataframe called Bilan (summary in French) with a summary of the fitted parameters.
+#' Note that the C3 photosynthesis models describe the realized photosynthesis rate as the minimum of three potentiall limiting rates: the photosynthesis limited by the rubisco carboxylation rate Ac, the photosynthesis limited by the electron transport rate Aj, and the photosynthesis limited by the triose phosphate utilisation rate Ap. 
+#' Usually Ac limits A at low Ci, Aj limits A at intermediate Ci and Ap limits A at high Ci. This function determines automatically the transition between limitations. Note that Aj and Ap do not necessarily limit A.
+#' Several pdf are produced by the function within your working directory. They show the model fits.
+#' @param measures ACi curve dataframe with at least the columns A, Ci, Qin, Tleaf (in degree celcius) and SampleID_num the numerical identifier of the leaf 
 #' @param param See f.make.param for details. Determine the parameters used for the fitting
 #' @param VcmaxRef Value of VcmaxRef used to initialize the fitting procedure
 #' @param JmaxRef Value of JmaxRef used to initialize the fitting procedure
@@ -9,7 +16,15 @@
 #' @export
 #'
 #' @examples
-f.fit_Aci<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdayRef = 2, TPURef= 5){
+#' ## Simulation of 2 ACi curves with some random noise to simulate data measured with a gas analyser
+#' ACi1 = data.frame(A=f.ACi(PFD=1800,Ci=seq(20,1500,20),Tleaf = 25+273.16,param = f.make.param(VcmaxRef=50, JmaxRef = 50*1.7,TPURef=5.7))$A + rnorm (n=75,mean = 0,sd = 0.2))
+#' ACi1$Ci=seq(20,1500,20); ACi1$Qin = 1800; ACi1$Tleaf= 25; ACi1$SampleID_num=1
+#' ACi2 = data.frame(A=f.ACi(PFD=1800,Ci=seq(20,1500,20),Tleaf = 25+273.16,param = f.make.param(VcmaxRef=80, JmaxRef = 80*1.7,TPURef=999))$A + rnorm (n=75,mean = 0,sd = 0.2))
+#' ACi2$Ci=seq(20,1500,20); ACi2$Qin = 1800; ACi2$Tleaf= 25; ACi2$SampleID_num=2
+#' measures=rbind.data.frame(ACi1,ACi2)
+#' f.fit_ACi(measures=measures,param=f.make.param())
+#' 
+f.fit_ACi<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdayRef = 2, TPURef= 5){
 ## Basic checks
   if(any(measures$Ci < 0)) {stop("Ci contains negative values")}
   if(any(is.na(c(measures$A,measures$Ci,measures$Tleaf,measures$Qin,measures$SampleID_num)))) {stop("Ci, A, Tleaf or Qin have NA values")}
@@ -23,7 +38,7 @@ f.fit_Aci<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdayRef = 2, TPURef
   measures$Tleaf=measures$Tleaf+273## Conversion in Kelvin
   param[['TPURef']]=9999
 
-## Fitting of the Aci curve using Ac and Aj limitation
+## Fitting of the ACi curve using Ac and Aj limitation
    pdf(file = '2_ACi_fitting_Ac_Aj.pdf')
   result_Ac_Aj=by(data = measures,INDICES = list(measures$SampleID_num),
             FUN = function(x){print(paste('SampleID_num:',unique(x$SampleID_num)))
@@ -32,7 +47,7 @@ f.fit_Aci<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdayRef = 2, TPURef
   dev.off()
   
   param[['JmaxRef']]=9999
-## Fitting of the Aci curve using only the Ac limitation
+## Fitting of the ACi curve using only the Ac limitation
   pdf(file = '2_ACi_fitting_Ac.pdf')
   result_Ac=by(data = measures,INDICES = list(measures$SampleID_num),
                FUN = function(x){print(paste('SampleID_num:',unique(x$SampleID_num)))
@@ -168,7 +183,7 @@ f.fit_Aci<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdayRef = 2, TPURef
        param['RdayRef']=param_leg['RdayRef']
        param['TPURef']=param_leg['TPURef']
        f.plot(measures=x,list_legend = as.list(param_leg),param = param,name =unique(x$SampleID_num))
-       simu=f.Aci(PFD=x$Qin,Tleaf = x$Tleaf,ci = x$Ci,param = param)
+       simu=f.ACi(PFD=x$Qin,Tleaf = x$Tleaf,Ci = x$Ci,param = param)
        ## Number of points limited by Ac, Aj and Ap
        n_Ac=sum(simu$Ac<simu$Aj&simu$Ac<simu$Ap, na.rm = TRUE)
        n_Aj=sum(simu$Aj<simu$Ac&simu$Aj<simu$Ap, na.rm = TRUE)
@@ -193,7 +208,7 @@ f.fit_Aci<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdayRef = 2, TPURef
 }
 
 
-#' @param measures Aci curve dataframe with at least the columns A, Ci, Qin and Tleaf (in degree celcius)
+#' @param measures ACi curve dataframe with at least the columns A, Ci, Qin and Tleaf (in degree celcius)
 #' @param param See f.make.param for details. Determine the parameters used for the fitting
 #' @return Return a dataframe (Bilan) with for each curve in row the estimated parameters as well as the model used (Ac, Ac and Aj, Ac and Aj and Ap)
 #' @export

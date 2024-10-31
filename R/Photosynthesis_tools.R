@@ -5,6 +5,7 @@ library(readxl)
 ## available on github: https://github.com/TESTgroup-BNL/LeafGasExchange
 ## More information is given on the package github.
 ## Note that Rd was renamed Rday and Tp was renamed TPU in this code
+## ci was renamed in Ci
 
 
 #' @title Arrhenius function to calculate the temperature effect on some parameters
@@ -179,16 +180,23 @@ f.make.param<-function(R=NA,O2=NA,TRef=NA,
 }
 
 #' @title Photosynthesis model
-#' @description Calculate the assimilation according to Farquhar equations.
+#' @description Calculate the CO2 assimilation according to Farquhar, von Caemmerer and Berry (1980) equations for C3 species.
 #' @inheritParams f.make.param
 #' @param param List of parameters, see f.make.param for details
-#'
-#' @return Assimilation in micromol.m-2.s-1
+#' @param PFD Photosynthetic flux density (i.e light) at the surface of the leaf, micro mol m-2 s-1
+#' @param Ci Intercellular CO2 concentration, ppm or micro mol mol-1
+#' @param Tleaf Leaf temperature in Kelvin
+#' @return The function returns a dataframe with as columns:
+#'    - A, the net photosynthesis rate, micro mol m-2 s-1
+#'    - Ac, the potential rate of photosynthesis limited by the rubisco carboxylation rate, micro mol m-2 s-1
+#'    - Aj, the potential rate of photosynthesis limited by the electron transport rate, micro mol m-2 s-1
+#'    - Ap, the potential rate of photosynthesis limited by the triose phosphate utilization rate, micro mol m-2 s-1
+#'    - Ag, the gross photosynthesis rate, i.e, without accounting for the respiration, micro mol m-2 s-1
 #' @export
 #'
-#' @examples ci=seq(40,1500,10)
-#' plot(x=ci,y=f.Aci(PFD=2000,ci=ci,Tleaf=300,param=f.make.param())$A)
-f.Aci<-function(PFD,ci,Tleaf,param=f.make.param()){
+#' @examples Ci=seq(40,1500,10)
+#' plot(x=Ci,y=f.ACi(PFD=2000,Ci=Ci,Tleaf=300,param=f.make.param())$A,xlab="Ci micromol m-2 s-1",ylab = "A micromol m-2 s-1")
+f.ACi<-function(PFD,Ci,Tleaf,param=f.make.param()){
   ## Calculating the temperature dependence of the photosynthetic parameters:
   Kc=f.arrhenius(param[['KcRef']],param[['KcHa']],Tleaf)
   Ko=f.arrhenius(param[['KoRef']],param[['KoHa']],Tleaf)
@@ -205,11 +213,11 @@ f.Aci<-function(PFD,ci,Tleaf,param=f.make.param()){
   
   ## Calculating the different photosynthesis limiting rates Wc, Wj, and Wp
   Wp=3*TPU
-  Wc=Vcmax*(ci-Gstar)/(ci+Kc*(1+param[['O2']]/Ko))
-  Wj=J/4*(ci-Gstar)/(ci+2*Gstar)
+  Wc=Vcmax*(Ci-Gstar)/(Ci+Kc*(1+param[['O2']]/Ko))
+  Wj=J/4*(Ci-Gstar)/(Ci+2*Gstar)
   
   ## Smoothing the transitions between photosynthesis limitations
-  Ai=f.smooth(A1 = Wc,A2 = Wj,theta=param[['thetacj']])*as.numeric(ci>Gstar)+f.smooth(A1 = Wc,A2 = Wj,theta=param[['thetacj']],root = 2)*as.numeric(ci<=Gstar)
+  Ai=f.smooth(A1 = Wc,A2 = Wj,theta=param[['thetacj']])*as.numeric(Ci>Gstar)+f.smooth(A1 = Wc,A2 = Wj,theta=param[['thetacj']],root = 2)*as.numeric(Ci<=Gstar)
   A=f.smooth(A1=Ai,A2=Wp,theta=param[['thetaip']])-Rday
  
   result=data.frame(A=A,Ac=Wc-Rday,Aj=Wj-Rday,Ap=Wp-Rday,Ag=A+Rday)
@@ -239,7 +247,7 @@ f.smooth=function(A1,A2,theta,root=1){
 #' @description Plot a generic graphic with observed data and predictions. Be careful to sort the data.frame beforehand.
 #' @param measures Data frame obtained from CO2 or light curve with at least columns A, Ci, Qin and Tleaf
 #' Data frame obtained from CO2 or light curve with at least columns A, Ci, Qin and Tleaf
-#' @param type Type of the curve to plot (light curve: Aq or CO2 curve Aci)
+#' @param type Type of the curve to plot (light curve: AQ or CO2 curve ACi)
 #' @param list_legend Named list where the name and values will appear in the legend
 #' @inheritParams f.A
 #' @param name Name of the curve to be displayed
@@ -249,17 +257,17 @@ f.smooth=function(A1,A2,theta,root=1){
 #'
 #' @examples
 #' param=f.make.param()
-#' A=f.Aci(PFD=2000,Tleaf=300,ci=seq(40,1500,50),param=param)$A+rnorm(n = 30,mean = 0,sd = 0.5)
+#' A=f.ACi(PFD=2000,Tleaf=300,Ci=seq(40,1500,50),param=param)$A+rnorm(n = 30,mean = 0,sd = 0.5)
 #' data=data.frame(Tleaf=rep(300,30),Ci=seq(40,1500,50),Qin=rep(2000,30),A=A)
-#' f.plot(measures=data,param=param,list_legend=param['VcmaxRef'],name='Example 01',type='Aci')
+#' f.plot(measures=data,param=param,list_legend=param['VcmaxRef'],name='Example 01',type='ACi')
 
-f.plot<-function(measures=NULL,list_legend,param,name='',type='Aci'){
+f.plot<-function(measures=NULL,list_legend,param,name='',type='ACi'){
   # Plot all data points
-  if(type=='Aci'){x=measures$Ci
+  if(type=='ACi'){x=measures$Ci
   xlab=expression(italic(C)[i]~ppm)}
   if(type%in%c('Aq','AQ')){x=measures$Qin
   xlab=expression(italic(Q)['in']~mu*mol~m^-2~s^-1)}
-  if(!type%in%c('Aci','AQ','Aq')){print('type should be Aci or Aq')}
+  if(!type%in%c('ACi','AQ','Aq')){print('type should be ACi or Aq')}
   plot(x=x,y=measures$A, main=name, xlab=xlab, ylab=expression(italic(A)~mu*mol~m^-2~s^-1),ylim=c(min(measures$A,na.rm = TRUE),1.15*max(measures$A,na.rm = TRUE)))
   if(!is.null(list_legend)){
     list_legend=list_legend[order(names(list_legend))]
@@ -269,7 +277,7 @@ f.plot<-function(measures=NULL,list_legend,param,name='',type='Aci'){
          pch=c(NA,NA,NA,NA,21),
          col=c("dark blue","dark red","dark green","dark grey","black"),bty="n",lwd=c(2,2,2,1,1),
          seg.len=2,cex=1,pt.cex=1)
-  result=f.Aci(ci=measures$Ci,Tleaf=measures$Tleaf,PFD=measures$Qin,param=param)
+  result=f.ACi(Ci=measures$Ci,Tleaf=measures$Tleaf,PFD=measures$Qin,param=param)
   lines(x=x,y=result$A,col="dark grey",lwd=1)
   lines(x=x,y=result$Ac,lwd=2,col="dark blue",lty=2)
   lines(x=x,y=result$Aj,lwd=2,col="dark red",lty=2)
@@ -289,7 +297,7 @@ f.plot<-function(measures=NULL,list_legend,param,name='',type='Aci'){
 #' @examples
 f.SumSq<-function(Fixed,data,Start){
   param=c(Fixed,Start)
-  y<-data$A-f.Aci(ci=data$Ci,PFD=data$Qin,Tleaf=data$Tleaf,param=param)$A
+  y<-data$A-f.ACi(Ci=data$Ci,PFD=data$Qin,Tleaf=data$Tleaf,param=param)$A
   return(sum(y^2))
 }
 
@@ -339,18 +347,18 @@ f.MinusLogL<-function(data,sigma,R=0.75,O2=0.75,TRef=0.75,
              RdayRef=RdayRef,RdayHa=RdayHa, RdayHd=RdayHd,RdayS=RdayS,
              KcRef= KcRef,KcHa=	KcHa,KoRef=KoRef,KoHa=KoHa,GstarRef=	GstarRef,
              GstarHa	=GstarHa,abso=	abso,aQY=aQY,Theta=Theta)
-  A_pred=f.Aci(ci=data$Ci,PFD=data$Qin,Tleaf=data$Tleaf,param=param)
+  A_pred=f.ACi(Ci=data$Ci,PFD=data$Qin,Tleaf=data$Tleaf,param=param)
   
   y<-dnorm(x=data$A,mean=A_pred$A,sd=(sigma),log=TRUE)
   return(-sum(y))
 }
 
-#' @title Fitting function for photosynthesis datadata (light curve or Aci curve)
-#' @description Function to fit model to data. The parameters to fit have to be described in the list Start.
-#' All the other parameters of the f.Aci functions have to be in param. If the parameters from Start are repeated in param, the later one will be ignored.
-#' This function uses two methods to fit the data. First by minimizing the residual sum-of-squares of the residuals and then by maximizing the likelihood function. The first method is more robust but the second one allows to calculate the confident interval of the parameters.
-#' @param measures Data frame of measures obtained from gas exchange analyser with at least the columns A, Ci, Qin and Tleaf (in K). If RHs, Tair, Patm, VPDleaf are also present, there mean will be added in the output, but those columns are not needed to estimate the parameters
-#' @param id.name Name of the colums in measures with the identifier for the curve.
+#' @title Fitting function for photosynthesis datadata (light curve or ACi curve)
+#' @description Function to fit the C3 photosynthesis model to the data. The parameters to estimate have to be listed in the list Start, with approximate initializing values.
+#' All the other parameters of the f.ACi functions have to be listed in the variable param. If the parameters from Start are repeated in param, the later one will be ignored.
+#' This function uses two methods to fit the data. First by minimizing the residual sum-of-squares and then by maximizing the likelihood function. The first method is more robust but the second one allows to calculate the confidence interval of the parameters.
+#' @param measures Data frame of measures obtained from gas exchange analyser with at least the columns A, Ci, Qin and Tleaf in Kelvin. If RHs, Tair, Patm, VPDleaf are also present, there mean will be added in the output, but those columns are not needed to estimate the parameters
+#' @param id.name Name of the columns in measures with the identifier for the curve.
 #' @param Start List of parameters to fit with their initial values.
 #' @param param See f.make.param() for details.
 #' @param modify.init TRUE or FALSE, allows to modify the Start values before fitting the data
@@ -360,11 +368,11 @@ f.MinusLogL<-function(data,sigma,R=0.75,O2=0.75,TRef=0.75,
 #'
 #' @examples ##Simulation of a CO2 curve
 #' data=data.frame(Tleaf=rep(300,20),
-#' Ci=seq(40,1500,75),Qin=rep(2000,20),Tair=300,RHs=70,VPDleaf=2,Patm=101,A=f.Aci(PFD=2000,Tleaf=300,ci=seq(40,1500,75),
+#' Ci=seq(40,1500,75),Qin=rep(2000,20),Tair=300,RHs=70,VPDleaf=2,Patm=101,A=f.ACi(PFD=2000,Tleaf=300,Ci=seq(40,1500,75),
 #' param=f.make.param())$A+rnorm(n = 20,mean = 0,sd = 0.5))
 #'
 #' f.fitting(measures=data,id.name=NULL,Start=list(JmaxRef=90,VcmaxRef=70,RdayRef=1),param=f.make.param())
-f.fitting<-function(measures,id.name=NULL,Start=list(JmaxRef=90,VcmaxRef=70,RdayRef=1),param=f.make.param(),modify.init=TRUE,do.plot=TRUE,type='Aci'){
+f.fitting<-function(measures,id.name=NULL,Start=list(JmaxRef=90,VcmaxRef=70,RdayRef=1),param=f.make.param(),modify.init=TRUE,do.plot=TRUE,type='ACi'){
   Fixed=param[!names(param)%in%names(Start)]
   
   ## Here I use some empirical tricks to create a list of initial values for the estimated parameters that span a large range of possible values
