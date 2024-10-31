@@ -22,7 +22,7 @@ curated_data=curated_data[order(curated_data$SampleID_num,curated_data$Ci),]
 
 
 # Automatic fitting of the ACi curves. This function generates several pdf in the dataset folder
-Bilan=f.fit_Aci(measures=curated_data,param = f.make.param())
+Bilan=f.fit_ACi(measures=curated_data,param = f.make.param())
 
 # I manually check the fitting ("2_ACi_fitting_best_model.pdf").
 # If some fittings are bad, I go back to step 1 and remove the bad points or bad curves

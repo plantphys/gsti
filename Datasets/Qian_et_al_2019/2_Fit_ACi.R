@@ -11,7 +11,7 @@ load('1_QC_ACi_data.Rdata',verbose=TRUE)
 curated_data=curated_data[order(curated_data$SampleID_num,curated_data$Ci),] ## Sorting the points in the Aci curves so the ci are in an increasing order. It helps with the plots
 
 ## Fitting of the ACi curves using Ac, Ac+Aj or Ac+Aj+Ap limitations
-Bilan=f.fit_Aci(measures=curated_data,param = f.make.param())## After manual inspection, those fittings seem fine, at least for Vcmax.
+Bilan=f.fit_ACi(measures=curated_data,param = f.make.param())## After manual inspection, those fittings seem fine, at least for Vcmax.
 
 
 ## Fitting quality check

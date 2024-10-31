@@ -11,7 +11,7 @@ load('1_QC_ACi_data.Rdata',verbose=TRUE)
 curated_data=curated_data[order(curated_data$SampleID_num,curated_data$Ci),]
 
 ## Fitting of the ACi curves using Ac, Ac+Aj or Ac+Aj+Ap limitations
-Bilan=f.fit_Aci(measures=curated_data,param = f.make.param())## After manual inspection, those fittings seem fine, at least for Vcmax.
+Bilan=f.fit_ACi(measures=curated_data,param = f.make.param())## After manual inspection, those fittings seem fine, at least for Vcmax.
 
 hist(Bilan$Vcmax25)
 plot(x=Bilan$Vcmax25,y=Bilan$Jmax25,xlab='Vcmax25',ylab='Jmax25',xlim=c(min(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE),max(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE)),ylim=c(min(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE),max(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE)))
