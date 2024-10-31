@@ -32,6 +32,8 @@ for(file in ls_files_Li6800){
   
   data_6800=rbind.data.frame(data_6800,file_6800[,col_names])  
 }
+
+#Checking if there are any NA values for Ci
 which(is.na(data_6800$Ci))
 
 data_6800$SampleID=sub("\\.xlsx$", "", basename(data_6800$file))
