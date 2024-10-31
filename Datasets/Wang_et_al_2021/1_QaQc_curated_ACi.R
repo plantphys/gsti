@@ -25,7 +25,7 @@ hist(curated_data$gsw)
 hist(curated_data$Qin)
 
 # Flagging the below 0 Ci as bad data
-curated_data[curated_data$Ci<0,'QC']='bad'
+#curated_data[curated_data$Ci<0,'QC']='bad'
 curated_data[curated_data$RH<10,'QC']='bad'
 curated_data[curated_data$Qin<500,'QC']='bad'
 
@@ -39,7 +39,7 @@ curated_data[curated_data$Qin<500,'QC']='bad'
 QC_table=cbind.data.frame(SampleID_num=c(),
                           Record=c()) 
 # Here I flag the bad curves by writing down the SampleID_num of the bad curves.
-ls_bad_curve=c()
+ls_bad_curve=c(13,14)
 
 # Here I flag all the bad curves and bad points
 curated_data[paste(curated_data$SampleID_num,curated_data$Record)%in%paste(QC_table$SampleID_num,QC_table$Record),'QC']='bad'

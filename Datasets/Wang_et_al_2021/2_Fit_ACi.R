@@ -8,12 +8,13 @@ library(here)
 # Find the path of the top relative directory
 path=here()
 
-# Set the working directory to the 'Lamour_et_al_2021' folder where the data is located
-setwd(file.path(path,'/Datasets/Lamour_et_al_2021'))
+# Set the working directory to the 'Wang_et_al_2021' folder where the data is located
+setwd(file.path(path,'/Datasets/Wang_et_al_2021'))
 
 # Load various functions that are used to fit, plot and analyse the ACi curves
 source(file.path(path,'/R/fit_Vcmax.R'))
 source(file.path(path,'/R/Photosynthesis_tools.R'))
+source(file.path(path,'/R/C4_Photosynthesis_tools.R'))
 
 # Load the quality checked ACi curves processed in step 1
 load('1_QC_ACi_data.Rdata',verbose=TRUE)
@@ -24,7 +25,7 @@ curated_data=curated_data[order(curated_data$SampleID_num,curated_data$Ci),]
 
 
 # Automatic fitting of the ACi curves. This function generates several pdf in the dataset folder
-Bilan=f.fit_Aci(measures=curated_data,param = f.make.param())
+Bilan=f.fit_ACi.C4(measures=curated_data,param = f.make.param.C4())
 
 # I manually check the fitting ("2_ACi_fitting_best_model.pdf").
 # If some fittings are bad, I go back to step 1 and remobve the bad points or bad curves
@@ -34,13 +35,6 @@ Bilan=f.fit_Aci(measures=curated_data,param = f.make.param())
 ## Fitting quality check
 # Are there particularly low or high Vcmax25?
 hist(Bilan$Vcmax25)
-
-
-# I check if the Jmax25/ Vcmax25 ratio look correct
-plot(x=Bilan$Vcmax25,y=Bilan$Jmax25,xlab='Vcmax25',ylab='Jmax25',xlim=c(min(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE),max(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE)),ylim=c(min(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE),max(c(Bilan$Vcmax25,Bilan$Jmax25),na.rm=TRUE)))
-abline(a=c(0,1))
-abline(lm(Jmax25~0+Vcmax25,data=Bilan),col='red')
-
 
 # Adding the SampleID column
 Table_SampleID=curated_data[!duplicated(curated_data$SampleID),c('SampleID','SampleID_num')]
