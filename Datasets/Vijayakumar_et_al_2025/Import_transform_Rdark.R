@@ -10,7 +10,7 @@ path=here()
 setwd(file.path(path,'/Datasets/Vijayakumar_et_al_2025'))
 
 # Importing the author's Rdark data
-data_Rdark <- read.csv("Tomato_Rd.csv")
+data_Rdark <- read.csv("Amrutha et al 2025-Tomato_Dark respiration and SVC data_combined.csv")
 
 # Creating a Rdark dataframe
 Rdark <- data.frame(SampleID=data_Rdark$Unique.ID,Rdark=data_Rdark$Rdark,Tleaf_Rdark=data_Rdark$Tleaf)
