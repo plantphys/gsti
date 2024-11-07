@@ -1,7 +1,7 @@
 library(here)
 path <- here()
 
-refit_aci <- TRUE
+refit_aci <- FALSE
 recombine_spec_trait <- FALSE
 check_pipeline <- FALSE
 update_database <-TRUE
