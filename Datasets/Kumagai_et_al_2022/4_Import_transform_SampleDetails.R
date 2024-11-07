@@ -32,5 +32,5 @@ SampleDetails=SampleDetails[SampleDetails$SampleID%in%Bilan$SampleID,]
 SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Photosynthetic_pathway","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
 
 save(SampleDetails,file="4_SampleDetails.Rdata")
-source(file.path(path,'/R/f.CHeck_dataset.R'))
+source(file.path(path,'/R/f.Check_dataset.R'))
 f.Check_data(folder_path = getwd())

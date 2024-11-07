@@ -38,14 +38,23 @@ ls_weird_spectra=c("SVC_Reflectance_Data/HR.100124.0015.sig","SVC_Reflectance_Da
 
 Reflectance=Reflectance[!Reflectance$file%in%c(ls_bad_spectra,ls_weird_spectra),]
 
-Reflectance$SampleID=Reflectance$file
+## Finding the SampleID from the gas exchange data
+# Importing the gas exhange data
+data_Rdark <- read.csv("Amrutha et al 2025-Tomato_Dark respiration and SVC data_combined.csv")
+SampleInfo=data_Rdark[,c("Sl.No","Unique.ID","SVC.file.number")]
+#Merging data
+Reflectance$file_name=sub("\\.sig$", "", basename(Reflectance$file))
+Reflectance=merge(x = Reflectance,y=data_Rdark,by.x="file_name",by.y="SVC.file.number",all=TRUE)
+Reflectance$SampleID=Reflectance$Unique.ID
+
 Reflectance$Spectrometer="SVC HR-1024i"
 Reflectance$Probe_type="Leaf clip"
 Reflectance$Probe_model="SVC LC-RP"
 Reflectance$Spectra_trait_pairing="Same"
-Reflectance$Reflectance=I(as.matrix(Reflectance[,1:2151]))
-
+Reflectance$Reflectance=I(as.matrix(Reflectance[,2:2152]))
+Reflectance=Reflectance[!is.na(Reflectance$SampleID),]
 f.plot.spec(Z = Reflectance$Reflectance,wv = 350:2500) 
+
 
 ## I remove spectra with a very high reflectance
 
