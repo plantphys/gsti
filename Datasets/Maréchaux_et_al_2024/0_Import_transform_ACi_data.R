@@ -34,7 +34,7 @@ for(file in ls_files_Li6800){
 which(is.na(data_6800$Ci))
 
 data_6800$SampleID=sub("\\.xlsx$", "", basename(data_6800$file))
-
+data_6800$SampleID=sub("ACi_", "", data_6800$SampleID)
 data_6800[data_6800$Tleaf>100,"Tleaf"]=data_6800[data_6800$Tleaf>100,"Tleaf2"] ## It looks like the temperature sensor was not always connected to the same port
 
 # Select specific columns from the original data to create the curated data set
