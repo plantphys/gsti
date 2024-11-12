@@ -1,0 +1,447 @@
+samp_no,sample_id,tree,branch,leaf,spectra_rep,Root Filename,Filename,Filename_str,File notes,White Reference,leaf_position,leaf_notes,notes
+1,,,,,,2022100600,2.0221E+12,X2022100600000,NA,x,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+2,t2b20l20,t2,b20,l20,r1,2022100600,2.0221E+12,X2022100600001,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+3,t2b20l20,t2,b20,l20,r2,2022100600,2.0221E+12,X2022100600002,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+4,t2b20l20,t2,b20,l20,r3,2022100600,2.0221E+12,X2022100600003,NA,,NA,,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+5,,,,,,2022100600,2.0221E+12,X2022100600004,NA,x,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+6,t2b20l21,t2,b20,l21,r1,2022100600,2.0221E+12,X2022100600005,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+7,t2b20l21,t2,b20,l21,r2,2022100600,2.0221E+12,X2022100600006,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+8,t2b20l21,t2,b20,l21,r3,2022100600,2.0221E+12,X2022100600007,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+9,,,,,,2022100600,2.0221E+12,X2022100600008,NA,x,NA,,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+10,t2b20l22,t2,b20,l22,r1,2022100600,2.0221E+12,X2022100600009,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+11,t2b20l22,t2,b20,l22,r2,2022100600,2.0221E+12,X2022100600010,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+12,t2b20l22,t2,b20,l22,r3,2022100600,2.0221E+12,X2022100600011,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+13,,,,,,2022100600,2.0221E+12,X2022100600012,NA,x,NA,,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+14,t2b21l20,t2,b21,l20,r1,2022100600,2.0221E+12,X2022100600013,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+15,t2b21l20,t2,b21,l20,r2,2022100600,2.0221E+12,X2022100600014,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+16,t2b21l20,t2,b21,l20,r3,2022100600,2.0221E+12,X2022100600015,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+17,,,,,,2022100600,2.0221E+12,X2022100600016,NA,x,NA,,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+18,t2b21l21,t2,b21,l21,r1,2022100600,2.0221E+12,X2022100600017,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+19,t2b21l21,t2,b21,l21,r2,2022100600,2.0221E+12,X2022100600018,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+20,t2b21l21,t2,b21,l21,r3,2022100600,2.0221E+12,X2022100600019,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+21,,,,,,2022100600,2.0221E+12,X2022100600020,NA,x,NA,,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+22,t2b21l22,t2,b21,l22,r1,2022100600,2.0221E+12,X2022100600021,NA,,NA,Leaf position unknown,Exclude
+23,,,,,,2022100600,2.0221E+12,X2022100600022,NA,x,NA,,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+24,t1b1l1,t1,b1,l1,r1,2022100600,2.0221E+12,X2022100600023,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+25,t1b1l1,t1,b1,l1,r2,2022100600,2.0221E+12,X2022100600024,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+26,t1b1l1,t1,b1,l1,r3,2022100600,2.0221E+12,X2022100600025,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+27,,,,,,2022100600,2.0221E+12,X2022100600026,NA,x,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+28,t2b21l23,t2,b21,l3,r1,2022100600,2.0221E+12,X2022100600027,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+29,t2b21l23,t2,b21,l3,r2,2022100600,2.0221E+12,X2022100600028,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+30,t2b21l23,t2,b21,l3,r3,2022100600,2.0221E+12,X2022100600029,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+31,,,,,,2022100600,2.0221E+12,X2022100600030,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+32,t1b1l20,t2,b1,l20,r1,2022100600,2.0221E+12,X2022100600031,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+33,t1b1l20,t2,b1,l20,r2,2022100600,2.0221E+12,X2022100600032,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+34,t1b1l20,t2,b1,l20,r3,2022100600,2.0221E+12,X2022100600033,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+35,,,,,,2022100600,2.0221E+12,X2022100600034,NA,x,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+36,t1b121,t1,b1,l21,r1,2022100600,2.0221E+12,X2022100600035,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+37,t1b121,t1,b1,l21,r2,2022100600,2.0221E+12,X2022100600036,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+38,t1b121,t1,b1,l21,r3,2022100600,2.0221E+12,X2022100600037,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+39,t3b21l20,t3,b21,l20,r1,2022100800,2.0221E+12,X2022100800038,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+40,t3b21l20,t3,b21,l20,r2,2022100800,2.0221E+12,X2022100800039,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+41,t3b21l20,t3,b21,l20,r3,2022100800,2.0221E+12,X2022100800040,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+42,t3b21l21,t3,b21,l21,r1,2022100800,2.0221E+12,X2022100800041,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+43,t3b21l21,t3,b21,l21,r2,2022100800,2.0221E+12,X2022100800042,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+44,t3b21l21,t3,b21,l21,r3,2022100800,2.0221E+12,X2022100800043,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+45,t3b21l22,t3,b21,l22,r1,2022100800,2.0221E+12,X2022100800044,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+46,t3b21l22,t3,b21,l22,r2,2022100800,2.0221E+12,X2022100800045,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+47,t3b21l22,t3,b21,l22,r3,2022100800,2.0221E+12,X2022100800046,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+48,t4b20l21,t4,b20,l21,r1,2022100800,2.0221E+12,X2022100800047,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+49,t4b20l21,t4,b20,l21,r2,2022100800,2.0221E+12,X2022100800048,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+50,t4b20l21,t4,b20,l21,r3,2022100800,2.0221E+12,X2022100800049,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+51,t4b20l20,t4,b20,l20,r1,2022100800,2.0221E+12,X2022100800050,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+52,t4b20l20,t4,b20,l20,r2,2022100800,2.0221E+12,X2022100800051,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+53,t4b20l20,t4,b20,l20,r3,2022100800,2.0221E+12,X2022100800052,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+54,t4b1l1,t4,b1,l1,r1,2022100800,2.0221E+12,X2022100800053,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+55,t4b1l1,t4,b1,l1,r2,2022100800,2.0221E+12,X2022100800054,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+56,t4b1l1,t4,b1,l1,r3,2022100800,2.0221E+12,X2022100800055,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+57,t4b1l1,t4,b1,l1,r4,2022100800,2.0221E+12,X2022100800056,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+58,,,,,,2022100800,2.0221E+12,X2022100800057,NA,x,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+59,t4b20l21,t4,b20,l21,r1,2022100800,2.0221E+12,X2022100800058,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+60,t4b20l21,t4,b20,l21,r2,2022100800,2.0221E+12,X2022100800059,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+61,t4b20l21,t4,b20,l21,r3,2022100800,2.0221E+12,X2022100800060,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+62,t4b20l23,t4,b20,l23,r1,2022100800,2.0221E+12,X2022100800061,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+63,t4b20l23,t4,b20,l23,r2,2022100800,2.0221E+12,X2022100800062,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+64,t4b20l23,t4,b20,l23,r3,2022100800,2.0221E+12,X2022100800063,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+65,t4b20l21,t4,b20,l21,r1,2022100800,2.0221E+12,X2022100800064,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+66,t4b20l21,t4,b20,l21,r2,2022100800,2.0221E+12,X2022100800065,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+67,t4b20l21,t4,b20,l21,r3,2022100800,2.0221E+12,X2022100800066,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+68,t3b20l20,t3,b20,l20,r1,2022100800,2.0221E+12,X2022100800067,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+69,t3b20l20,t3,b20,l20,r2,2022100800,2.0221E+12,X2022100800068,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+70,t3b20l20,t3,b20,l20,r3,2022100800,2.0221E+12,X2022100800069,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+71,t3b20l22,t3,b20,l22,r1,2022100800,2.0221E+12,X2022100800070,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+72,t3b20l22,t3,b20,l22,r2,2022100800,2.0221E+12,X2022100800071,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+73,t3b20l22,t3,b20,l22,r3,2022100800,2.0221E+12,X2022100800072,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+74,t3b1l1,t3,b1,l1,r1,2022100800,2.0221E+12,X2022100800073,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+75,t3b1l1,t3,b1,l1,r2,2022100800,2.0221E+12,X2022100800074,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+76,t3b1l1,t3,b1,l1,r3,2022100800,2.0221E+12,X2022100800075,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+77,t3b1l2,t3,b1,l2,r1,2022100800,2.0221E+12,X2022100800076,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+78,t3b1l2,t3,b1,l2,r2,2022100800,2.0221E+12,X2022100800077,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+79,t3b1l2,t3,b1,l2,r3,2022100800,2.0221E+12,X2022100800078,NA,,NA,Leaf position unknown,"optimized at beginning of ASD measurements Oct 6, did not measure dark current"
+80,t6b20l20,t6,b20,l20,r1,2022100900,2.0221E+12,X2022100900079,NA,,NA,Leaf position unknown,
+81,t6b20l20,t6,b20,l20,r2,2022100900,2.0221E+12,X2022100900080,NA,,NA,Leaf position unknown,
+82,t6b20l20,t6,b20,l20,r3,2022100900,2.0221E+12,X2022100900081,NA,,NA,Leaf position unknown,
+83,t6b20l21,t6,b21,l21,r1,2022100900,2.0221E+12,X2022100900082,NA,,NA,Leaf position unknown,
+84,t6b20l21,t6,b21,l21,r2,2022100900,2.0221E+12,X2022100900083,NA,,NA,Leaf position unknown,
+85,t6b20l21,t6,b21,l21,r3,2022100900,2.0221E+12,X2022100900084,NA,,NA,Leaf position unknown,
+86,t6b20l22,t6,b20,l22,r1,2022100900,2.0221E+12,X2022100900085,NA,,NA,Leaf position unknown,
+87,t6b20l22,t6,b20,l22,r2,2022100900,2.0221E+12,X2022100900086,NA,,NA,Leaf position unknown,
+88,t6b20l22,t6,b20,l22,r3,2022100900,2.0221E+12,X2022100900087,NA,,NA,Leaf position unknown,
+89,t5b20l22,t5,b20,l22,r1,2022100900,2.0221E+12,X2022100900088,NA,,NA,Leaf position unknown,
+90,t5b20l22,t5,b20,l22,r2,2022100900,2.0221E+12,X2022100900089,NA,,NA,Leaf position unknown,
+91,t5b20l22,t5,b20,l22,r3,2022100900,2.0221E+12,X2022100900090,NA,,NA,Leaf position unknown,
+92,t5b20l21,t5,b20,l21,r1,2022100900,2.0221E+12,X2022100900091,NA,,NA,Leaf position unknown,
+93,t5b20l21,t5,b20,l21,r2,2022100900,2.0221E+12,X2022100900092,NA,,NA,Leaf position unknown,
+94,t5b20l21,t5,b20,l21,r3,2022100900,2.0221E+12,X2022100900093,NA,,NA,Leaf position unknown,
+95,t5b20l20,t5,b20,l20,r1,2022100900,2.0221E+12,X2022100900094,NA,,NA,Leaf position unknown,
+96,t5b20l20,t5,b20,l20,r2,2022100900,2.0221E+12,X2022100900095,NA,,NA,Leaf position unknown,
+97,t5b20l20,t5,b20,l20,r3,2022100900,2.0221E+12,X2022100900096,NA,,NA,Leaf position unknown,
+98,t8b20l20,t8,b20,l20,r1,2022100900,2.0221E+12,X2022100900097,NA,,,epiphylls,
+99,t8b20l20,t8,b20,l20,r2,2022100900,2.0221E+12,X2022100900098,NA,,NA,Leaf position unknown,
+100,t8b20l20,t8,b20,l20,r3,2022100900,2.0221E+12,X2022100900099,NA,,NA,Leaf position unknown,
+101,t8b20l21,t8,b20,l21,r1,2022100900,2.0221E+12,X2022100900100,NA,,NA,Leaf position unknown,
+102,t8b20l21,t8,b20,l21,r2,2022100900,2.0221E+12,X2022100900101,NA,,NA,Leaf position unknown,
+103,t8b20l21,t8,b20,l21,r3,2022100900,2.0221E+12,X2022100900102,NA,,NA,Leaf position unknown,
+104,t8b20l22,t8,b20,l22,r1,2022100900,2.0221E+12,X2022100900103,NA,,NA,Leaf position unknown,
+105,t8b20l22,t8,b20,l22,r2,2022100900,2.0221E+12,X2022100900104,NA,,NA,Leaf position unknown,
+106,t8b20l22,t8,b20,l22,r3,2022100900,2.0221E+12,X2022100900105,NA,,NA,Leaf position unknown,
+107,t7b20l20,t7,b20,l20,r1,2022100900,2.0221E+12,X2022100900106,NA,,NA,Leaf position unknown,
+108,t7b20l20,t7,b20,l20,r2,2022100900,2.0221E+12,X2022100900107,NA,,NA,Leaf position unknown,
+109,t7b20l20,t7,b20,l20,r3,2022100900,2.0221E+12,X2022100900108,NA,,NA,Leaf position unknown,
+110,t7b20l21,t7,b20,l21,r1,2022100900,2.0221E+12,X2022100900109,NA,,NA,Leaf position unknown,
+111,t7b20l21,t7,b20,l21,r2,2022100900,2.0221E+12,X2022100900110,NA,,NA,Leaf position unknown,
+112,t7b20l21,t7,b20,l21,r3,2022100900,2.0221E+12,X2022100900111,NA,,NA,Leaf position unknown,
+113,t7b20l22,t7,b20,l22,r1,2022100900,2.0221E+12,X2022100900112,NA,,NA,Leaf position unknown,
+114,t7b20l22,t7,b20,l22,r2,2022100900,2.0221E+12,X2022100900113,NA,,NA,Leaf position unknown,
+115,t7b20l22,t7,b20,l22,r3,2022100900,2.0221E+12,X2022100900114,NA,,NA,Leaf position unknown,
+116,t8b1l1,t8,b1,l1,r1,2022100900,2.0221E+12,X2022100900115,NA,,NA,Leaf position unknown,
+117,t8b1l1,t8,b1,l1,r2,2022100900,2.0221E+12,X2022100900116,NA,,NA,Leaf position unknown,
+118,t8b1l1,t8,b1,l1,r3,2022100900,2.0221E+12,X2022100900117,NA,,NA,Leaf position unknown,
+119,t7b1l1,t7,b1,l1,r1,2022100900,2.0221E+12,X2022100900118,NA,,NA,Leaf position unknown,
+120,t7b1l1,t7,b1,l1,r2,2022100900,2.0221E+12,X2022100900119,NA,,NA,Leaf position unknown,
+121,t7b1l1,t7,b1,l1,r3,2022100900,2.0221E+12,X2022100900120,NA,,NA,Leaf position unknown,
+122,,,,,,2022100900,2.0221E+12,X2022100900121,NA,x,NA,Leaf position unknown,
+123,t9b20l22,t9,b1,l22,r1,2022100900,2.0221E+12,X2022100900122,NA,,NA,Leaf position unknown,
+124,t9b20l22,t9,b1,l22,r2,2022100900,2.0221E+12,X2022100900123,NA,,NA,Leaf position unknown,
+125,t9b20l22,t9,b1,l22,r3,2022100900,2.0221E+12,X2022100900124,NA,,NA,Leaf position unknown,
+126,t9b20l20,t9,b20,l20,r1,2022100900,2.0221E+12,X2022100900125,NA,,NA,Leaf position unknown,
+127,t9b20l20,t9,b20,l20,r2,2022100900,2.0221E+12,X2022100900126,NA,,NA,Leaf position unknown,
+128,t9b20l20,t9,b20,l20,r3,2022100900,2.0221E+12,X2022100900127,NA,,NA,Leaf position unknown,
+129,t9b20l21,t9,b20,l21,r1,2022100900,2.0221E+12,X2022100900128,NA,,NA,Leaf position unknown,
+130,t9b20l21,t9,b20,l21,r2,2022100900,2.0221E+12,X2022100900129,NA,,NA,Leaf position unknown,
+131,t9b20l21,t9,b20,l21,r3,2022100900,2.0221E+12,X2022100900130,NA,,NA,Leaf position unknown,
+132,t10b20l20,t10,b20,l20,r1,2022100900,2.0221E+12,X2022100900131,NA,,NA,Leaf position unknown,
+133,t10b20l20,t10,b20,l20,r2,2022100900,2.0221E+12,X2022100900132,NA,,NA,Leaf position unknown,
+134,t10b20l20,t10,b20,l20,r3,2022100900,2.0221E+12,X2022100900133,NA,,NA,Leaf position unknown,
+135,t10b20l22,t10,b20,l22,r1,2022100900,2.0221E+12,X2022100900134,NA,,NA,Leaf position unknown,
+136,t10b20l22,t10,b20,l22,r2,2022100900,2.0221E+12,X2022100900135,NA,,NA,Leaf position unknown,
+137,t10b20l22,t10,b20,l22,r3,2022100900,2.0221E+12,X2022100900136,NA,,NA,Leaf position unknown,
+138,t10b20l21,t10,b20,l21,r1,2022100900,2.0221E+12,X2022100900137,NA,,NA,Leaf position unknown,
+139,t10b20l21,t10,b20,l21,r2,2022100900,2.0221E+12,X2022100900138,NA,,NA,Leaf position unknown,
+140,t10b20l21,t10,b20,l21,r3,2022100900,2.0221E+12,X2022100900139,NA,,NA,Leaf position unknown,
+141,t17b20l20,t17,b20,l20,r1,2022101000,2.0221E+12,X2022101000140,NA,,NA,Leaf position unknown,young leaf
+142,t17b20l20,t17,b20,l20,r2,2022101000,2.0221E+12,X2022101000141,NA,,NA,Leaf position unknown,young leaf
+143,t17b20l20,t17,b20,l20,r3,2022101000,2.0221E+12,X2022101000142,NA,,NA,Leaf position unknown,young leaf
+144,t17b20l21,t17,b20,l21,r1,2022101000,2.0221E+12,X2022101000143,NA,,NA,Leaf position unknown,medium age leaf
+145,t17b20l21,t17,b20,l21,r2,2022101000,2.0221E+12,X2022101000144,NA,,NA,Leaf position unknown,medium age leaf
+146,t17b20l21,t17,b20,l21,r3,2022101000,2.0221E+12,X2022101000145,NA,,NA,Leaf position unknown,medium age leaf
+147,,,,,,2022101000,2.0221E+12,X2022101000146,NA,x,NA,,
+148,t17b20l22,t17,b20,l22,r1,2022101000,2.0221E+12,X2022101000147,NA,,NA,Leaf position unknown,old leaf
+149,t17b20l22,t17,b20,l22,r2,2022101000,2.0221E+12,X2022101000148,NA,,NA,Leaf position unknown,old leaf
+150,t17b20l22,t17,b20,l22,r3,2022101000,2.0221E+12,X2022101000149,NA,,NA,Leaf position unknown,old leaf
+151,t18b20l20,t18,b20,l20,r1,2022101000,2.0221E+12,X2022101000150,NA,,NA,Leaf position unknown,
+152,t18b20l20,t18,b20,l20,r2,2022101000,2.0221E+12,X2022101000151,NA,,NA,Leaf position unknown,
+153,t18b20l20,t18,b20,l20,r3,2022101000,2.0221E+12,X2022101000152,NA,,NA,Leaf position unknown,
+154,t18b20l21,t18,b20,l21,r1,2022101000,2.0221E+12,X2022101000153,NA,,NA,Leaf position unknown,
+155,t18b20l21,t18,b20,l21,r2,2022101000,2.0221E+12,X2022101000154,NA,,NA,Leaf position unknown,
+156,t18b20l21,t18,b20,l21,r3,2022101000,2.0221E+12,X2022101000155,NA,,NA,Leaf position unknown,
+157,t18b20l22,t18,b20,l22,r1,2022101000,2.0221E+12,X2022101000156,NA,,NA,Leaf position unknown,
+158,t18b20l22,t18,b20,l22,r2,2022101000,2.0221E+12,X2022101000157,NA,,NA,Leaf position unknown,
+159,t18b20l22,t18,b20,l22,r3,2022101000,2.0221E+12,X2022101000158,NA,,NA,Leaf position unknown,
+160,t19b1l1,t19,b1,l1,r1,2022101000,2.0221E+12,X2022101000159,NA,,NA,Leaf position unknown,
+161,t19b1l1,t19,b1,l1,r2,2022101000,2.0221E+12,X2022101000160,NA,,NA,Leaf position unknown,
+162,t19b1l1,t19,b1,l1,r3,2022101000,2.0221E+12,X2022101000161,NA,,NA,Leaf position unknown,
+163,t19b20l22,t19,b20,l22,r1,2022101000,2.0221E+12,X2022101000162,NA,,NA,Leaf position unknown,"The leaf was small, so the measured circular leaf area for spectra was likely overlapping across the 3 measurement"
+164,t19b20l22,t19,b20,l22,r2,2022101000,2.0221E+12,X2022101000163,NA,,NA,Leaf position unknown,"The leaf was small, so the measured circular leaf area for spectra was likely overlapping across the 3 measurement"
+165,t19b20l22,t19,b20,l22,r3,2022101000,2.0221E+12,X2022101000164,NA,,NA,Leaf position unknown,"The leaf was small, so the measured circular leaf area for spectra was likely overlapping across the 3 measurement"
+166,t19b20l21,t19,b20,l21,r1,2022101000,2.0221E+12,X2022101000165,NA,,NA,Leaf position unknown,
+167,t19b20l21,t19,b20,l21,r2,2022101000,2.0221E+12,X2022101000166,NA,,NA,Leaf position unknown,
+168,t19b20l21,t19,b20,l21,r3,2022101000,2.0221E+12,X2022101000167,NA,,NA,Leaf position unknown,
+169,t19b20l20,t19,b20,l20,r1,2022101000,2.0221E+12,X2022101000168,NA,,NA,Leaf position unknown,
+170,t19b20l20,t19,b20,l20,r2,2022101000,2.0221E+12,X2022101000169,NA,,NA,Leaf position unknown,measured spectra included a little bit of the mid vein
+171,t19b20l20,t19,b20,l20,r3,2022101000,2.0221E+12,X2022101000170,NA,,NA,Leaf position unknown,measured spectra included a little bit of the mid vein
+172,t13b1l1,t13,b1,l1,r1,2022101000,2.0221E+12,X2022101000171,NA,,NA,Leaf position unknown,
+173,t13b1l1,t13,b1,l1,r2,2022101000,2.0221E+12,X2022101000172,NA,,NA,Leaf position unknown,
+174,t13b1l1,t13,b1,l1,r3,2022101000,2.0221E+12,X2022101000173,NA,,NA,Leaf position unknown,
+175,t13b1l22,t13,b1,l22,r1,2022101000,2.0221E+12,X2022101000174,NA,,NA,Leaf position unknown,
+176,t13b1l22,t13,b1,l22,r2,2022101000,2.0221E+12,X2022101000175,NA,,NA,Leaf position unknown,
+177,t13b1l22,t13,b1,l22,r3,2022101000,2.0221E+12,X2022101000176,NA,,NA,Leaf position unknown,
+178,t13b1l21,t13,b1,l21,r1,2022101000,2.0221E+12,X2022101000177,NA,,NA,Leaf position unknown,
+179,t13b1l21,t13,b1,l21,r2,2022101000,2.0221E+12,X2022101000178,NA,,NA,Leaf position unknown,
+180,t13b1l21,t13,b1,l21,r3,2022101000,2.0221E+12,X2022101000179,NA,,NA,Leaf position unknown,
+181,t13b1l2,t13,b1,l2,r1,2022101000,2.0221E+12,X2022101000180,NA,,NA,Leaf position unknown,
+182,t13b1l2,t13,b1,l2,r2,2022101000,2.0221E+12,X2022101000181,NA,,NA,Leaf position unknown,
+183,t13b1l2,t13,b1,l2,r3,2022101000,2.0221E+12,X2022101000182,NA,,NA,Leaf position unknown,
+184,t13b1l20,t13,b1,l20,r1,2022101000,2.0221E+12,X2022101000183,NA,,NA,Leaf position unknown,
+185,t13b1l20,t13,b1,l20,r2,2022101000,2.0221E+12,X2022101000184,NA,,NA,Leaf position unknown,
+186,t13b1l20,t13,b1,l20,r3,2022101000,2.0221E+12,X2022101000185,NA,,NA,Leaf position unknown,
+187,t11b1l1,t11,b1,l1,r1,2022101000,2.0221E+12,X2022101000186,NA,,NA,Leaf position unknown,thick veins
+188,t11b1l1,t11,b1,l1,r2,2022101000,2.0221E+12,X2022101000187,NA,,NA,Leaf position unknown,thick veins
+189,t11b1l1,t11,b1,l1,r3,2022101000,2.0221E+12,X2022101000188,NA,,NA,Leaf position unknown,thick veins
+190,t11b1l20,t11,b1,l20,r1,2022101000,2.0221E+12,X2022101000189,NA,,NA,Leaf position unknown,thick veins
+191,t11b1l20,t11,b1,l20,r2,2022101000,2.0221E+12,X2022101000190,NA,,NA,Leaf position unknown,thick veins
+192,t11b1l20,t11,b1,l20,r3,2022101000,2.0221E+12,X2022101000191,NA,,NA,Leaf position unknown,thick veins
+193,t11b1l22,t11,b1,l22,r1,2022101000,2.0221E+12,X2022101000192,NA,,NA,Leaf position unknown,thick veins
+194,t11b1l22,t11,b1,l22,r2,2022101000,2.0221E+12,X2022101000193,NA,,NA,Leaf position unknown,thick veins
+195,t11b1l22,t11,b1,l22,r3,2022101000,2.0221E+12,X2022101000194,NA,,NA,Leaf position unknown,thick veins
+196,t11b1l21,t11,b1,l21,r1,2022101000,2.0221E+12,X2022101000195,NA,,NA,Leaf position unknown,thick veins
+197,t11b1l21,t11,b1,l21,r2,2022101000,2.0221E+12,X2022101000196,NA,,NA,Leaf position unknown,thick veins
+198,t11b1l21,t11,b1,l21,r3,2022101000,2.0221E+12,X2022101000197,NA,,NA,Leaf position unknown,thick veins
+199,t12b1l1,t12,b1,l1,r1,2022101000,2.0221E+12,X2022101000198,NA,,NA,Leaf position unknown,
+200,t12b1l1,t12,b1,l1,r2,2022101000,2.0221E+12,X2022101000199,NA,,NA,Leaf position unknown,
+201,t12b1l1,t12,b1,l1,r3,2022101000,2.0221E+12,X2022101000200,NA,,NA,Leaf position unknown,
+202,t12b1l2,t12,b1,l2,r1,2022101000,2.0221E+12,X2022101000201,NA,,NA,Leaf position unknown,
+203,t12b1l2,t12,b1,l2,r2,2022101000,2.0221E+12,X2022101000202,NA,,NA,Leaf position unknown,
+204,t12b1l2,t12,b1,l2,r3,2022101000,2.0221E+12,X2022101000203,NA,,NA,Leaf position unknown,
+205,,,,,,2022101000,2.0221E+12,X2022101000204,NA,x,NA,Leaf position unknown,
+206,t12b1l20,t12,b1,l20,r1,2022101000,2.0221E+12,X2022101000205,NA,,NA,Leaf position unknown,
+207,t12b1l20,t12,b1,l20,r2,2022101000,2.0221E+12,X2022101000206,NA,,NA,Leaf position unknown,
+208,t12b1l20,t12,b1,l20,r3,2022101000,2.0221E+12,X2022101000207,NA,,NA,Leaf position unknown,
+209,t12b1l21,t12,b1,l21,r1,2022101000,2.0221E+12,X2022101000208,NA,,NA,Leaf position unknown,
+210,t12b1l21,t12,b1,l21,r2,2022101000,2.0221E+12,X2022101000209,NA,,NA,Leaf position unknown,
+211,t12b1l21,t12,b1,l21,r3,2022101000,2.0221E+12,X2022101000210,NA,,NA,Leaf position unknown,
+212,t12b1l22,t12,b1,l22,r1,2022101000,2.0221E+12,X2022101000211,NA,,NA,Leaf position unknown,
+213,t12b1l22,t12,b1,l22,r2,2022101000,2.0221E+12,X2022101000212,NA,,NA,Leaf position unknown,
+214,t12b1l22,t12,b1,l22,r3,2022101000,2.0221E+12,X2022101000213,NA,,NA,Leaf position unknown,
+215,t14b20l22,t14,b20,l22,r1,2022101000,2.0221E+12,X2022101000214,NA,,NA,Leaf position unknown,lots of epiphylls
+216,t14b20l22,t14,b20,l22,r2,2022101000,2.0221E+12,X2022101000215,NA,,NA,Leaf position unknown,lots of epiphylls
+217,t14b20l22,t14,b20,l22,r3,2022101000,2.0221E+12,X2022101000216,NA,,NA,Leaf position unknown,lots of epiphylls
+218,t14b1l1,t14,b1,l1,r1,2022101000,2.0221E+12,X2022101000217,NA,,NA,Leaf position unknown,lots of epiphylls
+219,t14b1l1,t14,b1,l1,r2,2022101000,2.0221E+12,X2022101000218,NA,,NA,Leaf position unknown,lots of epiphylls
+220,t14b1l1,t14,b1,l1,r3,2022101000,2.0221E+12,X2022101000219,NA,,NA,Leaf position unknown,lots of epiphylls
+221,t14b20l21,t14,b20,l21,r1,2022101000,2.0221E+12,X2022101000220,NA,,NA,Leaf position unknown,lots of epiphylls
+222,t14b20l21,t14,b20,l21,r2,2022101000,2.0221E+12,X2022101000221,NA,,NA,Leaf position unknown,lots of epiphylls
+223,t14b20l21,t14,b20,l21,r3,2022101000,2.0221E+12,X2022101000222,NA,,NA,Leaf position unknown,lots of epiphylls
+224,t14b20l20,t14,b20,l20,r1,2022101000,2.0221E+12,X2022101000223,NA,,NA,Leaf position unknown,lots of epiphylls
+225,t14b20l20,t14,b20,l20,r2,2022101000,2.0221E+12,X2022101000224,NA,,NA,Leaf position unknown,lots of epiphylls
+226,t14b20l20,t14,b20,l20,r3,2022101000,2.0221E+12,X2022101000225,NA,,NA,Leaf position unknown,lots of epiphylls
+227,t15b20l22,t15,b20,l22,r1,2022101000,2.0221E+12,X2022101000226,NA,,NA,Leaf position unknown,lots of epiphylls
+228,t15b20l22,t15,b20,l22,r2,2022101000,2.0221E+12,X2022101000227,NA,,NA,Leaf position unknown,lots of epiphylls
+229,t15b20l22,t15,b20,l22,r3,2022101000,2.0221E+12,X2022101000228,NA,,NA,Leaf position unknown,lots of epiphylls
+230,t15b20l21,t15,b20,l21,r1,2022101000,2.0221E+12,X2022101000229,NA,,NA,Leaf position unknown,
+231,t15b20l21,t15,b20,l21,r2,2022101000,2.0221E+12,X2022101000230,NA,,NA,Leaf position unknown,
+232,t15b20l21,t15,b20,l21,r3,2022101000,2.0221E+12,X2022101000231,NA,,NA,Leaf position unknown,
+233,t15b20l20,t15,b20,l20,r1,2022101000,2.0221E+12,X2022101000232,NA,,NA,Leaf position unknown,
+234,t15b20l20,t15,b20,l20,r2,2022101000,2.0221E+12,X2022101000233,NA,,NA,Leaf position unknown,
+235,t15b20l20,t15,b20,l20,r3,2022101000,2.0221E+12,X2022101000234,NA,,NA,Leaf position unknown,
+236,t15b1l1,t15,b1,l1,r1,2022101000,2.0221E+12,X2022101000235,NA,,NA,Leaf position unknown,epiphylls
+237,t15b1l1,t15,b1,l1,r2,2022101000,2.0221E+12,X2022101000236,NA,,NA,Leaf position unknown,epiphylls
+238,t15b1l1,t15,b1,l1,r3,2022101000,2.0221E+12,X2022101000237,NA,,NA,Leaf position unknown,epiphylls
+239,,,,,,2022101000,2.0221E+12,X2022101000238,NA,x,NA,Leaf position unknown,
+240,t22b20l20,t22,b20,l20,r1,2022101100,2.0221E+12,X2022101100239,NA,,NA,position 1,
+241,t22b20l20,t22,b20,l20,r2,2022101100,2.0221E+12,X2022101100240,NA,,NA,position 1,
+242,t22b20l20,t22,b20,l20,r3,2022101100,2.0221E+12,X2022101100241,NA,,NA,position 1,
+243,t22b20l21,t22,b20,l21,r1,2022101100,2.0221E+12,X2022101100242,NA,,NA,position 7,
+244,t22b20l21,t22,b20,l21,r2,2022101100,2.0221E+12,X2022101100243,NA,,NA,position 7,
+245,t22b20l21,t22,b20,l21,r3,2022101100,2.0221E+12,X2022101100244,NA,,NA,position 7,
+246,t22b20l22,t22,b20,l22,r1,2022101100,2.0221E+12,X2022101100245,NA,,NA,position 24,
+247,t22b20l22,t22,b20,l22,r2,2022101100,2.0221E+12,X2022101100246,NA,,NA,position 24,
+248,t22b20l22,t22,b20,l22,r3,2022101100,2.0221E+12,X2022101100247,NA,,NA,position 24,
+249,t20b20l20,t20,b20,l20,r1,2022101100,2.0221E+12,X2022101100248,NA,,NA,"position 2, compound, 3 spectra on different leaflets",
+250,t20b20l20,t20,b20,l20,r2,2022101100,2.0221E+12,X2022101100249,NA,,NA,"position 2, compound, 3 spectra on different leaflets",
+251,t20b20l20,t20,b20,l20,r3,2022101100,2.0221E+12,X2022101100250,NA,,NA,"position 2, compound, 3 spectra on different leaflets",
+252,t20b20l21,t20,b20,l21,r1,2022101100,2.0221E+12,X2022101100251,NA,,NA,"position 1, compound, 3 spectra on different leaflets",
+253,t20b20l21,t20,b20,l21,r2,2022101100,2.0221E+12,X2022101100252,NA,,NA,"position 1, compound, 3 spectra on different leaflets",
+254,t20b20l21,t20,b20,l21,r3,2022101100,2.0221E+12,X2022101100253,NA,,NA,"position 1, compound, 3 spectra on different leaflets",
+255,t20b20l22,t20,b20,l22,r1,2022101100,2.0221E+12,X2022101100254,NA,,NA,"position 7, compound, 3 spectra on different leaflets",
+256,t20b20l22,t20,b20,l22,r2,2022101100,2.0221E+12,X2022101100255,NA,,NA,"position 7, compound, 3 spectra on different leaflets",
+257,t20b20l22,t20,b20,l22,r3,2022101100,2.0221E+12,X2022101100256,NA,,NA,"position 7, compound, 3 spectra on different leaflets",
+258,t21b20l20,t21,b20,l20,r1,2022101100,2.0221E+12,X2022101100257,NA,,NA,"position 4, leaflet 6","double compound leaf, with an age gradient across primary leaflets. Giving leaflet number. Measured multiple secondary leaflets because they were very small"
+259,t21b20l20,t21,b20,l20,r2,2022101100,2.0221E+12,X2022101100258,NA,,NA,"position 4, leaflet 10","double compound leaf, with an age gradient across primary leaflets. Giving leaflet number. Measured multiple secondary leaflets because they were very small"
+260,t21b20l20,t21,b20,l20,r3,2022101100,2.0221E+12,X2022101100259,NA,,NA,"position 4, leaflet 1","double compound leaf, with an age gradient across primary leaflets. Giving leaflet number. Measured multiple secondary leaflets because they were very small"
+261,t21b20l21,t21,b20,l21,r1,2022101100,2.0221E+12,X2022101100260,NA,,NA,"position 5, leaflet 1","double compound leaf, with an age gradient across primary leaflets. Giving leaflet number. Measured multiple secondary leaflets because they were very small"
+262,t21b20l21,t21,b20,l21,r2,2022101100,2.0221E+12,X2022101100261,NA,,NA,"position 5, leaflet 6","double compound leaf, with an age gradient across primary leaflets. Giving leaflet number. Measured multiple secondary leaflets because they were very small"
+263,t21b20l21,t21,b20,l21,r3,2022101100,2.0221E+12,X2022101100262,NA,,NA,"position 5, leaflet 10","double compound leaf, with an age gradient across primary leaflets. Giving leaflet number. Measured multiple secondary leaflets because they were very small"
+264,t21b20l22,t21,b20,l22,r1,2022101100,2.0221E+12,X2022101100263,NA,,NA,"position 6, leaflet 12","double compound leaf, with an age gradient across primary leaflets. Giving leaflet number. Measured multiple secondary leaflets because they were very small"
+265,t21b20l22,t21,b20,l22,r2,2022101100,2.0221E+12,X2022101100264,NA,,NA,"position 6, leaflet 14","double compound leaf, with an age gradient across primary leaflets. Giving leaflet number. Measured multiple secondary leaflets because they were very small"
+266,t21b20l22,t21,b20,l22,r3,2022101100,2.0221E+12,X2022101100265,NA,,NA,"position 6, leaflet 8","double compound leaf, with an age gradient across primary leaflets. Giving leaflet number. Measured multiple secondary leaflets because they were very small"
+267,t29b20l20,t29,b20,l20,r1,2022101100,2.0221E+12,X2022101100266,NA,,NA,position 6,
+268,t29b20l20,t29,b20,l20,r2,2022101100,2.0221E+12,X2022101100267,NA,,NA,position 6,
+269,t29b20l20,t29,b20,l20,r3,2022101100,2.0221E+12,X2022101100268,NA,,NA,position 6,
+270,t29b20l21,t29,b20,l21,r1,2022101100,2.0221E+12,X2022101100269,NA,,NA,leaf position unknown,
+271,t29b20l21,t29,b20,l21,r2,2022101100,2.0221E+12,X2022101100270,NA,,NA,leaf position unknown,
+272,t29b20l21,t29,b20,l21,r3,2022101100,2.0221E+12,X2022101100271,NA,,NA,leaf position unknown,
+273,t29b20l22,t29,b20,l22,r1,2022101100,2.0221E+12,X2022101100272,NA,,NA,position 7,
+274,t29b20l22,t29,b20,l22,r2,2022101100,2.0221E+12,X2022101100273,NA,,NA,position 7,
+275,t29b20l22,t29,b20,l22,r3,2022101100,2.0221E+12,X2022101100274,NA,,NA,position 7,
+276,t28b20l20,t28,b20,l20,r1,2022101100,2.0221E+12,X2022101100275,NA,,NA,position 2,
+277,t28b20l20,t28,b20,l20,r2,2022101100,2.0221E+12,X2022101100276,NA,,NA,position 2,
+278,t28b20l20,t28,b20,l20,r3,2022101100,2.0221E+12,X2022101100277,NA,,NA,position 2,
+279,t28b20l21,t28,b20,l21,r1,2022101100,2.0221E+12,X2022101100278,NA,,NA,position 3,
+280,t28b20l21,t28,b20,l21,r2,2022101100,2.0221E+12,X2022101100279,NA,,NA,position 3,
+281,t28b20l21,t28,b20,l21,r3,2022101100,2.0221E+12,X2022101100280,NA,,NA,position 3,
+282,t28b20l22,t28,b20,l22,r1,2022101100,2.0221E+12,X2022101100281,NA,,NA,position 4,
+283,t28b20l22,t28,b20,l22,r2,2022101100,2.0221E+12,X2022101100282,NA,,NA,position 4,
+284,t28b20l22,t28,b20,l22,r3,2022101100,2.0221E+12,X2022101100283,NA,,NA,position 4,
+285,t28b1l1,t28,b1,l1,r1,2022101100,2.0221E+12,X2022101100284,NA,,NA,leaf position unknown,
+286,t28b1l1,t28,b1,l1,r2,2022101100,2.0221E+12,X2022101100285,NA,,NA,leaf position unknown,
+287,t28b1l1,t28,b1,l1,r3,2022101100,2.0221E+12,X2022101100286,NA,,NA,leaf position unknown,
+288,t27b20l21,t27,b20,l21,r1,2022101100,2.0221E+12,X2022101100287,NA,,NA,position 6,
+289,t27b20l21,t27,b20,l21,r2,2022101100,2.0221E+12,X2022101100288,NA,,NA,position 6,
+290,t27b20l21,t27,b20,l21,r3,2022101100,2.0221E+12,X2022101100289,NA,,NA,position 6,
+291,t27b20l20,t27,b20,l20,r1,2022101100,2.0221E+12,X2022101100290,NA,,NA,position 7,
+292,t27b20l20,t27,b20,l20,r2,2022101100,2.0221E+12,X2022101100291,NA,,NA,position 7,
+293,t27b20l20,t27,b20,l20,r3,2022101100,2.0221E+12,X2022101100292,NA,,NA,position 7,
+294,t27b20l21,t27,b20,l22,r1,2022101100,2.0221E+12,X2022101100293,NA,,NA,position 8,
+295,t27b20l21,t27,b20,l22,r2,2022101100,2.0221E+12,X2022101100294,NA,,NA,position 8,
+296,t27b20l21,t27,b20,l22,r3,2022101100,2.0221E+12,X2022101100295,NA,,NA,position 8,
+297,t27b1l1,t27,b1,l1,r1,2022101100,2.0221E+12,X2022101100296,NA,,NA,leaf position unknown,
+298,t27b1l1,t27,b1,l1,r2,2022101100,2.0221E+12,X2022101100297,NA,,NA,leaf position unknown,
+299,t27b1l1,t27,b1,l1,r3,2022101100,2.0221E+12,X2022101100298,NA,,NA,leaf position unknown,
+300,t26b20l20,t26,b20,l20,r1,2022101100,2.0221E+12,X2022101100299,NA,,NA,position 4,
+301,t26b20l20,t26,b20,l20,r2,2022101100,2.0221E+12,X2022101100300,NA,,NA,position 4,
+302,t26b20l20,t26,b20,l20,r3,2022101100,2.0221E+12,X2022101100301,NA,,NA,position 4,
+303,t26b20l21,t26,b20,l21,r1,2022101100,2.0221E+12,X2022101100302,NA,,NA,position 1,
+304,t26b20l21,t26,b20,l21,r2,2022101100,2.0221E+12,X2022101100303,NA,,NA,position 1,
+305,t26b20l21,t26,b20,l21,r3,2022101100,2.0221E+12,X2022101100304,NA,,NA,position 1,
+306,t26b20l22,t26,b20,l22,r1,2022101100,2.0221E+12,X2022101100305,NA,,NA,position 3,
+307,t26b20l22,t26,b20,l22,r2,2022101100,2.0221E+12,X2022101100306,NA,,NA,position 3,
+308,t26b20l22,t26,b20,l22,r3,2022101100,2.0221E+12,X2022101100307,NA,,NA,position 3,
+309,t26b1l1,t26,b1,l1,r1,2022101100,2.0221E+12,X2022101100308,NA,,NA,leaf position unknown,
+310,t26b1l1,t26,b1,l1,r2,2022101100,2.0221E+12,X2022101100309,NA,,NA,leaf position unknown,
+311,t26b1l1,t26,b1,l1,r3,2022101100,2.0221E+12,X2022101100310,NA,,NA,leaf position unknown,
+312,t25b1l1,t25,b1,l1,r1,2022101100,2.0221E+12,X2022101100311,NA,,NA,leaf position unknown,
+313,t25b1l1,t25,b1,l1,r2,2022101100,2.0221E+12,X2022101100312,NA,,NA,leaf position unknown,
+314,t25b1l1,t25,b1,l1,r3,2022101100,2.0221E+12,X2022101100313,NA,,NA,leaf position unknown,
+315,t25b20l20,t25,b20,l20,r1,2022101100,2.0221E+12,X2022101100314,NA,,NA,position 2,
+316,t25b20l20,t25,b20,l20,r2,2022101100,2.0221E+12,X2022101100315,NA,,NA,position 2,
+317,t25b20l20,t25,b20,l20,r3,2022101100,2.0221E+12,X2022101100316,NA,,NA,position 2,
+318,t25b20l21,t25,b20,l21,r1,2022101100,2.0221E+12,X2022101100317,NA,,NA,position 1,"Note upon data entry: would be good to check if compound, or opposite leaves, or how there could be two leaves of same position"
+319,t25b20l21,t25,b20,l21,r2,2022101100,2.0221E+12,X2022101100318,NA,,NA,position 1,"Note upon data entry: would be good to check if compound, or opposite leaves, or how there could be two leaves of same position"
+320,t25b20l21,t25,b20,l21,r3,2022101100,2.0221E+12,X2022101100319,NA,,NA,position 1,"Note upon data entry: would be good to check if compound, or opposite leaves, or how there could be two leaves of same position"
+321,t25b20l22,t25,b20,l22,r1,2022101100,2.0221E+12,X2022101100320,NA,,NA,position 1,"Note upon data entry: would be good to check if compound, or opposite leaves, or how there could be two leaves of same position"
+322,t25b20l22,t25,b20,l22,r2,2022101100,2.0221E+12,X2022101100321,NA,,NA,position 1,"Note upon data entry: would be good to check if compound, or opposite leaves, or how there could be two leaves of same position"
+323,t25b20l22,t25,b20,l22,r3,2022101100,2.0221E+12,X2022101100322,NA,,NA,position 1,"Note upon data entry: would be good to check if compound, or opposite leaves, or how there could be two leaves of same position. We think this spectrum was skipped (not measured) because 322 was written in notebook twice, but there is only one file. This was right as personnel were swapped"
+324,t16b1l1,t16,b1,l1,r1,2022101100,2.0221E+12,X2022101100322,NA,,NA,leaf position unknown,"might possibly be t25b20l22 r3. Written down twice in notebook. Maybe can determine from spectra, or exclude"
+325,t16b1l1,t16,b1,l1,r2,2022101100,2.0221E+12,X2022101100323,NA,,NA,leaf position unknown,
+326,t16b1l1,t16,b1,l1,r3,2022101100,2.0221E+12,X2022101100324,NA,,NA,leaf position unknown,
+327,t16b20l20,t16,b20,l20,r1,2022101100,2.0221E+12,X2022101100325,NA,,NA,position 3,
+328,t16b20l20,t16,b20,l20,r2,2022101100,2.0221E+12,X2022101100326,NA,,NA,position 3,
+329,t16b20l20,t16,b20,l20,r3,2022101100,2.0221E+12,X2022101100327,NA,,NA,position 3,
+330,t16b20l21,t16,b20,l21,r1,2022101100,2.0221E+12,X2022101100328,NA,,NA,position 4,
+331,t16b20l21,t16,b20,l21,r2,2022101100,2.0221E+12,X2022101100329,NA,,NA,position 4,
+332,t16b20l21,t16,b20,l21,r3,2022101100,2.0221E+12,X2022101100330,NA,,NA,position 4,
+333,t16b20l22,t16,b20,l22,r1,2022101100,2.0221E+12,X2022101100331,NA,,NA,position 1,
+334,t16b20l22,t16,b20,l22,r2,2022101100,2.0221E+12,X2022101100332,NA,,NA,position 1,
+335,t16b20l22,t16,b20,l22,r3,2022101100,2.0221E+12,X2022101100333,NA,,NA,position 1,
+336,t31b1l1,t31,b1,l1,r1,2022101200,2.0221E+12,X2022101200334,NA,,NA,leaf position unknown,
+337,t31b1l1,t31,b1,l1,r2,2022101200,2.0221E+12,X2022101200335,NA,,NA,leaf position unknown,
+338,t31b1l1,t31,b1,l1,r3,2022101200,2.0221E+12,X2022101200336,NA,,NA,leaf position unknown,
+339,t31b20l21,t31,b20,l21,r1,2022101200,2.0221E+12,X2022101200337,NA,,NA,leaf position unknown,
+340,t31b20l21,t31,b20,l21,r2,2022101200,2.0221E+12,X2022101200338,NA,,NA,leaf position unknown,
+341,t31b20l21,t31,b20,l21,r3,2022101200,2.0221E+12,X2022101200339,NA,,NA,leaf position unknown,
+342,,,,,,2022101200,2.0221E+12,X2022101200340,NA,x,NA,,
+343,t31b20l22,t31,b20,l22,r1,2022101200,2.0221E+12,X2022101200341,NA,,NA,position 12,
+344,t31b20l22,t31,b20,l22,r2,2022101200,2.0221E+12,X2022101200342,NA,,NA,position 12,
+345,t31b20l22,t31,b20,l22,r3,2022101200,2.0221E+12,X2022101200343,NA,,NA,position 12,
+346,t34b1l1,t34,b1,l1,r1,2022101200,2.0221E+12,X2022101200344,NA,,NA,position 12,
+347,t34b1l1,t34,b1,l1,r2,2022101200,2.0221E+12,X2022101200345,NA,,NA,leaf position unknown,"r2 and r3 are from the same part of the leaf, exclude one of them, or average them"
+348,t34b1l1,t34,b1,l1,r3,2022101200,2.0221E+12,X2022101200346,NA,,NA,leaf position unknown,"r2 and r3 are from the same part of the leaf, exclude one of them, or average them"
+349,t34b1l1,t34,b1,l1,r4,2022101200,2.0221E+12,X2022101200347,NA,,NA,leaf position unknown,
+350,t34b20l20,t34,b20,l20,r1,2022101200,2.0221E+12,X2022101200348,NA,,NA,position 4,
+351,t34b20l20,t34,b20,l20,r2,2022101200,2.0221E+12,X2022101200349,NA,,NA,position 4,
+352,t34b20l20,t34,b20,l20,r3,2022101200,2.0221E+12,X2022101200350,NA,,NA,position 4,
+353,t38b20l20,t38,b20,l20,r1,2022101200,2.0221E+12,X2022101200351,NA,,NA,position 2,
+354,t38b20l20,t38,b20,l20,r2,2022101200,2.0221E+12,X2022101200352,NA,,NA,position 2,
+355,t38b20l20,t38,b20,l20,r3,2022101200,2.0221E+12,X2022101200353,NA,,NA,position 2,
+356,t38b20l21,t38,b20,l21,r1,2022101200,2.0221E+12,X2022101200354,NA,,NA,position 4,
+357,t38b20l21,t38,b20,l21,r2,2022101200,2.0221E+12,X2022101200355,NA,,NA,position 4,
+358,t38b20l21,t38,b20,l21,r3,2022101200,2.0221E+12,X2022101200356,NA,,NA,position 4,optimization between these two (generally not recording when we did these... we did them about every 15 minutes).
+359,t38b20l22,t38,b20,l22,r1,2022101200,2.0221E+12,X2022101200357,NA,,NA,position 5,
+360,t38b20l22,t38,b20,l22,r2,2022101200,2.0221E+12,X2022101200358,NA,,NA,position 5,
+361,t38b20l22,t38,b20,l22,r3,2022101200,2.0221E+12,X2022101200359,NA,,NA,position 5,
+362,t38b1l1,t38,b1,l1,r1,2022101200,2.0221E+12,X2022101200360,NA,,NA,leaf position unknown,epiphylls
+363,t38b1l1,t38,b1,l1,r2,2022101200,2.0221E+12,X2022101200361,NA,,NA,leaf position unknown,epiphylls
+364,t38b1l1,t38,b1,l1,r3,2022101200,2.0221E+12,X2022101200362,NA,,NA,leaf position unknown,epiphylls
+365,t36b20l20,t36,b20,l20,r1,2022101200,2.0221E+12,X2022101200363,NA,,NA,"position 4, leaflets 6, 7, and 6","compound, measured one leaflet per spectrum, we didn't record which leaflet was recorded for each spectrum measurement, but they came from leaflets 6, 7 and 6"
+366,t36b20l20,t36,b20,l20,r2,2022101200,2.0221E+12,X2022101200364,NA,,NA,"position 4, leaflets 6, 7, and 6","compound, measured one leaflet per spectrum, we didn't record which leaflet was recorded for each spectrum measurement, but they came from leaflets 6, 7 and 6"
+367,t36b20l20,t36,b20,l20,r3,2022101200,2.0221E+12,X2022101200365,NA,,NA,"position 4, leaflets 6, 7, and 6","compound, measured one leaflet per spectrum, we didn't record which leaflet was recorded for each spectrum measurement, but they came from leaflets 6, 7 and 6"
+368,t36b20l22,t36,b20,l22,r1,2022101200,2.0221E+12,X2022101200366,NA,,NA,"position 6, leaflets 2, 4, 6","compound, one spectrum per leaflet"
+369,t36b20l22,t36,b20,l22,r2,2022101200,2.0221E+12,X2022101200367,NA,,NA,"position 6, leaflets 2, 4, 6","compound, one spectrum per leaflet"
+370,t36b20l22,t36,b20,l22,r3,2022101200,2.0221E+12,X2022101200368,NA,,NA,"position 6, leaflets 2, 4, 6","compound, one spectrum per leaflet"
+371,t36b20l21,t36,b20,l21,r1,2022101200,2.0221E+12,X2022101200369,NA,,NA,"position 3, leaflets 3, 4, 5","compound, one spectrum per leaflet"
+372,t36b20l21,t36,b20,l21,r2,2022101200,2.0221E+12,X2022101200370,NA,,NA,"position 3, leaflets 3, 4, 5","compound, one spectrum per leaflet"
+373,t36b20l21,t36,b20,l21,r3,2022101200,2.0221E+12,X2022101200371,NA,,NA,"position 3, leaflets 3, 4, 5","compound, one spectrum per leaflet"
+374,t24b20l22,t24,b20,l22,r1,2022101200,2.0221E+12,X2022101200372,NA,,NA,position 2,opposite leaves
+375,t24b20l22,t24,b20,l22,r2,2022101200,2.0221E+12,X2022101200373,NA,,NA,position 2,opposite leaves
+376,t24b20l22,t24,b20,l22,r3,2022101200,2.0221E+12,X2022101200374,NA,,NA,position 2,opposite leaves
+377,t24b20l21,t24,b20,l21,r1,2022101200,2.0221E+12,X2022101200375,NA,,NA,position 2,opposite leaves
+378,t24b20l21,t24,b20,l21,r2,2022101200,2.0221E+12,X2022101200376,NA,,NA,position 2,opposite leaves
+379,t24b20l21,t24,b20,l21,r3,2022101200,2.0221E+12,X2022101200377,NA,,NA,position 2,opposite leaves
+380,t24b20l20,t24,b20,l20,r1,2022101200,2.0221E+12,X2022101200378,NA,,NA,position 3,
+381,t24b20l20,t24,b20,l20,r2,2022101200,2.0221E+12,X2022101200379,NA,,NA,position 3,
+382,t24b20l20,t24,b20,l20,r3,2022101200,2.0221E+12,X2022101200380,NA,,NA,position 3,
+383,t32b20l22,t32,b20,l22,r1,2022101200,2.0221E+12,X2022101200381,NA,,NA,position 3 leaflet 3,optimization after 380 (not generally recording when optimization happened)
+384,t32b20l22,t32,b20,l22,r2,2022101200,2.0221E+12,X2022101200382,NA,,NA,position 3 leaflet 3,
+385,t32b20l22,t32,b20,l22,r3,2022101200,2.0221E+12,X2022101200383,NA,,NA,position 3 leaflet 3,
+386,t32b20l21,t32,b20,l21,r1,2022101200,2.0221E+12,X2022101200384,NA,,NA,position 2 leaflet 2,
+387,t32b20l21,t32,b20,l21,r2,2022101200,2.0221E+12,X2022101200385,NA,,NA,position 2 leaflet 2,
+388,t32b20l21,t32,b20,l21,r3,2022101200,2.0221E+12,X2022101200386,NA,,NA,position 2 leaflet 2,brown spots
+389,t32b20l20,t32,b20,l20,r1,2022101200,2.0221E+12,X2022101200387,NA,,NA,"position 4, leaflet 3",
+390,t32b20l20,t32,b20,l20,r2,2022101200,2.0221E+12,X2022101200388,NA,,NA,"position 4, leaflet 3",
+391,t32b20l20,t32,b20,l20,r3,2022101200,2.0221E+12,X2022101200389,NA,,NA,"position 4, leaflet 3",
+392,t30b20l20,t30,b20,l20,r1,2022101200,2.0221E+12,X2022101200390,NA,,NA,leaf position unknown,
+393,t30b20l20,t30,b20,l20,r2,2022101200,2.0221E+12,X2022101200391,NA,,NA,leaf position unknown,
+394,t30b20l20,t30,b20,l20,r3,2022101200,2.0221E+12,X2022101200392,NA,,NA,leaf position unknown,
+395,t30b20l21,t30,b20,l21,r1,2022101200,2.0221E+12,X2022101200393,NA,,NA,leaf position unknown,
+396,t30b20l21,t30,b20,l21,r2,2022101200,2.0221E+12,X2022101200394,NA,,NA,leaf position unknown,
+397,t30b20l21,t30,b20,l21,r3,2022101200,2.0221E+12,X2022101200395,NA,,NA,leaf position unknown,
+398,t30b20l22,t30,b20,l22,r1,2022101200,2.0221E+12,X2022101200396,NA,,NA,leaf position unknown,
+399,t30b20l22,t30,b20,l22,r2,2022101200,2.0221E+12,X2022101200397,NA,,NA,leaf position unknown,
+400,t30b20l22,t30,b20,l22,r3,2022101200,2.0221E+12,X2022101200398,NA,,NA,leaf position unknown,
+401,t30b1l1,t30,b1,l1,r1,2022101200,2.0221E+12,X2022101200399,NA,,NA,leaf position unknown,
+402,t30b1l1,t30,b1,l1,r2,2022101200,2.0221E+12,X2022101200400,NA,,NA,leaf position unknown,
+403,t30b1l1,t30,b1,l1,r3,2022101200,2.0221E+12,X2022101200401,NA,,NA,leaf position unknown,
+404,t23b20l21,t23,b20,l21,r1,2022101200,2.0221E+12,X2022101200402,NA,,NA,position 3,"optimization after 401, not generally recording when optimization occured"
+405,t23b20l21,t23,b20,l21,r2,2022101200,2.0221E+12,X2022101200403,NA,,NA,position 3,
+406,t23b20l21,t23,b20,l21,r3,2022101200,2.0221E+12,X2022101200404,NA,,NA,position 3,
+407,t23b20l20,t23,b20,l20,r1,2022101200,2.0221E+12,X2022101200405,NA,,NA,position 2,
+408,t23b20l20,t23,b20,l20,r2,2022101200,2.0221E+12,X2022101200406,NA,,NA,position 2,
+409,t23b20l20,t23,b20,l20,r3,2022101200,2.0221E+12,X2022101200407,NA,,NA,position 2,
+410,t23b20l22,t23,b20,l22,r1,2022101200,2.0221E+12,X2022101200408,NA,,NA,position 4,
+411,t23b20l22,t23,b20,l22,r2,2022101200,2.0221E+12,X2022101200409,NA,,NA,position 4,
+412,t23b20l22,t23,b20,l22,r3,2022101200,2.0221E+12,X2022101200410,NA,,NA,position 4,
+413,t31b20l21,t31,b20,l21,r1,2022101200,2.0221E+12,X2022101200411,NA,,NA,leaf position unknown,
+414,t31b20l21,t31,b20,l21,r2,2022101200,2.0221E+12,X2022101200412,NA,,NA,leaf position unknown,
+415,t31b20l21,t31,b20,l21,r3,2022101200,2.0221E+12,X2022101200413,NA,,NA,leaf position unknown,
+416,t31b20l22,t31,b20,l22,r1,2022101200,2.0221E+12,X2022101200414,NA,,NA,leaf position unknown,
+417,t31b20l22,t31,b20,l22,r2,2022101200,2.0221E+12,X2022101200415,NA,,NA,leaf position unknown,
+418,t31b20l22,t31,b20,l22,r3,2022101200,2.0221E+12,X2022101200416,NA,,NA,leaf position unknown,
+419,t31b20l20,t31,b20,l20,r1,2022101200,2.0221E+12,X2022101200417,NA,,NA,leaf position unknown,
+420,t31b20l20,t31,b20,l20,r2,2022101200,2.0221E+12,X2022101200418,NA,,NA,leaf position unknown,
+421,t31b20l20,t31,b20,l20,r3,2022101200,2.0221E+12,X2022101200419,NA,,NA,leaf position unknown,
+422,,,,,,2022101200,2.0221E+12,X2022101200420,NA,x,NA,,
+423,t23b20l22,t23,b20,l22,r1,2022101200,2.0221E+12,X2022101200421,NA,,NA,,exclude
+424,t23b20l22,t23,b20,l22,r2,2022101200,2.0221E+12,X2022101200422,NA,,NA,,exclude
+425,t23b20l22,t23,b20,l22,r3,2022101200,2.0221E+12,X2022101200423,NA,,NA,,exclude
+426,t23b1l1,t23,b1,l1,r1,2022101200,2.0221E+12,X2022101200424,NA,,NA,leaf position unknown,
+427,t23b1l1,t23,b1,l1,r2,2022101200,2.0221E+12,X2022101200425,NA,,NA,leaf position unknown,
+428,t23b1l1,t23,b1,l1,r3,2022101200,2.0221E+12,X2022101200426,NA,,NA,leaf position unknown,
+429,t33b1l1,t33,b1,l1,r1,2022101200,2.0221E+12,X2022101200427,NA,,NA,leaf position unknown,
+430,t33b1l1,t33,b1,l1,r2,2022101200,2.0221E+12,X2022101200428,NA,,NA,leaf position unknown,
+431,t33b1l1,t33,b1,l1,r3,2022101200,2.0221E+12,X2022101200429,NA,,NA,leaf position unknown,
+432,t32b1l1,t32,b1,l1,r1,2022101200,2.0221E+12,X2022101200430,NA,,NA,leaf position unknown,
+433,t32b1l1,t32,b1,l1,r2,2022101200,2.0221E+12,X2022101200431,NA,,NA,leaf position unknown,
+434,t32b1l1,t32,b1,l1,r3,2022101200,2.0221E+12,X2022101200432,NA,,NA,leaf position unknown,
+435,t37b20l21,t37,b20,l21,r1,2022101200,2.0221E+12,X2022101200433,NA,,NA,leaf position unknown,
+436,t37b20l21,t37,b20,l21,r2,2022101200,2.0221E+12,X2022101200434,NA,,NA,leaf position unknown,
+437,t37b20l21,t37,b20,l21,r3,2022101200,2.0221E+12,X2022101200435,NA,,NA,leaf position unknown,
+438,t37b20l22,t37,b20,l22,r1,2022101200,2.0221E+12,X2022101200436,NA,,NA,leaf position unknown,
+439,t37b20l22,t37,b20,l22,r2,2022101200,2.0221E+12,X2022101200437,NA,,NA,leaf position unknown,
+440,t37b20l22,t37,b20,l22,r3,2022101200,2.0221E+12,X2022101200438,NA,,NA,leaf position unknown,
+441,t37b20l20,t37,b20,l20,r1,2022101200,2.0221E+12,X2022101200439,NA,,NA,leaf position unknown,
+442,t37b20l20,t37,b20,l20,r2,2022101200,2.0221E+12,X2022101200440,NA,,NA,leaf position unknown,
+443,t37b20l20,t37,b20,l20,r3,2022101200,2.0221E+12,X2022101200441,NA,,NA,leaf position unknown,
+444,,,,,r1,2022101200,2.0221E+12,X2022101200442,NA,x,NA,,
+445,,,,,r2,2022101200,2.0221E+12,X2022101200443,NA,x,NA,,
+446,,,,,r3,2022101200,2.0221E+12,X2022101200444,NA,,NA,,dark current measurement

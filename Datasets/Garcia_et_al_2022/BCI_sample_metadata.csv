@@ -1,0 +1,39 @@
+day,tree_id,tree_tag,branches_collected ,gexch_leaf,branch_position,colletion_method,phyllotaxis,botanical_sample,Family,Genus,Species,Code,notes
+06-oct,T1,19127,b1,1,gap,pole_pruner,unknow,no,,Unknown,,,
+06-oct,T2,19954,"b20,b21",0,gap,pole_pruner,unknow,no,,Unknown,,,
+08-oct,T3,120957,"b1,b20,b21",1,gap,pole_pruner,,yes,Meliaceae,Trichilia,tuberculata,TRICTU,
+08-oct,T4,19129,"b1,b20",1,gap,pole_pruner,,yes,Apocinaceae,Tabernamontana,arborea,TABEAR,
+09-oct,T5,39331,b1,1,shade,pole_pruner,simple,no,,Unknown,,,"Gustavia, this was a tree next to 39331 it was really simillar and for sure the same species, this is why we are using the same tag "
+09-oct,T6,191261,b1,1,shade,pole_pruner,,yes,Euphorbiaceae,Alchornia,costaricensis,ALCHCO,
+09-oct,T7,19491,"b1,b20",1,shade,pole_pruner,,yes,Meliaceae,Guarea,guidonia,GUARGU,
+09-oct,T8,44686,b1,1,gap,pole_pruner,,yes,Meliaceae,Guarea,guidonia,GUARGU,
+09-oct,T9,no_tag,b20,0,canopy,drone,,yes,Anacardiaceae,Spondia,mombin,SPONMO,basketball area
+09-oct,T10,no_tag,"b20,b1",1,canopy,drone,,yes,Anacardiaceae,Spondia,mombin,SPONMO,basketball area
+10-oct,T11,48429,b1,1,canopy,pole_pruner_tower,simple,yes,Urticaceae,Cecropia,insignis,CECRIN,"Cecropia, the one Mattheo collected from the tower"
+10-oct,T12,19133,b1,2,canopy,pole_pruner_tower,,yes,Euphorbiaceae,Hura,crepitans,HURACR,
+10-oct,T13,no_tag,b1,2,gap,pole_pruner,,yes,Malvaceae,Pseudobombax,septenatum,PSE1SE,"young tree, the one that Maquelle thinks is the same specie as the big one that Charlie took pictures using the little drone, that we belive that is tree 19071"
+10-oct,T14,no_tag,"b1,b20",1,gap,pole_pruner,,yes,Apocinaceae,Aspidosperma,desmanthum,ASPICR,samall tree
+10-oct,T15,no_tag,"b1,b20",1,shade,pole_pruner,,yes,Rubiaceae,Faramea,occidentalis,FARAOC,
+10-nov,T16,no_tag,"b1,b20",1,gap,pole_pruner,,yes,Burseraceae,Protium,tenuifolium,PROTTE,next to tree 22092
+10-oct,T17,no_tag,b20,0,canopy,drone,,yes,Annonaaceae,Guatteria,lucens,GUATDU,basketball area
+10-oct,T18,no_tag,b20,0,canopy,drone,,yes,Annonaaceae,Guatteria,lucens,GUATDU,basketball area
+10-oct,T19,no_tag,b20,0,canopy,drone,,yes,Rubiaceae,Cosmibuena,grandiflora,COSMGR,basketball area
+10-nov,T20,no_tag,"b20, b21, b22",0,canopy,drone,compound,yes,Fabaceae,Dipterix,oleifera,DIPTOL,"basketball area, couldn't get gas exchange to work"
+10-nov,T21,no_tag,"b20, b21, b22",0,canopy,drone,double compound,yes,Fabaceae,Schizolobium,parahyba,SCHIPA,"basketball area, couldn't get gas exchange to work"
+10-nov,T22,no_tag,"b20, b21, b22",0,canopy,drone,simple,yes,Anacardiaceae,Anacardium,excelsum,ANACEX,"basketball area, couldn't get gas exchange to work"
+13-déc,T23,no_tag,b20,0,canopy,drone,,yes,Annonaceae,Annona,pupurea,ANNOPU,
+13-déc,T24,no_tag,b20,0,canopy,drone,,yes,Lauraceae,Beilschmiedia,tovarnensis,BEILTO,
+10-nov,T25,no_tag,"b1,b20",1,gap,pole_pruner,,yes,Rubiaceae,Faramea,occidentalis,FARAOC,"next to tree 22097, out of the plot"
+10-nov,T26,no_tag,"b1,b20",1,gap,pole_pruner,,yes,Chrysobalanaceae,Hirtella,triandra,HIRTTR,Out of the plot
+10-nov,T27,no_tag,"b1,b20",1,gap,pole_pruner,,yes,Meristicaceae,Virola,sebifera,VIROSE,Out of the plot
+10-nov,T28,no_tag,"b1,b20",1,gap,pole_pruner,,yes,Rubiaceae,Alseis,blackiana,ALSEBL,Out of the plot
+10-nov,T29,no_tag,b20,0,gap,pole_pruner,,yes,Euphorbiaceae,Croton,billbergianus,CROTBI,Out of the plot
+10-déc,T30,no_tag,"b1,b20",1,gap,pole_pruner,,yes,Lauraceae,Persea,americana,PERSAM,
+11-déc,T31,no_tag,"b1,b20",1,gap,pole_pruner,,yes,Malvaceae,Luehea,seemannii,LUEHSE,
+12-déc,T32,no_tag,"b1,b20",1,canopy,drone,,yes,Anacardiaceae,Spondias,mombin,SPONMO,
+13-déc,T33,no_tag,b1,1,gap,pole_pruner,,yes,Malvaceae,Sterculia,apetala,STERAP,
+14-déc,T34,no_tag,b1,1,canopy,drone,,yes,Sapotaceae,Chrysophyllum,argentum,CHRYAR,
+15-déc,T35,does not exist,,,,,,no,,,,,
+16-déc,T36,no_tag,b20,0,canopy,drone,,yes,Anacardiaceae,Spondias,radkoferi,SPONRA,
+17-déc,T37,no_tag,b20,0,canopy,drone,,yes,Lauraceae,Beischmielia,tovarences,BEISTO,
+18-déc,T38,no_tag,"b1,b20",1,gap,pole_pruner,,yes,Euphorbiaceae,Croton,bilbergianus,CROTBI,
