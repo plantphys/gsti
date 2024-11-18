@@ -1,0 +1,367 @@
+;Each object must have a unique name
+;Field objects should be type Field and the field name in [xxxxx] the Name and Value fields
+;Page Number field should be type Page with a Name and Value of [Page Number]
+
+
+[STYLE OBJECTS]
+Count=5
+
+[Style 1]
+Name=Style1
+FontName=Times New Roman
+FontSize=12
+FontBold=1
+FontItalic=1
+FontUnderline=1
+FontStrikeThru=0
+
+[Style 2]
+Name=Style2
+FontName=Times New Roman
+FontSize=8
+FontBold=1
+FontItalic=0
+FontUnderline=0
+FontStrikeThru=0
+
+[Style 3]
+Name=Style3
+FontName=Times New Roman
+FontSize=9
+FontBold=0
+FontItalic=0
+FontUnderline=0
+FontStrikeThru=0
+
+[Style 4]
+Name=Style4
+FontName=Times New Roman
+FontSize=14
+FontBold=1
+FontItalic=0
+FontUnderline=0
+FontStrikeThru=0
+
+[Style 5]
+Name=Style5
+FontName=Times New Roman
+FontSize=9
+FontBold=0
+FontItalic=0
+FontUnderline=0
+FontStrikeThru=0
+
+[REPORT OBJECTS]
+Count=27
+
+[REPORT OBJECT 1]
+Name=[Title]
+Type=Field
+Value=[Title]
+Left=3.25
+Top=.125
+Width=30
+FontStyle=Style4
+Color=0
+
+[REPORT OBJECT 2]
+Name=[SubTitle]
+Type=Field
+Value=[SubTitle]
+Left=3.25
+Top=.375
+Width=30
+FontStyle=Style3
+Color=0
+
+[REPORT OBJECT 3]
+Name=[Logo]
+Type=Bitmap
+Left=7.125
+Top=.125
+Bottom=.5
+Right=7.5
+FileName=mrlogo.bmp
+
+[REPORT OBJECT 4]
+Name=DateTime
+Type=Text
+Text=Date:
+Left=1
+Top=.625
+Width=15
+FontStyle=Style2
+Color=0
+
+[REPORT OBJECT 5]
+Name=[DateTime1]
+Type=Field
+Value=[DateTime]
+Left=1.5
+Top=.625
+Width=25
+FontStyle=Style5
+Color=0
+
+[REPORT OBJECT 6]
+Name=Operator
+Type=Text
+Text=Operator:
+Left=4.5
+Top=.625
+Width=15
+FontStyle=Style2
+Color=0
+
+[REPORT OBJECT 7]
+Name=[Operator1]
+Type=Field
+Value=[Operator]
+Left=5.25
+Top=.625
+Width=30
+FontStyle=Style5
+Color=0
+
+[REPORT OBJECT 8]
+Name=SerialNumber
+Type=Text
+Text=Serial No.:
+Left=4.5
+Top=.875
+Width=15
+FontStyle=Style2
+Color=0
+
+[REPORT OBJECT 9]
+Name=[SerialNumber1]
+Type=Field
+Value=[SerialNumber]
+Left=5.25
+Top=.875
+Width=20
+FontStyle=Style5
+Color=0
+
+[REPORT OBJECT 10]
+Name=LotNumber
+Type=Text
+Text=Lot No.:
+Left=4.5
+Top=1.25
+Width=15
+FontStyle=Style2
+Color=0
+
+[REPORT OBJECT 11]
+Name=[LotNumber1]
+Type=Field
+Value=[LotNumber]
+Left=5
+Top=1.25
+Width=15
+FontStyle=Style5
+Color=0
+
+[REPORT OBJECT 12]
+Name=Product
+Type=Text
+Text=Product:
+Left=1
+Top=.875
+Width=15
+FontStyle=Style2
+Color=0
+
+[REPORT OBJECT 13]
+Name=[Product1]
+Type=Field
+Value=[Product]
+Left=1.5
+Top=.875
+Width=30
+FontStyle=Style5
+Color=0
+
+[REPORT OBJECT 14]
+Name=Vendor
+Type=Text
+Text=Vendor:
+Left=1
+Top=1.25
+Width=15
+FontStyle=Style2
+Color=0
+
+[REPORT OBJECT 15]
+Name=[Vendor1]
+Type=Field
+Value=[Vendor]
+Left=1.5
+Top=1.25
+Width=30
+FontStyle=Style5
+Color=0
+
+[REPORT OBJECT 16]
+Name=FileName
+Type=Text
+Text=File:
+Left=1
+Top=1.75
+Width=15
+FontStyle=Style2
+Color=0
+
+[REPORT OBJECT 17]
+Name=[FileName1]
+Type=Field
+Value=[FileName]
+Left=1.5
+Top=1.75
+Width=120
+FontStyle=Style5
+Color=0
+
+[REPORT OBJECT 18]
+Name=Sample
+Type=Text
+Text=Sample:
+Left=1
+Top=2
+Width=15
+FontStyle=Style2
+Color=0
+
+[REPORT OBJECT 19]
+Name=[Sample1]
+Type=Field
+Value=[Sample]
+Left=1.5
+Top=2
+Width=95
+FontStyle=Style5
+Color=0
+
+[REPORT OBJECT 20]
+Name=Comments
+Type=Text
+Text=Comments:
+Left=1
+Top=2.25
+Width=15
+FontStyle=Style2
+Color=0
+
+[REPORT OBJECT 21]
+Name=[Comments1]
+Type=Field
+Value=[Comments]
+Left=1.75
+Top=2.25
+Width=95
+FontStyle=Style5
+Color=0
+
+[REPORT OBJECT 22]
+Name=Constituent
+Type=Text
+Text=Constituent
+Left=1
+Top=2.75
+Width=15
+FontStyle=Style2
+Color=0
+
+[REPORT OBJECT 23]
+Name=Concentration
+Type=Text
+Text=Concentration
+Left=3.5
+Top=2.75
+Width=15
+FontStyle=Style2
+Color=0
+
+[REPORT OBJECT 24]
+Name=PassFail
+Type=Text
+Text=ID
+Left=5
+Top=2.75
+Width=15
+FontStyle=Style2
+Color=0
+
+[REPORT OBJECT 25]
+Name=MDistance
+Type=Text
+Text=M-Distance
+Left=6.5
+Top=2.75
+Width=20
+FontStyle=Style2
+Color=0
+
+[REPORT OBJECT 26]
+Name=[PageNumber]
+Type=Page
+Text=[PageNumber]
+Left=6.5
+Top=10.125
+Width=30
+FontStyle=Style3
+Color=0
+
+[REPORT OBJECT 27]
+Name=[Spectrum1]
+Type=Bitmap
+Left=.75
+Top=4
+Right=7.75
+Bottom=8
+FileName=tmpsp.jpg
+
+[SECTION1 OBJECTS]
+Count=4
+
+[SECTION1 OBJECT 1]
+Name=[Constituent1]
+Type=Field
+Value=[Constituent1]
+Left=1
+Top=3
+Width=30
+FontStyle=Style5
+Color=0
+
+[SECTION1 OBJECT 2]
+Name=[Concentration1]
+Type=Field
+Value=[Concentration1]
+Left=3.5
+Top=3
+Width=15
+FontStyle=Style5
+Color=0
+
+[SECTION1 OBJECT 3]
+Name=[PassFail1]
+Type=Field
+Value=[PassFail1]
+Left=5
+Top=3
+Width=20
+FontStyle=Style5
+Color=0
+
+[SECTION1 OBJECT 4]
+Name=[MDistance1]
+Type=Field
+Value=[MDistance1]
+Left=6.5
+Top=3
+Width=20
+FontStyle=Style5
+Color=0
+
