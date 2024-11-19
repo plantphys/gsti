@@ -1,0 +1,21 @@
+OPEN 6.2.5,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Sat Mar  5 2016 15:36:17,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Unit=,PSC-4101,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+LightSource=,6400-02 or -02B LED Source,1,0.159999996,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+A/D AvgTime=,4,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Log AvgTime=,15,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Config=,/User/Configs/UserPrefs/BALI#1.xml,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Remark=,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Obs,HHMMSS,FTime,EBal?,Photo,Cond,Ci,Trmmol,VpdL,CTleaf,Area,BLC_1,StmRat,BLCond,Tair,Tleaf,TBlk,CO2R,CO2S,H2OR,H2OS,RH_R,RH_S,Flow,PARi,PARo,Press,CsMch,HsMch,StableF,BLCslope,BLCoffst,f_parin,f_parout,alphaK,Status,fda,Trans,Tair_K,Twall_K,R(W/m2),Tl-Ta,SVTleaf,h2o_i,h20diff,CTair,SVTair,CndTotal,vp_kPa,VpdA,CndCO2,Ci_Pa,Ci/Ca,RHsfc,C2sfc,AHs/Cs
+in,in,in,in,out,out,out,out,out,out,in,out,in,out,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,out,out,out,out,out,out,out,out,out,out,out,out,out,out,out,out,out,out,out,out
+Remark=,"""15:36:17 Launched AutoProg /User/Configs/AutoProgs/AutoLog2""
+",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Remark=,"""15:36:18 Lamp: ParIn ->  1200 uml""
+",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Remark=,"""15:36:18 CO2 Mixer: CO2R -> 400 uml""
+",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Remark=,"""15:36:18 Coolers: Tblock -> 30.00 C""
+",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Remark=,"""15:36:18 Flow: Fixed -> 500 umol/s""
+",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

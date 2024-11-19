@@ -1,0 +1,31 @@
+OPEN 6.3.1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Sat Jan 23 2016 11:52:03,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Unit=,PSC-3659,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+LightSource=,6400-02 or -02B LED Source,1,0.159999996,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+A/D AvgTime=,4,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Log AvgTime=,15,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Config=,/User/Configs/UserPrefs/BALI#2.xml,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Remark=,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Obs,HHMMSS,FTime,EBal?,Photo,Cond,Ci,Trmmol,VpdL,CTleaf,Area,BLC_1,StmRat,BLCond,Tair,Tleaf,TBlk,CO2R,CO2S,H2OR,H2OS,RH_R,RH_S,Flow,PARi,PARo,Press,CsMch,HsMch,CsMchSD,HsMchSD,CrMchSD,HrMchSD,StableF,BLCslope,BLCoffst,f_parin,f_parout,alphaK,Status,fda,Trans,Tair_K,Twall_K,R(W/m2),Tl-Ta,SVTleaf,h2o_i,h20diff,CTair,SVTair,CndTotal,vp_kPa,VpdA,CndCO2,Ci_Pa,Ci/Ca,RHsfc,C2sfc,AHs/Cs
+in,in,in,in,out,out,out,out,out,out,in,out,in,out,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,in,out,out,out,out,out,out,out,out,out,out,out,out,out,out,out,out,out,out,out,out
+Remark=,"""11:52:08 Lamp: Off""
+",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Remark=,"""11:52:08 CO2 Mixer: CO2R -> 400 uml""
+",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Remark=,"""11:52:08 Coolers: Tblock -> 30.00 C""
+",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Remark=,"""11:52:08 Flow: Fixed -> 300 umol/s""
+",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Remark=,"""11:53:01 Lamp: ParIn ->  1200 uml""
+",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Remark=,"""11:53:01 CO2 Mixer: CO2R -> 400 uml""
+",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Remark=,"""11:53:01 Coolers: Tblock -> 30.00 C""
+",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Remark=,"""11:53:01 Flow: Fixed -> 500 umol/s""
+",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Remark=,"""11:53:17 Flow: Fixed -> 500 umol/s""
+",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Remark=,"""11:53:25 Lamp: ParIn ->  1200 uml""
+",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
