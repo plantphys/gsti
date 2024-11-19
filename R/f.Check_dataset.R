@@ -81,7 +81,7 @@ f.Check_data=function(folder_path=NA){
       print(Bilan_colnames[!Bilan_colnames%in%colnames(Bilan)])
       stop()}
     
-    if(any(duplicated(Bilan$SampleID))){"!!! You have duplicated SampleID names in your Bilan dataframe"
+    if(any(duplicated(Bilan$SampleID))){print("!!! You have duplicated SampleID names in your Bilan dataframe")
       stop()}
     
     n_sampleID=nrow(Bilan[!is.na(Bilan$Vcmax25),])

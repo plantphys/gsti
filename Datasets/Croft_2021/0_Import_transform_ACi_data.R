@@ -20,7 +20,6 @@ curated_data=read.csv('ACi.csv')
 
 # The columns gsw and Record were still filled with SampleID info. I replace by NA values
 curated_data$RHs = curated_data$CO2s = curated_data$CO2r = NA
-curated_data$gsw=curated_data$gsw * 1000 # Converting gsw into mmol m-2 s-1
 
 # Saving the curated dataset
 save(curated_data,file='0_curated_data.Rdata')

@@ -19,7 +19,7 @@ original_data=read.csv('FrenchGuiana_2024_Survey_data.csv')
 original_data$record=1 ## Adding the record data (not really useful for one point data, more usefull for full ACi curves)
 # Select specific columns from the original data to create the curated data set
 curated_data=original_data[,c("SampleID", "record","A","Ci","CO2s","CO2r","gsw","Patm","Qin","RHs","Tleaf")]
-
+curated_data$gsw=curated_data$gsw/1000
 # Rename the columns of the curated dataset with the ESS standard
 colnames(curated_data)=c(ESS_column)
 
