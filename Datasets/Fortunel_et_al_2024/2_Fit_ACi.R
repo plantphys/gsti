@@ -8,8 +8,8 @@ library(here)
 # Find the path of the top relative directory
 path=here()
 
-# Set the working directory to the 'Dauvissat_et_al_2024' folder where the data is located
-setwd(file.path(path,'/Datasets/Dauvissat_et_al_2024'))
+# Set the working directory to the 'Fortunel_et_al_2024' folder where the data is located
+setwd(file.path(path,'/Datasets/Fortunel_et_al_2024'))
 
 # Load various functions that are used to fit, plot and analyse the ACi curves
 source(file.path(path,'/R/fit_Vcmax.R'))

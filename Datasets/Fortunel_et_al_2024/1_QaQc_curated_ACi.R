@@ -7,8 +7,8 @@ library(here)
 # Find the path of the top relative directory
 path=here()
 
-# Set the working directory to the 'Dauvissat_et_al_2024' folder where the data is located
-setwd(file.path(path,'/Datasets/Dauvissat_et_al_2024'))
+# Set the working directory to the 'Fortunel_et_al_2024' folder where the data is located
+setwd(file.path(path,'/Datasets/Fortunel_et_al_2024'))
 
 # Load the ACi data that were processed in step 0
 load('0_curated_data.Rdata',verbose=TRUE)

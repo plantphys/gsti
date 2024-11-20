@@ -11,8 +11,8 @@ path=here()
 # Loading the ESS standard column names that will be used for all datasets
 source(file.path(path,'/R/Correspondance_tables_ESS.R')) 
 
-# Set the working directory to the 'Dauvissat_et_al_2024' folder where the data is located
-setwd(file.path(path,'/Datasets/Dauvissat_et_al_2024'))
+# Set the working directory to the 'Fortunel_et_al_2024' folder where the data is located
+setwd(file.path(path,'/Datasets/Fortunel_et_al_2024'))
 
 # Import the authors original raw data
 original_data=read.csv('FrenchGuiana_2024_Survey_data.csv')

@@ -7,8 +7,8 @@ library(here)
 # Find the path of the top relative directory
 path=here()
 
-# Set the working directory to the 'Dauvissat_et_al_2024' folder where the data is located
-setwd(file.path(path,'/Datasets/Dauvissat_et_al_2024'))
+# Set the working directory to the 'Fortunel_et_al_2024' folder where the data is located
+setwd(file.path(path,'/Datasets/Fortunel_et_al_2024'))
 load('1_QC_ACi_data.Rdata',verbose=TRUE)
 
 # Importing the author's sample information
@@ -16,7 +16,7 @@ SampleDetails=read.csv("SampleInfo.csv")
 
 # Inform the various information required
 SampleDetails$Site_name="Paracou" # Note that the site_name should be present in your Site.csv file
-SampleDetails$Dataset_name="Dauvissat_et_al_2024"
+SampleDetails$Dataset_name="Fortunel_et_al_2024"
 SampleDetails$Species=SampleDetails$spp # Genus species
 SampleDetails$Sun_Shade="Shade"
 SampleDetails$Phenological_stage="Mature"
