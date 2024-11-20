@@ -22,7 +22,6 @@
 85XC,Pouroma villosa,20.5,17.3,YES,B2T4
 90XD,Miconia minutiflora,20.5,10.3,YES,B2T4
 91XB,Xylopia spruceana,24.5,20.1,YES,B2T4
-Bellu,Bellutia imperiaris,23,24.5,NO,B4T1
 Cecropia,Cecropia sciadophyla,23.7,22.1,NO,B4T1
 324,Geisospermum argenteum,23,77.4,YES,B4T1
 317,Lecythis prancei,29,55.9,YES,B4T1
@@ -31,3 +30,4 @@ Cecropia,Cecropia sciadophyla,23.7,22.1,NO,B4T1
 115X,Brosimum rubecens,N/A,34.5,NO,B2T4
 384,Chrysophyllum sanguinolentum,N/A,35.7,YES,B2T4
 Byrsonima,Byrsonima duckeana,N/A,N/A,NO,B4T1
+Bellu_2,Bellutia imperiaris,N/A,N/A,NO,B4T1
