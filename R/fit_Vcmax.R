@@ -102,7 +102,7 @@ f.fit_ACi<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdayRef = 2, TPURef
       AICcurve=AIC(x[[2]])}else {coefs=rep(NA,4)
                               std_dev=rep(NA,4)
                               AICcurve=NA}
-    return(c(coefs,std_dev,AIC=AICcurve,Tleaf=x[[3]]['Tleaf']))}
+    return(c(coefs,std_dev,AIC=AICcurve,Tleaf=x[[3]]['Tleaf'],RHs=x[[3]]['RHs'],Qin=x[[3]]['Qin'],Patm=x[[3]]['Patm']))}
     )))
   res_nlf_Ac_Aj$SampleID_num=row.names(res_nlf_Ac_Aj)
   
@@ -114,7 +114,7 @@ f.fit_ACi<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdayRef = 2, TPURef
       AICcurve=AIC(x[[2]])}else {coefs=rep(NA,3)
                                 std_dev=rep(NA,3)
                                 AICcurve=NA}
-    return(c(coefs,std_dev,AIC=AICcurve,Tleaf=x[[3]]['Tleaf']))}
+    return(c(coefs,std_dev,AIC=AICcurve,Tleaf=x[[3]]['Tleaf'],RHs=x[[3]]['RHs'],Qin=x[[3]]['Qin'],Patm=x[[3]]['Patm']))}
   )))
   res_nlf_Ac$SampleID_num=row.names(res_nlf_Ac)
   
@@ -126,7 +126,7 @@ f.fit_ACi<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdayRef = 2, TPURef
       AICcurve=AIC(x[[2]])}else {coefs=rep(NA,5)
                                 std_dev=rep(NA,5)
                                 AICcurve=NA}
-    return(c(coefs,std_dev,AIC=AICcurve,Tleaf=x[[3]]['Tleaf']))}
+    return(c(coefs,std_dev,AIC=AICcurve,Tleaf=x[[3]]['Tleaf'],RHs=x[[3]]['RHs'],Qin=x[[3]]['Qin'],Patm=x[[3]]['Patm']))}
   )))
   res_nlf_Ac_Aj_Ap$SampleID_num=row.names(res_nlf_Ac_Aj_Ap)
   
@@ -138,7 +138,7 @@ f.fit_ACi<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdayRef = 2, TPURef
       AICcurve=AIC(x[[2]])}else {coefs=rep(NA,4)
       std_dev=rep(NA,4)
       AICcurve=NA}
-    return(c(coefs,std_dev,AIC=AICcurve,Tleaf=x[[3]]['Tleaf']))}
+    return(c(coefs,std_dev,AIC=AICcurve,Tleaf=x[[3]]['Tleaf'],RHs=x[[3]]['RHs'],Qin=x[[3]]['Qin'],Patm=x[[3]]['Patm']))}
   )))
   res_nlf_Ac_Ap$SampleID_num=row.names(res_nlf_Ac_Ap)
   
@@ -168,7 +168,7 @@ f.fit_ACi<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdayRef = 2, TPURef
   Bilan[which(res_nlf_Ac$AIC<res_nlf_Ac_Aj$AIC),]=res_nlf_Ac[which(res_nlf_Ac$AIC<res_nlf_Ac_Aj$AIC),]
   Bilan[which(res_nlf_Ac_Aj_Ap$AIC<Bilan$AIC),]=res_nlf_Ac_Aj_Ap[which(res_nlf_Ac_Aj_Ap$AIC<Bilan$AIC),]
   Bilan[which(res_nlf_Ac_Ap$AIC<Bilan$AIC),]=res_nlf_Ac_Ap[which(res_nlf_Ac_Ap$AIC<Bilan$AIC),]
-  colnames(Bilan)=c("sigma","JmaxRef","VcmaxRef","TPURef","RdayRef","StdError_sigma","StdError_JmaxRef","StdError_VcmaxRef","StdError_TPURef","StdError_RdayRef","AIC","Tleaf","SampleID_num","model") 
+  colnames(Bilan)=c("sigma","JmaxRef","VcmaxRef","TPURef","RdayRef","StdError_sigma","StdError_JmaxRef","StdError_VcmaxRef","StdError_TPURef","StdError_RdayRef","AIC","Tleaf","RHs","Qin","Patm","SampleID_num","model") 
   Bilan$Vcmax_method="A-Ci curve"
   
 ### Creating a pdf with the best model for each curve
@@ -202,9 +202,9 @@ f.fit_ACi<-function(measures,param,VcmaxRef=60, JmaxRef=120, RdayRef = 2, TPURef
   Bilan[A_limitations$n_Ap<2,c("TpRef","StdError_TpRef")]=NA
   
   ## Renaming Bilan so it corresponds to the standard used in this repo:
-  colnames(Bilan)=c("sigma","Jmax25","Vcmax25","TPU25","Rday25","StdError_sigma","StdError_Jmax25","StdError_Vcmax25","StdError_TPU25","StdError_Rday25","AIC","Tleaf","SampleID_num","Model","Fitting_method") 
+  colnames(Bilan)=c("sigma","Jmax25","Vcmax25","TPU25","Rday25","StdError_sigma","StdError_Jmax25","StdError_Vcmax25","StdError_TPU25","StdError_Rday25","AIC","Tleaf","RHs","Qin","Patm","SampleID_num","Model","Fitting_method") 
   Bilan$Tleaf=Bilan$Tleaf-273 ## Conversion to degree Celcius
-  return(Bilan[,c("SampleID_num","Vcmax25","Jmax25","TPU25","Rday25","StdError_Vcmax25","StdError_Jmax25","StdError_TPU25","StdError_Rday25","Tleaf","sigma","AIC","Model","Fitting_method")])
+  return(Bilan[,c("SampleID_num","Vcmax25","Jmax25","TPU25","Rday25","StdError_Vcmax25","StdError_Jmax25","StdError_TPU25","StdError_Rday25","Tleaf","RHs","Qin","Patm","sigma","AIC","Model","Fitting_method")])
 }
 
 
@@ -221,7 +221,8 @@ f.fit_One_Point<-function(measures,param){
   n_points_curves=tapply(X=measures$SampleID_num,INDEX = measures$SampleID_num,FUN = function(x) length(x))
   if(any(n_points_curves>1)){warning("Some of your SampleID_num have more than one measurements")}
   if(any(measures$Ci>400)){stop("Some of your Ci are above 400 ppm meaning that Vcmax cant be estimated")}
-  
+  if(is.null(measures$Patm)){measures$Patm=NA}
+  if(is.null(measures$RHs)){measures$RHs=NA}
   measures$Tleaf=measures$Tleaf+273
   Gstar=f.arrhenius(param[['GstarRef']],param[['GstarHa']],measures$Tleaf)
   Kc=f.arrhenius(param[['KcRef']],param[['KcHa']],measures$Tleaf)
@@ -229,5 +230,5 @@ f.fit_One_Point<-function(measures,param){
   Km=Kc*(1+param[['O2']]/Ko)
   Vcmax=measures$A/((measures$Ci-Gstar)/(measures$Ci+Km)-0.015)
   Vcmax25=f.modified.arrhenius.inv(P = Vcmax,Ha = param[['VcmaxHa']],Hd = param[['VcmaxHd']],s = param[['VcmaxS']],Tleaf = measures$Tleaf,TRef = 273.16+25)
-  return(data.frame(SampleID_num=measures$SampleID_num,Vcmax25=Vcmax25,Jmax25=NA,TPU25=NA,Rday25=NA,StdError_Vcmax25=NA,StdError_Jmax25=NA,StdError_TPU25=NA,StdError_Rday25=NA,Tleaf=measures$Tleaf-273,sigma=NA,AIC=NA,Model=NA,Fitting_method='One point'))
+  return(data.frame(SampleID_num=measures$SampleID_num,Vcmax25=Vcmax25,Jmax25=NA,TPU25=NA,Rday25=NA,StdError_Vcmax25=NA,StdError_Jmax25=NA,StdError_TPU25=NA,StdError_Rday25=NA,Tleaf=measures$Tleaf-273,RHs=measures$RHs,Qin=measures$Qin,Patm=measures$Patm,sigma=NA,AIC=NA,Model=NA,Fitting_method='One point'))
 }
