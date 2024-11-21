@@ -24,7 +24,7 @@ SampleDetails$Species # Genus species
 SampleDetails$Sun_Shade="Sun"
 SampleDetails$Phenological_stage="Mature"
 SampleDetails$Photosynthetic_pathway="C3"
-SampleDetails$Plant_type="Wild" # Wild or Agricultural
+SampleDetails$Plant_type="Wild" # Wild, Agricultural, or Ornamental
 SampleDetails$Soil="Natural" # Natural, Managed or Pot
 SampleDetails$LMA = NA # Leaf mass area in g m-2. 
 SampleDetails$Narea= NA # Nitrogen content per surface area in g m-2

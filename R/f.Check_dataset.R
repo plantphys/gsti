@@ -146,7 +146,7 @@ f.Check_data=function(folder_path=NA){
                                                           stop()}
   if(any(!SampleDetails$Phenological_stage%in%c("Young","Mature","Old"))){print("Column Phenological_stage only accepts Young, Mature or Old values")
                                                           stop()}
-  if(any(!SampleDetails$Plant_type%in%c("Wild","Agricultural"))){print("Column Plant_type only accepts Wild or Agricultural values")
+  if(any(!SampleDetails$Plant_type%in%c("Wild","Agricultural","Ornamental"))){print("Column Plant_type only accepts Wild, Agricultural, and Ornamental values")
                                                           stop()}
   if(any(!SampleDetails$Soil%in%c("Natural","Managed","Pot","Hydroponic"))){print("Column Soil only accepts Natural, Managed, Pot, and Hydroponic values")
                                                           stop()}

@@ -27,7 +27,7 @@ SampleDetails$Sun_Shade="Shade"
 SampleDetails[SampleDetails$Vertical_Elevation%in%c(0,1),"Sun_Shade"]="Sun" # Sun, Shade or NA
 SampleDetails$Phenological_stage=SampleDetails$Phenological_Stage
 SampleDetails$Photosynthetic_pathway="C3"
-SampleDetails$Plant_type="Wild" # Wild or Agricultural
+SampleDetails$Plant_type="Wild" # Wild, Agricultural, or Ornamental
 SampleDetails$Soil="Natural" # Natural, Managed or Pot
 SampleDetails$LMA # Leaf mass area in g m-2. Here, LMA is already informed so I just print it 
 SampleDetails$Narea # Nitrogen content per surface area in g m-2

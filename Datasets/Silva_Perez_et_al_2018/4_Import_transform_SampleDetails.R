@@ -24,7 +24,7 @@ SampleDetails$Species="Triticum species"
 SampleDetails$Sun_Shade="Sun"
 SampleDetails$Phenological_stage="Mature"
 SampleDetails$Photosynthetic_pathway="C3"
-SampleDetails$Plant_type="Agricultural" # Wild or Agricultural
+SampleDetails$Plant_type="Agricultural" # Wild, Agricultural, or Ornamental
 SampleDetails$Soil="Managed" # Natural, Managed or Pot
 SampleDetails[SampleDetails$Site_name=="CSIRO_BMC","Soil"]="Pot"
 SampleDetails$LMA=SampleDetails$LMA_O # Leaf mass area in g m-2. Here, LMA is already informed so I just print it 

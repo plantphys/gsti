@@ -29,7 +29,7 @@ SampleDetails$Sun_Shade="Shade" ## I considered that all the trees with CII less
 SampleDetails[SampleDetails$Branch=="T"&SampleDetails$CII%in%c("4","5"),"Sun_Shade"]="Sun"
 SampleDetails$Phenological_stage="Mature"
 SampleDetails$Photosynthetic_pathway="C3"
-SampleDetails$Plant_type="Wild" # Wild or Agricultural
+SampleDetails$Plant_type="Wild" # Wild, Agricultural, or Ornamental
 SampleDetails$Soil="Natural" # Natural, Managed or Pot
 SampleDetails$LMA=1/as.numeric(SampleDetails$SLA)*10000 # Leaf mass area in g m-2. 
 SampleDetails$Narea=SampleDetails$LMA*as.numeric(SampleDetails$N)/100 # Nitrogen content per surface area in g m-2
