@@ -13,8 +13,8 @@ library(spectratrait) # https://github.com/plantphys/spectratrait
 # Find the path of the top relative directory
 path=here()
 
-# Set the working directory to the 'Kyaw_et_al_2022' folder where the data is located
-setwd(file.path(path,'/Datasets/Kyaw_et_al_2022'))
+# Set the working directory to the 'Kyaw_et_al_2024' folder where the data is located
+setwd(file.path(path,'/Datasets/Kyaw_et_al_2024'))
 
 # load the original reflectance data
 original_data=read.csv('Leaf spectra data.csv',check.names = FALSE)

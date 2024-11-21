@@ -7,8 +7,8 @@ library(here)
 # Find the path of the top relative directory
 path=here()
 
-# Set the working directory to the 'Kyaw_et_al_2022' folder where the data is located
-setwd(file.path(path,'/Datasets/Kyaw_et_al_2022'))
+# Set the working directory to the 'Kyaw_et_al_2024' folder where the data is located
+setwd(file.path(path,'/Datasets/Kyaw_et_al_2024'))
 
 # Importing the author's Rdark data
 Rdark=read.csv("Leaf respiration.csv")

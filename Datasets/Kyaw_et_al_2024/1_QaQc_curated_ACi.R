@@ -1,7 +1,7 @@
 library(here)
 path <- here()
 
-setwd(file.path(path,'/Datasets/Kyaw_et_al_2022'))
+setwd(file.path(path,'/Datasets/Kyaw_et_al_2024'))
 
 load('0_curated_data.Rdata',verbose=TRUE)
 

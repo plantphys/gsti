@@ -1,7 +1,7 @@
 library(here)
 path <- here()
 
-setwd(file.path(path,'/Datasets/Kyaw_et_al_2022'))
+setwd(file.path(path,'/Datasets/Kyaw_et_al_2024'))
 
 source(file.path(path,'/R/fit_Vcmax.R'))
 source(file.path(path,'/R/Photosynthesis_tools.R'))

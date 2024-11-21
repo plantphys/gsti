@@ -3,7 +3,7 @@
 library(here)
 path <- here()
 
-setwd(file.path(path,'/Datasets/Kyaw_et_al_2022'))
+setwd(file.path(path,'/Datasets/Kyaw_et_al_2024'))
 
 original_data =read.csv('Leaf gas exchange.csv')
 curated_data =original_data[,c("SampleID","A","Ci","Patm","Qin","Tleaf","gsw")]

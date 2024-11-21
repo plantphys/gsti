@@ -8,7 +8,7 @@ library(here)
 path=here()
 
 # Set the working directory to the 'Kyaw_et_al_2022' folder where the data is located
-setwd(file.path(path,'/Datasets/Kyaw_et_al_2022'))
+setwd(file.path(path,'/Datasets/Kyaw_et_al_2024'))
 
 # Importing the author's sample information
 SampleDetails=read.csv("Leaf sample info.csv")
