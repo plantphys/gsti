@@ -23,6 +23,7 @@ SampleDetails$Nmass=SampleDetails$Narea/SampleDetails$LMA*1000
 SampleDetails$Parea=NA
 SampleDetails$Pmass=NA
 SampleDetails$LWC=SampleDetails$RWC
+SampleDetails$Chl=NA
 
 SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Photosynthetic_Pathway","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
 

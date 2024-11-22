@@ -26,6 +26,7 @@ SampleDetails$Nmass=SampleDetails$`Leaf N (g/m2)`*1000/SampleDetails$`LMA (g/m2)
 SampleDetails$Parea=NA
 SampleDetails$Pmass=NA
 SampleDetails$LWC=SampleDetails$`LWC (%)`*100
+SampleDetails$Chl=NA
 
 
 SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Photosynthetic_Pathway","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]

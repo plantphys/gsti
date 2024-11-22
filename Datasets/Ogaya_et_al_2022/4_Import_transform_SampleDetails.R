@@ -37,6 +37,7 @@ SampleDetails$Nmass=as.numeric(SampleDetails$N)*10 # Nitrogen content on a leaf 
 SampleDetails$Parea=SampleDetails$LMA*as.numeric(SampleDetails$P)/100 # Phosphorus content per surface area in g m-2
 SampleDetails$Pmass=SampleDetails$LMA*as.numeric(SampleDetails$P)*10 # Phosphorus content on a leaf dry weight basis
 SampleDetails$LWC=NA # Leaf water content (Fresh_weight - dry weight)/Fresh weight
+SampleDetails$Chl=NA
 
 # Keeping only the columns of the standard:
 SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Photosynthetic_Pathway","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]

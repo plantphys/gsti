@@ -28,6 +28,7 @@ Chem_data$LMA=Chem_data$LMA_g_m.2
 Chem_data$Nmass=Chem_data$N_pc*10 ## conversion from % to per thousand or mg g-1
 Chem_data$Narea=Chem_data$N_g_m.2
 Chem_data$LWC=Chem_data$H20_pc
+SampleDetails$Chl=NA
 Chem_data[!is.na(Chem_data)&Chem_data==-9999]<-NA
 
 SampleDetails=merge(x=SampleDetails,y=Chem_data,by.x="BNL_UID",by.y="SampleID",all.x=TRUE)

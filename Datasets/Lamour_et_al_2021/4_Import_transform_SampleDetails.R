@@ -35,6 +35,7 @@ SampleDetails$Nmass # Nitrogen content on a leaf dry weight basis. In mg . g  (i
 SampleDetails$Parea=NA # Phosphorus content per surface area in g m-2
 SampleDetails$Pmass=NA # Phosphorus content on a leaf dry weight basis
 SampleDetails$LWC # Leaf water content (Fresh_weight - dry weight)/Fresh weight
+SampleDetails$Chl=NA
 
 # Keeping only the columns of the standard:
 SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Photosynthetic_Pathway","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
