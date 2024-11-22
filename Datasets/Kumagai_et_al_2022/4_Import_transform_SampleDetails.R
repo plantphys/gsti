@@ -29,7 +29,7 @@ SampleDetails$Pmass=NA
 SampleDetails$LWC=NA
 
 SampleDetails=SampleDetails[SampleDetails$SampleID%in%Bilan$SampleID,]
-SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Photosynthetic_pathway","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
+SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Photosynthetic_Pathway","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
 
 save(SampleDetails,file="4_SampleDetails.Rdata")
 source(file.path(path,'/R/f.Check_dataset.R'))

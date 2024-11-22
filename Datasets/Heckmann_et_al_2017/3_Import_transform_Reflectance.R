@@ -26,7 +26,7 @@ Reflectance=Reflectance[!Reflectance$SampleID_spec%in%ls_bad_spectra,]
 # Informing the spectrometer model used used (PSR+ 3500, SVC HR-1024i, SVC XHR-1024i, ASD FieldSpec 3, ASD FieldSpec 4, ASD FieldSpec 4 Hi-Res,...)
 Reflectance$Spectrometer="ASD FieldSpec 4 Hi-Res"
 
-# Type of probe used to measure the spectra. Is it a "Leaf clip"? "Integating sphere"? Or an "imager"?
+# Type of probe used to measure the spectra. Is it a "Leaf clip"? "Integrating sphere"? Or an "imager"?
 Reflectance$Probe_type="Leaf clip"
 
 # Reference for the probe used (SVC LC-RP, SVC LC-RP Pro, ASD Leaf Clip, ...)
