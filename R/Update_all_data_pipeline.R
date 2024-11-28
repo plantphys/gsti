@@ -58,7 +58,7 @@ if(update_database){
   ls_ACi_files=c("0_curated_data.Rdata","1_QC_ACi_data.Rdata","2_Fitted_ACi_data.Rdata")
   ls_Rdark_files=c("Rdark_data.Rdata")
   #Bilan colnames with Rdark and Tleaf_Rdark included
-  Bilan_colnames=c("Vcmax25","Jmax25","TPU25","Rday25","StdError_Vcmax25","StdError_Jmax25","StdError_TPU25","StdError_Rday25","Tleaf","sigma","AIC","Model","Fitting_method","SampleID","Rdark","Tleaf_Rdark") 
+  Bilan_colnames=c("Vcmax25","Jmax25","TPU25","Rday25","StdError_Vcmax25","StdError_Jmax25","StdError_TPU25","StdError_Rday25","Tleaf","Qin","Patm","RHs","sigma","AIC","Model","Fitting_method","SampleID","Rdark","Tleaf_Rdark") 
   Reflectance_colnames=c("SampleID","Spectrometer","Probe_type","Probe_model","Spectra_trait_pairing","Reflectance")
   SampleDetails_colnames=c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Photosynthetic_pathway","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")
   Description_colnames=c("Authors","Acknowledgment","Dataset_DOI","Publication_DOI","Email")

@@ -38,7 +38,7 @@ Database=rbind.data.frame(Database_p1,Database_p2,Database_p3)
 ###################################
 
 # Identifying unique sites
-All_sites=Database[-which(duplicated(paste(Database$Site_name,Database$Longitude))),c("Site_name","Longitude","Latitude","Biome","Biome_number","Dataset_name","Soil")]
+All_sites=Database[-which(duplicated(paste(Database$Site_name,Database$Longitude))),c("Site_name","Longitude","Latitude")]
 
 world <- ne_countries(scale = "medium", returnclass = "sf")
 Map_datasets <- ggplot(data = world) + geom_sf() + xlab("Longitude") + 
@@ -118,7 +118,7 @@ b=ggplot(data.frame(value=n_Species_Biome,Biome=names(n_Species_Biome)), aes(x =
   coord_polar(theta = "y")  + theme_void()+ theme(plot.title = element_text(hjust = 0.5))
 print(b)
 
-jpeg(file.path(out_path,"Number_observations.jpeg"), height=140, width=160, 
+jpeg(file.path(out_path,"Number_observations.jpeg"), height=160, width=180, 
      units = 'mm',res=300)
 plot_grid(a+theme(legend.position = "none"),b+theme(legend.position = "none"),get_legend(a),ncol=2,rel_heights = c(0.65,0.35))+theme(plot.background = element_rect(color = "black",linewidth = 1.2))
 dev.off()
