@@ -38,7 +38,7 @@ Database=rbind.data.frame(Database_p1,Database_p2,Database_p3)
 ###################################
 
 # Identifying unique sites
-All_sites=Database[-which(duplicated(paste(Database$Site_name,Database$Longitude))),c("Site_name","Longitude","Latitude")]
+All_sites=Database[-which(duplicated(paste(Database$Site_name,Database$Longitude))),c("Site_name","Longitude","Latitude","Biome","Biome_number","Dataset_name","Soil")]
 
 world <- ne_countries(scale = "medium", returnclass = "sf")
 Map_datasets <- ggplot(data = world) + geom_sf() + xlab("Longitude") + 
@@ -93,7 +93,7 @@ colnames(Resume)=c('Species','N_leaf')
 Resume$Species=as.character(Resume$Species)
 Resume=rbind.data.frame(Resume,c('Total leaves',sum(as.numeric(Resume$N_leaf))))
 jpeg(file.path(out_path,"Leaf_per_species.jpeg"), height=8*nrow(Resume), 
-     width=100,units = 'mm',res=300)
+     width=150,units = 'mm',res=300)
 p<-tableGrob(Resume)
 grid.arrange(p)
 dev.off()
