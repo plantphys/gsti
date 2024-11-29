@@ -1,0 +1,108 @@
+SampleID,Species,LMA,leaf_type,pubescent,leaf_habit,Photosynthetic_pathway,Nmass,Narea,Pmass,Parea,LWC,Dataset_name,Phenological_stage,Site_name,Soil,Sun_Shade,Measurement_date
+ABBA Shade 1,Abies balsamea,115.5160205,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,65.0887574,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,9/20/2023
+ABBA Sun 2,Abies balsamea,167.4489147,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,60.4375897,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,9/20/2023
+ABBA 1,Abies balsamea,126.5727776,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,61.7195162,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,09/06/2023
+ACNE Int/Shade,Acer negundo,34.15490561,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,74.7434293,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,8/31/2023
+ACPL Shade 2,Acer platanoides,28.99424332,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,65.6259473,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,09/08/2023
+ACRU Shade ,Acer rubrum,38.59865624,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,62.4682104,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,8/28/2023
+ACRU2 shade,Acer rubrum,41.28284494,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,59.1969344,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,09/08/2023
+ACRU 3 Sun,Acer rubrum,87.30420633,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,50.5971014,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,09/06/2023
+ACSA Shade ,Acer platanoides,29.27333073,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,67.4709103,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,8/28/2023
+ACSA Shade 2B,Acer saccharum,24.08712113,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,67.652027,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,09/08/2023
+ACSA Sun 3,Acer saccharum,33.36839262,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,64.6106845,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,09/06/2023
+ACSA Sun 4,Acer saccharum,46.38392004,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,53.4096992,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,09/08/2023
+ACSA1 ,Acer platanoides,56.46715157,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,56.9436978,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,8/28/2023
+ACSA2 ,Acer platanoides,83.11694459,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,52.6569519,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,8/28/2023
+Alnus?1,Betula alleghaniensis,74.1690738,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,54.8130542,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,8/22/2023
+Alnus 2,Betula alleghaniensis,91.86427834,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,57.0223534,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,8/24/2023
+Alnus ?3,Betula alleghaniensis,78.41640405,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,61.5172291,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,8/24/2023
+BEAL Shade,Betula alleghaniensis,27.45351997,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,72.7593041,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,8/28/2023
+BEAL Shade 2,Betula alleghaniensis,24.66372646,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,70.8300186,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,09/08/2023
+BEPA Shade 1,Betula papyrifera,56.24296963,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,61.5061786,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,8/31/2023
+BEPA Shade 2,Betula papyrifera,70.13811341,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,61.2018425,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,09/12/2023
+BEPA Sun 3,Betula papyrifera,76.55667485,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,57.9704017,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,09/12/2023
+BEPA1,Betula papyrifera,79.29756651,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,57.2405929,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,8/31/2023
+BEPA2 ,Betula papyrifera,74.55439928,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,59.8558039,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,8/31/2023
+CABI Shade 1,Catalpa bignonioides,59.18584072,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,71.5523503,Posada_Kothari_2023,Mature,JBM_Arboretum,Managed,Shade,10/03/2023
+CABI Sun 1,Catalpa bignonioides,96.025191,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,66.0664891,Posada_Kothari_2023,Mature,JBM_Arboretum,Managed,Sun,10/03/2023
+Corn Shade 1,Zea mays,47.66680502,broadleaf,FALSE,deciduous,C4,NA,NA,NA,NA,78.2041475,Posada_Kothari_2023,Mature,IDENT_Montreal,Managed,Shade,09/12/2023
+CORN Sun 1,Zea mays,42.87751706,broadleaf,FALSE,deciduous,C4,NA,NA,NA,NA,72.0946788,Posada_Kothari_2023,Mature,IDENT_Montreal,Managed,Sun,09/08/2023
+Corn 2,Zea mays,59.50583551,broadleaf,FALSE,deciduous,C4,NA,NA,NA,NA,72.4772419,Posada_Kothari_2023,Mature,IDENT_Montreal,Managed,Sun,09/08/2023
+Corn Sun 3,Zea mays,57.67996245,broadleaf,FALSE,deciduous,C4,NA,NA,NA,NA,71.6113511,Posada_Kothari_2023,Mature,IDENT_Montreal,Managed,Sun,09/12/2023
+Frangula alnus 1,Frangula alnus,42.0103933,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,71.0992908,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,8/28/2023
+GIBI Shade 1,Gingko biloba,62.19555028,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,74.5844554,Posada_Kothari_2023,Mature,JBM_Arboretum,Managed,Shade,10/03/2023
+GIBI Shade 2,Gingko biloba,57.9106752,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,72.5916173,Posada_Kothari_2023,Mature,JBM_Arboretum,Managed,Shade,10/03/2023
+GIBI Sun 1,Gingko biloba,139.9676051,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,66.4625738,Posada_Kothari_2023,Mature,JBM_Arboretum,Managed,Sun,10/03/2023
+GIBI Sun 2,Gingko biloba,116.5512875,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,62.1032023,Posada_Kothari_2023,Mature,JBM_Arboretum,Managed,Sun,10/03/2023
+JUAL Shade 1,Juglans ailantifolia,60.26441184,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,64.7246892,Posada_Kothari_2023,Mature,JBM_Arboretum,Managed,Shade,10/03/2023
+JUAL Sun 1,Juglans ailantifolia,84.07709123,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,61.7229907,Posada_Kothari_2023,Mature,JBM_Arboretum,Managed,Sun,10/03/2023
+JUNI Shade 1,Juglans nigra,36.77538791,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,65.9705743,Posada_Kothari_2023,Mature,JBM_Arboretum,Managed,Shade,10/03/2023
+JUNI Shade 2,Juglans nigra,47.42522574,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,64.6760155,Posada_Kothari_2023,Mature,JBM_Arboretum,Managed,Shade,10/03/2023
+JUNI Sun 1,Juglans nigra,87.18767438,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,60.2987148,Posada_Kothari_2023,Mature,JBM_Arboretum,Managed,Sun,10/03/2023
+JUNI Sun 2,Juglans nigra,93.2517078,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,59.1347479,Posada_Kothari_2023,Mature,JBM_Arboretum,Managed,Sun,10/03/2023
+LA?1,Larix laricina,124.000248,needleleaf,FALSE,deciduous,C3,NA,NA,NA,NA,63.1788079,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,8/31/2023
+LADE? Shade 1,Larix decidua,47.73146319,needleleaf,FALSE,deciduous,C3,NA,NA,NA,NA,79.9787007,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,09/08/2023
+Larix decidua? Sun 1,Larix decidua,124.334781,needleleaf,FALSE,deciduous,C3,NA,NA,NA,NA,69.8750422,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,09/08/2023
+LALA Shade 1,Larix laricina,69.13252901,needleleaf,FALSE,deciduous,C3,NA,NA,NA,NA,71.345995,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,09/08/2023
+LALA Sun 2,Larix laricina,109.006754,needleleaf,FALSE,deciduous,C3,NA,NA,NA,NA,64.535267,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,09/08/2023
+Larix ?? Sun,Larix laricina,157.5454711,needleleaf,FALSE,deciduous,C3,NA,NA,NA,NA,59.5887057,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,09/06/2023
+Maple 1,Acer rubrum,94.28784841,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,53.2449407,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,8/22/2023
+Maple 2,Acer rubrum,57.90868015,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,55.677356,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,8/24/2023
+Picea abeis Shade 2,Picea abies,139.3293228,needleleaf,FALSE,evergreen,C3,NA,NA,NA,NA,64.4622093,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,09/12/2023
+Picea abeis Sun 2,Picea abies,144.2072517,needleleaf,FALSE,evergreen,C3,NA,NA,NA,NA,61.4480363,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,9/20/2023
+PIAB Sun 3,Picea abies,129.8751108,needleleaf,FALSE,evergreen,C3,NA,NA,NA,NA,69.3815331,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,9/20/2023
+Picea PIAB? M4,Picea abies,143.3893777,needleleaf,FALSE,evergreen,C3,NA,NA,NA,NA,69.1037163,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,09/06/2023
+Picea M8 Shade,Picea abies,117.6508377,needleleaf,FALSE,evergreen,C3,NA,NA,NA,NA,63.8308977,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,09/06/2023
+PIGL? Sun 2?,Picea glauca,248.0629542,needleleaf,FALSE,evergreen,C3,NA,NA,NA,NA,60.4678169,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,09/06/2023
+PIGL? Sun 3,Picea glauca,282.8341956,needleleaf,FALSE,evergreen,C3,NA,NA,NA,NA,55.4130435,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,9/20/2023
+Picea glauca Shade 1,Picea glauca,146.0834382,needleleaf,FALSE,evergreen,C3,NA,NA,NA,NA,66.5603572,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,09/12/2023
+PIGL 1 Sun,Picea glauca,238.6139481,needleleaf,FALSE,evergreen,C3,NA,NA,NA,NA,60.3841349,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,09/06/2023
+PIOM Shade 1,Picea omorika,118.3393671,needleleaf,FALSE,evergreen,C3,NA,NA,NA,NA,61.1160319,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,09/06/2023
+PIOM1 ,Picea omorika,142.2375542,needleleaf,FALSE,evergreen,C3,NA,NA,NA,NA,60.9677419,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,8/31/2023
+PIOM Sun 2,Picea omorika,165.0110943,needleleaf,FALSE,evergreen,C3,NA,NA,NA,NA,63.3500093,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,09/12/2023
+PIRU Shade 1,Picea rubens,144.3861583,needleleaf,FALSE,evergreen,C3,NA,NA,NA,NA,67.3648134,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,09/12/2023
+PIRU Sun 2,Picea rubens,167.671438,needleleaf,FALSE,evergreen,C3,NA,NA,NA,NA,62.054018,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,9/20/2023
+PIRU Sun 3,Picea rubens,163.4100555,needleleaf,FALSE,evergreen,C3,NA,NA,NA,NA,62.0410913,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,9/20/2023
+PIRU 1 Sun ,Picea rubens,193.1385442,needleleaf,FALSE,evergreen,C3,NA,NA,NA,NA,64.4452788,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,09/06/2023
+PIST1 Sun?,Pinus strobus,108.408548,needleleaf,FALSE,evergreen,C3,NA,NA,NA,NA,65.8463084,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,8/31/2023
+PIST Sun 3,Pinus strobus,149.1762568,needleleaf,FALSE,evergreen,C3,NA,NA,NA,NA,61.4994501,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,09/12/2023
+PIST Shade 1,Pinus strobus,87.14818308,needleleaf,FALSE,evergreen,C3,NA,NA,NA,NA,67.4591652,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,09/06/2023
+PIST2 Sun,Pinus strobus,135.398027,needleleaf,FALSE,evergreen,C3,NA,NA,NA,NA,62.7446716,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,09/06/2023
+Poplar 1 ,Tilia cordata,119.302755,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,56.2397947,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,8/22/2023
+Poplar 2 ,Tilia cordata,65.61960027,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,62.7480533,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,8/24/2023
+Quercus 1,Quercus robur,57.3582299,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,61.3093935,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,8/22/2023
+Quercus 2,Quercus rubra,86.18969998,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,51.4847552,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,8/24/2023
+Quercus 3 ,Quercus rubra,110.2744808,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,52.3671619,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,8/24/2023
+QURU1/Quercus 4,Quercus rubra,126.2924117,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,49.9675478,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,8/28/2023
+QURO1 Int/Shade,Quercus robur,55.38779082,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,59.4927914,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,8/31/2023
+QURO Shade 2,Quercus robur,38.33860138,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,62.7346416,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,09/06/2023
+QURO2 ,Quercus robur,102.3287615,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,50.3273007,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,8/31/2023
+QURU Shade,Quercus rubra,36.81512478,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,63.956348,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,8/28/2023
+QURU Shade 2,Quercus rubra,44.33506116,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,63.5663154,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,09/08/2023
+QURU Sun 4,Quercus rubra,115.3997641,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,53.8181676,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,09/12/2023
+ACSA1 Real Int,Acer saccharum,32.90169664,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,64.2259986,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,8/31/2023
+ACSA2 Real Int,Acer saccharum,39.99986555,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,58.8524926,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,8/31/2023
+ACSA (real) shade,Acer saccharum,27.0314405,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,65.4326923,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,8/28/2023
+Red fruit 1,Frangula alnus,45.54646391,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,71.3175978,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,8/22/2023
+Red fruit 2,Frangula alnus,48.46990057,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,69.17458,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,8/24/2023
+Real fruit (FRAL) Shade 1,Frangula alnus,28.171114,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,75.0589468,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,09/08/2023
+RHCA Shade 1,Rhamnus cathartica,22.79775853,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,76.5261171,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,09/08/2023
+Rhodo Paul Bosley Shade 1,Rhododendron Paul Bosley,73.85153738,broadleaf,TRUE,evergreen,C3,NA,NA,NA,NA,68.6028257,Posada_Kothari_2023,Mature,JBM_LeslieHancock,Managed,Shade,9/28/2023
+Rhodo Paul Bosley Sun 1,Rhododendron Paul Bosley,112.6156098,broadleaf,TRUE,evergreen,C3,NA,NA,NA,NA,61.4567793,Posada_Kothari_2023,Mature,JBM_LeslieHancock,Managed,Sun,9/28/2023
+RHODE Shade 1,Rhododendron degronianum,135.1409645,broadleaf,TRUE,evergreen,C3,NA,NA,NA,NA,57.6022783,Posada_Kothari_2023,Mature,JBM_LeslieHancock,Managed,Shade,9/28/2023
+RHODE Shade 2,Rhododendron degronianum,158.0522851,broadleaf,TRUE,evergreen,C3,NA,NA,NA,NA,58.0366631,Posada_Kothari_2023,Mature,JBM_LeslieHancock,Managed,Shade,9/28/2023
+RHODE Sun 1,Rhododendron degronianum,159.1581305,broadleaf,TRUE,evergreen,C3,NA,NA,NA,NA,60.3883887,Posada_Kothari_2023,Mature,JBM_LeslieHancock,Managed,Sun,9/28/2023
+RHODE sun 2,Rhododendron degronianum,152.778968,broadleaf,TRUE,evergreen,C3,NA,NA,NA,NA,61.8842365,Posada_Kothari_2023,Mature,JBM_LeslieHancock,Managed,Sun,9/28/2023
+RHOMA pride's pink shade 1,Rhododendron maximum,72.0330898,broadleaf,TRUE,evergreen,C3,NA,NA,NA,NA,66.5737385,Posada_Kothari_2023,Mature,JBM_LeslieHancock,Managed,Shade,9/28/2023
+RHOMA pride's pink sun 1,Rhododendron maximum,122.6060653,broadleaf,TRUE,evergreen,C3,NA,NA,NA,NA,58.5042406,Posada_Kothari_2023,Mature,JBM_LeslieHancock,Managed,Sun,9/28/2023
+RHOMA 1 Shade 2,Rhododendron maximum,110.2368527,broadleaf,TRUE,evergreen,C3,NA,NA,NA,NA,62.417962,Posada_Kothari_2023,Mature,JBM_LeslieHancock,Managed,Shade,9/28/2023
+RHOMA Sun 2,Rhododendron maximum,122.7291986,broadleaf,TRUE,evergreen,C3,NA,NA,NA,NA,59.0830149,Posada_Kothari_2023,Mature,JBM_LeslieHancock,Managed,Sun,9/28/2023
+RHO Makinoi Sun 1,Rhododendron makinoi,152.8770181,broadleaf,TRUE,evergreen,C3,NA,NA,NA,NA,62.3406342,Posada_Kothari_2023,Mature,JBM_LeslieHancock,Managed,Sun,9/28/2023
+RHO makinoi Shade 1,Rhododendron makinoi,135.1351775,broadleaf,TRUE,evergreen,C3,NA,NA,NA,NA,63.2133201,Posada_Kothari_2023,Mature,JBM_LeslieHancock,Managed,Shade,9/28/2023
+THOC Shade 1,Thuja occidentalis,110.0928128,scaleleaf,FALSE,evergreen,C3,NA,NA,NA,NA,68.3355526,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,09/06/2023
+THOC Shade 2,Thuja occidentalis,112.7717695,scaleleaf,FALSE,evergreen,C3,NA,NA,NA,NA,66.6974833,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,9/20/2023
+THOC1 ,Thuja occidentalis,156.5349665,scaleleaf,FALSE,evergreen,C3,NA,NA,NA,NA,65.0428397,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,8/31/2023
+TH OC Sun 2,Thuja occidentalis,201.2629846,scaleleaf,FALSE,evergreen,C3,NA,NA,NA,NA,64.887574,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,09/06/2023
+TICO Shade,Tilia cordata,21.98706839,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,74.0442656,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,8/28/2023
+TICO Shade 2,Tilia cordata,23.58840477,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,71.0900474,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Shade,09/06/2023
+Tico 1,Tilia cordata,88.45440157,broadleaf,FALSE,deciduous,C3,NA,NA,NA,NA,57.9031092,Posada_Kothari_2023,Mature,IDENT_Montreal,Natural,Sun,8/28/2023
