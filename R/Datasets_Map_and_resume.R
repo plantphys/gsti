@@ -33,25 +33,6 @@ Database_p2=read.csv(file=file.path(path,"database/Database_p2.csv"))
 Database_p3=read.csv(file=file.path(path,"database/Database_p3.csv"))
 Database=rbind.data.frame(Database_p1,Database_p2,Database_p3)
 
-###################################
-###   Map of the dataset sites  ###
-###################################
-
-# Identifying unique sites
-All_sites=Database[-which(duplicated(paste(Database$Site_name,Database$Longitude))),c("Site_name","Longitude","Latitude")]
-
-world <- ne_countries(scale = "medium", returnclass = "sf")
-Map_datasets <- ggplot(data = world) + geom_sf() + xlab("Longitude") + 
-  ylab("Latitude") + geom_point(data= All_sites, aes(x=Longitude, 
-                                                     y=Latitude), 
-                                color = "red", size = 3)+theme_bw()+theme(panel.border = element_rect(linewidth = 1.3,colour = "black"))
-
-png(filename = file.path(out_path,'Map_datasets.png'),width = 240,height = 120,units = 'mm',res=300)
-print(Map_datasets)
-dev.off()
-
-print(Map_datasets)
-
 
 #####################################
 ###   Overview of the database    ###
@@ -68,7 +49,7 @@ dev.off()
 
 ### Reflectance spectra of the combined dataset (Full range spectra only)
 
-Reflectance=I(as.matrix(Database[,44:2194]))
+Reflectance=I(as.matrix(Database[,47:2197]))
 # list of spectra that are not in the full range
 ls_not_full=which(is.na(Reflectance),arr.ind = TRUE)[,1]
 ls_not_full=ls_not_full[-which(duplicated(ls_not_full))]
@@ -76,7 +57,15 @@ Reflectance_full=Reflectance[-ls_not_full,]
 
 jpeg(file.path(out_path,"Reflectance.jpeg"), height=120, width=130, 
      units = 'mm',res=300)
-f.plot.spec(Z = Reflectance_full,wv = 350:2500,)
+spectra_quantiles = apply(Reflectance_full,2,quantile,na.rm=T,probs=c(0.025,0.5,0.975))
+plot(x=NULL,y=NULL,ylim=c(0,100),xlim=c(350,2500),xlab="Wavelength (nm)",
+     ylab="Reflectance (%)")
+polygon(c(350:2500 ,2500:350),c(spectra_quantiles[3,], rev(spectra_quantiles[1,])),
+        col="#99CC99",border=NA)
+lines(350:2500,spectra_quantiles[2,],lwd=2, lty=1, col="black")
+legend("topright",legend=c("Median", "95% interval"),lty=c(1,1),
+       lwd=c(2,10),col=c("black","#99CC99"),bty="n")
+box(lwd=2.2)
 dev.off()
 
 ### Repartition of the method used to estimate Vcmax25
@@ -101,26 +90,43 @@ dev.off()
 Biomes=read.csv(file='Documentation/Biomes.csv')
 Database=merge(Database,Biomes)
 n_Leaf_Biome=tapply(X=Database$Species,INDEX = Database$Biome,FUN = length)
-
-a=ggplot(data.frame(value=n_Leaf_Biome,Biome=names(n_Leaf_Biome)), aes(x = "", y = value, fill = Biome)) +
-  geom_col(color="white",size=1.5,alpha=0.8)+ labs(title="N observations per Biome")+
-  geom_text(aes(x=1.25,label = value),
-            position = position_stack(vjust = 0.5)) +
-  coord_polar(theta = "y")  + theme_void() + theme(plot.title = element_text(hjust = 0.5))
-print(a)
-
 n_Species_Biome=tapply(X=Database$Species,INDEX = Database$Biome,FUN = function(x){length(unique(x))})
+Biomes$n_obs=0
+Biomes$n_species=0
+Biomes[Biomes$Biome%in%names(n_Leaf_Biome),"n_obs"]=n_Leaf_Biome[Biomes[Biomes$Biome%in%names(n_Leaf_Biome),"Biome"]]
+Biomes[Biomes$Biome%in%names(n_Species_Biome),"n_species"]=n_Species_Biome[Biomes[Biomes$Biome%in%names(n_Species_Biome),"Biome"]]
 
-b=ggplot(data.frame(value=n_Species_Biome,Biome=names(n_Species_Biome)), aes(x = "", y = value, fill =Biome)) +
-  geom_col(color="white",size=1.5,alpha=0.8) + labs(title="N species per Biome") +
-  geom_text(aes(x=1.25,label = value),
-            position = position_stack(vjust = 0.5)) +
-  coord_polar(theta = "y")  + theme_void()+ theme(plot.title = element_text(hjust = 0.5))
-print(b)
 
-jpeg(file.path(out_path,"Number_observations.jpeg"), height=160, width=180, 
+biome_colors <- c("Tundra"="#bbe3d4",
+                  "Tropical & Subtropical Moist Broadleaf Forests"="#74c24d",
+                  "Mediterranean Forests, Woodlands & Scrub"="#fe4d4d",
+                  "Deserts & Xeric Shrublands"="#db9595",
+                  "Temperate Grasslands, Savannas & Shrublands"="#feff9d",
+                  "Boreal Forests/Taiga"="#a2ccf8",
+                  "Temperate Conifer Forests"="#7dad9b",
+                  "Temperate Broadleaf & Mixed Forests"="#4d9d82",
+                  "Montane Grasslands & Shrublands"="#e2d5bb",
+                  "Mangroves"="#fe4ed6",
+                  "Flooded Grasslands & Savannas"="#d2eeff",
+                  "Tropical & Subtropical Grasslands, Savannas & Shrublands"="#fec44e",
+                  "Tropical & Subtropical Dry Broadleaf Forests"="#dbdc95",
+                  "Tropical & Subtropical Coniferous Forests"="#acdd94")
+
+a=ggplot(Biomes, aes(y = reorder(Biome,n_obs), x = n_obs, fill = Biome)) +
+  geom_bar(stat = "identity") +
+  labs(y = "Biome", x = "Number of observations") +
+  theme_bw() + theme(legend.position="none",axis.text.y = element_text(color = "black")) +
+                       scale_fill_manual(values=biome_colors)+ylab("")
+
+b=ggplot(Biomes, aes(y = reorder(Biome,n_obs), x = n_species, fill = Biome)) +
+  geom_bar(stat = "identity") +
+  labs(y = "Biome", x = "Number of species") +
+  theme_bw() + theme(legend.position="none",axis.text.y = element_blank(),axis.title.y = element_blank()) +
+  scale_fill_manual(values=biome_colors)+ylab("")
+
+jpeg(file.path(out_path,"Number_observations.jpeg"), height=120, width=180, 
      units = 'mm',res=300)
-plot_grid(a+theme(legend.position = "none"),b+theme(legend.position = "none"),get_legend(a),ncol=2,rel_heights = c(0.65,0.35))+theme(plot.background = element_rect(color = "black",linewidth = 1.2))
+plot_grid(a,b,ncol=2,rel_widths = c(0.75,0.25))
 dev.off()
 
 Species=Database[,c("Species","Plant_type")]
@@ -204,4 +210,29 @@ print(e)
 
 jpeg("Outputs/Correlation_Vcmax25_traits.jpeg", height=270, width=180, units = 'mm',res=300)
 plot_grid(a,b,c,d,e,ncol=2,labels = c('(a)','(b)','(c)','(d)','(e)'),hjust = -0.1,align = 'hv')
+dev.off()
+
+
+
+###################################
+###   Map of the dataset sites  ###
+###################################
+
+library(sf)
+library(rnaturalearth)
+library(rnaturalearthdata)
+
+All_sites=Database[-which(duplicated(paste(Database$Site_name,Database$Longitude))),c("Site_name","Longitude","Latitude","Biome","Biome_number","Dataset_name","Soil")]
+All_sites$Type="Managed"
+All_sites[All_sites$Soil=="Natural","Type"]="Natural"
+ecoregions = st_read(file.path(path,'Other/Ecoregions2017.shp')) ## This shapefile ca nbe dowloaded here: https://ecoregions.appspot.com/
+
+ecoregions_plot=ggplot(data = ecoregions,aes(fill=BIOME_NAME,color=BIOME_NAME)) + geom_sf() + theme_bw() + 
+  geom_point(data = All_sites, aes(x=Longitude,y=Latitude,shape=Type),color="black",fill="black", size =2.5) +
+  theme(legend.position="bottom",panel.grid.major = element_blank(),panel.grid.minor = element_blank(),legend.title = element_blank(),legend.key.size = unit(0.5, "line"),legend.spacing.y = unit(0.1, "line"),legend.text = element_text(size = 12),legend.direction = "vertical") +
+  scale_color_manual(values=biome_colors,guide = guide_legend(nrow = 7, ncol = 2)) +
+  scale_fill_manual(values=biome_colors) +xlab("")+ylab("")+guides(shape = guide_legend(order = 1))
+
+png(filename = file.path(path,'Outputs/Map_dataset.png'),width = 250,height = 150,units = 'mm',res=300)
+print(ecoregions_plot)
 dev.off()
