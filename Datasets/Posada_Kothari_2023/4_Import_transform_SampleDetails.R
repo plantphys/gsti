@@ -20,7 +20,7 @@ SampleDetails$Species # Genus species
 SampleDetails$Sun_Shade
 SampleDetails$Phenological_stage
 SampleDetails$Photosynthetic_pathway
-SampleDetails$Plant_type="Wild" # Wild, Agricultural, or Ornamental
+SampleDetails$Plant_type # Wild, Agricultural, or Ornamental
 SampleDetails$Soil # Natural, Managed or Pot
 SampleDetails$LMA # Leaf mass area in g m-2. Here, LMA is already informed so I just print it 
 SampleDetails$Narea # Nitrogen content per surface area in g m-2
