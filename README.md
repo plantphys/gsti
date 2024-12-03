@@ -23,6 +23,7 @@ The raw datasets are stored in individual folders [Datasets](https://github.com/
 
 The curated GSTI database is available here [Database](https://github.com/plantphys/gsti/tree/main/Database).
 
+Map of the datasets
 <img src="https://github.com/plantphys/gsti/blob/main/Outputs/Map_datasets.png" width="742">
 
 <img src="https://github.com/plantphys/gsti/blob/main/Outputs/Hist_Vcmax25.jpeg" height="400"> <img src="https://github.com/TESTgroup-BNL/gsti/blob/main/Outputs/Reflectance.jpeg" height="400"> 
