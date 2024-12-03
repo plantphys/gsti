@@ -32,7 +32,7 @@ day,tree_id,tree_tag,branches_collected ,gexch_leaf,branch_position,colletion_me
 11-déc,T31,no_tag,"b1,b20",1,gap,pole_pruner,,yes,Malvaceae,Luehea,seemannii,LUEHSE,
 12-déc,T32,no_tag,"b1,b20",1,canopy,drone,,yes,Anacardiaceae,Spondias,mombin,SPONMO,
 13-déc,T33,no_tag,b1,1,gap,pole_pruner,,yes,Malvaceae,Sterculia,apetala,STERAP,
-14-déc,T34,no_tag,b1,1,canopy,drone,,yes,Sapotaceae,Chrysophyllum,argentum,CHRYAR,
+14-déc,T34,no_tag,b1,1,canopy,drone,,yes,Sapotaceae,Chrysophyllum,argenteum,CHRYAR,
 15-déc,T35,does not exist,,,,,,no,,,,,
 16-déc,T36,no_tag,b20,0,canopy,drone,,yes,Anacardiaceae,Spondias,radkoferi,SPONRA,
 17-déc,T37,no_tag,b20,0,canopy,drone,,yes,Lauraceae,Beischmielia,tovarences,BEISTO,

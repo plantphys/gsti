@@ -37,6 +37,11 @@ Database=rbind.data.frame(Database_p1,Database_p2,Database_p3)
 #####################################
 ###   Overview of the database    ###
 #####################################
+### Number of datasets
+length(unique(Database$Dataset_name))
+
+### Number of sites 
+length(unique(Database$Site_name))
 
 ### Histogram of Vcmax25
 

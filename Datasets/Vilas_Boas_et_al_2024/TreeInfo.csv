@@ -1,4 +1,4 @@
-﻿TreeID,Species,Height(m),DBH (cm),Sap_Flow,Block
+TreeID,Species,Height(m),DBH (cm),Sap_Flow,Block
 176,Duckeodendron cestroides,23,62.1,YES,B4T1
 324,Geissospermum argenteum,23,77.6,YES,B4T1
 102X,Simarouba amara,25,25.5,YES,B2T4
@@ -19,15 +19,15 @@
 3X,Andira parviflora,24,24.5,YES,B4T1
 420X,Swartzia panacoco,23,21,NO,B4T1
 84X,Eschweilera truncata,22.5,19.8,YES,B2T4
-85XC,Pouroma villosa,20.5,17.3,YES,B2T4
+85XC,Pourouma villosa,20.5,17.3,YES,B2T4
 90XD,Miconia minutiflora,20.5,10.3,YES,B2T4
 91XB,Xylopia spruceana,24.5,20.1,YES,B2T4
 Cecropia,Cecropia sciadophyla,23.7,22.1,NO,B4T1
-324,Geisospermum argenteum,23,77.4,YES,B4T1
+324,Geissospermum argenteum,23,77.4,YES,B4T1
 317,Lecythis prancei,29,55.9,YES,B4T1
 278,Micrandropsis scleroxylon,N/A,36.1,YES,B2T4
 168X,Pourouma guianensis,N/A,24.5,YES,B4T1
 115X,Brosimum rubecens,N/A,34.5,NO,B2T4
 384,Chrysophyllum sanguinolentum,N/A,35.7,YES,B2T4
 Byrsonima,Byrsonima duckeana,N/A,N/A,NO,B4T1
-Bellu_2,Bellutia imperiaris,N/A,N/A,NO,B4T1
+Bellu_2,Bellucia imperialis,N/A,N/A,NO,B4T1

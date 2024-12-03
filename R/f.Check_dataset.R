@@ -111,6 +111,7 @@ f.Check_data=function(folder_path=NA){
    f.plot.spec(Z = Reflectance$Reflectance,wv = 350:2500)
   
   invisible(readline(prompt="Press [enter] to continue"))
+  
   if(any(duplicated(Reflectance$SampleID))){print("!!! You have duplicated SampleID names in your Reflectance dataframe")
                                             stop()}
   

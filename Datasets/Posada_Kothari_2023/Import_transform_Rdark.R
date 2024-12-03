@@ -14,6 +14,7 @@ setwd(file.path(path,'/Datasets/Posada_Kothari_2023'))
 Rdark=read.csv('Rd.csv')
 Rdark$Rdark=-Rdark$Rdark
 
+
 # Checking data quality
 hist(Rdark$Rdark) # No negative values
 hist(Rdark$Tleaf_Rdark)

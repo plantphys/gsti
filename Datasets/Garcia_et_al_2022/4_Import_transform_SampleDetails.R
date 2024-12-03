@@ -25,6 +25,7 @@ SampleDetails=merge(x=SampleDetails,y=TreeInfo,by.x="TreeID",by.y="tree_id")
 SampleDetails$Site_name="BCI" # Note that the site_name should be present in your Site.csv file
 SampleDetails$Dataset_name="Garcia_et_al_2022"
 SampleDetails$Species=paste(SampleDetails$Genus,SampleDetails$Species) # Genus species
+SampleDetails[SampleDetails$Species=="Unknown ","Species"]="Unknown" 
 SampleDetails$Sun_Shade="Sun"
 SampleDetails[SampleDetails$branch_position=="shade","Sun_Shade"]="Shade"
 SampleDetails$Phenological_stage="Mature"

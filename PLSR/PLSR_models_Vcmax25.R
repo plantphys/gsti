@@ -12,7 +12,10 @@ setwd(path)
 wv=400:2400 ## Wavelengths used for the PLSr
 
 # Importing the database
-Database=read.csv(file=file.path(path,"database/Database.csv"))
+Database_p1=read.csv(file=file.path(path,"database/Database_p1.csv"))
+Database_p2=read.csv(file=file.path(path,"database/Database_p2.csv"))
+Database_p3=read.csv(file=file.path(path,"database/Database_p3.csv"))
+Database=rbind.data.frame(Database_p1,Database_p2,Database_p3)
 Database$Spectra=I(as.matrix(Database[,paste("Wave_.",wv,sep="")]))
 
 hist(Database$Vcmax25)
