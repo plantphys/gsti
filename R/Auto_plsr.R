@@ -119,5 +119,5 @@ f.auto_plsr = function(training,validation,prop_internal_valid=0.7,n_resamp=1000
   print(paste('RMSE',RMSE))
   if(!is.null(file_name)){dev.off()}
   
-  return(list(nComp=nComp,coefs=coefs[,,nComp],VIPs=VIPs[,,nComp],Predictions=interval_valid,R2=res_all$r.squared,RMSE=RMSE))
+  return(list(nComp=nComp,coefs=coefs[,,nComp],VIPs=VIPs[,,nComp],Predictions=interval_valid,R2=summary(res_all)$r.squared,RMSE=RMSE))
 }

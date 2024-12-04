@@ -15,7 +15,7 @@ SampleDetails=read.csv("SampleDetails.csv")
 
 # Inform the various information required
 SampleDetails$Site_name # Note that the site_name should be present in your Site.csv file
-SampleDetails$Dataset_name 
+SampleDetails$Dataset_name= "Maréchaux_et_al_2024"
 SampleDetails$Species= sub("_"," ",SampleDetails$Species)
 SampleDetails$Sun_Shade
 SampleDetails$Phenological_stage

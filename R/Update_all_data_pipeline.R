@@ -112,8 +112,8 @@ if(update_database){
 
 ## Re-run the summary and create the maps and tables for the read me
 
-print("**** Creating dataset information and study map **** ")
-source(file.path(here(),'R/Datasets_Map_and_resume.R'))
+#print("**** Creating dataset information and study map **** ")
+#source(file.path(here(),'R/Datasets_Map_and_resume.R'))
 
 
 ### EOF

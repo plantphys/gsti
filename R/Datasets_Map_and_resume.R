@@ -38,9 +38,11 @@ Database=rbind.data.frame(Database_p1,Database_p2,Database_p3)
 ###   Overview of the database    ###
 #####################################
 ### Number of datasets
+unique(Database$Dataset_name)
 length(unique(Database$Dataset_name))
 
 ### Number of sites 
+unique(Database$Site_name)
 length(unique(Database$Site_name))
 
 ### Histogram of Vcmax25
@@ -73,13 +75,20 @@ legend("topright",legend=c("Median", "95% interval"),lty=c(1,1),
 box(lwd=2.2)
 dev.off()
 
-### Repartition of the method used to estimate Vcmax25
+### Method used to estimate Vcmax25
 
 table(Database$Fitting_method)/sum(table(Database$Fitting_method))
+nrow(Database[Database$Dataset_name%in%c("Cui_et_al_2025","Maréchaux_et_al_2024"),])
 
 nrow(Database[!is.na(Database$Rdark),])
 nrow(Database[!is.na(Database$Fitting_method),])
 nrow(Database[!is.na(Database$Fitting_method)&!is.na(Database$Rdark),])
+
+quantile(Database$Vcmax25,probs=c(0.025,0.975),na.rm=TRUE)
+mean(Database$Vcmax25,na.rm=TRUE)
+### Number of datasets with VIS only reflectance
+unique(Database[is.na(Database$Wave_.1500),"Dataset_name"])
+
 ### Number of observations per species and biome
 
 Resume=data.frame(table(Database$Species))
@@ -147,12 +156,15 @@ mean(Database$Rdark25,na.rm=TRUE)
 #######################################################
 ###   Correlation between Vcmax 25 and leaf traits  ###
 #######################################################
-pt_size=0.7
+pt_size=1
+pt_alpha=0.2
 reg = lm(Vcmax25~LMA,data=Database)
+nrow(Database[!is.na(Database$LMA),])
+quantile(Database$LMA,probs=c(0.025,0.975),na.rm=TRUE)
 summary(reg)
 RMSE = sqrt(mean(residuals(reg)^2))
 R2 = summary(reg)$adj.r.squared
-a=ggplot(data=Database,aes(x=LMA,y=Vcmax25))+geom_point(size = pt_size)+ylim(c(0,300))+theme_bw()+
+a=ggplot(data=Database,aes(x=LMA,y=Vcmax25))+geom_point(size = pt_size, alpha = pt_alpha)+ylim(c(0,300))+theme_bw()+
   ylab(expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1))+xlab(expression(LMA~g~m^-2))+
   annotate(x=0.5,y=300,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
   annotate(x=0.5,y=0.9*300,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
@@ -160,10 +172,11 @@ a=ggplot(data=Database,aes(x=LMA,y=Vcmax25))+geom_point(size = pt_size)+ylim(c(0
 print(a)       
 
 reg = lm(Vcmax25~Narea,data=Database)
+nrow(Database[!is.na(Database$Narea),])
 summary(reg)
 RMSE = sqrt(mean(residuals(reg)^2))
 R2 = summary(reg)$adj.r.squared
-b=ggplot(data=Database,aes(x=Narea,y=Vcmax25))+geom_point(size = pt_size)+ylim(c(0,300))+theme_bw()+
+b=ggplot(data=Database,aes(x=Narea,y=Vcmax25))+geom_point(size = pt_size, alpha = pt_alpha)+ylim(c(0,300))+theme_bw()+
   ylab(expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1))+xlab(expression(N[area]~g~m^-2))+
   annotate(x=0.5,y=300,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
   annotate(x=0.5,y=0.9*300,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
@@ -179,7 +192,7 @@ reg = lm(Vcmax25~Chl_Gitelson,data=Database)
 summary(reg)
 RMSE = sqrt(mean(residuals(reg)^2))
 R2 = summary(reg)$adj.r.squared
-c=ggplot(data=Database,aes(x=Chl_Gitelson,y=Vcmax25))+geom_point(size = pt_size)+ylim(c(0,300))+theme_bw()+
+c=ggplot(data=Database,aes(x=Chl_Gitelson,y=Vcmax25))+geom_point(size = pt_size, alpha = pt_alpha)+ylim(c(0,300))+theme_bw()+
   ylab(expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1))+xlab(expression(Chl~index~value))+
   annotate(x=0,y=300,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
   annotate(x=0,y=0.9*300,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
@@ -192,7 +205,7 @@ summary(reg)
 summary(lm(Jmax25~0+Vcmax25,data=Database))
 RMSE = sqrt(mean(residuals(reg)^2))
 R2 = summary(reg)$adj.r.squared
-d=ggplot(data=Database,aes(x=Vcmax25,y=Jmax25))+geom_point(size = pt_size)+xlim(c(0,300))+ylim(c(0,600))+theme_bw()+
+d=ggplot(data=Database,aes(x=Vcmax25,y=Jmax25))+geom_point(size = pt_size, alpha = pt_alpha)+xlim(c(0,300))+ylim(c(0,600))+theme_bw()+
   ylab(expression(italic(J)[max25]~mu*mol~m^-2~s^-1))+xlab(expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1))+
   annotate(x=0,y=600,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
   annotate(x=0,y=0.9*600,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
@@ -200,14 +213,14 @@ d=ggplot(data=Database,aes(x=Vcmax25,y=Jmax25))+geom_point(size = pt_size)+xlim(
 
 print(d)
 
-reg = lm(Vcmax25~Rdark25,data=Database)
+reg = lm(Vcmax25~Rdark25*Biome,data=Database)
 summary(reg)
 RMSE = sqrt(mean(residuals(reg)^2))
 R2 = summary(reg)$adj.r.squared
-e=ggplot(data=Database,aes(x=Rdark25,y=Vcmax25))+geom_point(size = pt_size)+ylim(c(0,150))+theme_bw()+
+e=ggplot(data=Database,aes(x=Rdark25,y=Vcmax25))+geom_point(size = pt_size, alpha = pt_alpha)+ylim(c(0,300))+xlim(c(0,4))+theme_bw()+
   ylab(expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1))+xlab(expression(italic(R)[dark25]~mu*mol~m^-2~s^-1))+
-  annotate(x=0,y=150,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
-  annotate(x=0,y=0.9*150,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
+  annotate(x=0,y=300,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
+  annotate(x=0,y=0.9*300,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+ geom_smooth(method="lm")
 
 print(e)

@@ -53,6 +53,7 @@ Reflectance$Probe_model="SVC LC-RP"
 Reflectance$Spectra_trait_pairing="Same"
 Reflectance$Reflectance=I(as.matrix(Reflectance[,2:2152]))
 Reflectance=Reflectance[!is.na(Reflectance$SampleID),]
+Reflectance=Reflectance[!is.na(Reflectance$V1),]
 f.plot.spec(Z = Reflectance$Reflectance,wv = 350:2500) 
 
 
