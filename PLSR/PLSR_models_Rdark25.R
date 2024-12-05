@@ -14,7 +14,10 @@ setwd(path)
 wv=400:2400 ## Wavelengths used for the PLSr
 
 # Importing the database
-Database=read.csv(file=file.path(path,"database/Database.csv"))
+Database_p1=read.csv(file=file.path(path,"database/Database_p1.csv"))
+Database_p2=read.csv(file=file.path(path,"database/Database_p2.csv"))
+Database_p3=read.csv(file=file.path(path,"database/Database_p3.csv"))
+Database=rbind.data.frame(Database_p1,Database_p2,Database_p3)
 Database$Spectra=I(as.matrix(Database[,paste("Wave_.",wv,sep="")]))
 
 hist(Database$Rdark)
@@ -25,6 +28,10 @@ hist(Database$Rdark25)
 
 ## Removing Na values to avoid any issue
 Database <- Database[!is.na(Database$Rdark25),]
+
+## Keeping only spectra trait measured on the same leaves
+Database = Database[Database$Spectra_trait_pairing=="Same",]
+
 
 ## Keeping only relevant columns to reduce the database size
 Database <- Database[,c("SampleID","Dataset_name","Rdark25","Spectra")]
@@ -40,8 +47,8 @@ f.plot.spec(Z = Database$Spectra,wv = wv)
 
 ## Using a LOO PLSR model to identify outlier.
 ## This process takes 6 minutes
-test_LOO <- plsr(Rdark25~ Spectra,ncomp = 19, data = Database, validation = "LOO")
-res_LOO <- test_LOO$validation$pred[,1,19]-Database$Rdark25
+test_LOO <- plsr(Rdark25~ Spectra,ncomp = 25, data = Database, validation = "LOO")
+res_LOO <- test_LOO$validation$pred[,1,25]-Database$Rdark25
 hist(res_LOO)
 abline(v=c(-2.6*sd(res_LOO),2.6*sd(res_LOO)))
 outliers <- which(abs(res_LOO)>2.6*sd(res_LOO))
@@ -68,71 +75,4 @@ plsr_model <- f.auto_plsr(inVar = inVar, training = training,validation = valida
                        file_name = paste0('Validation_Alldatasets_Rdark25_', Sys.Date()), wv = wv,pwr_transform = 0.5)
 
 
-
-ggplot(data=plsr_model$Predictions,aes(y=Obs,x=mean_pred))+theme_bw()+
-  geom_errorbar(data=plsr_model$Predictions,aes(x=mean_pred,ymin=lwr_obs,ymax=upr_obs),col="grey")+
-#geom_errorbarh(data=interval_valid,aes(y=Obs,xmin=lwr_pred,xmax=upr_pred),alpha=0.3)
-geom_errorbarh(data=plsr_model$Predictions,aes(y=Obs,xmin=lwr_conf,xmax=upr_conf),col="grey")+
-geom_point()+coord_cartesian(xlim=c(0,2.5),ylim=c(0,2.5))+
-  geom_abline(slope=1) +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  ylab(expression(Observed~italic(R)[dark25]))+xlab(expression(Predicted~italic(R)[dark25]))+annotate(x=0,y=2.5,label=paste("R² =",round(plsr_model$R2,2)),"text",hjust=0,vjust=1)+annotate(x=0,y=2.35,label=paste("RMSE =",round(plsr_model$RMSE,1)),"text",hjust=0,vjust=1)
-
-
-
-ggplot(data=plsr_model$Predictions,aes(y=Obs,x=mean_pred,color=Dataset_name))+theme_bw()+
-  geom_errorbar(data=plsr_model$Predictions,aes(x=mean_pred,ymin=lwr_obs,ymax=upr_obs),col="grey")+
-  #geom_errorbarh(data=interval_valid,aes(y=Obs,xmin=lwr_pred,xmax=upr_pred),alpha=0.3)
-  geom_errorbarh(data=plsr_model$Predictions,aes(y=Obs,xmin=lwr_conf,xmax=upr_conf),col="grey")+
-  geom_point()+coord_cartesian(xlim=c(0,2.50),ylim=c(0,2.50))+
-  geom_abline(slope=1) + geom_smooth(method="lm",se=FALSE)+
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  ylab(expression(Observed~italic(R)[dark25]))+xlab(expression(Predicted~italic(R)[dark25]))+annotate(x=0,y=2.50,label=paste("R² =",round(plsr_model$R2,2)),"text",hjust=0,vjust=1)+annotate(x=0,y=2.35,label=paste("RMSE =",round(plsr_model$RMSE,1)),"text",hjust=0,vjust=1)
-
-
-
-save(file="PLSR_model_Rdark25.Rdata",plsr_model)
-
-
-
-
-
-#### Here, I successively use each dataset as a validation dataset and all the others as calibration
-#### I set the number of components to the number of components used in the random split (just above)
-#### to homogenize the comparisons between models
-##result=data.frame()
-##ls_dataset=unique(Database$Dataset_name)
-##for(dataset_validation in ls_dataset){
-##  cal.plsr.data <- Database[!Database$Dataset_name==dataset_validation,]
-##  val.plsr.data <- Database[Database$Dataset_name==dataset_validation,]
-##  res=f.auto_plsr(inVar = inVar,cal.plsr.data = cal.plsr.data,val.plsr.data = val.plsr.data, 
-##                  file_name = paste('Validation',dataset_validation,sep='_'), method=20, wv=wv)
-##  result=rbind.data.frame(result,data.frame(Obs=res$Obs,Pred=res$Pred,dataset_validation=dataset_validation))
-##}
-##
-##result$Rdark2525_Obs=result$Obs^2
-##result$Rdark2525_Pred=result$Pred^2
-##
-##Table_R2_all=data.frame()
-##for(dataset_validation in ls_dataset){
-##  reg=summary(lm(Rdark2525_Pred~Rdark2525_Obs,data=result[result$dataset_validation==dataset_validation,]))
-##  Table_R2_all=rbind.data.frame(Table_R2_all,data.frame(dataset_validation=dataset_validation,dataset_removed=NA,R2=reg$r.squared))
-##}
-##
-##
-##stat_dataset=summary(lm(Rdark2525_Pred~Rdark2525_Obs,data=result))
-##
-##jpeg("Validation_datasets.jpeg", height=130, width=170,units = 'mm',res=300)
-##ggplot(data=result,aes(x=Rdark2525_Obs,y=Rdark2525_Pred,color=dataset_validation))+theme_bw()+
-##  geom_point(size=0.5)+xlim(0,max(c(result$Rdark2525_Obs,result$Rdark2525_Pred)))+
-##  ylim(0,max(c(result$Rdark2525_Obs,result$Rdark2525_Pred)))+
-##  geom_abline(slope=1)+geom_smooth(method='lm')+
-##  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
-##  xlab(expression(Observed~italic(V)[cmax25]))+ylab(expression(Predicted~italic(V)[cmax25]))+
-##    ggtitle(paste0("Validation: ", paste0("R2 = ", round(stat_dataset$r.squared,2)), "; ", 
-##                   paste0("RMSEP = ", round(stat_dataset$sigma,1)),"; ", paste0("nComps = ", 
-##                                                                                plsr_model$nComps)))
-##dev.off()
-##  
-##
-##
+save(file="PLSR_model_Rdark25.Rdata",plsr_model,training,validation)
