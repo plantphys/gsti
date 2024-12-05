@@ -33,6 +33,7 @@ Database_p2=read.csv(file=file.path(path,"database/Database_p2.csv"))
 Database_p3=read.csv(file=file.path(path,"database/Database_p3.csv"))
 Database=rbind.data.frame(Database_p1,Database_p2,Database_p3)
 
+Database$Rdark25=f.modified.arrhenius.inv(P = Database$Rdark,Tleaf = Database$Tleaf_Rdark+273.15,Ha = 46390,Hd=150650,s = 490)
 
 #####################################
 ###   Overview of the database    ###
@@ -45,15 +46,89 @@ length(unique(Database$Dataset_name))
 unique(Database$Site_name)
 length(unique(Database$Site_name))
 
+jpeg(file.path(out_path,"Hist_values_GSTI.jpeg"), height=200,width=200,units = 'mm',res=300)
+par(mfrow = c(3,3),mar = c(4, 4, 2, 1))
+nbreaks=20
 ### Histogram of Vcmax25
 
-jpeg(file.path(out_path,"Hist_Vcmax25.jpeg"), height=120,width=100,units = 'mm',res=300)
-  hist(Database$Vcmax25,breaks = 20, 
+#jpeg(file.path(out_path,"Hist_Vcmax25.jpeg"), height=120,width=100,units = 'mm',res=300)
+  hist(Database$Vcmax25,breaks = nbreaks, 
      xlab=expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1), 
      ylab='Number of leaves',main='')
   box(lwd=2.2)
-dev.off()
+  mtext(expression(bold("(a)")),side = 3,line = 0,adj=-0.3, cex=1.2)
+#dev.off()
 
+### Histogram of Jmax25
+
+#jpeg(file.path(out_path,"Hist_Jmax25.jpeg"), height=120,width=100,units = 'mm',res=300)
+hist(Database$Jmax25,breaks = nbreaks, 
+     xlab=expression(italic(J)[max25]~mu*mol~m^-2~s^-1), 
+     ylab='Number of leaves',main='')
+box(lwd=2.2)
+mtext(expression(bold("(b)")),side = 3,line = 0,adj=-0.3,cex=1.2)
+#dev.off()
+
+### Histogram of TPU25
+
+#jpeg(file.path(out_path,"Hist_TPU25.jpeg"), height=120,width=100,units = 'mm',res=300)
+hist(Database$Jmax25,breaks = nbreaks, 
+     xlab=expression(italic(TPU)[25]~mu*mol~m^-2~s^-1), 
+     ylab='Number of leaves',main='')
+box(lwd=2.2)
+mtext(expression(bold("(c)")),side = 3,line = 0,adj=-0.3,cex=1.2)
+#dev.off()
+
+### Histogram of Rdark25
+
+#jpeg(file.path(out_path,"Hist_Rdark25.jpeg"), height=120,width=100,units = 'mm',res=300)
+hist(Database$Rdark25,breaks = nbreaks, 
+     xlab=expression(italic(R)[dark25]~mu*mol~m^-2~s^-1), 
+     ylab='Number of leaves',main='')
+box(lwd=2.2)
+mtext(expression(bold("(d)")),side = 3,line = 0,adj=-0.3,cex=1.2)
+#dev.off()
+
+### Histogram of LMA
+
+#jpeg(file.path(out_path,"Hist_LMA.jpeg"), height=120,width=100,units = 'mm',res=300)
+hist(Database$LMA,breaks = nbreaks, 
+     xlab=expression(LMA~g*m^-2), 
+     ylab='Number of leaves',main='')
+box(lwd=2.2)
+mtext(expression(bold("(e)")),side = 3,line = 0,adj=-0.3,cex=1.2)
+#dev.off()
+
+### Histogram of Narea
+
+#jpeg(file.path(out_path,"Hist_Narea.jpeg"), height=120,width=100,units = 'mm',res=300)
+hist(Database$Narea,breaks = nbreaks, 
+     xlab=expression(italic(N)[area]~g*m^-2), 
+     ylab='Number of leaves',main='')
+box(lwd=2.2)
+mtext(expression(bold("(f)")),side = 3,line = 0,adj=-0.3,cex=1.2)
+#dev.off()
+
+### Histogram of Parea
+
+#jpeg(file.path(out_path,"Hist_Narea.jpeg"), height=120,width=100,units = 'mm',res=300)
+hist(Database$Parea,breaks = nbreaks, 
+     xlab=expression(italic(P)[area]~g*m^-2), 
+     ylab='Number of leaves',main='')
+box(lwd=2.2)
+mtext(expression(bold("(g)")),side = 3,line = 0,adj=-0.3,cex=1.2)
+#dev.off()
+
+### Histogram of LWC
+
+#jpeg(file.path(out_path,"Hist_LWC.jpeg"), height=120,width=100,units = 'mm',res=300)
+hist(Database$LWC,breaks = nbreaks, 
+     xlab=expression(LWC~'%'), 
+     ylab='Number of leaves',main='')
+box(lwd=2.2)
+mtext(expression(bold("(h)")),side = 3,line = 0,adj=-0.3,cex=1.2)
+#dev.off()
+dev.off()
 ### Reflectance spectra of the combined dataset (Full range spectra only)
 
 Reflectance=I(as.matrix(Database[,47:2197]))
@@ -64,14 +139,15 @@ Reflectance_full=Reflectance[-ls_not_full,]
 
 jpeg(file.path(out_path,"Reflectance.jpeg"), height=120, width=130, 
      units = 'mm',res=300)
-spectra_quantiles = apply(Reflectance_full,2,quantile,na.rm=T,probs=c(0.025,0.5,0.975))
-plot(x=NULL,y=NULL,ylim=c(0,100),xlim=c(350,2500),xlab="Wavelength (nm)",
+spectra_deciles = apply(Reflectance_full,2,quantile,na.rm=T,probs=seq(0.1,0.9,0.1))
+plot(x=NULL,y=NULL,ylim=c(0,60),xlim=c(350,2500),xlab="Wavelength (nm)",
      ylab="Reflectance (%)")
-polygon(c(350:2500 ,2500:350),c(spectra_quantiles[3,], rev(spectra_quantiles[1,])),
-        col="#99CC99",border=NA)
-lines(350:2500,spectra_quantiles[2,],lwd=2, lty=1, col="black")
-legend("topright",legend=c("Median", "95% interval"),lty=c(1,1),
-       lwd=c(2,10),col=c("black","#99CC99"),bty="n")
+#polygon(c(350:2500 ,2500:350),c(spectra_quantiles[3,], rev(spectra_quantiles[1,])),
+#        col="#99CC99",border=NA)
+for (decile in 1:9){lines(350:2500,spectra_deciles[decile,],lwd=1, lty=1, col="grey")}
+lines(350:2500,spectra_deciles[5,],lwd=1, lty=1, col="black")
+legend("topright",legend=c("Decile", "Median"),lty=c(1,1),
+       lwd=c(2,2),col=c("grey","black"),bty="n")
 box(lwd=2.2)
 dev.off()
 
@@ -150,9 +226,6 @@ length(unique(Species$Species))
 table(Species$Plant_type)
 nrow(Database[Database$Plant_type=="Agricultural",])
 
-Database$Rdark25=f.modified.arrhenius.inv(P = Database$Rdark,Tleaf = Database$Tleaf_Rdark+273.15,Ha = 46390,Hd=150650,s = 490)
-quantile(Database$Rdark25,probs=c(0.025,0.975),na.rm=TRUE)
-mean(Database$Rdark25,na.rm=TRUE)
 #######################################################
 ###   Correlation between Vcmax 25 and leaf traits  ###
 #######################################################
@@ -164,10 +237,10 @@ quantile(Database$LMA,probs=c(0.025,0.975),na.rm=TRUE)
 summary(reg)
 RMSE = sqrt(mean(residuals(reg)^2))
 R2 = summary(reg)$adj.r.squared
-a=ggplot(data=Database,aes(x=LMA,y=Vcmax25))+geom_point(size = pt_size, alpha = pt_alpha)+ylim(c(0,300))+theme_bw()+
+a=ggplot(data=Database,aes(x=LMA,y=Vcmax25))+geom_point(size = pt_size, alpha = pt_alpha)+ylim(c(0,310))+theme_bw()+
   ylab(expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1))+xlab(expression(LMA~g~m^-2))+
-  annotate(x=0.5,y=300,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
-  annotate(x=0.5,y=0.9*300,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
+  annotate(x=0.5,y=310,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
+  annotate(x=0.5,y=0.9*310,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+ geom_smooth(method="lm")
 print(a)       
 
@@ -176,10 +249,10 @@ nrow(Database[!is.na(Database$Narea),])
 summary(reg)
 RMSE = sqrt(mean(residuals(reg)^2))
 R2 = summary(reg)$adj.r.squared
-b=ggplot(data=Database,aes(x=Narea,y=Vcmax25))+geom_point(size = pt_size, alpha = pt_alpha)+ylim(c(0,300))+theme_bw()+
+b=ggplot(data=Database,aes(x=Narea,y=Vcmax25))+geom_point(size = pt_size, alpha = pt_alpha)+ylim(c(0,310))+theme_bw()+
   ylab(expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1))+xlab(expression(N[area]~g~m^-2))+
-  annotate(x=0.5,y=300,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
-  annotate(x=0.5,y=0.9*300,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
+  annotate(x=0.5,y=310,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
+  annotate(x=0.5,y=0.9*310,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+ geom_smooth(method="lm")
 
 print(b)
@@ -192,10 +265,10 @@ reg = lm(Vcmax25~Chl_Gitelson,data=Database)
 summary(reg)
 RMSE = sqrt(mean(residuals(reg)^2))
 R2 = summary(reg)$adj.r.squared
-c=ggplot(data=Database,aes(x=Chl_Gitelson,y=Vcmax25))+geom_point(size = pt_size, alpha = pt_alpha)+ylim(c(0,300))+theme_bw()+
+c=ggplot(data=Database,aes(x=Chl_Gitelson,y=Vcmax25))+geom_point(size = pt_size, alpha = pt_alpha)+ylim(c(0,310))+theme_bw()+
   ylab(expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1))+xlab(expression(Chl~index~value))+
-  annotate(x=0,y=300,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
-  annotate(x=0,y=0.9*300,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
+  annotate(x=0,y=310,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
+  annotate(x=0,y=0.9*310,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+ geom_smooth(method="lm")
 
 print(c)
@@ -205,7 +278,7 @@ summary(reg)
 summary(lm(Jmax25~0+Vcmax25,data=Database))
 RMSE = sqrt(mean(residuals(reg)^2))
 R2 = summary(reg)$adj.r.squared
-d=ggplot(data=Database,aes(x=Vcmax25,y=Jmax25))+geom_point(size = pt_size, alpha = pt_alpha)+xlim(c(0,300))+ylim(c(0,600))+theme_bw()+
+d=ggplot(data=Database,aes(x=Vcmax25,y=Jmax25))+geom_point(size = pt_size, alpha = pt_alpha)+xlim(c(0,310))+ylim(c(0,600))+theme_bw()+
   ylab(expression(italic(J)[max25]~mu*mol~m^-2~s^-1))+xlab(expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1))+
   annotate(x=0,y=600,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
   annotate(x=0,y=0.9*600,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
@@ -213,21 +286,33 @@ d=ggplot(data=Database,aes(x=Vcmax25,y=Jmax25))+geom_point(size = pt_size, alpha
 
 print(d)
 
-reg = lm(Vcmax25~Rdark25*Biome,data=Database)
+reg = lm(Vcmax25~Rdark25,data=Database)
 summary(reg)
 RMSE = sqrt(mean(residuals(reg)^2))
 R2 = summary(reg)$adj.r.squared
-e=ggplot(data=Database,aes(x=Rdark25,y=Vcmax25))+geom_point(size = pt_size, alpha = pt_alpha)+ylim(c(0,300))+xlim(c(0,4))+theme_bw()+
+e=ggplot(data=Database,aes(x=Rdark25,y=Vcmax25))+geom_point(size = pt_size, alpha = pt_alpha)+ylim(c(0,310))+xlim(c(0,4))+theme_bw()+
   ylab(expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1))+xlab(expression(italic(R)[dark25]~mu*mol~m^-2~s^-1))+
-  annotate(x=0,y=300,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
-  annotate(x=0,y=0.9*300,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
+  annotate(x=0,y=310,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
+  annotate(x=0,y=0.9*310,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+ geom_smooth(method="lm")
 
 print(e)
 
+reg = lm(Vcmax25~TPU25,data=Database)
+summary(reg)
+RMSE = sqrt(mean(residuals(reg)^2))
+R2 = summary(reg)$adj.r.squared
+f=ggplot(data=Database,aes(x=TPU25,y=Vcmax25))+geom_point(size = pt_size, alpha = pt_alpha)+ylim(c(0,310))+xlim(c(0,30))+theme_bw()+
+  ylab(expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1))+xlab(expression(italic(TPU)[25]~mu*mol~m^-2~s^-1))+
+  annotate(x=0,y=310,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
+  annotate(x=0,y=0.9*310,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+ geom_smooth(method="lm")
 
-jpeg("Outputs/Correlation_Vcmax25_traits.jpeg", height=270, width=180, units = 'mm',res=300)
-plot_grid(a,b,c,d,e,ncol=2,labels = c('(a)','(b)','(c)','(d)','(e)'),hjust = -0.1,align = 'hv')
+print(f)
+
+
+jpeg("Outputs/Correlation_Vcmax25_traits.jpeg", height=270, width=180, units = 'mm',res=310)
+plot_grid(a,b,c,d,e,f,ncol=2,labels = c('(a)','(b)','(c)','(d)','(e)','(f)'),hjust = -0.1,align = 'hv')
 dev.off()
 
 
@@ -251,6 +336,6 @@ ecoregions_plot=ggplot(data = ecoregions,aes(fill=BIOME_NAME,color=BIOME_NAME)) 
   scale_color_manual(values=biome_colors,guide = guide_legend(nrow = 7, ncol = 2)) +
   scale_fill_manual(values=biome_colors) +xlab("")+ylab("")+guides(shape = guide_legend(order = 1))
 
-png(filename = file.path(path,'Outputs/Map_dataset.png'),width = 250,height = 150,units = 'mm',res=300)
+png(filename = file.path(path,'Outputs/Map_datasets.png'),width = 250,height = 150,units = 'mm',res=300)
 print(ecoregions_plot)
 dev.off()
