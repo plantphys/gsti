@@ -154,7 +154,7 @@ dev.off()
 ### Method used to estimate Vcmax25
 
 table(Database$Fitting_method)/sum(table(Database$Fitting_method))
-nrow(Database[Database$Dataset_name%in%c("Cui_et_al_2025","Maréchaux_et_al_2024"),])
+nrow(Database[Database$Dataset_name%in%c("Cui_et_al_2025","Maréchaux_et_al_2024","Sujeeun_et_al_2024"),])
 
 nrow(Database[!is.na(Database$Rdark),])
 nrow(Database[!is.na(Database$Fitting_method),])
@@ -266,7 +266,7 @@ summary(reg)
 RMSE = sqrt(mean(residuals(reg)^2))
 R2 = summary(reg)$adj.r.squared
 c=ggplot(data=Database,aes(x=Chl_Gitelson,y=Vcmax25))+geom_point(size = pt_size, alpha = pt_alpha)+ylim(c(0,310))+theme_bw()+
-  ylab(expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1))+xlab(expression(Chl~index~value))+
+  ylab(expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1))+xlab(expression(Chl[index]))+
   annotate(x=0,y=310,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
   annotate(x=0,y=0.9*310,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+ geom_smooth(method="lm")
@@ -328,13 +328,15 @@ library(rnaturalearthdata)
 All_sites=Database[-which(duplicated(paste(Database$Site_name,Database$Longitude))),c("Site_name","Longitude","Latitude","Biome","Biome_number","Dataset_name","Soil")]
 All_sites$Type="Managed"
 All_sites[All_sites$Soil=="Natural","Type"]="Natural"
-ecoregions = st_read(file.path(path,'Other/Ecoregions2017.shp')) ## This shapefile ca nbe dowloaded here: https://ecoregions.appspot.com/
+ecoregions = st_read(file.path(path,'Other/Ecoregions2017.shp')) ## This shapefile can be dowloaded here: https://ecoregions.appspot.com/
 
 ecoregions_plot=ggplot(data = ecoregions,aes(fill=BIOME_NAME,color=BIOME_NAME)) + geom_sf() + theme_bw() + 
-  geom_point(data = All_sites, aes(x=Longitude,y=Latitude,shape=Type),color="black",fill="black", size =2.5) +
+  geom_point(data = All_sites, aes(x=Longitude,y=Latitude,shape=Type),color="black",fill = NA, size =2, stroke = 1) +
+  scale_shape_manual(values = c("Natural" = 2, "Managed" = 1)) +
   theme(legend.position="bottom",panel.grid.major = element_blank(),panel.grid.minor = element_blank(),legend.title = element_blank(),legend.key.size = unit(0.5, "line"),legend.spacing.y = unit(0.1, "line"),legend.text = element_text(size = 12),legend.direction = "vertical") +
   scale_color_manual(values=biome_colors,guide = guide_legend(nrow = 7, ncol = 2)) +
   scale_fill_manual(values=biome_colors) +xlab("")+ylab("")+guides(shape = guide_legend(order = 1))
+
 
 png(filename = file.path(path,'Outputs/Map_datasets.png'),width = 250,height = 150,units = 'mm',res=300)
 print(ecoregions_plot)
