@@ -1,5 +1,5 @@
 ## This codes is used to do the step 0 of the data curation process.
-## It imports and transforms the ACi data from Verryckt et al 2022.
+## It imports and transforms the ACi data from Ogaya et al 2022.
 ## The dataset is available publicly : https://doi.org/10.5194/essd-14-5-2022
 
 

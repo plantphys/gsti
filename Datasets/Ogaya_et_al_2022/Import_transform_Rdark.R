@@ -7,8 +7,8 @@ library(here)
 # Find the path of the top relative directory
 path=here()
 
-# Set the working directory to the 'Verryckt_et_al_2022' folder where the data is located
-setwd(file.path(path,'/Datasets/Verryckt_et_al_2022'))
+# Set the working directory to the 'Ogaya_et_al_2022' folder where the data is located
+setwd(file.path(path,'/Datasets/Ogaya_et_al_2022'))
 
 # Importing the author's Rdark data that we imported in step 1
 load("1_Raw_Respiration_data.Rdata",verbose=TRUE)
