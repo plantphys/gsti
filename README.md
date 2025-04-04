@@ -32,9 +32,10 @@ The curated GSTI database is available here [Database](https://github.com/plantp
 Examples of generalized spectra trait models for the prediction of Vcmax25, Jmax25, and Rdark25 using the GSTI database are presented here: [Spectra trait models](https://github.com/plantphys/gsti/blob/main/Outputs/Results_PLSR.jpeg). These models were obtained using partial least squares regressions following Burnett et al.'s 2021 best practices.
 
 ## Database citation
+We request that users of this database cite the Zenodo DOI for this repository, and will strongly encourage them to (i) cite all dataset primary publications, and (ii) involve data contributors as co-authors when possible.
 
-More information soon. We will request that users cite the Zenodo DOI for this repository, and will strongly encourage them to (i) cite all dataset primary publications, and (ii) involve data contributors as co-authors when possible.
-
+The primary GSTI DOI is:
+[![DOI](https://zenodo.org/badge/416761702.svg)](https://doi.org/10.5281/zenodo.12172671)
 
 ## References
 
