@@ -93,7 +93,7 @@ mtext(expression(bold("(d)")),side = 3,line = 0,adj=-0.3,cex=1.2)
 
 #jpeg(file.path(out_path,"Hist_LMA.jpeg"), height=120,width=100,units = 'mm',res=300)
 hist(Database$LMA,breaks = nbreaks, 
-     xlab=expression(LMA~g*m^-2), 
+     xlab=expression(LMA~g~m^-2), 
      ylab='Number of leaves',main='')
 box(lwd=2.2)
 mtext(expression(bold("(e)")),side = 3,line = 0,adj=-0.3,cex=1.2)
@@ -103,7 +103,7 @@ mtext(expression(bold("(e)")),side = 3,line = 0,adj=-0.3,cex=1.2)
 
 #jpeg(file.path(out_path,"Hist_Narea.jpeg"), height=120,width=100,units = 'mm',res=300)
 hist(Database$Narea,breaks = nbreaks, 
-     xlab=expression(italic(N)[area]~g*m^-2), 
+     xlab=expression(Narea~g~m^-2), 
      ylab='Number of leaves',main='')
 box(lwd=2.2)
 mtext(expression(bold("(f)")),side = 3,line = 0,adj=-0.3,cex=1.2)
@@ -113,7 +113,7 @@ mtext(expression(bold("(f)")),side = 3,line = 0,adj=-0.3,cex=1.2)
 
 #jpeg(file.path(out_path,"Hist_Narea.jpeg"), height=120,width=100,units = 'mm',res=300)
 hist(Database$Parea,breaks = nbreaks, 
-     xlab=expression(italic(P)[area]~g*m^-2), 
+     xlab=expression(Parea~g~m^-2), 
      ylab='Number of leaves',main='')
 box(lwd=2.2)
 mtext(expression(bold("(g)")),side = 3,line = 0,adj=-0.3,cex=1.2)
@@ -187,20 +187,20 @@ Biomes[Biomes$Biome%in%names(n_Leaf_Biome),"n_obs"]=n_Leaf_Biome[Biomes[Biomes$B
 Biomes[Biomes$Biome%in%names(n_Species_Biome),"n_species"]=n_Species_Biome[Biomes[Biomes$Biome%in%names(n_Species_Biome),"Biome"]]
 
 
-biome_colors <- c("Tundra"="#bbe3d4",
-                  "Tropical & Subtropical Moist Broadleaf Forests"="#74c24d",
-                  "Mediterranean Forests, Woodlands & Scrub"="#fe4d4d",
-                  "Deserts & Xeric Shrublands"="#db9595",
-                  "Temperate Grasslands, Savannas & Shrublands"="#feff9d",
-                  "Boreal Forests/Taiga"="#a2ccf8",
-                  "Temperate Conifer Forests"="#7dad9b",
-                  "Temperate Broadleaf & Mixed Forests"="#4d9d82",
-                  "Montane Grasslands & Shrublands"="#e2d5bb",
-                  "Mangroves"="#fe4ed6",
-                  "Flooded Grasslands & Savannas"="#d2eeff",
-                  "Tropical & Subtropical Grasslands, Savannas & Shrublands"="#fec44e",
-                  "Tropical & Subtropical Dry Broadleaf Forests"="#dbdc95",
-                  "Tropical & Subtropical Coniferous Forests"="#acdd94")
+biome_colors <- c("Tundra" = "#9ed7c2",
+                  "Tropical & Subtropical Moist Broadleaf Forests"="#38a800",
+                  "Mediterranean Forests, Woodlands & Scrub"="#e60000",
+                  "Deserts & Xeric Shrublands"="#cd6666",
+                  "Temperate Grasslands, Savannas & Shrublands"="#ffff73",
+                  "Boreal Forests/Taiga"="#73b2ff",
+                  "Temperate Conifer Forests"="#00a884",
+                  "Temperate Broadleaf & Mixed Forests"="#00734c",
+                  "Montane Grasslands & Shrublands"="#d7c29e",
+                  "Mangroves"="#e600a9",
+                  "Flooded Grasslands & Savannas"="#bed2ff",
+                  "Tropical & Subtropical Grasslands, Savannas & Shrublands"="#ffaa00",
+                  "Tropical & Subtropical Dry Broadleaf Forests"="#a6f53b",
+                  "Tropical & Subtropical Coniferous Forests"="#c48baf")
 
 a=ggplot(Biomes, aes(y = reorder(Biome,n_obs), x = n_obs, fill = Biome)) +
   geom_bar(stat = "identity") +
@@ -232,27 +232,29 @@ nrow(Database[Database$Plant_type=="Agricultural",])
 pt_size=1
 pt_alpha=0.2
 reg = lm(Vcmax25~LMA,data=Database)
+cor = cor.test(x=Database$Vcmax25,y=Database$LMA)
 nrow(Database[!is.na(Database$LMA),])
 quantile(Database$LMA,probs=c(0.025,0.975),na.rm=TRUE)
 summary(reg)
 RMSE = sqrt(mean(residuals(reg)^2))
-R2 = summary(reg)$adj.r.squared
+R = round(cor$estimate,2)
 a=ggplot(data=Database,aes(x=LMA,y=Vcmax25))+geom_point(size = pt_size, alpha = pt_alpha)+ylim(c(0,310))+theme_bw()+
   ylab(expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1))+xlab(expression(LMA~g~m^-2))+
-  annotate(x=0.5,y=310,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
-  annotate(x=0.5,y=0.9*310,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
+  annotate(x=0.5,y=310,label=paste("r = ",R,", P < 0.001", sep=""),"text",hjust=0,vjust=1)+
+  #annotate(x=0.5,y=0.9*310,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+ geom_smooth(method="lm")
 print(a)       
 
 reg = lm(Vcmax25~Narea,data=Database)
+cor = cor.test(x=Database$Vcmax25,y=Database$Narea)
 nrow(Database[!is.na(Database$Narea),])
 summary(reg)
 RMSE = sqrt(mean(residuals(reg)^2))
-R2 = summary(reg)$adj.r.squared
+R = round(cor$estimate,2)
 b=ggplot(data=Database,aes(x=Narea,y=Vcmax25))+geom_point(size = pt_size, alpha = pt_alpha)+ylim(c(0,310))+theme_bw()+
-  ylab(expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1))+xlab(expression(N[area]~g~m^-2))+
-  annotate(x=0.5,y=310,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
-  annotate(x=0.5,y=0.9*310,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
+  ylab(expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1))+xlab(expression(Narea~g~m^-2))+
+  annotate(x=0.5,y=310,label=paste("r = ",R,", P < 0.001", sep=""),"text",hjust=0,vjust=1)+
+  #annotate(x=0.5,y=0.9*310,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+ geom_smooth(method="lm")
 
 print(b)
@@ -262,50 +264,54 @@ R_695_740=rowMeans(Database[,colnames(Database)%in%paste("Wave_.",695:740,sep=""
 Database$Chl_Gitelson=R_750_800/R_695_740-1
 
 reg = lm(Vcmax25~Chl_Gitelson,data=Database)
+cor = cor.test(x=Database$Vcmax25,y=Database$Chl_Gitelson)
 summary(reg)
 RMSE = sqrt(mean(residuals(reg)^2))
-R2 = summary(reg)$adj.r.squared
+R = round(cor$estimate,2)
 c=ggplot(data=Database,aes(x=Chl_Gitelson,y=Vcmax25))+geom_point(size = pt_size, alpha = pt_alpha)+ylim(c(0,310))+theme_bw()+
-  ylab(expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1))+xlab(expression(Chl[index]))+
-  annotate(x=0,y=310,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
-  annotate(x=0,y=0.9*310,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
+  ylab(expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1))+xlab(expression(italic(Chl)[index]))+
+  annotate(x=0,y=310,label=paste("r = ",R,", P < 0.001", sep=""),"text",hjust=0,vjust=1)+
+  #annotate(x=0,y=0.9*310,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+ geom_smooth(method="lm")
 
 print(c)
 
 reg = lm(Jmax25~Vcmax25,data=Database)
+cor = cor.test(x=Database$Vcmax25,y=Database$Jmax25)
 summary(reg)
 summary(lm(Jmax25~0+Vcmax25,data=Database))
 RMSE = sqrt(mean(residuals(reg)^2))
-R2 = summary(reg)$adj.r.squared
+R = round(cor$estimate,2)
 d=ggplot(data=Database,aes(x=Vcmax25,y=Jmax25))+geom_point(size = pt_size, alpha = pt_alpha)+xlim(c(0,310))+ylim(c(0,600))+theme_bw()+
   ylab(expression(italic(J)[max25]~mu*mol~m^-2~s^-1))+xlab(expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1))+
-  annotate(x=0,y=600,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
-  annotate(x=0,y=0.9*600,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
+  annotate(x=0,y=600,label=paste("r = ",R,", P < 0.001", sep=""),"text",hjust=0,vjust=1)+
+  #annotate(x=0,y=0.9*600,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+ geom_smooth(method="lm")
 
 print(d)
 
 reg = lm(Vcmax25~Rdark25,data=Database)
+cor = cor.test(x=Database$Vcmax25,y=Database$Rdark25)
 summary(reg)
 RMSE = sqrt(mean(residuals(reg)^2))
-R2 = summary(reg)$adj.r.squared
+R = round(cor$estimate,2)
 e=ggplot(data=Database,aes(x=Rdark25,y=Vcmax25))+geom_point(size = pt_size, alpha = pt_alpha)+ylim(c(0,310))+xlim(c(0,4))+theme_bw()+
   ylab(expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1))+xlab(expression(italic(R)[dark25]~mu*mol~m^-2~s^-1))+
-  annotate(x=0,y=310,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
-  annotate(x=0,y=0.9*310,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
+  annotate(x=0,y=310,label=paste("r = ",R,", P < 0.001", sep=""),"text",hjust=0,vjust=1)+
+  #annotate(x=0,y=0.9*310,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+ geom_smooth(method="lm")
 
 print(e)
 
 reg = lm(Vcmax25~TPU25,data=Database)
+cor = cor.test(x=Database$Vcmax25,y=Database$TPU25)
 summary(reg)
 RMSE = sqrt(mean(residuals(reg)^2))
-R2 = summary(reg)$adj.r.squared
+R = round(cor$estimate,2)
 f=ggplot(data=Database,aes(x=TPU25,y=Vcmax25))+geom_point(size = pt_size, alpha = pt_alpha)+ylim(c(0,310))+xlim(c(0,30))+theme_bw()+
   ylab(expression(italic(V)[cmax25]~mu*mol~m^-2~s^-1))+xlab(expression(italic(TPU)[25]~mu*mol~m^-2~s^-1))+
-  annotate(x=0,y=310,label=paste("R² =",round(R2,2)),"text",hjust=0,vjust=1)+
-  annotate(x=0,y=0.9*310,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
+  annotate(x=0,y=310,label=paste("r = ",R,", P < 0.001", sep=""),"text",hjust=0,vjust=1)+
+  #annotate(x=0,y=0.9*310,label=paste("RMSE =",round(RMSE,1)),"text",hjust=0,vjust=1)+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+ geom_smooth(method="lm")
 
 print(f)
