@@ -1,18 +1,50 @@
-## 
+## Overview and important note
 
-The PLSR models generated using the GSTI database are located here:
+This tutorial shows how to apply pre-trained Partial Least Squares
+Regression (PLSR) models developped using the GSTI project to predict
+photosynthetic traits from leaf reflectance spectra. The models for
+`Vcmax25`, `Jmax25`, `TPU25`, and `Rdark25` are available here:
+
 <https://github.com/plantphys/gsti/tree/main/PLSR>
 
-Each file with the “.Rdata” extension corresponds to a PLSR model
-associated with the variable Vcmax25, Jmax25, TPU25, and Rdark25.
+Each file with the `.Rdata` extension contains a PLSR model for a
+specific trait.
 
-First, we need to load required libraries.
+The PLSR models provided here were built as described in the GSTI paper
+primarily for illustrative purposes. They were calibrated using all
+available datasets that included full-range spectra (400-2500 nm),
+without strategic selection for balanced biome or species coverage.
+
+This approach and data coverage introduced important limitations: \*
+*Biome Gaps:* Certain biomes are underrepresented or missing from the
+training data. \* *Species Bias:* The dataset contains a much larger
+proportion of crop species compared to wild species.
+
+As discussed in the original paper, these factors may limit the model’s
+accuracy and generalizability when applied to data from underrepresented
+biomes or wild species not seen during training.
+
+For specific applications, we strongly recommend considering a
+re-calibration of the model using a training dataset that is carefully
+selected for your target biome, species, or functional types. This can
+be done by adapting the scripts located in the folder PLSR for each
+variable (e.g for Vcmax25:
+[PLSR\_models\_Vcmax25](https://github.com/plantphys/gsti/blob/main/PLSR/PLSR_models_Vcmax25.R).
+
+The provided models serve as a robust starting point and a demonstration
+of the method, but can likely be improved with more targeted
+calibration.
+
+## 1. Load required libraries
 
     library(here)  ## Used to identify the project repository
     library(pls) ## Used to build and use the plsr models
 
-Then, we load the PLSR models. For this example, I only load the Vcmax25
-PLSR model.
+## 2. Load the PLSR models
+
+For this example, we will load the Vcmax25 PLSR model. The package
+“here” helps to correcly set the working directory to the project
+repository.
 
     path = here() ## Identify project repository
     setwd(file.path(path,'/PLSR'))
@@ -23,23 +55,26 @@ PLSR model.
     ##   training
     ##   validation
 
-Three objects are loaded into the environment: “plsr\_model”,
-“training”, and “validation”. The “plsr\_model” object is the actual
-PLSR model for the Vcmax25 variable, whereas “training” and “validation”
-correspond to subsets of the GSTI database. The subset “training” was
-used to calibrate the PLSR model while the subset validation was used to
-validate the model on independent observations (20 % of observations not
-used to train the model.).
+Loading the .Rdata file adds three objects to your environment:
 
-The plsr\_model object is a list with several elements.
-*n**c**o**m**p**i**s**t**h**e**n**u**m**b**e**r**o**f**c**o**m**p**o**n**e**n**t*(*l**a**t**e**n**t**v**a**r**i**a**b**l**e**s*)*t**h**a**t**w**e**r**e**u**s**e**d**t**o**b**u**i**l**d**t**h**e**m**o**d**e**l*coef
-is a matrix with 1000 sets of coefficients corresponding to 1000 PLSR
-models for Vcmax25. The matrix has 2102 columns, the first column
-corresponds to the intercept of the 1000 PLSR models, and the columns 2
-to 2102 correspond to the coefficients of the model associated to the
-reflectance wavelengths 400 to 2500 nm.
+plsr\_model: The actual PLSR model for Vcmax25.
 
-Lets first look at the coefficients:
+training: The subset of the GSTI database used to calibrate the model.
+
+validation: An independent subset (20% of data) used to validate the
+model.
+
+The plsr\_model object is a list with several components. Key components
+for prediction are:
+
+ncomp: The number of latent components used in the model.
+
+coefs: A matrix containing 1000 sets of coefficients from the 1000
+bootstrapped PLSR models. Row 1 corresponds to the intercepts for the
+1000 models and rows 2-2102 correspond to the coefficients associated
+with the reflectance wavelengths from 400 to 2500 nm.
+
+Let’s visualize the distribution of coefficients across the 1000 models.
 
     intercepts <- plsr_model$coefs[1,]
     coefs <- plsr_model$coefs[2:2102,]  ## We only use the 2:2102 lines to exclude the intercept from the calculations
@@ -63,11 +98,23 @@ Lets first look at the coefficients:
 
 ![](Apply_PLSR_new_datasets_files/figure-markdown_strict/unnamed-chunk-3-1.png)
 
-For this example, we will predict the Vcmax25 values for the leaf
-reflectance included in the validation dataset. Other datasets could be
-used depending on your application. Note that the Reflectance matrix
-needs to have Reflectance in % (0 - 100) organised in rows, with
-reflectance values in the wavelength 400 to 2500 nm at a 1 nm interval.
+### 3. Importing and preparing reflectance data
+
+In this example, we will predict Vcmax25 for the leaf reflectance
+spectra in the validation dataset. You can replace this with your own
+data.
+
+If you use your own data, the reflectance matrix must meet the following
+criteria:
+
+-   Reflectance values are in percent (0-100).
+
+-   Each row represents a different leaf sample.
+
+-   Each column represents a wavelength from 400 to 2500 nm at a 1 nm
+    interval (2102 bands total).
+
+Let’s first visualize the reflectance data we are using.
 
     Reflectance <- unclass(validation$Spectra)
 
@@ -90,13 +137,17 @@ reflectance values in the wavelength 400 to 2500 nm at a 1 nm interval.
     box(lwd=2.2)
 
 ![](Apply_PLSR_new_datasets_files/figure-markdown_strict/unnamed-chunk-4-1.png)
-To calculate Vcmax25 we sum the intercepts of the PLSR models and the
-coefficients time the reflectance. Since 1000 PLSR models were
-generated, we obtain 1000 predictions tha twe can use to compute
-confidence interval for the prediction. Of importance, the PLSR model
-were built using Vcmax25 previously transformed using a squared root to
-improve its ditribution. We therefore need to untransform the prediction
-to obtain Vcmax25.
+
+## 4. Prediction of Vcmax25 and calculation of uncertainties
+
+We calculate the PLSR model prediction by multiplying the reflectance
+matrix by the coefficients and adding the intercepts. Because we have
+1000 models, we get 1000 predictions, which allows us to compute
+confidence intervals.
+
+Crucial Note: The PLSR model was built using a square-root
+transformation of Vcmax25 to normalize its distribution. We must
+back-transform the predictions by squaring them.
 
     prediction <- intercepts + Reflectance%*%coefs ## prediction = intercept + coef_400nm * wavelength_400nm + coef_401nm * wavelength_401nm + ... + coef_2500nm * wavelength_2500 nm, or in matrix notation Prediction = intercept + Coefs * Reflectancte 
     Vcmax25 <-  prediction^2 ## Vcmax25 was square root transformed to build the plsr model, and needs to be transformed back 
