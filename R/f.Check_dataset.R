@@ -136,6 +136,8 @@ f.Check_data=function(folder_path=NA){
   if(any(!SampleDetails_colnames%in%colnames(SampleDetails))){print("!!! Your SampleDetails dataframe misses some columns:")
     SampleDetails_colnames[!SampleDetails_colnames%in%colnames(SampleDetails)]}
   
+  if(any(duplicated(SampleDetails$SampleID))){print("!!! You have duplicated SampleID names in your SampleDetails dataframe")
+    stop()}
   
   ## Is the site name given in this dataframe the same as the ones in the Site.csv file?
   
