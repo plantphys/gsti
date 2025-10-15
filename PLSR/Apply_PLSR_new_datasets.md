@@ -141,7 +141,7 @@ Crucial Note: The PLSR model was built using a square-root
 transformation of Vcmax25 to normalize its distribution. We must
 back-transform the predictions by squaring them.
 
-    prediction <- intercepts + Reflectance%*%coefs ## prediction = intercept + coef_400nm * wavelength_400nm + coef_401nm * wavelength_401nm + ... + coef_2500nm * wavelength_2500 nm, or in matrix notation Prediction = intercept + Coefs * Reflectancte 
+    prediction <- intercepts + Reflectance%*%coefs ## prediction = intercept + coef_400nm * wavelength_400nm + coef_401nm * wavelength_401nm + ... + coef_2500nm * wavelength_2500 nm, or in matrix notation Prediction = intercept + Coefs * Reflectance 
     Vcmax25 <-  prediction^2 ## Vcmax25 was square root transformed to build the plsr model, and needs to be transformed back 
     Mean_Vcmax25 <- rowMeans(Vcmax25) ## Average Vcma25 predicted by the 1000 PLSR models
     lower_ci <- apply(X = Vcmax25, MARGIN = 1, FUN = quantile, probs = 0.025) ## Lower confidence interval (2.5 %)
@@ -157,7 +157,7 @@ back-transform the predictions by squaring them.
            length = 0.01,
            col = "grey") ## Adding the confidence interval
 
-    ## Adding back the points so they are not overplot by the con
+    ## Adding back the points so they are not overplot by the confidence intervals
     points(x = validation$Vcmax25, y = Mean_Vcmax25, pch = 16, cex = 0.5)
 
     abline(c(0,1))
