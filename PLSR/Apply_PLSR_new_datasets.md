@@ -19,6 +19,7 @@ This approach and data coverage introduced important limitations:
 
 -   *Biome Gaps:* Certain biomes are underrepresented or missing from
     the training data.
+
 -   *Species Bias:* The dataset contains a much larger proportion of
     crop species compared to wild species.
 
@@ -67,15 +68,12 @@ Loading the .Rdata file adds three objects to your environment:
 -   validation: An independent subset (20% of data) used to validate the
     model.
 
-The plsr\_model object is a list with several components. Key components
-for prediction are:
-
--   ncomp: The number of latent components used in the model.
-
--   coefs: A matrix containing 1000 sets of coefficients from the 1000
-    bootstrapped PLSR models. Row 1 corresponds to the intercepts for
-    the 1000 models and rows 2-2102 correspond to the coefficients
-    associated with the reflectance wavelengths from 400 to 2500 nm.
+The plsr\_model object is a list with several components. A key
+component for the prediction is coefs: A matrix containing 1000 sets of
+coefficients from the 1000 bootstrapped PLSR models. Row 1 corresponds
+to the intercepts for the 1000 models and rows 2-2102 correspond to the
+coefficients associated with the reflectance wavelengths from 400 to
+2500 nm.
 
 Let’s visualize the distribution of coefficients across the 1000 models.
 
