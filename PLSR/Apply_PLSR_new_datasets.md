@@ -15,10 +15,12 @@ primarily for illustrative purposes. They were calibrated using all
 available datasets that included full-range spectra (400-2500 nm),
 without strategic selection for balanced biome or species coverage.
 
-This approach and data coverage introduced important limitations: \*
-*Biome Gaps:* Certain biomes are underrepresented or missing from the
-training data. \* *Species Bias:* The dataset contains a much larger
-proportion of crop species compared to wild species.
+This approach and data coverage introduced important limitations:
+
+-   *Biome Gaps:* Certain biomes are underrepresented or missing from
+    the training data.
+-   *Species Bias:* The dataset contains a much larger proportion of
+    crop species compared to wild species.
 
 As discussed in the original paper, these factors may limit the model’s
 accuracy and generalizability when applied to data from underrepresented
@@ -29,7 +31,7 @@ re-calibration of the model using a training dataset that is carefully
 selected for your target biome, species, or functional types. This can
 be done by adapting the scripts located in the folder PLSR for each
 variable (e.g for Vcmax25:
-[PLSR\_models\_Vcmax25](https://github.com/plantphys/gsti/blob/main/PLSR/PLSR_models_Vcmax25.R).
+[PLSR\_models\_Vcmax25](https://github.com/plantphys/gsti/blob/main/PLSR/PLSR_models_Vcmax25.R)).
 
 The provided models serve as a robust starting point and a demonstration
 of the method, but can likely be improved with more targeted
@@ -42,7 +44,7 @@ calibration.
 
 ## 2. Load the PLSR models
 
-For this example, we will load the Vcmax25 PLSR model. The package
+For this example, we will load the `Vcmax25` PLSR model. The package
 “here” helps to correcly set the working directory to the project
 repository.
 
@@ -57,22 +59,23 @@ repository.
 
 Loading the .Rdata file adds three objects to your environment:
 
-plsr\_model: The actual PLSR model for Vcmax25.
+-   plsr\_model: The actual PLSR model for Vcmax25.
 
-training: The subset of the GSTI database used to calibrate the model.
+-   training: The subset of the GSTI database used to calibrate the
+    model.
 
-validation: An independent subset (20% of data) used to validate the
-model.
+-   validation: An independent subset (20% of data) used to validate the
+    model.
 
 The plsr\_model object is a list with several components. Key components
 for prediction are:
 
-ncomp: The number of latent components used in the model.
+-   ncomp: The number of latent components used in the model.
 
-coefs: A matrix containing 1000 sets of coefficients from the 1000
-bootstrapped PLSR models. Row 1 corresponds to the intercepts for the
-1000 models and rows 2-2102 correspond to the coefficients associated
-with the reflectance wavelengths from 400 to 2500 nm.
+-   coefs: A matrix containing 1000 sets of coefficients from the 1000
+    bootstrapped PLSR models. Row 1 corresponds to the intercepts for
+    the 1000 models and rows 2-2102 correspond to the coefficients
+    associated with the reflectance wavelengths from 400 to 2500 nm.
 
 Let’s visualize the distribution of coefficients across the 1000 models.
 
