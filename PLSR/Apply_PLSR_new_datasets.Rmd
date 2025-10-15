@@ -28,19 +28,10 @@ For specific applications, we strongly recommend considering a re-calibration of
 
 The provided models serve as a robust starting point and a demonstration of the method, but can likely be improved with more targeted calibration.
 
-## 1. Load required libraries
+## 1. Load the PLSR models
 
-```{r message=FALSE, warning=FALSE}
-library(here)  ## Used to identify the project repository
-library(pls) ## Used to build and use the plsr models
-```
-## 2. Load the PLSR models
-
-For this example, we will load the `Vcmax25` PLSR model. The package "here" helps to correcly set the working directory to the project repository.
-
+For this example, we will load the `Vcmax25` PLSR model.
 ```{r}
-path = here() ## Identify project repository
-setwd(file.path(path,'/PLSR'))
 load(file = "PLSR_model_Vcmax25.Rdata", verbose = TRUE) 
 ```
 Loading the .Rdata file adds three objects to your environment:
@@ -82,7 +73,7 @@ box(lwd=2.2)
 ```
 
 
-### 3. Importing and preparing reflectance data
+### 2. Import and prepare the reflectance data
 
 In this example, we will predict Vcmax25 for the leaf reflectance spectra in the validation dataset. You can replace this with your own data.
 
@@ -119,7 +110,7 @@ legend("topright",legend=c("Mean reflectance","Min/Max (range)", "95% CI"),lty=c
 box(lwd=2.2)
 ```
 
-## 4. Prediction of Vcmax25 and calculation of uncertainties
+## 3. Prediction of Vcmax25 and calculation of uncertainties
 
 We calculate the PLSR model prediction by multiplying the reflectance matrix by the coefficients and adding the intercepts. Because we have 1000 models, we get 1000 predictions, which allows us to compute confidence intervals.
 

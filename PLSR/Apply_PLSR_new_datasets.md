@@ -38,19 +38,10 @@ The provided models serve as a robust starting point and a demonstration
 of the method, but can likely be improved with more targeted
 calibration.
 
-## 1. Load required libraries
+## 1. Load the PLSR models
 
-    library(here)  ## Used to identify the project repository
-    library(pls) ## Used to build and use the plsr models
+For this example, we will load the `Vcmax25` PLSR model.
 
-## 2. Load the PLSR models
-
-For this example, we will load the `Vcmax25` PLSR model. The package
-“here” helps to correcly set the working directory to the project
-repository.
-
-    path = here() ## Identify project repository
-    setwd(file.path(path,'/PLSR'))
     load(file = "PLSR_model_Vcmax25.Rdata", verbose = TRUE) 
 
     ## Loading objects:
@@ -97,9 +88,9 @@ Let’s visualize the distribution of coefficients across the 1000 models.
            lwd=c(2,10,10),col=c("black","grey50","#99CC99"),bty="n")
     box(lwd=2.2)
 
-![](Apply_PLSR_new_datasets_files/figure-markdown_strict/unnamed-chunk-3-1.png)
+![](Apply_PLSR_new_datasets_files/figure-markdown_strict/unnamed-chunk-2-1.png)
 
-### 3. Importing and preparing reflectance data
+### 2. Import and prepare the reflectance data
 
 In this example, we will predict Vcmax25 for the leaf reflectance
 spectra in the validation dataset. You can replace this with your own
@@ -137,9 +128,9 @@ Let’s first visualize the reflectance data we are using.
            lwd=c(2,10,10),col=c("black","grey50","#99CC99"),bty="n")
     box(lwd=2.2)
 
-![](Apply_PLSR_new_datasets_files/figure-markdown_strict/unnamed-chunk-4-1.png)
+![](Apply_PLSR_new_datasets_files/figure-markdown_strict/unnamed-chunk-3-1.png)
 
-## 4. Prediction of Vcmax25 and calculation of uncertainties
+## 3. Prediction of Vcmax25 and calculation of uncertainties
 
 We calculate the PLSR model prediction by multiplying the reflectance
 matrix by the coefficients and adding the intercepts. Because we have
@@ -171,4 +162,4 @@ back-transform the predictions by squaring them.
 
     abline(c(0,1))
 
-![](Apply_PLSR_new_datasets_files/figure-markdown_strict/unnamed-chunk-5-1.png)
+![](Apply_PLSR_new_datasets_files/figure-markdown_strict/unnamed-chunk-4-1.png)
