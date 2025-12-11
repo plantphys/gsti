@@ -162,9 +162,12 @@ nrow(Database[!is.na(Database$Fitting_method)&!is.na(Database$Rdark),])
 
 quantile(Database$Vcmax25,probs=c(0.025,0.975),na.rm=TRUE)
 mean(Database$Vcmax25,na.rm=TRUE)
+
+quantile(Database$Rdark25,probs=c(0.025,0.975),na.rm=TRUE)
+mean(Database$Rdark25,na.rm=TRUE)
 ### Number of datasets with VIS only reflectance
 unique(Database[is.na(Database$Wave_.1500),"Dataset_name"])
-
+nrow(Database[Database$Dataset_name%in%unique(Database[is.na(Database$Wave_.1500),"Dataset_name"]),])
 ### Number of observations per species and biome
 
 Resume=data.frame(table(Database$Species))
@@ -347,3 +350,4 @@ ecoregions_plot=ggplot(data = ecoregions,aes(fill=BIOME_NAME,color=BIOME_NAME)) 
 png(filename = file.path(path,'Outputs/Map_datasets.png'),width = 250,height = 150,units = 'mm',res=300)
 print(ecoregions_plot)
 dev.off()
+

@@ -26,7 +26,7 @@ Chem_data$Date=paste(substr(Chem_data$Date,start = 1,stop = 4),substr(Chem_data$
 Chem_data$Leaf_ID=paste(Chem_data$Unique_Tree_ID,Chem_data$Date,Chem_data$Branch_Light_Environment,Chem_data$Leaf_number,sep="_")
 gasex_data<- read.csv("Albert_et_al_2018_TNF_gas_exchange_parameters.csv")
 Chem_data=merge(Chem_data,gasex_data,by.x="Leaf_ID",by.y="Leaf_ID")
-
+Chem_data=Chem_data[!Chem_data$code_for_matching%in%Chem_data$code_for_matching[which(duplicated(Chem_data$code_for_matching))],] ## Removing duplicates
 SampleDetails=merge(SampleDetails,Chem_data,by.x="BR_UID",by.y="code_for_matching",all.x=TRUE)
 
 SampleDetails$LMA=1/as.numeric(SampleDetails$SLA_JW)*10000 ## Conversion from g.cm-2 to g.m-2

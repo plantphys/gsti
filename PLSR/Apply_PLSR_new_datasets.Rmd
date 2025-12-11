@@ -7,7 +7,7 @@ output: md_document
 
 ## Overview and important note
 
-This tutorial shows how to apply pre-trained Partial Least Squares Regression (PLSR) models developped using the GSTI project to predict photosynthetic traits from leaf reflectance spectra. The models for `Vcmax25`, `Jmax25`, `TPU25`, and `Rdark25` are available here:
+This tutorial shows how to apply pre-trained Partial Least Squares Regression (PLSR) models developed using the GSTI project to predict photosynthetic traits from leaf reflectance spectra. The models for `Vcmax25`, `Jmax25`, `TPU25`, and `Rdark25` are available here:
 
 [https://github.com/plantphys/gsti/tree/main/PLSR](https://github.com/plantphys/gsti/tree/main/PLSR)
 
@@ -73,7 +73,7 @@ box(lwd=2.2)
 ```
 
 
-### 2. Import and prepare the reflectance data
+## 2. Import and prepare the reflectance data
 
 In this example, we will predict Vcmax25 for the leaf reflectance spectra in the validation dataset. You can replace this with your own data.
 

@@ -54,6 +54,8 @@ SampleDetails$LWC
 SampleDetails=SampleDetails[SampleDetails$SampleID%in%Bilan$SampleID,]
 SampleDetails=SampleDetails[,c("SampleID","Site_name","Dataset_name","Species","Sun_Shade","Phenological_stage","Plant_type","Photosynthetic_pathway","Soil","LMA","Narea","Nmass","Parea","Pmass","LWC")]
 
+SampleDetails=SampleDetails[!SampleDetails$SampleID%in%SampleDetails$SampleID[which(duplicated(SampleDetails$SampleID))],]
+
 save(SampleDetails,file="4_SampleDetails.Rdata")
 
 ## Checking the dataset
