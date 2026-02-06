@@ -134,7 +134,7 @@ f.Check_data=function(folder_path=NA){
   load(file ="4_SampleDetails.Rdata")
   
   if(any(!SampleDetails_colnames%in%colnames(SampleDetails))){print("!!! Your SampleDetails dataframe misses some columns:")
-    SampleDetails_colnames[!SampleDetails_colnames%in%colnames(SampleDetails)]}
+    print(SampleDetails_colnames[!SampleDetails_colnames%in%colnames(SampleDetails)])}
   
   if(any(duplicated(SampleDetails$SampleID))){print("!!! You have duplicated SampleID names in your SampleDetails dataframe")
     stop()}
