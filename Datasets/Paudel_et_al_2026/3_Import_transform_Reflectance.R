@@ -18,7 +18,7 @@ if (!requireNamespace("devtools", quietly = TRUE)) {
 }
 
 # Install spectratrait from GitHub
-devtools::install_github("plantphys/spectratrait")
+#devtools::install_github("plantphys/spectratrait")
 
 # Load the spectratrait package
 library(spectratrait)
@@ -92,6 +92,12 @@ for (i in seq_len(nrow(raw_reflectance))) {
   Reflectance_matrix[i, as.character(target_wavelengths_vnir)] <- spectrum_interp
 }
 
+# Removing Reflectance data above 900 nm (JL 2026/02/06)
+Reflectance_matrix[,350:2500>900]=NA
+
+# Reflectance in percent (JL 2026/02/06)
+Reflectance_matrix = Reflectance_matrix*100
+
 # 8) Create  Reflectance object 
 Reflectance <- reflectance_metadata
 Reflectance$Reflectance <- Reflectance_matrix
@@ -108,6 +114,8 @@ reflectance_csv <- cbind(
   reflectance_metadata,
   as.data.frame(Reflectance_matrix, check.names = FALSE)
 )
+
+f.plot.spec(Z = Reflectance$Reflectance,wv = 350:2500)
 
 write.csv(reflectance_csv, "Interpolated_Reflectance.csv", row.names = FALSE)
 

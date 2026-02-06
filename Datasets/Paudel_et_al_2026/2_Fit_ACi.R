@@ -18,8 +18,8 @@ setwd(file.path(path,'/Datasets/Paudel_et_al_2026'))
 
 
 # 2) Load ACi fitting functions ----
-source("fit_Vcmax.R")
-source("Photosynthesis_tools.R")
+source(file.path(path,'/R/fit_Vcmax.R'))
+source(file.path(path,'/R/Photosynthesis_tools.R'))
 
 # 3) Load quality-checked ACi data (from Step 1) 
 load("1_QC_ACi_data.Rdata")  # loads curated_data_qc

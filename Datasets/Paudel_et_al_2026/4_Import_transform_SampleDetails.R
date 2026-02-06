@@ -44,14 +44,17 @@ SampleDetails <- SampleDetails[, c(
   "Nmass"
 )]
 
+## JL 20260206
+SampleDetails$SampleID = SampleDetails$Sample
+SampleDetails$Dataset_name = SampleDetails$Dataset
+SampleDetails$Site_name = SampleDetails$Site
 
 # Save standardized SampleDetails
 save(SampleDetails, file = "4_SampleDetails.Rdata")
 
 
 # Run dataset consistency check
-# f.Check_dataset.R is located in the Author folder
-source("f.Check_dataset.R")
+source(file.path(path,'/R/f.Check_dataset.R'))
 
 # Run validation
 f.Check_data(folder_path = getwd())
