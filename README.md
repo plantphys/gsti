@@ -31,11 +31,27 @@ The curated GSTI database is available here [Database](https://github.com/plantp
 
 Examples of generalized spectra trait models for the prediction of Vcmax25, Jmax25, and Rdark25 using the GSTI database are presented here: [Spectra trait models](https://github.com/plantphys/gsti/blob/main/Outputs/Results_PLSR.jpeg). These models were obtained using partial least squares regressions following Burnett et al.'s 2021 best practices.
 
-## Database citation
+## Article citation
+
+This repository contains the data and code associated with the paper titled “The Global Spectra-Trait Initiative: A database of paired leaf spectroscopy and functional traits associated with leaf photosynthetic capacity”. Cite this paper when referring to the data, methodology, or findings of this study.
 
 Lamour, J., Serbin, S. P., Rogers, A., Acebron, K. T., Ainsworth, E., Albert, L. P., Alonzo, M., Anderson, J., Atkin, O. K., Barbier, N., Barnes, M. L., Bernacchi, C. J., Besson, N., Burnett, A. C., Caplan, J. S., Chave, J., Cheesman, A. W., Clocher, I., Coast, O., Coste, S., Croft, H., Cui, B., Dauvissat, C., Davidson, K. J., Doughty, C., Ely, K. S., Evans, J. R., Féret, J.-B., Filella, I., Fortunel, C., Fu, P., Furbank, R. T., Garcia, M., Gimenez, B. O., Guan, K., Guo, Z., Heckmann, D., Heuret, P., Isaac, M., Kothari, S., Kumagai, E., Kyaw, T. Y., Liu, L., Liu, L., Liu, S., Llusià, J., Magney, T., Maréchaux, I., Martin, A. R., Meacham-Hensold, K., Montes, C. M., Ogaya, R., Ojo, J., Oliveira, R., Paquette, A., Peñuelas, J., Placido, A. D., Posada, J. M., Qian, X., Renninger, H. J., Rodriguez-Caton, M., Rojas-González, A., Schlüter, U., Sellan, G., Siegert, C. M., Silva-Perez, V., Song, G., Southwick, C. D., Souza, D. C., Stahl, C., Su, Y., Sujeeun, L., Ting, T.-C., Vasquez, V., Vijayakumar, A., Vilas-Boas, M., Wang, D. R., Wang, S., Wang, H., Wang, J., Wang, X., Weber, A. P. M., Wong, C. Y. S., Wu, J., Wu, F., Wu, S., Yan, Z., Yang, D., and Zhao, Y.: The Global Spectra-Trait Initiative: A database of paired leaf spectroscopy and functional traits associated with leaf photosynthetic capacity, Earth Syst. Sci. Data, 18, 245–265, https://doi.org/10.5194/essd-18-245-2026, 2026.
 
 .ris or .bib references are available at [https://essd.copernicus.org/articles/18/245/2026/](https://essd.copernicus.org/articles/18/245/2026/) 
+
+## Database citation
+
+Data and code associated with the article were developed in this GitHub repository. The version associated with the article is v1.0.0, available using the releases tab in GitHub. In addition, v1.0.0 has been archived with a permanent DOI on ESS-DIVE for long-term preservation and should be cited if you use any data or code from this project. https://data.ess-dive.lbl.gov/view/doi:10.15485/2530733
+
+Lamour J ; Serbin S ; Rogers A ; Ely K ; Acebron K T ; Ainsworth E ; Albert L P ; Alonzo M ; Anderson J ; Atkin O K ; Barbier N ; Barnes M L ; Bernacchi C J ; Besson N ; Burnett A C ; Caplan J S ; Chave J ; Cheesman A W ; Clocher I ; Coast O ; Coste S ; Croft H ; Cui B ; Dauvissat C ; Davidson K J ; Doughty C ; Evans J ; Feret J ; Filella I ; Fortunel C ; Fu P ; Furbank R ; Garcia M ; Gimenez B O ; Guan K ; Guo Z ; Heckman D ; Heuret P ; Marney I ; Kothari S ; Kumagai E ; Kyaw T Y ; Liu L ; Liu L ; Liu S ; Llusià J ; Magney T ; Maréchaux I ; Martin A R ; Meacham-Hensold K ; Montes C M ; Ogaya R ; Ojo J ; Oliveira R ; Paquette A ; Peñuelas J ; Placido A D ; Posada J M ; Qian X ; Renninger H J ; Rodriguez-Caton M ; Rojas-González A ; Schlüter U ; Sellan G ; Siegert C M ; Silva Pérez V ; Song G ; Southwick C D ; Souza D C ; Stahl C ; Su Y ; Sujeeun L ; Ting T ; Vasquez V ; Vijayakumar V ; Vilas-Boas M ; Wang D R ; Wang S ; Wang H ; Wang J ; Wang X ; Weber A P ; Wong C Y ; Wu J ; Wu F ; Wu S ; Yan Z ; Yang D ; Zhao Y (2025): The Global Spectra-Trait Initiative: A database of paired leaf spectroscopy and functional traits associated with leaf photosynthetic capacity (v1.0.0). Next-Generation Ecosystem Experiments (NGEE) Tropics, ESS-DIVE repository. Dataset. doi:10.15485/2530733
+
+Further development of the code, documentation, and data is pursued in this GitHub repository. To reference a specific release after v1.0.0, please use the relevant citation available using the releases tab in GitHub.  
+
+
+Current version is v.1.0.1 (since 2026/02/06). 
+
+Lamour J ; Serbin S ; Rogers A ; Ely K ; Acebron K T ; Ainsworth E ; Albert L P ; Alonzo M ; Anderson J ; Atkin O K ; Barbier N ; Barnes M L ; Bhattarai R ; Bernacchi C J ; Besson N ; Burnett A C ; Caplan J S ; Chave J ; Cheesman A W ; Clocher I ; Coast O ; Coste S ; Croft H ; Cui B ; Dauvissat C ; Davidson K J ; Doughty C ; Du J Q ; Evans J ; Feret J ; Filella I ; Fortunel C ; Fu P ; Furbank R ; Garcia M ; Gimenez B O ; Guan K ; Guo Z ; Heckman D ; Heuret P ; Marney I ; Kothari S ; Kumagai E ; Kyaw T Y ; Liu L ; Liu L ; Liu S ; Llusià J ; Magney T ; Maréchaux I ; Martin A R ; Meacham-Hensold K ; Montes C M ; Ogaya R ; Ojo J ; Oliveira R ; Paquette A ; Paudel B ; Peñuelas J ; Placido A D ; Poudel K ; Posada J M ; Qian X ; Renninger H J ; Rodriguez-Caton M ; Rojas-González A ; Schlüter U ; Sellan G ; Siegert C M ; Silva Pérez V ; Song G ; Southwick C D ; Souza D C ; Stahl C ; Su Y ; Sujeeun L ; Ting T ; Vasquez V ; Vijayakumar V ; Vilas-Boas M ; Wang D R ; Wang S ; Wang H ; Wang J ; Wang X ; Weber A P ; Wong C Y ; Wu J ; Wu F ; Wu S ; Yan Z ; Yang D ; Zhao Y (2025): The Global Spectra-Trait Initiative: A database of paired leaf spectroscopy and functional traits associated with leaf photosynthetic capacity (v1.0.1). https://github.com/plantphys/gsti/releases/tag/v1.0.1
+
 
 ## References
 
