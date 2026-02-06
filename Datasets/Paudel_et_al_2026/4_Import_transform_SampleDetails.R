@@ -50,8 +50,8 @@ save(SampleDetails, file = "4_SampleDetails.Rdata")
 
 
 # Run dataset consistency check
+# f.Check_dataset.R is located in the Author folder
+source("f.Check_dataset.R")
 
-# Checking the overall dataset information. 
-source(file.path(path,'/R/f.Check_dataset.R'))
+# Run validation
 f.Check_data(folder_path = getwd())
-

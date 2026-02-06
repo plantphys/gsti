@@ -10,9 +10,18 @@
 # Load the 'here' package to easily reference files and folders path, which is robust and independent on platform (Linux, Windows)
 library(here)
 
-# Load the spectratrait package that is used to plot the Reflectance data
-library(spectratrait) # https://github.com/plantphys/spectratrait
+## Install and load spectratrait (from GitHub)
 
+# Install devtools if not already installed
+if (!requireNamespace("devtools", quietly = TRUE)) {
+  install.packages("devtools")
+}
+
+# Install spectratrait from GitHub
+devtools::install_github("plantphys/spectratrait")
+
+# Load the spectratrait package
+library(spectratrait)
 
 library(signal)
 # Find the path of the top relative directory
@@ -100,7 +109,7 @@ reflectance_csv <- cbind(
   as.data.frame(Reflectance_matrix, check.names = FALSE)
 )
 
-write.csv(reflectance_csv, "Reflectance_interpolated.csv", row.names = FALSE)
+write.csv(reflectance_csv, "Interpolated_Reflectance.csv", row.names = FALSE)
 
 cat("Done.\n")
 cat("Saved: 3_QC_Reflectance_data.Rdata\n")
