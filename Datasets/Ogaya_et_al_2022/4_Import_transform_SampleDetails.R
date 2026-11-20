@@ -35,7 +35,7 @@ SampleDetails$LMA=1/as.numeric(SampleDetails$SLA)*10000 # Leaf mass area in g m-
 SampleDetails$Narea=SampleDetails$LMA*as.numeric(SampleDetails$N)/100 # Nitrogen content per surface area in g m-2
 SampleDetails$Nmass=as.numeric(SampleDetails$N)*10 # Nitrogen content on a leaf dry weight basis. In mg . g  (i.e per thousand)
 SampleDetails$Parea=SampleDetails$LMA*as.numeric(SampleDetails$P)/100 # Phosphorus content per surface area in g m-2
-SampleDetails$Pmass=SampleDetails$LMA*as.numeric(SampleDetails$P)*10 # Phosphorus content on a leaf dry weight basis
+SampleDetails$Pmass=as.numeric(SampleDetails$P)*10 # Phosphorus content on a leaf dry weight basis
 SampleDetails$LWC=NA # Leaf water content (Fresh_weight - dry weight)/Fresh weight
 SampleDetails$Chl=NA
 
