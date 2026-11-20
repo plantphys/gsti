@@ -10,4 +10,5 @@ hist(curated_data$Qin)
 hist(curated_data$Tleaf)
 hist(curated_data$gsw)
 
+curated_data$QC="ok"
 save(curated_data,file='1_QC_ACi_data.Rdata')

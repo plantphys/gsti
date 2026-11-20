@@ -72,7 +72,7 @@ mtext(expression(bold("(b)")),side = 3,line = 0,adj=-0.3,cex=1.2)
 ### Histogram of TPU25
 
 #jpeg(file.path(out_path,"Hist_TPU25.jpeg"), height=120,width=100,units = 'mm',res=300)
-hist(Database$Jmax25,breaks = nbreaks, 
+hist(Database$TPU25,breaks = nbreaks, 
      xlab=expression(italic(TPU)[25]~mu*mol~m^-2~s^-1), 
      ylab='Number of leaves',main='')
 box(lwd=2.2)

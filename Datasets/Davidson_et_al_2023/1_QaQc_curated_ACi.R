@@ -7,7 +7,7 @@ load('0_curated_data.Rdata',verbose=TRUE)
 
 curated_data <- curated_data[curated_data$Qin<2000,]
 curated_data <- curated_data[match(unique(curated_data$SampleID_num), curated_data$SampleID_num),]
-
+curated_data$QC="ok"
 hist(curated_data$Ci) ## No below zero value
 hist(curated_data$Qin) 
 hist(curated_data$Tleaf)
