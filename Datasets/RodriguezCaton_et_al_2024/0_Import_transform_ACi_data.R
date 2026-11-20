@@ -1,5 +1,5 @@
 ## This codes is used to do the step 0 of the data curation process.
-## It imports and transforms the ACi data from Rodriguez-Caton et al 2024 (Zenodo DOI xxxxxxxxxxxxxxxxxxxxx)
+## It imports and transforms the ACi data from Rodriguez-Caton et al 2024 (Zenodo DOI https://doi.org/10.5061/dryad.j6q573npr)
 
 # Load the 'here' package to easily reference files and folders path, which is robust and independent on your platform (Linux, Windows..)
 library(here)
